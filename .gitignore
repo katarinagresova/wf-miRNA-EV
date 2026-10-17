@@ -230,3 +230,5 @@ logs/
 .snakemake/
 # Input data (a link to the FASTQs of a project)
 /data
+# Local sample sheets and configs
+/config/local/

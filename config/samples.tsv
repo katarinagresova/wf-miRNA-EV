@@ -1,0 +1,4 @@
+sample	fastq	batch	material
+EV_1	data/EV_1.fastq.gz	run1	EV
+EV_2	data/EV_2.fastq.gz	run1	EV
+cells_1	data/cells_1.fastq.gz	run2	cells

@@ -37,8 +37,8 @@ conda activate wf-miRNA-EV
 Snakemake creates the conda environments of the rules at the first run.
 
 Write a sample sheet (TSV) with the columns `sample` and `fastq` (path to the gzipped FASTQ), and optionally `batch`
-(sequencing run). Other columns are copied into the summary tables. In `config/config.yaml`, set the sample sheet,
-the library kit and the references (URLs or local paths).
+(sequencing run). Other columns are copied into the summary tables. `config/samples.tsv` is an example. In
+`config/config.yaml`, set the sample sheet, the library kit and the references (URLs or local paths).
 
 ## Run
 

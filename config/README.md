@@ -6,7 +6,7 @@ libraries made with the RealSeq-Biofluids kit. The workflow checks both files ag
 
 ## Sample sheet
 
-A TSV file with one row for each library. Set its path in `samples`.
+A TSV file with one row for each library. Set its path in `samples`. `config/samples.tsv` is an example.
 
 | Column | Required | Content |
 |---|---|---|
