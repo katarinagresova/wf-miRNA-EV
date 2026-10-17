@@ -1,0 +1,8 @@
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - cutadapt=5.1
+  - seqkit=2.8
+  - pigz

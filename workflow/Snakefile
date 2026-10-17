@@ -1,0 +1,40 @@
+from pathlib import Path
+
+import pandas as pd
+from snakemake.exceptions import WorkflowError
+
+
+configfile: "config/config.yaml"
+
+
+SAMPLES = pd.read_csv(config["samples"], sep="\t", dtype=str).set_index("sample", drop=False)
+
+_missing = [s for s, fq in SAMPLES["fastq"].items() if not Path(fq).exists()]
+if _missing:
+    raise WorkflowError(f"FASTQ missing for {len(_missing)} sample(s): {', '.join(_missing)}")
+
+
+wildcard_constraints:
+    sample="|".join(SAMPLES.index),
+
+
+# Steps 1-7: qc, trim, collapse, refs, quantify (read classification, contaminants, miRNA quantification, rRNA
+# fragment tables)
+include: "rules/qc.smk"
+include: "rules/trim.smk"
+include: "rules/collapse.smk"
+include: "rules/refs.smk"
+include: "rules/quantify.smk"
+
+
+rule all:
+    input:
+        "results/qc/multiqc_raw/multiqc_report.html",
+        "results/qc/multiqc_trimmed/multiqc_report.html",
+        "results/qc/read_counts.tsv",
+        "results/qc/trimming_summary.tsv",
+        "results/qc/collapse_summary.tsv",
+        "results/qc/top_sequences.tsv",
+        expand("results/collapse/{sample}/collapsed.fa.gz", sample=SAMPLES.index),
+        MIRNA_SUMMARY.values(),
+        expand("results/rrna/{sample}/fragments.tsv.gz", sample=SAMPLES.index),

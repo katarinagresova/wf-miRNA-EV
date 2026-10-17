@@ -1,0 +1,115 @@
+samples: config/samples.tsv
+
+# Step 2: adapter trimming (RealSeq-Biofluids)
+trim:
+  adapter: TGGAATTCTCGGGTGCCAAGG
+  cut_5p: 1          # RealSeq adds one extra nt at the 5' end
+  nextseq_trim: 20   # NextSeq 2000 two-colour chemistry: quality trim that also removes dark-cycle poly-G
+  min_len: 16        # kept for all downstream analyses; 16-28 nt is applied only for miRNA quantification
+
+# Step 3: collapse identical reads (no UMIs, so this is for speed; duplication is reported, not removed)
+collapse:
+  top_n: 50   # per-sample top sequences combined into results/qc/top_sequences.tsv
+
+# rRNA features of the single-copy rRNA reference (step 4, refs.rrna); the report annotates the top sequences with them
+rrna_quick:
+  # KY962518.1 features (0-based start, end) from its GenBank record, the same as in the collaborators' BED
+  # (18S 3658..5526, 5.8S 6597..6753, 28S 7921..12971, 1-based); everything else is 5'ETS/ITS/3'ETS
+  features:
+    KY962518.1:
+      - [5'ETS, 0, 3657]
+      - [18S, 3657, 5526]
+      - [ITS1, 5526, 6596]
+      - [5.8S, 6596, 6753]
+      - [ITS2, 6753, 7920]
+      - [28S, 7920, 12971]
+      - [3'ETS/IGS, 12971, 50000]
+    NC_012920.1:
+      - [MT-RNR1, 647, 1601]
+      - [MT-RNR2, 1670, 3229]
+
+# Step 4: references, downloaded into resources/ (gitignored).
+# Fixed releases are checked against md5; MirGeneDB is only served as the live release, so its md5 is logged.
+refs:
+  mirbase:
+    version: "22.1"
+    # mirbase.org is unreachable from the cluster (connection timeout), so we use the Wayback Machine
+    # copies of the official download files (22.1 = CURRENT since 2018): 48,885 mature (2,656 hsa), 38,589 hairpins (1,917 hsa)
+    mature:
+      url: http://web.archive.org/web/20250520104034id_/https://www.mirbase.org/download/mature.fa
+      md5: c0fbc0ae2aa8241afeae4b89fea9ed0f
+    hairpin:
+      url: http://web.archive.org/web/20240901130359id_/https://www.mirbase.org/download/hairpin.fa
+      md5: afade358ab4bd799414a0ae1948defbd
+  mirgenedb:
+    version: "3.0"
+    mature: https://mirgenedb.org/fasta/hsa?mat=1
+    star: https://mirgenedb.org/fasta/hsa?star=1
+    # precursor with 30 nt flanks on both sides
+    pri: https://mirgenedb.org/fasta/hsa?pri=1
+  gtrnadb:
+    # GtRNAdb release 22, high-confidence mature tRNAs (introns removed, no 3' CCA) and all tRNA gene loci
+    mature: https://gtrnadb.ucsc.edu/genomes/eukaryota/Hsapi38/hg38-mature-tRNAs.fa
+    tar: https://gtrnadb.ucsc.edu/genomes/eukaryota/Hsapi38/hg38-tRNAs.tar.gz
+  ensembl:
+    # Same release and assembly as the collaborators' BAMs
+    release: 113
+    genome: https://ftp.ensembl.org/pub/release-113/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    gtf: https://ftp.ensembl.org/pub/release-113/gtf/homo_sapiens/Homo_sapiens.GRCh38.113.gtf.gz
+    ncrna: https://ftp.ensembl.org/pub/release-113/fasta/homo_sapiens/ncrna/Homo_sapiens.GRCh38.ncrna.fa.gz
+  # Single-copy rRNA reference, shared with Part 2: complete rDNA repeat, 5S and mt-rRNA
+  rrna:
+    rdna: KY962518.1
+    rna5s: ENST00000362482   # RNA5S1, chr1 5S cluster (Ensembl ncRNA)
+    # Genomic flank on both sides of 5S: reads run past the annotated ends (3' oligo-U), see the feature BED
+    rna5s_flank: 30
+    # Mature 5S in the feature BED: 121 nt (RefSeq NR_023363.1, ends GGCUUU); the Ensembl transcript is 119 nt, 2 nt
+    # short at the 3' end
+    rna5s_length: 121
+    mt_rrna: [MT-RNR1, MT-RNR2]
+  # Common contaminants of cell cultures and reagents (NCBI): accession, read class, species. Found in step 4:
+  # the most abundant unmapped reads of the SH-SY5Y libraries match M. hyorhinis exactly. The six mollicutes cause
+  # > 95% of cell culture mycoplasma infections; E. coli stands for reagent bacteria; phiX is the Illumina spike-in.
+  contaminants:
+    - [NC_014448.1, mycoplasma, Mesomycoplasma hyorhinis HUB-1]
+    - [NZ_LR214940.1, mycoplasma, Metamycoplasma orale NCTC10112]
+    - [NZ_CP143577.1, mycoplasma, Mycoplasmopsis arginini NCTC 10129]
+    - [NC_014921.1, mycoplasma, Mycoplasmopsis fermentans M64]
+    - [NC_013511.1, mycoplasma, Metamycoplasma hominis ATCC 23114]
+    - [NC_010163.1, mycoplasma, Acholeplasma laidlawii PG-8A]
+    - [NC_000913.3, bacteria, Escherichia coli K-12 MG1655]
+    - [NC_001422.1, phiX, phiX174]
+  miRge3:
+    # miRge3.0 human library (bowtie indices + annotation), from SourceForge
+    url: https://sourceforge.net/projects/mirge3/files/miRge3_Lib/human.tar.gz/download
+    # md5 of the June 2022 tarball as downloaded (2026-09-25); SourceForge md5sum.txt lists f4bdbd8c..., apparently for an older build
+    md5: 364ef5523c7d6048fe6f4f3572c465e4
+
+# Step 4: miRNA quantification and read-type composition
+mirna:
+  min_len: 16
+  max_len: 28
+  mismatches: 1       # bowtie1 -v, for every reference
+  # A read on a hairpin is counted for a mature arm if its ends are within these distances of the arm's ends
+  # (isomiRs vary more at the 3' end); other hairpin reads are counted as miRNA_hairpin_other
+  arm_start_tol: 3
+  arm_end_tol: 5
+  # Hits reported per read for the multi-copy references (ncRNA pseudogene copies, genome); class-level only
+  max_hits: 20
+  # rDNA copies in GRCh38 that Ensembl annotates only with 5.8S (see CLAUDE.md); genome hits here are
+  # rRNA that did not match the single-copy reference with <= 1 mismatch (0-based, end past contig end is fine)
+  rdna_loci:
+    - ["21", 8200000, 8450000]
+    - [GL000220.1, 0, 200000]
+    - [KI270733.1, 0, 200000]
+  detected_min_reads: [1, 5, 10]
+  # Contaminant genomes are aligned on both strands (bowtie -k max_hits). A read at least this long is a contaminant
+  # if it matches a contaminant with fewer mismatches than any human reference (ties stay human): a random 16-mer
+  # matches the 10.2 Mb of contaminant genomes with <= 1 mismatch with ~21% probability, an 18-mer ~1.6%. Reads with
+  # weak human evidence (no small RNA hit; genome hits only in genes, introns or intergenic regions, or none) also on
+  # a tie, and if shorter, on an exact match (random 16-mer ~0.5%, 17-mer ~0.1%); see quantify_mirna.py
+  contaminant_min_len: 18
+  # Reads without any full-length hit are assigned by their ends (item 4c): the end_len-nt ends with <= mismatches,
+  # else the end_len_exact-nt ends exactly (random contaminant match: 25-mer ~1e-6, exact 18-mer ~3e-4)
+  end_len: 25
+  end_len_exact: 18
