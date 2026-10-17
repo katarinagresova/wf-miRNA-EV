@@ -6,6 +6,3 @@ dependencies:
   - python=3.15
   - pandas=3.0
   - matplotlib=3.11
-  # rule mirna_reads
-  - seqkit=2.8
-  - pigz

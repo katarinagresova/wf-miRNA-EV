@@ -12,7 +12,6 @@ trim:
 species:
   mirbase: hsa
   mirgenedb: Hsa
-  mirge3: human
 
 refs:
   mirbase:
@@ -54,5 +53,3 @@ refs:
     - [NC_014448.1, mycoplasma, Mesomycoplasma hyorhinis HUB-1]
     - [NC_001422.1, phiX, phiX174]
   ncbi_dir: refs/ncbi
-  # Mini library: the miRNA indices of the full library, the other indices cut to the test regions
-  miRge3: refs/mirge3/human

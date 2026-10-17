@@ -16,9 +16,6 @@ $defs:
           md5: {type: string, pattern: "^[0-9a-f]{32}$"}
         required: [url, md5]
         additionalProperties: false
-  counter:
-    type: string
-    enum: [mirge3, bowtie]
 
 properties:
   samples:
@@ -48,8 +45,7 @@ properties:
     properties:
       mirbase: {type: string, description: "miRBase name prefix, for example hsa"}
       mirgenedb: {type: string, description: "MirGeneDB name prefix, for example Hsa"}
-      mirge3: {type: string, description: "miRge3.0 organism name, for example human"}
-    required: [mirbase, mirgenedb, mirge3]
+    required: [mirbase, mirgenedb]
     additionalProperties: false
   refs:
     type: object
@@ -127,9 +123,6 @@ properties:
         type: [string, "null"]
         default: null
         description: directory with local copies of the NCBI records (<accession>.fa, <accession>.ft)
-      miRge3:
-        $ref: "#/$defs/source_md5"
-        description: miRge3.0 library; needed only for the counter mirge3
     required: [mirbase, mirgenedb, gtrnadb, ensembl, rrna, rdna_loci, contaminants]
     additionalProperties: false
   genome_index:
@@ -152,14 +145,6 @@ properties:
     type: object
     default: {}
     properties:
-      counter:
-        $ref: "#/$defs/counter"
-        default: mirge3
-      cross_check:
-        type: array
-        items: {$ref: "#/$defs/counter"}
-        uniqueItems: true
-        default: [bowtie]
       databases:
         type: array
         items: {type: string, enum: [mirbase, mirgenedb]}
@@ -168,6 +153,8 @@ properties:
         default: [mirbase, mirgenedb]
       min_len: {type: integer, minimum: 1, default: 16}
       max_len: {type: integer, minimum: 1, default: 28}
+      exact_max_len: {type: integer, minimum: 0, default: 18}
+      nta_max: {type: integer, minimum: 0, default: 3}
       detected_min_reads:
         type: array
         items: {type: integer, minimum: 1}

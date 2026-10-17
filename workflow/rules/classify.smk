@@ -1,4 +1,4 @@
-# Step 5: read classification (bowtie cascade on the collapsed reads, incl. contaminants) and the bowtie miRNA counts.
+# Step 5: read classification (bowtie cascade on the collapsed reads, incl. contaminants) and the miRNA counts.
 
 CLASSIFY = config["classify"]
 MIRNA = config["mirna"]
@@ -42,6 +42,39 @@ rule bowtie_small:
         """
         bowtie -f -v {params.mm} {params.hits} --norc -p {threads} -x {params.prefix} {input.reads} 2> {log} \
             | awk -F '\\t' -v OFS='\\t' '{{mm = ($8 == "") ? 0 : gsub(/,/, ",", $8) + 1; print substr($1, 2, index($1, "_") - 2), $3, $4, length($5), mm}}' \
+            | pigz -p 2 > {output}
+        """
+
+
+rule bowtie_nta:
+    # Reads with non-templated 3' nucleotides (quantify_mirna.py): the reads without n nt at the 3' end (n = 1 to
+    # nta_max), exact hits on the miRNA hairpins. Only the reads that are min_len nt or longer after the removal
+    input:
+        reads="results/collapse/{sample}/collapsed.fa.gz",
+        index="resources/bowtie/{db}/.done",
+    output:
+        # As bowtie_small; the read length is the length after the removal
+        "results/classify/{sample}/hits/{db}_nta.hits.tsv.gz",
+    params:
+        prefix="resources/bowtie/{db}/{db}",
+        min_len=MIRNA["min_len"],
+        max_len=MIRNA["max_len"],
+        nta_max=MIRNA["nta_max"],
+    log:
+        "logs/bowtie_nta/{sample}_{db}.log",
+    threads: 4
+    resources:
+        mem_mb=4000,
+        runtime=120,
+    conda:
+        "../envs/align.yaml"
+    shell:
+        """
+        for n in $(seq 1 {params.nta_max}); do
+            seqkit seq -m $(({params.min_len} + n)) -M {params.max_len} {input.reads} \
+                | bowtie -f -v 0 -3 $n -a --norc -p {threads} -x {params.prefix} -
+        done 2> {log} \
+            | awk -F '\\t' -v OFS='\\t' '{{print substr($1, 2, index($1, "_") - 2), $3, $4, length($5), 0}}' \
             | pigz -p 2 > {output}
         """
 
@@ -199,10 +232,11 @@ rule quantify_mirna:
         genome="results/classify/{sample}/hits/genome.classes.tsv.gz",
         ends="results/classify/{sample}/hits/unmapped_ends.hits.tsv.gz",
         arms=expand("resources/refs/{db}_arms.tsv", db=MIRNA_DBS),
+        nta=expand("results/classify/{{sample}}/hits/{db}_nta.hits.tsv.gz", db=MIRNA_DBS),
     output:
         reads="results/classify/{sample}/read_classes.tsv.gz",
         composition="results/classify/{sample}/composition.tsv",
-        # Bowtie miRNA counts and their reads; the bowtie counter (counters/bowtie.smk) makes its tables from them
+        # miRNA counts and their reads; the counter file counters/bowtie.smk makes the interface tables from them
         counts=expand("results/classify/{{sample}}/mirna_{db}.tsv", db=MIRNA_DBS),
         mirna_reads=expand("results/classify/{{sample}}/mirna_{db}.reads.tsv.gz", db=MIRNA_DBS),
         # Reads per contaminant genome, and the best hits of the most abundant sequences (for the report)
@@ -215,6 +249,7 @@ rule quantify_mirna:
     params:
         min_len=MIRNA["min_len"],
         max_len=MIRNA["max_len"],
+        exact_max_len=MIRNA["exact_max_len"],
         start_tol=CLASSIFY["arm_start_tol"],
         end_tol=CLASSIFY["arm_end_tol"],
         contaminant_min_len=CLASSIFY["contaminant_min_len"],
@@ -237,7 +272,8 @@ rule quantify_mirna:
             --genome {input.genome} \
             --ends {input.ends} \
             --arms {input.arms} \
-            --min-len {params.min_len} --max-len {params.max_len} \
+            --nta-hits {input.nta} \
+            --min-len {params.min_len} --max-len {params.max_len} --exact-max-len {params.exact_max_len} \
             --start-tol {params.start_tol} --end-tol {params.end_tol} \
             --contaminant-min-len {params.contaminant_min_len} \
             --end-len {params.end_len} --end-len-exact {params.exact_len} \

@@ -12,18 +12,22 @@ import pandas as pd
 
 SCRIPTS = Path(__file__).resolve().parents[1] / "workflow" / "scripts"
 
-# Arms of the test hairpins: precursor, mature, start, end. mir-c1 and mir-c2 are paralogs with the same mature name.
+# Arms of the test hairpins: precursor, mature, start, end, entry. mir-c1 and mir-c2 are paralogs with the same mature
+# name. miR-d1-5p and miR-d2-5p have the same sequence, so they are one entry.
 ARMS = [
-    ("mir-a", "miR-a-5p", 5, 27),
-    ("mir-a", "miR-a-3p", 45, 67),
-    ("mir-b", "miR-b-5p", 5, 27),
-    ("mir-c1", "miR-c-5p", 5, 27),
-    ("mir-c2", "miR-c-5p", 5, 27),
+    ("mir-a", "miR-a-5p", 5, 27, "miR-a-5p"),
+    ("mir-a", "miR-a-3p", 45, 67, "miR-a-3p"),
+    ("mir-b", "miR-b-5p", 5, 27, "miR-b-5p"),
+    ("mir-c1", "miR-c-5p", 5, 27, "miR-c-5p"),
+    ("mir-c2", "miR-c-5p", 5, 27, "miR-c-5p"),
+    ("mir-d1", "miR-d1-5p", 5, 27, "miR-d1-5p/miR-d2-5p"),
+    ("mir-d2", "miR-d2-5p", 5, 27, "miR-d1-5p/miR-d2-5p"),
 ]
 # Step 5 settings of config/config.yaml
 STEP5 = {
     "min-len": 16,
     "max-len": 28,
+    "exact-max-len": 18,
     "start-tol": 3,
     "end-tol": 5,
     "contaminant-min-len": 18,
@@ -59,12 +63,13 @@ def options(settings):
     return [x for k, v in settings.items() for x in (f"--{k}", v)]
 
 
-def classify(tmp_path, reads, hits=None, contaminant=(), genome=(), ends=()):
+def classify(tmp_path, reads, hits=None, contaminant=(), genome=(), ends=(), nta=()):
     """Run quantify_mirna.py (step 5) for the database mirbase, with the ARMS hairpins.
 
     reads: rank -> read length (COUNT reads each). hits: reference -> rows (rank, reference, offset, length,
     mismatches); contaminant: the same rows plus the strand; genome: rows (rank, mismatches, classes); ends: rows
-    (end, index, reference, mismatches). Reference names are <id>|<class>|<name>. A table without rows is an empty
+    (end, index, reference, mismatches); nta: rows as hits, for the reads without 1 or more 3' nucleotides (the length
+    is the length after the removal). Reference names are <id>|<class>|<name>. A table without rows is an empty
     file, as bowtie writes it.
     """
     d = tmp_path / "step5"
@@ -74,7 +79,7 @@ def classify(tmp_path, reads, hits=None, contaminant=(), genome=(), ends=()):
             fh.write(f">s{rank}_x{COUNT}\n{sequence(rank, length)}\n")
     hits = hits or {}
     hit_files = [write_tsv(d / f"{ref}.hits.tsv.gz", hits.get(ref, [])) for ref in SMALL_REFS]
-    write_tsv(d / "mirbase_arms.tsv", ARMS, header=["precursor", "mature", "start", "end"])
+    write_tsv(d / "mirbase_arms.tsv", ARMS, header=["precursor", "mature", "start", "end", "entry"])
     run_script(
         "quantify_mirna.py",
         "--reads", d / "collapsed.fa.gz",
@@ -83,6 +88,7 @@ def classify(tmp_path, reads, hits=None, contaminant=(), genome=(), ends=()):
         "--genome", write_tsv(d / "genome.classes.tsv.gz", genome),
         "--ends", write_tsv(d / "unmapped_ends.hits.tsv.gz", ends),
         "--arms", d / "mirbase_arms.tsv",
+        "--nta-hits", write_tsv(d / "mirbase_nta.hits.tsv.gz", nta),
         *options(STEP5),
         "--top-n", 10,
         "--out-reads", d / "read_classes.tsv.gz",
@@ -97,5 +103,5 @@ def classify(tmp_path, reads, hits=None, contaminant=(), genome=(), ends=()):
     return SimpleNamespace(
         dir=d,
         classes=pd.read_csv(d / "read_classes.tsv.gz", sep="\t", index_col="rank")["class_mirbase"],
-        counts=pd.read_csv(d / "mirna_mirbase.tsv", sep="\t", index_col="mature"),
+        counts=pd.read_csv(d / "mirna_mirbase.tsv", sep="\t", index_col="mirna"),
     )

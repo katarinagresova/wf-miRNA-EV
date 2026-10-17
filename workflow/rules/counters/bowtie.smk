@@ -1,7 +1,5 @@
-# miRNA counter bowtie: the mature miRNA counts of step 5 (quantify_mirna.py). This file only makes the interface
-# tables from the step 5 tables.
-
-PER_READ_COUNTERS.add("bowtie")
+# miRNA counter bowtie: the miRNA counts of step 5 (quantify_mirna.py). This file only makes the interface tables
+# from the step 5 tables.
 
 
 rule bowtie_table:

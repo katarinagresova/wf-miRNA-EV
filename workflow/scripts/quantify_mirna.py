@@ -19,9 +19,13 @@ matches a human reference; or, when no end-len-nt end matches anything, if an en
 contaminant exactly and none matches a human reference exactly. These are contaminant reads with more errors than the
 full-length alignment allows (or an indel), and contaminant fragments joined to another fragment by the ligation.
 
-A hairpin hit counts for a mature arm if the read is min-len..max-len nt and its 5'/3' ends lie within
-start-tol/end-tol nt of the arm's ends. A read assigned to several mature names (paralogous hairpins, identical
-arms) is split evenly between them.
+A hairpin hit counts for a mature arm if the read is min-len..max-len nt, has 0 mismatches if it is exact-max-len nt
+or shorter, and its 5'/3' ends lie within start-tol/end-tol nt of the arm's ends. Mature names with the same sequence
+are one entry (column entry of the arms table). A read on several entries is split evenly between them.
+
+Reads that are still unmapped count for a mature arm if they match the hairpin exactly without 1 or more nucleotides
+at the 3' end (non-templated 3' nucleotides, --nta-hits). The shorter read must agree with the arm rules. The match
+with the fewest removed nucleotides wins. These reads get the class miRNA.
 """
 
 import argparse
@@ -89,9 +93,13 @@ def parse_args():
     p.add_argument("--genome", required=True, help="genome.classes.tsv.gz: rank, mismatches, classes")
     p.add_argument("--ends", required=True,
                    help="unmapped_ends.hits.tsv.gz: end (<rank>_<5|3>_<end length>), index, reference, mismatches")
-    p.add_argument("--arms", nargs="+", required=True, help="<db>_arms.tsv: precursor, mature, start, end")
+    p.add_argument("--arms", nargs="+", required=True, help="<db>_arms.tsv: precursor, mature, start, end, entry")
+    p.add_argument("--nta-hits", nargs="+", required=True,
+                   help="exact hairpin hits of the reads without 1 or more 3' nucleotides, as --hits (the length is "
+                        "the length after the removal); one per --arms")
     p.add_argument("--min-len", type=int, required=True)
     p.add_argument("--max-len", type=int, required=True)
+    p.add_argument("--exact-max-len", type=int, required=True, help="reads of this length or shorter need 0 mismatches")
     p.add_argument("--start-tol", type=int, required=True)
     p.add_argument("--end-tol", type=int, required=True)
     p.add_argument("--contaminant-min-len", type=int, required=True)
@@ -100,9 +108,10 @@ def parse_args():
     p.add_argument("--top-n", type=int, required=True, help="most abundant sequences whose best hits go to --out-top")
     p.add_argument("--out-reads", required=True)
     p.add_argument("--out-composition", required=True)
-    p.add_argument("--out-counts", nargs="+", required=True, help="mature miRNA counts, one per --arms")
+    p.add_argument("--out-counts", nargs="+", required=True, help="miRNA counts per entry, one per --arms")
     p.add_argument("--out-mirna-reads", nargs="+", required=True,
-                   help="reads of the mature miRNA counts (rank, mature, reads, canonical, tied classes), one per --arms")
+                   help="reads of the miRNA counts (rank, entry, reads, canonical, non-templated 3' nucleotides, tied "
+                        "classes), one per --arms")
     p.add_argument("--out-contaminants", required=True, help="reads per contaminant genome and length bin")
     p.add_argument("--out-contaminant-rules", required=True,
                    help="contaminant reads by the class they would have without contaminants, the rule and the read length")
@@ -159,17 +168,19 @@ def concat_hits(frames):
     return pd.concat(frames, ignore_index=True)
 
 
-def arm_assignments(hits, arms, args):
-    """Hairpin hits that match a mature arm: rank, mm, mature."""
+def arm_assignments(hits, arms, args, exact_max_len=0):
+    """Hairpin hits that match a mature arm: rank, mm, mature, entry. Reads of exact_max_len nt or shorter need 0
+    mismatches."""
     m = hits.merge(arms, left_on="target", right_on="precursor")
     ok = (
         m["length"].between(args.min_len, args.max_len)
+        & ((m["mm"] == 0) | (m["length"] > exact_max_len))
         & ((m["offset"] - m["start"]).abs() <= args.start_tol)
         & ((m["offset"] + m["length"] - m["end"]).abs() <= args.end_tol)
     )
     m = m[ok]
     m = m.assign(canonical=(m["offset"] == m["start"]) & (m["offset"] + m["length"] == m["end"]) & (m["mm"] == 0))
-    return m[["rank", "target", "offset", "mm", "mature", "canonical"]]
+    return m[["rank", "target", "offset", "length", "mm", "mature", "entry", "canonical"]]
 
 
 def best_class(cand, priority):
@@ -254,9 +265,11 @@ def main():
     assert ends.index.isin(tested).all()
 
     composition, read_classes, contaminants, rules, top_hits = [], {}, [], [], []
-    for (db, db_arms), out_counts, out_mirna_reads in zip(arms.items(), args.out_counts, args.out_mirna_reads):
+    for (db, db_arms), nta_hits, out_counts, out_mirna_reads in zip(
+        arms.items(), args.nta_hits, args.out_counts, args.out_mirna_reads
+    ):
         mir = hits[db]
-        assigned = arm_assignments(mir, db_arms, args)
+        assigned = arm_assignments(mir, db_arms, args, args.exact_max_len)
         # Hairpin hits that match an arm are miRNA; other hairpin hits (loop, long or offset reads) are not
         key = ["rank", "target", "offset"]
         on_arm = pd.MultiIndex.from_frame(mir[key]).isin(pd.MultiIndex.from_frame(assigned[key]))
@@ -283,6 +296,13 @@ def main():
         # Reads without any full-length hit: a contaminant end and no human end
         end_wins = ends.index[ends["outcome"].eq("contaminant_end").to_numpy() & cls[ends.index].eq("unmapped").to_numpy()]
         cls[end_wins] = ends.loc[end_wins, "contaminant"]
+        # Unmapped reads with non-templated 3' nucleotides: an exact arm hit of the read without nta nucleotides at
+        # the 3' end (the hit length is the length after the removal); the fewest removed nucleotides win
+        nta = arm_assignments(read_hits(nta_hits), db_arms, args)
+        nta = nta[cls[nta["rank"]].eq("unmapped").to_numpy()]
+        nta = nta.assign(nta=reads.loc[nta["rank"], "length"].to_numpy() - nta["length"].to_numpy(), canonical=False)
+        nta = nta[nta["nta"].to_numpy() == nta.groupby("rank")["nta"].transform("min").to_numpy()]
+        cls[nta["rank"].unique()] = "miRNA"
         read_classes[db] = cls
         moved = wins.append(end_wins)
         end_rule = ("end_" + ends.loc[end_wins, "end_len"].astype(str)).to_numpy()
@@ -323,32 +343,40 @@ def main():
         )
         top_hits.append(top.merge(t.drop(columns="cls"), how="left", on="rank"))
 
-        # Mature counts from reads whose best class is miRNA, using only their best-stratum arm hits
+        # Entry counts from reads whose best class is miRNA, using only their best-stratum arm hits, and from the
+        # reads with non-templated 3' nucleotides
         best_mm = best["mm"]
         a = assigned[assigned["rank"].map(best["cls"]).eq("miRNA")]
         a = a[a["mm"].to_numpy() == best_mm.loc[a["rank"]].to_numpy()]
-        a = a.groupby(["rank", "mature"], as_index=False)["canonical"].any()
-        a["reads"] = reads.loc[a["rank"], "count"].to_numpy() / a.groupby("rank")["mature"].transform("size")
+        a = pd.concat([a.assign(nta=0), nta])
+        a = a.groupby(["rank", "entry"], as_index=False).agg(canonical=("canonical", "any"), nta=("nta", "first"))
+        a["reads"] = reads.loc[a["rank"], "count"].to_numpy() / a.groupby("rank")["entry"].transform("size")
         # Other classes hit equally well by the same read (e.g. miRBase entries derived from rRNA or tRNA)
         c = concat_hits([cand, cont_cand])
-        c = c[c["rank"].isin(a["rank"]) & ~c["cls"].isin(["miRNA", "miRNA_hairpin_other"])]
+        c = c[c["rank"].isin(a.loc[a["nta"] == 0, "rank"]) & ~c["cls"].isin(["miRNA", "miRNA_hairpin_other"])]
         c = c[c["mm"].to_numpy() == best_mm.loc[c["rank"]].to_numpy()]
         tied = c.drop_duplicates(["rank", "cls"]).groupby("rank")["cls"].agg(lambda s: ",".join(sorted(s)))
         a["tied"] = a["rank"].map(tied)
         a["canonical_reads"] = a["reads"] * a["canonical"]
         a["tied_reads"] = a["reads"] * a["tied"].notna()
-        counts = a.groupby("mature").agg(
+        a["nta_reads"] = a["reads"] * (a["nta"] > 0)
+        counts = a.groupby("entry").agg(
             reads=("reads", "sum"),
             unique_seqs=("rank", "size"),
             canonical_reads=("canonical_reads", "sum"),
+            nta_reads=("nta_reads", "sum"),
             reads_tied_other_class=("tied_reads", "sum"),
             tied_classes=("tied", lambda t: ",".join(sorted(set(",".join(t.dropna()).split(",")) - {""}))),
         ).sort_values("reads", ascending=False)
-        counts.round(3).to_csv(out_counts, sep="\t")
-        a[["rank", "mature", "reads", "canonical", "tied"]].rename(columns={"tied": "tied_classes"}).to_csv(
+        members = db_arms.groupby("entry")["mature"].agg(lambda m: ";".join(sorted(set(m))))
+        counts.insert(1, "members", members.reindex(counts.index))
+        counts.rename_axis("mirna").round(3).to_csv(out_counts, sep="\t")
+        a = a.rename(columns={"entry": "mirna", "tied": "tied_classes"})
+        a[["rank", "mirna", "reads", "canonical", "nta", "tied_classes"]].to_csv(
             out_mirna_reads, sep="\t", index=False, compression="gzip"
         )
-        print(f"{db}: {counts['reads'].sum():,.0f} miRNA reads, {len(counts)} mature miRNAs with >= 1 read")
+        print(f"{db}: {counts['reads'].sum():,.0f} miRNA reads ({counts['nta_reads'].sum():,.0f} with non-templated 3' "
+              f"nucleotides), {len(counts)} entries with >= 1 read")
 
         comp = reads.assign(cls=cls, len_bin=length_bin(reads["length"], args.min_len, args.max_len))
         comp = comp.groupby(["cls", "len_bin"], observed=True).agg(reads=("count", "sum"), unique_seqs=("count", "size"))

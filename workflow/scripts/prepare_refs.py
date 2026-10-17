@@ -59,7 +59,7 @@ def write_fasta(records, path):
             fh.write(f">{name}\n{seq}\n")
 
 
-def arms_table(precursors, matures, path):
+def arms_table(precursors, matures):
     """Locate every mature sequence in every precursor that contains it (0-based, half-open).
 
     A mature sequence can sit on several precursors (e.g. hsa-let-7a-5p on let-7a-1/-2/-3), and in
@@ -72,11 +72,22 @@ def arms_table(precursors, matures, path):
             while start != -1:
                 rows.append((pname, mname, start, start + len(mseq)))
                 start = pseq.find(mseq, start + 1)
-    with open(path, "w") as fh:
-        fh.write("precursor\tmature\tstart\tend\n")
-        for row in sorted(rows):
-            fh.write("\t".join(map(str, row)) + "\n")
     return rows
+
+
+def write_arms(rows, matures, path):
+    """Write the arms table: precursor, mature, start, end, entry. The entry is the counted miRNA: the mature names
+    with the same sequence, joined by '/' (e.g. hsa-miR-199a-3p/hsa-miR-199b-3p)."""
+    names = {}
+    for name, seq in matures.items():
+        names.setdefault(seq, []).append(name)
+    entry = {n: "/".join(sorted(group)) for group in names.values() for n in group}
+    with open(path, "w") as fh:
+        fh.write("precursor\tmature\tstart\tend\tentry\n")
+        for row in sorted(rows):
+            fh.write("\t".join(map(str, [*row, entry[row[1]]])) + "\n")
+    merged = [g for g in names.values() if len(g) > 1]
+    print(f"{len(merged)} entries of 2 or more mature names with the same sequence ({sum(map(len, merged))} names)")
 
 
 def mirbase(args):
@@ -85,7 +96,8 @@ def mirbase(args):
     hairpins = {h.split()[0]: dna(s) for h, s in read_fasta(args.hairpin) if h.startswith(prefix)}
     matures = {h.split()[0]: dna(s) for h, s in read_fasta(args.mature) if h.startswith(prefix)}
     write_fasta(((f"{n}|miRNA|{n}", s) for n, s in hairpins.items()), args.fasta)
-    rows = arms_table(hairpins, matures, args.arms)
+    rows = arms_table(hairpins, matures)
+    write_arms(rows, matures, args.arms)
     located = {r[1] for r in rows}
     print(f"miRBase: {len(hairpins)} {args.species} hairpins, {len(matures)} {args.species} mature, {len(located)} located on a hairpin")
     missing = sorted(set(matures) - located)
@@ -101,14 +113,11 @@ def mirgenedb(args):
         for h, s in read_fasta(path):
             matures[h.split()[0]] = dna(s)
     write_fasta(((f"{n}|miRNA|{n}", s) for n, s in pri.items()), args.fasta)
-    rows = arms_table(pri, matures, args.arms)
+    rows = arms_table(pri, matures)
     # Keep only arms located on their own precursor (Hsa-Let-7-P1b_5p on Hsa-Let-7-P1b); a sequence shared
     # between paralogues is still found through its own entry on each paralogue.
     own = [r for r in rows if r[1].rsplit("_", 1)[0] == r[0]]
-    with open(args.arms, "w") as fh:
-        fh.write("precursor\tmature\tstart\tend\n")
-        for row in sorted(own):
-            fh.write("\t".join(map(str, row)) + "\n")
+    write_arms(own, matures, args.arms)
     missing = sorted(set(matures) - {r[1] for r in own})
     print(f"MirGeneDB: {len(pri)} precursors, {len(matures)} mature/star arms, {len(missing)} not on own precursor")
     if missing:

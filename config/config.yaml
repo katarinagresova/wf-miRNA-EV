@@ -12,11 +12,10 @@ trim:
 collapse:
   top_n: 50   # per-sample top sequences combined into results/collapse/top_sequences.tsv
 
-# Species names in the references: miRBase and MirGeneDB name prefixes, miRge3.0 organism name
+# Species names in the references: miRBase and MirGeneDB name prefixes
 species:
   mirbase: hsa
   mirgenedb: Hsa
-  mirge3: human
 
 # Step 4: references, downloaded into resources/ (gitignored). Each URL can also be a local path.
 # Fixed releases are checked against md5; MirGeneDB is only served as the live release, so its md5 is logged.
@@ -93,12 +92,6 @@ refs:
   # Optional: a directory with local copies of the NCBI records (rDNA and contaminants): <accession>.fa and, for the
   # contaminants, the feature table <accession>.ft. Without it, the workflow downloads them from NCBI.
   ncbi_dir: null
-  miRge3:
-    # miRge3.0 library (bowtie indices + annotation), from SourceForge. A local path is the extracted library
-    # directory of the organism (for example, miRge3_Lib/human).
-    url: https://sourceforge.net/projects/mirge3/files/miRge3_Lib/human.tar.gz/download
-    # md5 of the June 2022 tarball as downloaded (2026-09-25); SourceForge md5sum.txt lists f4bdbd8c..., apparently for an older build
-    md5: 364ef5523c7d6048fe6f4f3572c465e4
 
 # Optional: prefix of a bowtie 1 index of the genome that already exists (bowtie-build of the genome FASTA above)
 genome_index: null
@@ -123,13 +116,17 @@ classify:
   end_len: 25
   end_len_exact: 18
 
-# Step 6: miRNA counts
+# Steps 5 and 6: miRNA counts
 mirna:
-  counter: mirge3          # main miRNA counter: mirge3 or bowtie
-  cross_check: [bowtie]    # counters to compare with the main counter
   databases: [mirbase, mirgenedb]   # the first one is the primary database (class shares, rRNA fragments)
   min_len: 16
   max_len: 28
+  # Reads of this length or shorter count for a miRNA only with 0 mismatches: on a decoy reference (reversed
+  # hairpins), most chance hits were 16-18-nt reads with 1 mismatch
+  exact_max_len: 18
+  # Reads without any hit count for a miRNA if they match a mature arm exactly without 1 to nta_max nucleotides at
+  # the 3' end (non-templated 3' nucleotides, for example adenylation)
+  nta_max: 3
   detected_min_reads: [1, 5, 10]
   # Off-target check: bowtie1 -v of the miRNA-only mapping (3 is the maximum of bowtie 1)
   off_target_mismatches: 3

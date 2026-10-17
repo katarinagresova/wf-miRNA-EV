@@ -7,7 +7,8 @@ step 5 must give it (expected_<db>), or "removed" for inserts shorter than trim.
 The inserts are kept only if their class is certain: an insert of one class must not match a reference of another
 class exactly; genome inserts and short contaminant inserts must not match a small RNA reference with <= 1 mismatch
 (step 5 aligns to the genome only the reads without a small RNA hit). The miRNA inserts are isomiRs with known
-changes of miRNAs that have the same sequence in miRBase and MirGeneDB. Some rRNA inserts match a miRBase or MirGeneDB
+changes of miRNAs that have the same sequence in miRBase and MirGeneDB; an 18-nt isomiR with a substitution must not
+count (miRNA_hairpin_other). Some rRNA inserts match a miRBase or MirGeneDB
 mature miRNA with 0-3 mismatches: the off-target check must give them the result rRNA or tied (off_target_<db>).
 
 Run in the environment of workflow/envs/py.yaml:
@@ -36,7 +37,7 @@ LIBRARIES = {
     "ev_1": ("run1", {"miRNA": 1, "rRNA": 5, "tRNA": 4, "ncRNA": 2, "contaminant": 3, "genome": 1, "other": 1}),
     "cells_1": ("run2", {"miRNA": 5, "rRNA": 1, "tRNA": 1, "ncRNA": 1, "contaminant": 0, "genome": 2, "other": 1}),
 }
-# Common EV miRNAs with the same sequence in miRBase and MirGeneDB (miR-103a-3p and miR-107: one miRge3.0 entry)
+# Common EV miRNAs with the same sequence in miRBase and MirGeneDB
 MIRNAS = [
     "hsa-let-7a-5p", "hsa-miR-16-5p", "hsa-miR-92a-3p", "hsa-miR-181a-5p", "hsa-miR-191-5p", "hsa-miR-26a-5p",
     "hsa-miR-103a-3p", "hsa-miR-107", "hsa-miR-126-3p", "hsa-miR-423-5p", "hsa-miR-451a", "hsa-miR-486-5p",
@@ -144,7 +145,8 @@ class Inserts:
 
 
 def mirnas(ins):
-    """isomiRs of MIRNAS: the mature sequence, templated 5'/3' changes, a substitution, a non-templated 3' A or T."""
+    """isomiRs of MIRNAS: the mature sequence, templated 5'/3' changes, a substitution, 1-3 non-templated 3' A or T,
+    and the 18-nt 5' part with and without a substitution (step 5 counts reads of 16-18 nt only with 0 mismatches)."""
     r = ins.refs
     for name in MIRNAS:
         mature = r.mirbase_mature[name]
@@ -154,7 +156,7 @@ def mirnas(ins):
         s = hairpin.index(mature)
         e = s + len(mature)
         sub = mature[:10] + ("A" if mature[10] != "A" else "C") + mature[11:]
-        nta = "T" if hairpin[e : e + 1] == "A" else "A"
+        nta = "".join("T" if hairpin[e + i : e + i + 1] == "A" else "A" for i in range(3))
         weight = ins.rng.choice([5, 10, 20, 40])
         variants = {
             "canonical": (mature, weight * 10),
@@ -164,10 +166,20 @@ def mirnas(ins):
             "3p_ext2": (hairpin[s : e + 2], weight),
             "3p_trim1": (mature[:-1], weight * 2),
             "snv_10": (sub, weight),
-            f"nta_{nta}": (mature + nta, weight),
+            f"nta_{nta[0]}": (mature + nta[0], weight),
+            "5p_18nt": (mature[:18], weight),
         }
         for kind, (seq, w) in variants.items():
             ins.add(seq, "miRNA", f"{name}:{kind}", "miRNA", w)
+        # Without a hit in step 5 (2 or 3 mismatches to the hairpin): counted by the rule for non-templated
+        # nucleotides. With 1 mismatch in 18 nt: not counted
+        for n in [2, 3]:
+            seq = mature + nta[:n]
+            if not r.exact_classes(seq) and not r.near_small(seq):
+                ins.add(seq, "miRNA", f"{name}:nta_{nta[:n]}", "miRNA", weight)
+        seq = sub[:18]
+        if not r.exact_classes(seq) and r.near_small(seq) == {"miRNA"}:
+            ins.add(seq, "miRNA", f"{name}:5p_18nt_snv_10", "miRNA_hairpin_other", weight)
 
 
 def hamming_windows(ref, query):

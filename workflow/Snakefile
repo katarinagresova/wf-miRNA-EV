@@ -25,8 +25,8 @@ wildcard_constraints:
     sample="|".join(SAMPLES.index),
 
 
-# Steps 1-7: qc, trim, collapse, refs, classify (read classification, contaminants), mirna (miRNA counters, summary,
-# off-target check), rrna (rRNA fragment tables)
+# Steps 1-7: qc, trim, collapse, refs, classify (read classification, contaminants, miRNA counts), mirna (counter
+# tables, summary, off-target check), rrna (rRNA fragment tables)
 include: "rules/common.smk"
 include: "rules/qc.smk"
 include: "rules/trim.smk"
@@ -58,13 +58,13 @@ rule all:
 
 rule wf_version:
     input:
-        counter=f"results/mirna/{MIRNA['counter']}_version.txt",
+        counter="results/mirna/bowtie_version.txt",
     output:
         "results/wf_version.txt",
     params:
         version=WF_VERSION,
         commit=git_commit(),
-        counter=MIRNA["counter"],
+        counter="bowtie",
     log:
         "logs/wf_version.log",
     # Only printf and cat; any environment

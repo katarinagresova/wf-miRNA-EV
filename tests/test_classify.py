@@ -141,3 +141,58 @@ def test_read_on_two_mature_mirnas(tmp_path):
     assert out.counts.loc["miR-a-5p", "reads"] == COUNT / 2
     assert out.counts.loc["miR-b-5p", "reads"] == COUNT / 2
     assert out.counts.loc["miR-c-5p", "reads"] == COUNT
+
+
+def test_short_reads_need_an_exact_match(tmp_path):
+    # miR-a-5p is at 5..27 of mir-a; reads of exact-max-len (18) nt or shorter count only with 0 mismatches
+    out = classify(
+        tmp_path,
+        reads={1: 17, 2: 17, 3: 17, 4: 19},
+        hits={
+            "mirbase": [
+                (1, hairpin("mir-a"), 5, 17, 0),
+                (2, hairpin("mir-a"), 5, 17, 1),
+                (3, hairpin("mir-a"), 5, 17, 1),
+                (4, hairpin("mir-a"), 5, 19, 1),
+            ],
+            "rrna": [(3, RRNA, 100, 17, 1)],
+        },
+    )
+    assert out.classes[1] == "miRNA"
+    assert out.classes[2] == "miRNA_hairpin_other"
+    assert out.classes[3] == "rRNA"  # the other hit with the same mismatches
+    assert out.classes[4] == "miRNA"
+    assert out.counts.loc["miR-a-5p", "reads"] == 2 * COUNT
+
+
+def test_non_templated_3p_nucleotides(tmp_path):
+    # Exact hairpin hits of the reads without 1-3 nt at the 3' end; they count only for reads without a hit in step 5
+    out = classify(
+        tmp_path,
+        reads={1: 24, 2: 24, 3: 24, 4: 24},
+        genome=[(3, 1, "intron")],
+        nta=[
+            (1, hairpin("mir-a"), 5, 22, 0),  # 2 nt removed: miR-a-5p
+            (2, hairpin("mir-a"), 9, 21, 0),  # 3 nt removed: 5' end +4, outside the arm tolerances
+            (3, hairpin("mir-a"), 5, 22, 0),  # a genome hit in step 5
+            (4, hairpin("mir-a"), 45, 22, 0),  # 2 nt removed: miR-a-3p
+            (4, hairpin("mir-b"), 5, 23, 0),  # 1 nt removed: miR-b-5p; the fewest removed nucleotides win
+        ],
+    )
+    assert out.classes[[1, 4]].eq("miRNA").all()
+    assert out.classes[2] == "unmapped"
+    assert out.classes[3] == "intron"
+    assert out.counts.loc["miR-a-5p", "nta_reads"] == COUNT
+    assert out.counts.loc["miR-b-5p", "nta_reads"] == COUNT
+    assert "miR-a-3p" not in out.counts.index
+    assert out.counts["canonical_reads"].sum() == 0
+
+
+def test_mature_names_with_the_same_sequence_are_one_entry(tmp_path):
+    out = classify(
+        tmp_path,
+        reads={1: 22},
+        hits={"mirbase": [(1, hairpin("mir-d1"), 5, 22, 0), (1, hairpin("mir-d2"), 5, 22, 0)]},
+    )
+    assert out.counts.loc["miR-d1-5p/miR-d2-5p", "reads"] == COUNT  # not divided
+    assert out.counts.loc["miR-d1-5p/miR-d2-5p", "members"] == "miR-d1-5p;miR-d2-5p"

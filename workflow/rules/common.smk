@@ -6,7 +6,7 @@ import subprocess
 
 def git_commit():
     """Commit of the workflow source, or 'unknown' (for example, a release archive)."""
-    out = subprocess.run(["git", "-C", workflow.basedir, "describe", "--always", "--dirty", "--tags"],
+    out = subprocess.run(["git", "-C", str(workflow.current_basedir), "describe", "--always", "--dirty", "--tags"],
                          capture_output=True, text=True)
     return out.stdout.strip() if out.returncode == 0 else "unknown"
 
