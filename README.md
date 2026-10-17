@@ -98,6 +98,13 @@ python .test/check.py .test                         # compares the class of each
 
 GitHub Actions runs these tests, the lint and a dry run at each push.
 
+## Documentation
+
+- [Configuration](config/README.md): the sample sheet and the config keys
+- [Outputs](docs/outputs.md): each output file and its columns
+- [Read classification](docs/classification.md): the read classes, the contaminant rules and the off-target check
+- [miRNA counts](docs/mirna_counters.md): the counting rules and the counter interface
+
 ## License
 
 Apache License 2.0. See [LICENSE](LICENSE).
