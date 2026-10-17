@@ -1,0 +1,41 @@
+# MultiQC config of the QC report (step 8)
+title: "wf-miRNA-EV"
+intro_text: "QC report of the small RNA libraries. The sections of wf-miRNA-EV come first, then FastQC and cutadapt."
+
+# The sections of report_tables.py, in this order, before the FastQC and cutadapt sections
+custom_content:
+  order:
+    - wf_insert_lengths
+    - wf_read_classes
+    - wf_contaminants
+    - wf_mirna
+    - wf_off_target
+    - wf_off_target_length
+
+# FastQC twice: on the raw reads and on the trimmed reads (same sample names)
+module_order:
+  - custom_content
+  - fastqc:
+      name: "FastQC (raw reads)"
+      anchor: "fastqc_raw"
+      path_filters:
+        - "*/fastqc_raw/*"
+  - cutadapt
+  - fastqc:
+      name: "FastQC (trimmed reads)"
+      anchor: "fastqc_trimmed"
+      path_filters:
+        - "*/fastqc_trimmed/*"
+
+# The cutadapt log gives the FASTQ file name; results/trim/{sample}/{sample}.cutadapt.log gives the sample name
+use_filename_as_sample_name:
+  - cutadapt
+extra_fn_clean_exts:
+  - ".cutadapt"
+
+# Small RNA libraries have many identical reads, so the FastQC duplicate percent is always high
+table_columns_visible:
+  "FastQC (raw reads)":
+    percent_duplicates: False
+  "FastQC (trimmed reads)":
+    percent_duplicates: False

@@ -7,8 +7,6 @@ In EV libraries, most reads are often not miRNA but rRNA fragments and contamina
 The workflow therefore gives every read one class (miRNA, rRNA, tRNA, other small RNA, genome, contaminant) and flags
 miRNAs whose reads match another class equally well.
 
-**Status: in development.** Steps 1–7 are complete. The QC report (step 8) and an example sample sheet come later.
-
 ## What it does
 
 ```mermaid
@@ -58,7 +56,8 @@ sbatch --job-name=wf-miRNA-EV --time=2-00:00:00 --mem=4G --output=logs/snakemake
     --wrap "snakemake --profile profiles/slurm"
 ```
 
-The outputs go to `results/`. The main table is `results/library_summary.tsv`, with one row for each library.
+The outputs go to `results/`. The main table is `results/library_summary.tsv`, with one row for each library. The
+QC report is `results/report/multiqc_report.html`.
 
 ## Use in another Snakemake workflow
 
