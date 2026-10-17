@@ -15,7 +15,7 @@ def parse_args():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--json", nargs="+", required=True, help="cutadapt JSON reports")
     p.add_argument("--hist", nargs="+", required=True, help="hist.tsv from rule trim_hist")
-    p.add_argument("--samples", required=True, help="config/samples.tsv")
+    p.add_argument("--samples", required=True, help="sample sheet")
     p.add_argument("--min-len", type=int, required=True)
     p.add_argument("--summary", required=True)
     p.add_argument("--lengths", required=True)
@@ -73,22 +73,17 @@ def summarize(report, ad, no, cut, min_len):
 
 
 def plot_lengths(lengths, samples, min_len, path):
-    runs = sorted(samples["run"].unique(), key=int)
-    fig, axes = plt.subplots(len(runs), 1, figsize=(9, 3 * len(runs)), sharex=True, squeeze=False)
+    """One panel per batch (sample sheet column `batch`), or one panel for all libraries."""
+    batch = samples["batch"].fillna("") if "batch" in samples else pd.Series("", index=samples.index)
+    batches = sorted(batch.unique())
+    fig, axes = plt.subplots(len(batches), 1, figsize=(9, 3 * len(batches)), sharex=True, squeeze=False)
     axes = axes[:, 0]
-    for ax, run in zip(axes, runs):
-        for name, s in samples[samples["run"] == run].iterrows():
-            excluded = s["exclude"] == "yes"
-            ax.plot(
-                lengths.index,
-                lengths[name],
-                ls="--" if excluded else "-",
-                lw=1,
-                label=f"{s['sid']}{' (excluded)' if excluded else ''}",
-            )
+    for ax, b in zip(axes, batches):
+        for name in batch.index[batch == b]:
+            ax.plot(lengths.index, lengths[name], lw=1, label=name)
         for x in (min_len, 28):
             ax.axvline(x, color="grey", lw=0.5, ls=":")
-        ax.set_title(f"Run {run}")
+        ax.set_title(f"Batch {b}" if b else "All libraries")
         ax.set_ylabel("% of raw reads")
         ax.legend(fontsize=7, ncol=2)
     axes[-1].set_xlabel("Insert length after trimming (nt)")
@@ -98,7 +93,7 @@ def plot_lengths(lengths, samples, min_len, path):
 
 def main():
     args = parse_args()
-    samples = pd.read_csv(args.samples, sep="\t", dtype=str).set_index("sample")
+    samples = pd.read_csv(args.samples, sep="\t", dtype=str).set_index("sample").drop(columns="fastq")
 
     hists = {sample_name(p): read_hist(p) for p in args.hist}
     rows, lengths = {}, {}
@@ -108,7 +103,7 @@ def main():
             report = json.load(fh)
         rows[name], lengths[name] = summarize(report, *hists[name], args.min_len)
 
-    summary = samples[["sid", "run", "exclude"]].join(pd.DataFrame.from_dict(rows, orient="index"), how="right")
+    summary = samples.join(pd.DataFrame.from_dict(rows, orient="index"), how="right")
     summary.round(3).to_csv(args.summary, sep="\t")
 
     lengths = pd.DataFrame(lengths).reindex(range(0, 100)).fillna(0)

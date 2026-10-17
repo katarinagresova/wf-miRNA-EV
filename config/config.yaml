@@ -1,34 +1,24 @@
 samples: config/samples.tsv
 
-# Step 2: adapter trimming (RealSeq-Biofluids)
+# Library kit preset (realseq_biofluids), or custom: then give trim.adapter and trim.cut_5p
+kit: realseq_biofluids
+
+# Step 2: adapter trimming. These values override the kit preset.
 trim:
-  adapter: TGGAATTCTCGGGTGCCAAGG
-  cut_5p: 1          # RealSeq adds one extra nt at the 5' end
   nextseq_trim: 20   # NextSeq 2000 two-colour chemistry: quality trim that also removes dark-cycle poly-G
   min_len: 16        # kept for all downstream analyses; 16-28 nt is applied only for miRNA quantification
 
 # Step 3: collapse identical reads (no UMIs, so this is for speed; duplication is reported, not removed)
 collapse:
-  top_n: 50   # per-sample top sequences combined into results/qc/top_sequences.tsv
+  top_n: 50   # per-sample top sequences combined into results/collapse/top_sequences.tsv
 
-# rRNA features of the single-copy rRNA reference (step 4, refs.rrna); the report annotates the top sequences with them
-rrna_quick:
-  # KY962518.1 features (0-based start, end) from its GenBank record, the same as in the collaborators' BED
-  # (18S 3658..5526, 5.8S 6597..6753, 28S 7921..12971, 1-based); everything else is 5'ETS/ITS/3'ETS
-  features:
-    KY962518.1:
-      - [5'ETS, 0, 3657]
-      - [18S, 3657, 5526]
-      - [ITS1, 5526, 6596]
-      - [5.8S, 6596, 6753]
-      - [ITS2, 6753, 7920]
-      - [28S, 7920, 12971]
-      - [3'ETS/IGS, 12971, 50000]
-    NC_012920.1:
-      - [MT-RNR1, 647, 1601]
-      - [MT-RNR2, 1670, 3229]
+# Species names in the references: miRBase and MirGeneDB name prefixes, miRge3.0 organism name
+species:
+  mirbase: hsa
+  mirgenedb: Hsa
+  mirge3: human
 
-# Step 4: references, downloaded into resources/ (gitignored).
+# Step 4: references, downloaded into resources/ (gitignored). Each URL can also be a local path.
 # Fixed releases are checked against md5; MirGeneDB is only served as the live release, so its md5 is logged.
 refs:
   mirbase:
@@ -67,6 +57,27 @@ refs:
     # short at the 3' end
     rna5s_length: 121
     mt_rrna: [MT-RNR1, MT-RNR2]
+    # rRNA features of the reference; the report annotates the top sequences with them.
+    # KY962518.1 features (0-based start, end) from its GenBank record, the same as in the collaborators' BED
+    # (18S 3658..5526, 5.8S 6597..6753, 28S 7921..12971, 1-based); everything else is 5'ETS/ITS/3'ETS
+    features:
+      KY962518.1:
+        - [5'ETS, 0, 3657]
+        - [18S, 3657, 5526]
+        - [ITS1, 5526, 6596]
+        - [5.8S, 6596, 6753]
+        - [ITS2, 6753, 7920]
+        - [28S, 7920, 12971]
+        - [3'ETS/IGS, 12971, 50000]
+      NC_012920.1:
+        - [MT-RNR1, 647, 1601]
+        - [MT-RNR2, 1670, 3229]
+  # rDNA copies in GRCh38 that Ensembl annotates only with 5.8S; genome hits here are rRNA that did not match the
+  # single-copy reference with <= 1 mismatch (0-based, end past contig end is fine)
+  rdna_loci:
+    - ["21", 8200000, 8450000]
+    - [GL000220.1, 0, 200000]
+    - [KI270733.1, 0, 200000]
   # Common contaminants of cell cultures and reagents (NCBI): accession, read class, species. Found in step 4:
   # the most abundant unmapped reads of the SH-SY5Y libraries match M. hyorhinis exactly. The six mollicutes cause
   # > 95% of cell culture mycoplasma infections; E. coli stands for reagent bacteria; phiX is the Illumina spike-in.
@@ -79,30 +90,28 @@ refs:
     - [NC_010163.1, mycoplasma, Acholeplasma laidlawii PG-8A]
     - [NC_000913.3, bacteria, Escherichia coli K-12 MG1655]
     - [NC_001422.1, phiX, phiX174]
+  # Optional: a directory with local copies of the NCBI records (rDNA and contaminants): <accession>.fa and, for the
+  # contaminants, the feature table <accession>.ft. Without it, the workflow downloads them from NCBI.
+  ncbi_dir: null
   miRge3:
-    # miRge3.0 human library (bowtie indices + annotation), from SourceForge
+    # miRge3.0 library (bowtie indices + annotation), from SourceForge. A local path is the extracted library
+    # directory of the organism (for example, miRge3_Lib/human).
     url: https://sourceforge.net/projects/mirge3/files/miRge3_Lib/human.tar.gz/download
     # md5 of the June 2022 tarball as downloaded (2026-09-25); SourceForge md5sum.txt lists f4bdbd8c..., apparently for an older build
     md5: 364ef5523c7d6048fe6f4f3572c465e4
 
-# Step 4: miRNA quantification and read-type composition
-mirna:
-  min_len: 16
-  max_len: 28
+# Optional: prefix of a bowtie 1 index of the genome that already exists (bowtie-build of the genome FASTA above)
+genome_index: null
+
+# Step 5: read classification
+classify:
   mismatches: 1       # bowtie1 -v, for every reference
+  # Hits reported per read for the multi-copy references (ncRNA pseudogene copies, genome); class-level only
+  max_hits: 20
   # A read on a hairpin is counted for a mature arm if its ends are within these distances of the arm's ends
   # (isomiRs vary more at the 3' end); other hairpin reads are counted as miRNA_hairpin_other
   arm_start_tol: 3
   arm_end_tol: 5
-  # Hits reported per read for the multi-copy references (ncRNA pseudogene copies, genome); class-level only
-  max_hits: 20
-  # rDNA copies in GRCh38 that Ensembl annotates only with 5.8S (see CLAUDE.md); genome hits here are
-  # rRNA that did not match the single-copy reference with <= 1 mismatch (0-based, end past contig end is fine)
-  rdna_loci:
-    - ["21", 8200000, 8450000]
-    - [GL000220.1, 0, 200000]
-    - [KI270733.1, 0, 200000]
-  detected_min_reads: [1, 5, 10]
   # Contaminant genomes are aligned on both strands (bowtie -k max_hits). A read at least this long is a contaminant
   # if it matches a contaminant with fewer mismatches than any human reference (ties stay human): a random 16-mer
   # matches the 10.2 Mb of contaminant genomes with <= 1 mismatch with ~21% probability, an 18-mer ~1.6%. Reads with
@@ -113,3 +122,14 @@ mirna:
   # else the end_len_exact-nt ends exactly (random contaminant match: 25-mer ~1e-6, exact 18-mer ~3e-4)
   end_len: 25
   end_len_exact: 18
+
+# Step 6: miRNA counts
+mirna:
+  counter: mirge3          # main miRNA counter: mirge3 or bowtie
+  cross_check: [bowtie]    # counters to compare with the main counter
+  databases: [mirbase, mirgenedb]   # the first one is the primary database (class shares, rRNA fragments)
+  min_len: 16
+  max_len: 28
+  detected_min_reads: [1, 5, 10]
+  # Off-target check: bowtie1 -v of the miRNA-only mapping (3 is the maximum of bowtie 1)
+  off_target_mismatches: 3

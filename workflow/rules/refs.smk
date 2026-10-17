@@ -4,10 +4,14 @@ import re
 import shlex
 
 REFS = config["refs"]
+SPECIES = config["species"]
 
 # Bowtie1 references; each FASTA has names `<id>|<class>|<name>`, except the genome
 BOWTIE_REFS = ["mirbase", "mirgenedb", "rrna", "trna", "ncrna", "contaminant", "genome"]
 CONTAMINANTS = {acc: (cls, species) for acc, cls, species in REFS["contaminants"]}
+# Bowtie index of the genome: the one in the config, or built by the workflow
+GENOME_INDEX = config["genome_index"] or "resources/bowtie/genome/genome"
+GENOME_INDEX_FILE = f"{GENOME_INDEX}.1.ebwt" if config["genome_index"] else "resources/bowtie/genome/.done"
 
 
 localrules:
@@ -17,7 +21,6 @@ localrules:
     download_ensembl,
     download_rdna,
     download_contaminant,
-    download_mirge3_lib,
 
 
 rule download_mirbase:
@@ -30,6 +33,8 @@ rule download_mirbase:
         md5=lambda wc: REFS["mirbase"][wc.kind]["md5"],
     log:
         "logs/download_mirbase/{kind}.log",
+    conda:
+        "../envs/download.yaml"
     shell:
         """
         curl -sSfL --retry 3 -o {output} "{params.url}" 2> {log}
@@ -44,25 +49,30 @@ rule download_mirgenedb:
         kind="mature|star|pri",
     params:
         url=lambda wc: REFS["mirgenedb"][wc.kind],
+        species=SPECIES["mirgenedb"],
     log:
         "logs/download_mirgenedb/{kind}.log",
+    conda:
+        "../envs/download.yaml"
     shell:
         """
         curl -sSfL --retry 3 -o {output} "{params.url}" 2> {log}
-        grep -q '^>Hsa-' {output}
+        grep -q '^>{params.species}-' {output}
         md5sum {output} >> {log}
         """
 
 
 rule download_gtrnadb:
     output:
-        mature="resources/download/gtrnadb/hg38-mature-tRNAs.fa",
-        tar="resources/download/gtrnadb/hg38-tRNAs.tar.gz",
+        mature="resources/download/gtrnadb/mature-tRNAs.fa",
+        tar="resources/download/gtrnadb/tRNAs.tar.gz",
     params:
         mature=REFS["gtrnadb"]["mature"],
         tar=REFS["gtrnadb"]["tar"],
     log:
         "logs/download_gtrnadb.log",
+    conda:
+        "../envs/download.yaml"
     shell:
         """
         curl -sSfL --retry 3 -o {output.mature} "{params.mature}" 2> {log}
@@ -80,6 +90,8 @@ rule download_ensembl:
         url=lambda wc: REFS["ensembl"][wc.kind],
     log:
         "logs/download_ensembl/{kind}.log",
+    conda:
+        "../envs/download.yaml"
     shell:
         # Ensembl publishes CHECKSUMS (BSD `sum`) next to every file
         """
@@ -98,6 +110,8 @@ rule download_rdna:
         id=REFS["rrna"]["rdna"],
     log:
         "logs/download_rdna.log",
+    conda:
+        "../envs/download.yaml"
     shell:
         """
         curl -sSf "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id={params.id}&rettype=fasta&retmode=text" \
@@ -115,6 +129,8 @@ rule download_contaminant:
         acc="|".join(re.escape(a) for a in CONTAMINANTS),
     log:
         "logs/download_contaminant/{acc}.log",
+    conda:
+        "../envs/download.yaml"
     shell:
         """
         url="https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id={wildcards.acc}&retmode=text"
@@ -127,8 +143,9 @@ rule download_contaminant:
 
 rule contaminant_reference:
     input:
-        fasta=expand("resources/download/contaminants/{acc}.fa", acc=CONTAMINANTS),
-        ft=expand("resources/download/contaminants/{acc}.ft", acc=CONTAMINANTS),
+        script=workflow.source_path("../scripts/prepare_refs.py"),
+        fasta=[ncbi_source(acc, "fa", f"resources/download/contaminants/{acc}.fa") for acc in CONTAMINANTS],
+        ft=[ncbi_source(acc, "ft", f"resources/download/contaminants/{acc}.ft") for acc in CONTAMINANTS],
     output:
         fasta="resources/refs/contaminant.fa",
         # contig, start, end, <type>:<product>, 0, strand
@@ -141,45 +158,29 @@ rule contaminant_reference:
         "../envs/py.yaml"
     shell:
         """
-        python workflow/scripts/prepare_refs.py contaminant \
+        python {input.script} contaminant \
             --genomes {input.fasta} --feature-tables {input.ft} {params.species} \
             --fasta {output.fasta} --bed {output.bed} &> {log}
         """
 
 
-rule download_mirge3_lib:
-    output:
-        directory("resources/mirge3/human"),
-    params:
-        url=REFS["miRge3"]["url"],
-        md5=REFS["miRge3"]["md5"],
-    log:
-        "logs/download_mirge3_lib.log",
-    shell:
-        """
-        cd resources/mirge3
-        [ -s human.tar.gz ] && echo "{params.md5}  human.tar.gz" | md5sum -c - &> /dev/null \
-            || curl -sSfL --retry 3 -o human.tar.gz "{params.url}" 2> ../../{log}
-        echo "{params.md5}  human.tar.gz" | md5sum -c - >> ../../{log} 2>&1
-        tar xzf human.tar.gz 2>> ../../{log}
-        rm human.tar.gz
-        """
-
-
 rule mirbase_reference:
     input:
-        mature="resources/download/mirbase/mature.fa",
-        hairpin="resources/download/mirbase/hairpin.fa",
+        script=workflow.source_path("../scripts/prepare_refs.py"),
+        mature=ref_source(REFS["mirbase"]["mature"], "resources/download/mirbase/mature.fa"),
+        hairpin=ref_source(REFS["mirbase"]["hairpin"], "resources/download/mirbase/hairpin.fa"),
     output:
         fasta="resources/refs/mirbase.fa",
         arms="resources/refs/mirbase_arms.tsv",
+    params:
+        species=SPECIES["mirbase"],
     log:
         "logs/refs/mirbase.log",
     conda:
         "../envs/py.yaml"
     shell:
         """
-        python workflow/scripts/prepare_refs.py mirbase \
+        python {input.script} mirbase --species {params.species} \
             --mature {input.mature} --hairpin {input.hairpin} \
             --fasta {output.fasta} --arms {output.arms} &> {log}
         """
@@ -187,9 +188,10 @@ rule mirbase_reference:
 
 rule mirgenedb_reference:
     input:
-        mature="resources/download/mirgenedb/mature.fa",
-        star="resources/download/mirgenedb/star.fa",
-        pri="resources/download/mirgenedb/pri.fa",
+        script=workflow.source_path("../scripts/prepare_refs.py"),
+        mature=ref_source(REFS["mirgenedb"]["mature"], "resources/download/mirgenedb/mature.fa"),
+        star=ref_source(REFS["mirgenedb"]["star"], "resources/download/mirgenedb/star.fa"),
+        pri=ref_source(REFS["mirgenedb"]["pri"], "resources/download/mirgenedb/pri.fa"),
     output:
         fasta="resources/refs/mirgenedb.fa",
         arms="resources/refs/mirgenedb_arms.tsv",
@@ -199,7 +201,7 @@ rule mirgenedb_reference:
         "../envs/py.yaml"
     shell:
         """
-        python workflow/scripts/prepare_refs.py mirgenedb \
+        python {input.script} mirgenedb \
             --mature {input.mature} --star {input.star} --pri {input.pri} \
             --fasta {output.fasta} --arms {output.arms} &> {log}
         """
@@ -207,8 +209,9 @@ rule mirgenedb_reference:
 
 rule rrna_reference:
     input:
-        rdna="resources/download/rdna.fa",
-        ncrna="resources/download/ensembl/ncrna.gz",
+        script=workflow.source_path("../scripts/prepare_refs.py"),
+        rdna=ncbi_source(REFS["rrna"]["rdna"], "fa", "resources/download/rdna.fa"),
+        ncrna=ref_source(REFS["ensembl"]["ncrna"], "resources/download/ensembl/ncrna.gz"),
         genome="resources/refs/genome.fa",
     output:
         "resources/refs/rrna.fa",
@@ -222,7 +225,7 @@ rule rrna_reference:
         "../envs/py.yaml"
     shell:
         """
-        python workflow/scripts/prepare_refs.py rrna \
+        python {input.script} rrna \
             --rdna {input.rdna} --ncrna {input.ncrna} \
             --rna5s {params.rna5s} --rna5s-flank {params.rna5s_flank} --genome {input.genome} --mt-rrna {params.mt_rrna} \
             --fasta {output} &> {log}
@@ -232,7 +235,7 @@ rule rrna_reference:
 # Separate from the reference, so that a change of the region boundaries does not trigger realignment
 rule rrna_features:
     input:
-        script="workflow/scripts/prepare_refs.py",
+        script=workflow.source_path("../scripts/prepare_refs.py"),
         fasta="resources/refs/rrna.fa",
     output:
         "resources/refs/rrna_features.bed",
@@ -241,7 +244,7 @@ rule rrna_features:
         rna5s_length=REFS["rrna"]["rna5s_length"],
         features=" ".join(
             f"--features {shlex.quote(name)} {start} {end}"
-            for name, start, end in config["rrna_quick"]["features"][REFS["rrna"]["rdna"]]
+            for name, start, end in REFS["rrna"]["features"][REFS["rrna"]["rdna"]]
         ),
     log:
         "logs/refs/rrna_features.log",
@@ -256,9 +259,10 @@ rule rrna_features:
 
 rule trna_reference:
     input:
-        gtrnadb="resources/download/gtrnadb/hg38-mature-tRNAs.fa",
-        tar="resources/download/gtrnadb/hg38-tRNAs.tar.gz",
-        ncrna="resources/download/ensembl/ncrna.gz",
+        script=workflow.source_path("../scripts/prepare_refs.py"),
+        gtrnadb=ref_source(REFS["gtrnadb"]["mature"], "resources/download/gtrnadb/mature-tRNAs.fa"),
+        tar=ref_source(REFS["gtrnadb"]["tar"], "resources/download/gtrnadb/tRNAs.tar.gz"),
+        ncrna=ref_source(REFS["ensembl"]["ncrna"], "resources/download/ensembl/ncrna.gz"),
     output:
         fasta="resources/refs/trna.fa",
         bed="resources/refs/trna_loci.bed",
@@ -268,7 +272,7 @@ rule trna_reference:
         "../envs/py.yaml"
     shell:
         """
-        python workflow/scripts/prepare_refs.py trna \
+        python {input.script} trna \
             --gtrnadb {input.gtrnadb} --gtrnadb-tar {input.tar} --ncrna {input.ncrna} \
             --fasta {output.fasta} --bed {output.bed} &> {log}
         """
@@ -276,7 +280,8 @@ rule trna_reference:
 
 rule ncrna_reference:
     input:
-        "resources/download/ensembl/ncrna.gz",
+        script=workflow.source_path("../scripts/prepare_refs.py"),
+        ncrna=ref_source(REFS["ensembl"]["ncrna"], "resources/download/ensembl/ncrna.gz"),
     output:
         "resources/refs/ncrna.fa",
     log:
@@ -284,18 +289,20 @@ rule ncrna_reference:
     conda:
         "../envs/py.yaml"
     shell:
-        "python workflow/scripts/prepare_refs.py ncrna --ncrna {input} --fasta {output} &> {log}"
+        "python {input.script} ncrna --ncrna {input.ncrna} --fasta {output} &> {log}"
 
 
 rule genome_reference:
     input:
-        "resources/download/ensembl/genome.gz",
+        ref_source(REFS["ensembl"]["genome"], "resources/download/ensembl/genome.gz"),
     output:
         "resources/refs/genome.fa",
     log:
         "logs/refs/genome.log",
     resources:
         runtime=60,
+    conda:
+        "../envs/align.yaml"
     shell:
         # Keep only the sequence name in the headers
         "(zcat {input} | cut -d ' ' -f 1 > {output}) 2> {log}"
@@ -303,7 +310,7 @@ rule genome_reference:
 
 rule gene_annotation:
     input:
-        gtf="resources/download/ensembl/gtf.gz",
+        gtf=ref_source(REFS["ensembl"]["gtf"], "resources/download/ensembl/gtf.gz"),
         trna="resources/refs/trna_loci.bed",
     output:
         # chrom, start, end, <gene_name>|<class>, 0, strand; class = gene biotype of exons, or intron
@@ -337,7 +344,7 @@ rule genome_annotation_merged:
     params:
         extra="\\n".join(
             f"{chrom}\\t{start}\\t{end}\\t{cls}\\t0\\t{strand}"
-            for chrom, start, end, cls in [*[(*r, "rDNA_locus") for r in config["mirna"]["rdna_loci"]], ("MT", 0, 16569, "mt_genome")]
+            for chrom, start, end, cls in [*[(*r, "rDNA_locus") for r in REFS["rdna_loci"]], ("MT", 0, 16569, "mt_genome")]
             for strand in "+-"
         ),
     log:

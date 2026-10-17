@@ -1,0 +1,6320 @@
+>Feature ref|NC_014448.1|
+839406	839615	gene
+1	1215
+			gene	dnaA
+			locus_tag	MHR_RS00005
+			old_locus_tag	MHR_0001
+839406	839615	CDS
+1	1215
+			product	chromosomal replication initiator protein DnaA
+			transl_table	4
+			protein_id	ref|WP_041363498.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104468.1
+1367	2491	gene
+			locus_tag	MHR_RS00010
+			old_locus_tag	MHR_0002
+1367	2491	CDS
+			product	DNA polymerase III subunit beta
+			EC_number	2.7.7.7
+			transl_table	4
+			protein_id	ref|WP_013301842.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335311.1
+2504	2719	gene
+			locus_tag	MHR_RS00015
+			old_locus_tag	MHR_0003
+2504	2719	CDS
+			product	RNA-binding S4 domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013301843.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301843.1
+2726	4585	gene
+			gene	mnmG
+			locus_tag	MHR_RS00020
+			old_locus_tag	MHR_0004
+2726	4585	CDS
+			product	tRNA uridine-5-carboxymethylaminomethyl(34) synthesis enzyme MnmG
+			transl_table	4
+			protein_id	ref|WP_013301844.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335312.1
+4588	5040	gene
+			locus_tag	MHR_RS00025
+			old_locus_tag	MHR_0005
+4588	5040	CDS
+			product	23S rRNA (pseudouridine(1915)-N(3))-methyltransferase RlmH
+			EC_number	2.1.1.177
+			transl_table	4
+			protein_id	ref|WP_013301845.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335313.1
+5052	6029	gene
+			gene	nrnA
+			locus_tag	MHR_RS00030
+			old_locus_tag	MHR_0006
+5052	6029	CDS
+			product	bifunctional oligoribonuclease/PAP phosphatase NrnA
+			EC_number	3.1.3.7
+			transl_table	4
+			protein_id	ref|WP_013301846.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335314.1
+6016	6981	gene
+			gene	nrnA
+			locus_tag	MHR_RS00035
+			old_locus_tag	MHR_0007
+6016	6981	CDS
+			product	bifunctional oligoribonuclease/PAP phosphatase NrnA
+			EC_number	3.1.3.7
+			transl_table	4
+			protein_id	ref|WP_013301847.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015083969.1
+7657	7178	gene
+			locus_tag	MHR_RS00040
+7657	7178	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969096.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+7748	9124	gene
+			locus_tag	MHR_RS00045
+			old_locus_tag	MHR_0008
+7748	9124	CDS
+			product	dihydrolipoyl dehydrogenase
+			EC_number	1.8.1.4
+			transl_table	4
+			protein_id	ref|WP_049763473.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104470.1
+9341	9195	gene
+			locus_tag	MHR_RS03945
+9341	9195	CDS
+			product	DUF2188 domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_337969097.1|
+			inference	COORDINATES: protein motif:HMM:NF021471.7
+11893	9419	gene
+			locus_tag	MHR_RS00050
+			old_locus_tag	MHR_0009
+11893	9419	CDS
+			product	valine--tRNA ligase
+			EC_number	6.1.1.9
+			transl_table	4
+			protein_id	ref|WP_013301849.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335319.1
+14069	11883	gene
+			locus_tag	MHR_RS00055
+			old_locus_tag	MHR_0010
+14069	11883	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301850.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335320.1
+15016	14081	gene
+			locus_tag	MHR_RS00060
+			old_locus_tag	MHR_0011
+15016	14081	CDS
+			product	ECF transporter S component
+			transl_table	4
+			protein_id	ref|WP_013301851.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335321.1
+16730	15135	gene
+			locus_tag	MHR_RS00065
+			old_locus_tag	MHR_0012
+16730	15135	CDS
+			product	MATE family efflux transporter
+			transl_table	4
+			protein_id	ref|WP_013301852.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104472.1
+17227	16733	gene
+			gene	greA
+			locus_tag	MHR_RS00070
+			old_locus_tag	MHR_0681
+17227	16733	CDS
+			product	transcription elongation factor GreA
+			transl_table	4
+			protein_id	ref|WP_013302494.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302494.1
+17936	17280	gene
+			locus_tag	MHR_RS00075
+			old_locus_tag	MHR_0014
+17936	17280	CDS
+			product	BC85_0335 family putative methyltransferase
+			transl_table	4
+			protein_id	ref|WP_013301853.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301853.1
+18299	19823	gene
+			locus_tag	MHR_RS00080
+			old_locus_tag	MHR_r001
+18299	19823	rRNA
+			product	16S ribosomal RNA
+			inference	COORDINATES: nucleotide motif:Rfam:15.0:RF00177
+			inference	COORDINATES: profile:INFERNAL:1.1.5
+			db_xref	RFAM:RF00177
+20085	22975	gene
+			locus_tag	MHR_RS00085
+			old_locus_tag	MHR_r002
+20085	22975	rRNA
+			product	23S ribosomal RNA
+			inference	COORDINATES: nucleotide motif:Rfam:15.0:RF02541
+			inference	COORDINATES: profile:INFERNAL:1.1.5
+			db_xref	RFAM:RF02541
+23145	24119	gene
+			locus_tag	MHR_RS00090
+			old_locus_tag	MHR_0015
+23145	24119	CDS
+			product	YwaF family protein
+			transl_table	4
+			protein_id	ref|WP_013301854.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015083974.1
+24240	24731	gene
+			locus_tag	MHR_RS00095
+			old_locus_tag	MHR_0016
+24240	24731	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301855.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301855.1
+24731	25240	gene
+			locus_tag	MHR_RS00100
+			old_locus_tag	MHR_0017
+24731	25240	CDS
+			product	DUF4231 domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013301856.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301856.1
+25233	25619	gene
+			locus_tag	MHR_RS00105
+			old_locus_tag	MHR_0018
+25233	25619	CDS
+			product	DUF4231 domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013301857.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582659.1
+25775	27616	gene
+			locus_tag	MHR_RS00110
+			old_locus_tag	MHR_0019
+25775	27616	CDS
+			product	ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_041363501.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104473.1
+27616	28332	gene
+			locus_tag	MHR_RS00115
+			old_locus_tag	MHR_0020
+27616	28332	CDS
+			product	ABC transporter ATP-binding protein
+			transl_table	4
+			protein_id	ref|WP_013301859.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301859.1
+28334	30724	gene
+			locus_tag	MHR_RS00120
+			old_locus_tag	MHR_0021
+28334	30724	CDS
+			product	aromatic motif membrane protein
+			transl_table	4
+			protein_id	ref|WP_013301860.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582657.1
+30714	31664	gene
+			locus_tag	MHR_RS00125
+			old_locus_tag	MHR_0022
+30714	31664	CDS
+			product	aromatic motif membrane protein
+			transl_table	4
+			protein_id	ref|WP_013301861.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301861.1
+32605	31703	gene
+			locus_tag	MHR_RS00130
+			old_locus_tag	MHR_0023
+32605	31703	CDS
+			product	lactate/malate family dehydrogenase
+			transl_table	4
+			protein_id	ref|WP_013301862.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335324.1
+32735	34525	gene
+			locus_tag	MHR_RS00135
+			old_locus_tag	MHR_0024
+32735	34525	CDS
+			product	ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_013301863.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301863.1
+34525	35265	gene
+			locus_tag	MHR_RS00140
+			old_locus_tag	MHR_0025
+34525	35265	CDS
+			product	ABC transporter ATP-binding protein
+			transl_table	4
+			protein_id	ref|WP_014335326.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335326.1
+35249	36496	gene
+			locus_tag	MHR_RS00145
+			old_locus_tag	MHR_0026
+35249	36496	CDS
+			product	aromatic motif membrane protein
+			transl_table	4
+			protein_id	ref|WP_227861688.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335327.1
+36489	37421	gene
+			locus_tag	MHR_RS00150
+			old_locus_tag	MHR_0027
+36489	37421	CDS
+			product	aromatic motif membrane protein
+			transl_table	4
+			protein_id	ref|WP_013301866.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015083979.1
+37473	38021	gene
+			locus_tag	MHR_RS00155
+			old_locus_tag	MHR_0028
+37473	38021	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301867.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104476.1
+38088	38693	gene
+			gene	trmB
+			locus_tag	MHR_RS00160
+			old_locus_tag	MHR_0029
+38088	38693	CDS
+			product	tRNA (guanosine(46)-N7)-methyltransferase TrmB
+			EC_number	2.1.1.33
+			transl_table	4
+			protein_id	ref|WP_013301868.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335329.1
+38756	40132	gene
+			locus_tag	MHR_RS00165
+			old_locus_tag	MHR_0030
+38756	40132	CDS
+			product	leucyl aminopeptidase family protein
+			EC_number	3.4.11.-
+			transl_table	4
+			protein_id	ref|WP_015083981.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015083981.1
+41305	40187	gene
+			gene	dnaJ
+			locus_tag	MHR_RS00170
+			old_locus_tag	MHR_0031
+41305	40187	CDS
+			product	molecular chaperone DnaJ
+			EC_number	1.8.4.-
+			transl_table	4
+			protein_id	ref|WP_013301870.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301870.1
+42461	41349	gene
+			gene	mnmA
+			locus_tag	MHR_RS00175
+			old_locus_tag	MHR_0032
+42461	41349	CDS
+			product	tRNA 2-thiouridine(34) synthase MnmA
+			EC_number	2.8.1.13
+			transl_table	4
+			protein_id	ref|WP_013301871.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104477.1
+42657	43850	gene
+			gene	dcm_N
+			locus_tag	MHR_RS03950
+			old_locus_tag	MHR_0033
+42657	43850	CDS
+			product	DNA (cytosine-5-)-methyltransferase N-terminal subunit
+			EC_number	2.1.1.37
+			transl_table	4
+			protein_id	ref|WP_013301872.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104478.1
+43850	45013	gene
+			locus_tag	MHR_RS00185
+			old_locus_tag	MHR_0034
+43850	45013	CDS
+			product	MAG4270 family putative restriction endonuclease
+			transl_table	4
+			protein_id	ref|WP_013301873.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301873.1
+45058	46434	gene
+			locus_tag	MHR_RS00190
+			old_locus_tag	MHR_0035
+45058	46434	CDS
+			product	FAD-dependent oxidoreductase
+			transl_table	4
+			protein_id	ref|WP_013301874.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301874.1
+46537	47998	gene
+			locus_tag	MHR_RS03955
+			pseudo
+46537	47998	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted; internal stop
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+48046	49656	gene
+			locus_tag	MHR_RS04515
+			pseudo
+			old_locus_tag	MHR_0040
+48046	49656	CDS
+			product	ATP-binding cassette domain-containing protein
+			transl_table	4
+			pseudo
+			note	internal stop
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335335.1
+49806	50510	gene
+			locus_tag	MHR_RS04310
+49806	50510	CDS
+			product	ABC transporter transmembrane domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_337969099.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015083985.1
+50643	51029	gene
+			locus_tag	MHR_RS04315
+50643	51029	CDS
+			product	ATP-binding cassette domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_015083986.1|
+			inference	COORDINATES: protein motif:HMM:NF012235.7
+51126	51284	gene
+			locus_tag	MHR_RS04320
+51126	51284	CDS
+			product	ABC transporter ATP-binding protein
+			transl_table	4
+			protein_id	ref|WP_015083987.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+53520	51337	gene
+			locus_tag	MHR_RS00235
+			old_locus_tag	MHR_0042
+53520	51337	CDS
+			product	MIP family Ig-specific serine endopeptidase
+			EC_number	3.4.21.-
+			transl_table	4
+			protein_id	ref|WP_041363503.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335336.1
+53720	56842	gene
+			locus_tag	MHR_RS00240
+			old_locus_tag	MHR_0043
+53720	56842	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_041363505.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104670.1
+56884	58233	gene
+			locus_tag	MHR_RS00245
+			old_locus_tag	MHR_0044
+56884	58233	CDS
+			product	ATP-binding protein
+			transl_table	4
+			protein_id	ref|WP_013301881.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301881.1
+58811	59197	gene
+			locus_tag	MHR_RS00255
+			old_locus_tag	MHR_0045
+58811	59197	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301882.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301882.1
+59590	60372	gene
+			locus_tag	MHR_RS00260
+			old_locus_tag	MHR_0046
+59590	60372	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301883.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301883.1
+60424	60837	gene
+			locus_tag	MHR_RS00265
+			old_locus_tag	MHR_0047
+60424	60837	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301884.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301884.1
+61245	62672	gene
+			locus_tag	MHR_RS03965
+			old_locus_tag	MHR_0048
+61245	62672	CDS
+			product	IS3 family transposase
+			transl_table	4
+			protein_id	ref|WP_013301885.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+64832	62751	gene
+			locus_tag	MHR_RS00280
+			old_locus_tag	MHR_0049
+64832	62751	CDS
+			product	5'-nucleotidase C-terminal domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013301886.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015083990.1
+65277	64995	gene
+			gene	rnpB
+			locus_tag	MHR_RS03970
+65277	64995	ncRNA
+			ncRNA_class	RNase_P_RNA
+			product	RNase P RNA component class B
+			inference	COORDINATES: nucleotide motif:Rfam:15.0:RF00011
+			inference	COORDINATES: profile:INFERNAL:1.1.5
+			db_xref	RFAM:RF00011
+65316	65810	gene
+			locus_tag	MHR_RS00285
+			old_locus_tag	MHR_0050
+65316	65810	CDS
+			product	MAG0490 family ComEA-like DNA-binding protein
+			transl_table	4
+			protein_id	ref|WP_013301887.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335341.1
+66041	67111	gene
+			locus_tag	MHR_RS00290
+			old_locus_tag	MHR_0051
+66041	67111	CDS
+			product	MAG0480 family ComEC-like protein
+			transl_table	4
+			protein_id	ref|WP_014582642.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582642.1
+67039	67971	gene
+			gene	holA
+			locus_tag	MHR_RS00295
+			old_locus_tag	MHR_0052
+67039	67971	CDS
+			product	DNA polymerase III subunit delta
+			EC_number	2.7.7.7
+			transl_table	4
+			protein_id	ref|WP_020104559.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104559.1
+68111	68608	gene
+			gene	rplJ
+			locus_tag	MHR_RS00300
+			old_locus_tag	MHR_0053
+68111	68608	CDS
+			product	50S ribosomal protein L10
+			transl_table	4
+			protein_id	ref|WP_041363510.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335343.1
+68674	69045	gene
+			gene	rplL
+			locus_tag	MHR_RS00305
+			old_locus_tag	MHR_0054
+68674	69045	CDS
+			product	50S ribosomal protein L7/L12
+			transl_table	4
+			protein_id	ref|WP_013301891.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011283564.1
+69144	72854	gene
+			gene	rpoB
+			locus_tag	MHR_RS00310
+			old_locus_tag	MHR_0055
+69144	72854	CDS
+			product	DNA-directed RNA polymerase subunit beta
+			EC_number	2.7.7.6
+			transl_table	4
+			protein_id	ref|WP_013301892.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301892.1
+72874	77136	gene
+			locus_tag	MHR_RS00315
+			old_locus_tag	MHR_0056
+72874	77136	CDS
+			product	DNA-directed RNA polymerase subunit beta'
+			EC_number	2.7.7.6
+			transl_table	4
+			protein_id	ref|WP_013301893.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301893.1
+77259	77675	gene
+			gene	tsaE
+			locus_tag	MHR_RS00320
+			old_locus_tag	MHR_0057
+77259	77675	CDS
+			product	tRNA (adenosine(37)-N6)-threonylcarbamoyltransferase complex ATPase subunit type 1 TsaE
+			transl_table	4
+			protein_id	ref|WP_013301894.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335347.1
+77678	78226	gene
+			locus_tag	MHR_RS00325
+			old_locus_tag	MHR_0058
+77678	78226	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301895.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335348.1
+79241	78387	gene
+			locus_tag	MHR_RS00330
+			old_locus_tag	MHR_0059
+79241	78387	CDS
+			product	leucine-rich repeat domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013301896.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301896.1
+79360	79839	gene
+			locus_tag	MHR_RS00335
+			old_locus_tag	MHR_0060
+79360	79839	CDS
+			product	dihydrofolate reductase
+			EC_number	1.5.1.3
+			transl_table	4
+			protein_id	ref|WP_013301897.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301897.1
+79892	82207	gene
+			locus_tag	MHR_RS00340
+			old_locus_tag	MHR_0061
+79892	82207	CDS
+			product	P68 family surface lipoprotein
+			transl_table	4
+			protein_id	ref|WP_013301898.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015083994.1
+82363	84537	gene
+			locus_tag	MHR_RS00345
+			old_locus_tag	MHR_0062
+82363	84537	CDS
+			product	P68 family surface lipoprotein
+			transl_table	4
+			protein_id	ref|WP_187286172.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582638.1
+84544	85503	gene
+			locus_tag	MHR_RS00350
+			old_locus_tag	MHR_0063
+84544	85503	CDS
+			product	thermonuclease family protein
+			transl_table	4
+			protein_id	ref|WP_013301900.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104554.1
+85531	87426	gene
+			locus_tag	MHR_RS00355
+			old_locus_tag	MHR_0064
+85531	87426	CDS
+			product	ATP-binding cassette domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013301901.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335353.1
+87426	88436	gene
+			locus_tag	MHR_RS00360
+			old_locus_tag	MHR_0065
+87426	88436	CDS
+			product	carbohydrate ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_013301902.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301902.1
+88393	89364	gene
+			locus_tag	MHR_RS00365
+			old_locus_tag	MHR_0066
+88393	89364	CDS
+			product	carbohydrate ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_013301903.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301903.1
+89367	89570	gene
+			locus_tag	MHR_RS00370
+89367	89570	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014335355.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335355.1
+89643	90311	gene
+			gene	cmk
+			locus_tag	MHR_RS00375
+			old_locus_tag	MHR_0067
+89643	90311	CDS
+			product	(d)CMP kinase
+			EC_number	2.7.4.25
+			transl_table	4
+			protein_id	ref|WP_013301904.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335356.1
+90313	91614	gene
+			gene	der
+			locus_tag	MHR_RS00380
+			old_locus_tag	MHR_0068
+90313	91614	CDS
+			product	ribosome biogenesis GTPase Der
+			EC_number	3.6.5.-
+			transl_table	4
+			protein_id	ref|WP_013301905.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335357.1
+91673	91945	gene
+			locus_tag	MHR_RS00385
+			old_locus_tag	MHR_0069
+91673	91945	CDS
+			product	HU family DNA-binding protein
+			transl_table	4
+			protein_id	ref|WP_013301906.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301906.1
+91957	92316	gene
+			locus_tag	MHR_RS00390
+91957	92316	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014335358.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335358.1
+92319	94118	gene
+			gene	lepA
+			locus_tag	MHR_RS00395
+			old_locus_tag	MHR_0070
+92319	94118	CDS
+			product	translation elongation factor 4
+			EC_number	3.6.5.n1
+			transl_table	4
+			protein_id	ref|WP_013301907.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015083999.1
+94202	95443	gene
+			locus_tag	MHR_RS00400
+			old_locus_tag	MHR_0071
+94202	95443	CDS
+			product	DNA cytosine methyltransferase
+			EC_number	2.1.1.37
+			transl_table	4
+			protein_id	ref|WP_013301908.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301908.1
+95443	96123	gene
+			locus_tag	MHR_RS00405
+			old_locus_tag	MHR_0072
+95443	96123	CDS
+			product	UpaP162 family type II restriction enzyme
+			transl_table	4
+			protein_id	ref|WP_013301909.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301909.1
+96169	97707	gene
+			locus_tag	MHR_RS00410
+			old_locus_tag	MHR_0073
+96169	97707	CDS
+			product	ABC transporter ATP-binding protein
+			transl_table	4
+			protein_id	ref|WP_013301910.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301910.1
+97700	99448	gene
+			locus_tag	MHR_RS00415
+			old_locus_tag	MHR_0074
+97700	99448	CDS
+			product	ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_013301911.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301911.1
+99450	100379	gene
+			locus_tag	MHR_RS00420
+			old_locus_tag	MHR_0075
+99450	100379	CDS
+			product	ABC transporter permease subunit
+			transl_table	4
+			protein_id	ref|WP_041363514.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335364.1
+100464	101828	gene
+			locus_tag	MHR_RS00425
+			old_locus_tag	MHR_0076
+100464	101828	CDS
+			product	BMP family ABC transporter substrate-binding protein
+			transl_table	4
+			protein_id	ref|WP_013301913.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582631.1
+101932	102846	gene
+			locus_tag	MHR_RS00430
+			old_locus_tag	MHR_0077
+101932	102846	CDS
+			product	nucleotidyltransferase
+			transl_table	4
+			protein_id	ref|WP_013301914.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301914.1
+102877	103281	gene
+			locus_tag	MHR_RS00435
+			old_locus_tag	MHR_0078
+102877	103281	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301915.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335367.1
+103826	104497	gene
+			locus_tag	MHR_RS04325
+			old_locus_tag	MHR_0080
+103826	104497	CDS
+			product	ZmpA/ZmpB/ZmpC family metallo-endopeptidase
+			transl_table	4
+			protein_id	ref|WP_337969100.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+104806	106047	gene
+			locus_tag	MHR_RS04330
+			old_locus_tag	MHR_0081
+104806	106047	CDS
+			product	ZmpA/ZmpB/ZmpC family metallo-endopeptidase
+			transl_table	4
+			protein_id	ref|WP_337969117.1|
+			inference	COORDINATES: protein motif:HMM:NF019216.7
+106017	106328	gene
+			locus_tag	MHR_RS00460
+			old_locus_tag	MHR_0082
+106017	106328	CDS
+			product	ZmpA/ZmpB/ZmpC family metallo-endopeptidase
+			transl_table	4
+			protein_id	ref|WP_013301919.1|
+			inference	COORDINATES: protein motif:HMM:NF019216.7
+107117	106500	gene
+			gene	rpsD
+			locus_tag	MHR_RS00465
+			old_locus_tag	MHR_0083
+107117	106500	CDS
+			product	30S ribosomal protein S4
+			transl_table	4
+			protein_id	ref|WP_013301920.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301920.1
+107331	108473	gene
+			gene	ftsY
+			locus_tag	MHR_RS00470
+			old_locus_tag	MHR_0084
+107331	108473	CDS
+			product	signal recognition particle-docking protein FtsY
+			transl_table	4
+			protein_id	ref|WP_013301921.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301921.1
+108460	108699	gene
+			locus_tag	MHR_RS00475
+108460	108699	CDS
+			product	sigma factor-like helix-turn-helix DNA-binding protein
+			transl_table	4
+			protein_id	ref|WP_014335370.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335370.1
+108709	110391	gene
+			locus_tag	MHR_RS00480
+			old_locus_tag	MHR_0085
+108709	110391	CDS
+			product	ribonuclease J
+			EC_number	3.1.-.-
+			transl_table	4
+			protein_id	ref|WP_041363516.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084008.1
+110378	110980	gene
+			locus_tag	MHR_RS00485
+			old_locus_tag	MHR_0086
+110378	110980	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301922.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301922.1
+111032	111367	gene
+			locus_tag	MHR_RS00490
+			old_locus_tag	MHR_0087
+111032	111367	CDS
+			product	thioredoxin family protein
+			EC_number	1.8.-.-
+			transl_table	4
+			protein_id	ref|WP_015084010.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084010.1
+111369	112427	gene
+			gene	hrcA
+			locus_tag	MHR_RS00495
+			old_locus_tag	MHR_0088
+111369	112427	CDS
+			product	heat-inducible transcriptional repressor HrcA
+			transl_table	4
+			protein_id	ref|WP_013301923.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301923.1
+112437	113219	gene
+			locus_tag	MHR_RS00500
+			old_locus_tag	MHR_0089
+112437	113219	CDS
+			product	nucleotide exchange factor GrpE
+			transl_table	4
+			protein_id	ref|WP_013301924.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301924.1
+113219	114820	gene
+			gene	argS
+			locus_tag	MHR_RS00505
+			old_locus_tag	MHR_0090
+113219	114820	CDS
+			product	arginine--tRNA ligase
+			EC_number	6.1.1.19
+			transl_table	4
+			protein_id	ref|WP_013301925.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301925.1
+114822	115070	gene
+			locus_tag	MHR_RS00510
+			old_locus_tag	MHR_0091
+114822	115070	CDS
+			product	DNA-directed RNA polymerase subunit delta
+			transl_table	4
+			protein_id	ref|WP_013301926.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301926.1
+115100	115966	gene
+			gene	fba
+			locus_tag	MHR_RS00515
+			old_locus_tag	MHR_0092
+115100	115966	CDS
+			product	class II fructose-1,6-bisphosphate aldolase
+			EC_number	4.1.2.13
+			transl_table	4
+			protein_id	ref|WP_013301927.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301927.1
+116010	117011	gene
+			locus_tag	MHR_RS00520
+			old_locus_tag	MHR_0093
+116010	117011	CDS
+			product	MSC_0882 family membrane protein
+			transl_table	4
+			protein_id	ref|WP_013301928.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301928.1
+117090	118512	gene
+			locus_tag	MHR_RS03980
+			pseudo
+117090	118512	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted; internal stop
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+119392	118589	gene
+			locus_tag	MHR_RS00550
+			old_locus_tag	MHR_0097
+119392	118589	CDS
+			product	alpha/beta fold hydrolase
+			transl_table	4
+			protein_id	ref|WP_013301932.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301932.1
+120386	119397	gene
+			locus_tag	MHR_RS00555
+			old_locus_tag	MHR_0098
+120386	119397	CDS
+			product	lipoate--protein ligase
+			EC_number	6.3.1.20
+			transl_table	4
+			protein_id	ref|WP_013301933.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104585.1
+120720	120406	gene
+			locus_tag	MHR_RS00560
+			old_locus_tag	MHR_0099
+120720	120406	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301934.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335378.1
+120830	121687	gene
+			locus_tag	MHR_RS00565
+			old_locus_tag	MHR_0100
+120830	121687	CDS
+			product	DegV family protein
+			transl_table	4
+			protein_id	ref|WP_013301935.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301935.1
+121689	123827	gene
+			gene	dnaX
+			locus_tag	MHR_RS00570
+			old_locus_tag	MHR_0101
+121689	123827	CDS
+			product	DNA polymerase III subunit gamma/tau
+			EC_number	2.7.7.7
+			transl_table	4
+			protein_id	ref|WP_013301936.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104582.1
+123852	124139	gene
+			locus_tag	MHR_RS00575
+			old_locus_tag	MHR_0102
+123852	124139	CDS
+			product	YbaB/EbfC family nucleoid-associated protein
+			transl_table	4
+			protein_id	ref|WP_013301937.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301937.1
+124139	124711	gene
+			locus_tag	MHR_RS00580
+			old_locus_tag	MHR_0103
+124139	124711	CDS
+			product	toprim domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013301938.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104581.1
+124728	125375	gene
+			gene	tmk
+			locus_tag	MHR_RS00585
+			old_locus_tag	MHR_0104
+124728	125375	CDS
+			product	dTMP kinase
+			EC_number	2.7.4.9
+			transl_table	4
+			protein_id	ref|WP_013301939.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301939.1
+125354	126247	gene
+			locus_tag	MHR_RS00590
+			old_locus_tag	MHR_0105
+125354	126247	CDS
+			product	DNA polymerase III delta subunit-related protein
+			transl_table	4
+			protein_id	ref|WP_013301940.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335381.1
+126249	126986	gene
+			gene	rsmI
+			locus_tag	MHR_RS00595
+			old_locus_tag	MHR_0106
+126249	126986	CDS
+			product	16S rRNA (cytidine(1402)-2'-O)-methyltransferase
+			EC_number	2.1.1.198
+			transl_table	4
+			protein_id	ref|WP_013301941.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301941.1
+127051	127599	gene
+			gene	hpt
+			locus_tag	MHR_RS00600
+			old_locus_tag	MHR_0107
+127051	127599	CDS
+			product	hypoxanthine phosphoribosyltransferase
+			EC_number	2.4.2.8
+			transl_table	4
+			protein_id	ref|WP_013301942.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301942.1
+127616	128416	gene
+			locus_tag	MHR_RS00605
+			old_locus_tag	MHR_0108
+127616	128416	CDS
+			product	energy-coupling factor transporter ATPase
+			transl_table	4
+			protein_id	ref|WP_013301943.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582618.1
+128407	129321	gene
+			locus_tag	MHR_RS00610
+			old_locus_tag	MHR_0109
+128407	129321	CDS
+			product	ATP-binding cassette domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013301944.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335383.1
+129311	130270	gene
+			locus_tag	MHR_RS00615
+			old_locus_tag	MHR_0110
+129311	130270	CDS
+			product	energy-coupling factor transporter transmembrane component T family protein
+			transl_table	4
+			protein_id	ref|WP_013301945.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301945.1
+130292	132313	gene
+			gene	ligA
+			locus_tag	MHR_RS00620
+			old_locus_tag	MHR_0111
+130292	132313	CDS
+			product	NAD-dependent DNA ligase LigA
+			EC_number	6.5.1.2
+			transl_table	4
+			protein_id	ref|WP_013301946.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104580.1
+132727	132527	gene
+			locus_tag	MHR_RS04335
+132727	132527	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969101.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+133567	132941	gene
+			locus_tag	MHR_RS04340
+			old_locus_tag	MHR_0112
+133567	132941	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301947.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+134159	133548	gene
+			locus_tag	MHR_RS03915
+			old_locus_tag	MHR_0113
+134159	133548	CDS
+			product	sugar-phosphate nucleotidyltransferase
+			transl_table	4
+			protein_id	ref|WP_337969102.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301948.1
+136959	134326	gene
+			gene	gyrA
+			locus_tag	MHR_RS00635
+			old_locus_tag	MHR_0114
+136959	134326	CDS
+			product	DNA gyrase subunit A
+			EC_number	5.6.2.2
+			transl_table	4
+			protein_id	ref|WP_013301949.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335387.1
+137110	137607	gene
+			gene	msrA
+			locus_tag	MHR_RS00640
+			old_locus_tag	MHR_0115
+137110	137607	CDS
+			product	peptide-methionine (S)-S-oxide reductase MsrA
+			EC_number	1.8.4.11
+			transl_table	4
+			protein_id	ref|WP_013301950.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335388.1
+137616	138872	gene
+			gene	tyrS
+			locus_tag	MHR_RS00645
+			old_locus_tag	MHR_0116
+137616	138872	CDS
+			product	tyrosine--tRNA ligase
+			EC_number	6.1.1.1
+			transl_table	4
+			protein_id	ref|WP_013301951.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104577.1
+139010	139990	gene
+			locus_tag	MHR_RS00650
+			old_locus_tag	MHR_0117
+139010	139990	CDS
+			product	ribose-phosphate pyrophosphokinase
+			EC_number	2.7.6.1
+			transl_table	4
+			protein_id	ref|WP_013301952.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301952.1
+139990	140604	gene
+			gene	rsmG
+			locus_tag	MHR_RS00655
+			old_locus_tag	MHR_0118
+139990	140604	CDS
+			product	16S rRNA (guanine(527)-N(7))-methyltransferase RsmG
+			EC_number	2.1.1.170
+			transl_table	4
+			protein_id	ref|WP_013301953.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335390.1
+140606	141883	gene
+			locus_tag	MHR_RS00660
+			old_locus_tag	MHR_0119
+140606	141883	CDS
+			product	TatD family hydrolase
+			EC_number	3.1.-.-
+			transl_table	4
+			protein_id	ref|WP_013301954.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301954.1
+141864	142637	gene
+			gene	rsmA
+			locus_tag	MHR_RS00665
+			old_locus_tag	MHR_0120
+141864	142637	CDS
+			product	16S rRNA (adenine(1518)-N(6)/adenine(1519)-N(6))-dimethyltransferase RsmA
+			EC_number	2.1.1.182
+			transl_table	4
+			protein_id	ref|WP_013301955.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301955.1
+143478	142624	gene
+			locus_tag	MHR_RS00670
+			old_locus_tag	MHR_0121
+143478	142624	CDS
+			product	ABC transporter permease subunit
+			transl_table	4
+			protein_id	ref|WP_013301956.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335392.1
+144487	143462	gene
+			locus_tag	MHR_RS00675
+			old_locus_tag	MHR_0122
+144487	143462	CDS
+			product	carbohydrate ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_041363525.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335393.1
+145727	144489	gene
+			locus_tag	MHR_RS00680
+			old_locus_tag	MHR_0123
+145727	144489	CDS
+			product	ABC transporter ATP-binding protein
+			EC_number	7.-.-.-
+			transl_table	4
+			protein_id	ref|WP_013301958.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301958.1
+145905	146342	gene
+			gene	rplM
+			locus_tag	MHR_RS00685
+			old_locus_tag	MHR_0124
+145905	146342	CDS
+			product	50S ribosomal protein L13
+			transl_table	4
+			protein_id	ref|WP_013301959.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301959.1
+146345	146743	gene
+			gene	rpsI
+			locus_tag	MHR_RS00690
+			old_locus_tag	MHR_0125
+146345	146743	CDS
+			product	30S ribosomal protein S9
+			transl_table	4
+			protein_id	ref|WP_013301960.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301960.1
+146787	146863	gene
+			locus_tag	MHR_RS00695
+			old_locus_tag	MHR_t001
+146787	146863	tRNA
+			product	tRNA-Ile
+			anticodon	(pos:146821..146823,aa:Ile,seq:gat)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+147178	148161	gene
+			gene	asnA
+			locus_tag	MHR_RS00700
+			old_locus_tag	MHR_0126
+147178	148161	CDS
+			product	aspartate--ammonia ligase
+			EC_number	6.3.1.1
+			transl_table	4
+			protein_id	ref|WP_013301961.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084026.1
+148205	148771	gene
+			locus_tag	MHR_RS00705
+			old_locus_tag	MHR_0127
+148205	148771	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301962.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335395.1
+150599	148914	gene
+			locus_tag	MHR_RS00710
+			old_locus_tag	MHR_0128
+150599	148914	CDS
+			product	GIY-YIG nuclease family protein
+			transl_table	4
+			protein_id	ref|WP_013301963.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582614.1
+150678	151013	gene
+			locus_tag	MHR_RS00715
+			old_locus_tag	MHR_0129
+150678	151013	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301964.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301964.1
+151179	153128	gene
+			locus_tag	MHR_RS00720
+			old_locus_tag	MHR_0130
+151179	153128	CDS
+			product	DNA gyrase/topoisomerase IV subunit B
+			EC_number	5.6.2.2
+			transl_table	4
+			protein_id	ref|WP_013301965.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335397.1
+153112	155778	gene
+			gene	parC
+			locus_tag	MHR_RS00725
+			old_locus_tag	MHR_0131
+153112	155778	CDS
+			product	DNA topoisomerase IV subunit A
+			EC_number	5.6.2.2
+			transl_table	4
+			protein_id	ref|WP_049763463.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582613.1
+155788	158466	gene
+			gene	ileS
+			locus_tag	MHR_RS00730
+			old_locus_tag	MHR_0132
+155788	158466	CDS
+			product	isoleucine--tRNA ligase
+			EC_number	6.1.1.5
+			transl_table	4
+			protein_id	ref|WP_013301967.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301967.1
+158456	159070	gene
+			locus_tag	MHR_RS00735
+			old_locus_tag	MHR_0133
+158456	159070	CDS
+			product	signal peptidase II
+			EC_number	3.4.23.36
+			transl_table	4
+			protein_id	ref|WP_013301968.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104575.1
+160553	159129	gene
+			locus_tag	MHR_RS03985
+			pseudo
+160553	159129	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted; internal stop
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+160730	162727	gene
+			locus_tag	MHR_RS00755
+			old_locus_tag	MHR_0135
+160730	162727	CDS
+			product	S8 family serine peptidase
+			transl_table	4
+			protein_id	ref|WP_041363530.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335401.1
+162729	163661	gene
+			locus_tag	MHR_RS00760
+			old_locus_tag	MHR_0136
+162729	163661	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301971.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301971.1
+163732	164130	gene
+			locus_tag	MHR_RS03990
+163732	164130	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969103.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+164254	164685	gene
+			locus_tag	MHR_RS03995
+164254	164685	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014582603.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+164844	166823	gene
+			locus_tag	MHR_RS00775
+			old_locus_tag	MHR_0137
+164844	166823	CDS
+			product	S8 family serine peptidase
+			transl_table	4
+			protein_id	ref|WP_013301972.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335403.1
+166825	167568	gene
+			locus_tag	MHR_RS00780
+			old_locus_tag	MHR_0138
+166825	167568	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301973.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301973.1
+167751	168542	gene
+			locus_tag	MHR_RS00785
+			old_locus_tag	MHR_0139
+167751	168542	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301974.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301974.1
+168515	169372	gene
+			locus_tag	MHR_RS00790
+			old_locus_tag	MHR_0140
+168515	169372	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_041363533.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104683.1
+169931	169701	gene
+			locus_tag	MHR_RS00795
+169931	169701	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_041363535.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+171634	170210	gene
+			locus_tag	MHR_RS04185
+			pseudo
+171634	170210	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted; internal stop
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+172461	171697	gene
+			locus_tag	MHR_RS00820
+172461	171697	CDS
+			product	MAGa3780 family membrane protein
+			transl_table	4
+			protein_id	ref|WP_041363539.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335409.1
+172628	175210	gene
+			gene	secDF
+			locus_tag	MHR_RS00825
+			old_locus_tag	MHR_0143
+172628	175210	CDS
+			product	protein translocase subunit SecDF
+			transl_table	4
+			protein_id	ref|WP_013301978.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335410.1
+175223	176539	gene
+			gene	hisS
+			locus_tag	MHR_RS00830
+			old_locus_tag	MHR_0144
+175223	176539	CDS
+			product	histidine--tRNA ligase
+			EC_number	6.1.1.21
+			transl_table	4
+			protein_id	ref|WP_013301979.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335411.1
+176556	178277	gene
+			gene	aspS
+			locus_tag	MHR_RS00835
+			old_locus_tag	MHR_0145
+176556	178277	CDS
+			product	aspartate--tRNA ligase
+			EC_number	6.1.1.12
+			transl_table	4
+			protein_id	ref|WP_013301980.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301980.1
+178281	179693	gene
+			locus_tag	MHR_RS00840
+			old_locus_tag	MHR_0146
+178281	179693	CDS
+			product	APC family permease
+			transl_table	4
+			protein_id	ref|WP_013301981.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301981.1
+179834	179924	gene
+			locus_tag	MHR_RS00845
+			old_locus_tag	MHR_t002
+179834	179924	tRNA
+			product	tRNA-Ser
+			anticodon	(pos:179868..179870,aa:Ser,seq:gga)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+179928	180012	gene
+			locus_tag	MHR_RS00850
+			old_locus_tag	MHR_t003
+179928	180012	tRNA
+			product	tRNA-Leu
+			anticodon	(pos:179962..179964,aa:Leu,seq:gag)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+180141	180293	gene
+			gene	rpmG
+			locus_tag	MHR_RS00855
+			old_locus_tag	MHR_0147
+180141	180293	CDS
+			product	50S ribosomal protein L33
+			transl_table	4
+			protein_id	ref|WP_013301982.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011206510.1
+180300	181361	gene
+			locus_tag	MHR_RS00860
+			old_locus_tag	MHR_0148
+180300	181361	CDS
+			product	aminopeptidase P family protein
+			EC_number	3.4.11.9
+			transl_table	4
+			protein_id	ref|WP_013301983.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301983.1
+183038	181422	gene
+			locus_tag	MHR_RS00865
+			old_locus_tag	MHR_0149
+183038	181422	CDS
+			product	ATP-binding cassette domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013301984.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104601.1
+184629	183013	gene
+			locus_tag	MHR_RS00870
+			old_locus_tag	MHR_0150
+184629	183013	CDS
+			product	ATP-binding cassette domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013301985.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084044.1
+184929	184702	gene
+			locus_tag	MHR_RS00875
+184929	184702	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_015084045.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335414.1
+186232	184964	gene
+			gene	serS
+			locus_tag	MHR_RS00880
+			old_locus_tag	MHR_0151
+186232	184964	CDS
+			product	serine--tRNA ligase
+			EC_number	6.1.1.11
+			transl_table	4
+			protein_id	ref|WP_013301986.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335415.1
+186534	197666	gene
+			locus_tag	MHR_RS00885
+			old_locus_tag	MHR_0152
+186534	197666	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301987.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301987.1
+197711	202384	gene
+			locus_tag	MHR_RS04250
+			old_locus_tag	MHR_0153
+197711	202384	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301988.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+202576	208200	gene
+			locus_tag	MHR_RS04345
+			old_locus_tag	MHR_0154
+202576	208200	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301989.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+210453	209044	gene
+			locus_tag	MHR_RS00900
+			old_locus_tag	MHR_0155
+210453	209044	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013301990.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301990.1
+211164	211895	gene
+			gene	tpiA
+			locus_tag	MHR_RS00905
+			old_locus_tag	MHR_0156
+211164	211895	CDS
+			product	triose-phosphate isomerase
+			EC_number	5.3.1.1
+			transl_table	4
+			protein_id	ref|WP_013301991.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301991.1
+212001	212267	gene
+			gene	rpsO
+			locus_tag	MHR_RS00910
+			old_locus_tag	MHR_0157
+212001	212267	CDS
+			product	30S ribosomal protein S15
+			transl_table	4
+			protein_id	ref|WP_013301992.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_012498196.1
+212348	213604	gene
+			gene	glyA
+			locus_tag	MHR_RS00915
+			old_locus_tag	MHR_0158
+212348	213604	CDS
+			product	serine hydroxymethyltransferase
+			EC_number	2.1.2.1
+			transl_table	4
+			protein_id	ref|WP_013301993.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582593.1
+215125	213705	gene
+			locus_tag	MHR_RS04190
+			pseudo
+215125	213705	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted; internal stop
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+215437	216780	gene
+			gene	p46
+			locus_tag	MHR_RS00940
+			old_locus_tag	MHR_0162
+215437	216780	CDS
+			product	surface antigen P46
+			transl_table	4
+			protein_id	ref|WP_013301997.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335421.1
+216941	218479	gene
+			locus_tag	MHR_RS00945
+			old_locus_tag	MHR_0163
+216941	218479	CDS
+			product	ATP-binding cassette domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_041363542.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335422.1
+218479	219798	gene
+			locus_tag	MHR_RS00950
+			old_locus_tag	MHR_0164
+218479	219798	CDS
+			product	sugar ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_013301999.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013301999.1
+219803	220384	gene
+			locus_tag	MHR_RS00955
+			old_locus_tag	MHR_0165
+219803	220384	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969104.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335423.1
+220371	221264	gene
+			locus_tag	MHR_RS00960
+			old_locus_tag	MHR_0166
+220371	221264	CDS
+			product	ROK family protein
+			transl_table	4
+			protein_id	ref|WP_013302001.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084054.1
+222411	221329	gene
+			locus_tag	MHR_RS00965
+			old_locus_tag	MHR_0167
+222411	221329	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302002.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302002.1
+223201	222527	gene
+			locus_tag	MHR_RS04350
+			old_locus_tag	MHR_0168
+223201	222527	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969105.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+223749	223378	gene
+			locus_tag	MHR_RS00980
+223749	223378	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014335427.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335427.1
+223912	223739	gene
+			locus_tag	MHR_RS04255
+223912	223739	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_187286173.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+225421	224984	gene
+			locus_tag	MHR_RS00985
+			old_locus_tag	MHR_0169
+225421	224984	CDS
+			product	PTS mannitol transporter subunit IIA
+			EC_number	2.7.1.-
+			transl_table	4
+			protein_id	ref|WP_013302004.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302004.1
+226514	225414	gene
+			locus_tag	MHR_RS00990
+			old_locus_tag	MHR_0170
+226514	225414	CDS
+			product	mannitol-1-phosphate 5-dehydrogenase
+			EC_number	1.1.1.17
+			transl_table	4
+			protein_id	ref|WP_013302005.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335431.1
+226740	226492	gene
+			locus_tag	MHR_RS04355
+226740	226492	CDS
+			product	PTS sugar transporter subunit IIB
+			EC_number	2.7.1.-
+			transl_table	4
+			protein_id	ref|WP_337969106.1|
+			inference	COORDINATES: protein motif:HMM:NF014368.7
+227972	226725	gene
+			locus_tag	MHR_RS00995
+			old_locus_tag	MHR_0171
+227972	226725	CDS
+			product	PTS transporter subunit EIIC
+			transl_table	4
+			protein_id	ref|WP_337969107.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+228983	230449	gene
+			locus_tag	MHR_RS04010
+			old_locus_tag	MHR_0173
+228983	230449	CDS
+			product	IS3 family transposase
+			transl_table	4
+			protein_id	ref|WP_013302007.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+232946	230514	gene
+			locus_tag	MHR_RS01015
+			old_locus_tag	MHR_0174
+232946	230514	CDS
+			product	DEAD/DEAH box helicase
+			EC_number	3.6.4.-
+			transl_table	4
+			protein_id	ref|WP_013302008.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335433.1
+234338	232965	gene
+			locus_tag	MHR_RS04015
+			old_locus_tag	MHR_0175
+234338	232965	CDS
+			product	site-specific DNA-methyltransferase
+			EC_number	2.1.1.-
+			transl_table	4
+			protein_id	ref|WP_337969118.1|
+			inference	COORDINATES: protein motif:HMM:NF013704.7
+234655	234272	gene
+			locus_tag	MHR_RS04360
+			old_locus_tag	MHR_0176
+234655	234272	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302010.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084069.1
+236047	234707	gene
+			locus_tag	MHR_RS01030
+			old_locus_tag	MHR_0177
+236047	234707	CDS
+			product	site-specific DNA-methyltransferase
+			EC_number	2.1.1.-
+			transl_table	4
+			protein_id	ref|WP_420704351.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011283324.1
+236436	236047	gene
+			locus_tag	MHR_RS04365
+			pseudo
+236436	236047	CDS
+			product	type III restriction endonuclease subunit M
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084069.1
+237812	236487	gene
+			locus_tag	MHR_RS01040
+			old_locus_tag	MHR_0178
+237812	236487	CDS
+			product	site-specific DNA-methyltransferase
+			EC_number	2.1.1.-
+			transl_table	4
+			protein_id	ref|WP_420704352.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011283324.1
+238196	237909	gene
+			locus_tag	MHR_RS04370
+238196	237909	CDS
+			product	type III restriction endonuclease subunit M
+			transl_table	4
+			protein_id	ref|WP_337969108.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+239753	238248	gene
+			locus_tag	MHR_RS04375
+			old_locus_tag	MHR_0179
+239753	238248	CDS
+			product	site-specific DNA-methyltransferase
+			EC_number	2.1.1.-
+			transl_table	4
+			protein_id	ref|WP_337969121.1|
+			inference	COORDINATES: protein motif:HMM:NF013704.7
+240070	239681	gene
+			locus_tag	MHR_RS04380
+			old_locus_tag	MHR_0180
+240070	239681	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302014.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084069.1
+241691	240171	gene
+			locus_tag	MHR_RS01060
+			old_locus_tag	MHR_0181
+241691	240171	CDS
+			product	S8 family peptidase
+			EC_number	3.4.-.-
+			transl_table	4
+			protein_id	ref|WP_337969109.1|
+			inference	COORDINATES: protein motif:HMM:NF012311.7
+242468	241788	gene
+			locus_tag	MHR_RS04385
+242468	241788	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969110.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+243315	242461	gene
+			locus_tag	MHR_RS01065
+			old_locus_tag	MHR_0182
+243315	242461	CDS
+			product	AAA family ATPase
+			transl_table	4
+			protein_id	ref|WP_337969122.1|
+			inference	COORDINATES: protein motif:HMM:NF012234.7
+243512	243294	gene
+			locus_tag	MHR_RS04390
+243512	243294	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969111.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+245088	243626	gene
+			locus_tag	MHR_RS04205
+			pseudo
+245088	243626	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+245840	245172	gene
+			gene	pgmB
+			locus_tag	MHR_RS01080
+			old_locus_tag	MHR_0185
+245840	245172	CDS
+			product	beta-phosphoglucomutase
+			EC_number	5.4.2.6
+			transl_table	4
+			protein_id	ref|WP_013302017.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302017.1
+248214	245833	gene
+			locus_tag	MHR_RS01085
+			old_locus_tag	MHR_0186
+248214	245833	CDS
+			product	glycosyl hydrolase family 65 domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302018.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084072.1
+249873	248230	gene
+			locus_tag	MHR_RS01090
+			old_locus_tag	MHR_0187
+249873	248230	CDS
+			product	alpha-amylase family glycosyl hydrolase
+			transl_table	4
+			protein_id	ref|WP_013302019.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335437.1
+251878	249860	gene
+			locus_tag	MHR_RS01095
+			old_locus_tag	MHR_0188
+251878	249860	CDS
+			product	alpha-amylase family glycosyl hydrolase
+			transl_table	4
+			protein_id	ref|WP_013302020.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084073.1
+252716	252003	gene
+			locus_tag	MHR_RS01100
+			old_locus_tag	MHR_0189
+252716	252003	CDS
+			product	GntR family transcriptional regulator
+			transl_table	4
+			protein_id	ref|WP_013302021.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084074.1
+254235	252802	gene
+			locus_tag	MHR_RS04020
+			pseudo
+254235	252802	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+254969	254298	gene
+			locus_tag	MHR_RS01115
+			old_locus_tag	MHR_0193
+254969	254298	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302025.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302025.1
+256213	254969	gene
+			locus_tag	MHR_RS01120
+			old_locus_tag	MHR_0194
+256213	254969	CDS
+			product	ABC transporter ATP-binding protein
+			transl_table	4
+			protein_id	ref|WP_013302026.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335440.1
+257176	256217	gene
+			locus_tag	MHR_RS01125
+			old_locus_tag	MHR_0195
+257176	256217	CDS
+			product	sugar ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_013302027.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084078.1
+260244	257179	gene
+			locus_tag	MHR_RS01130
+			old_locus_tag	MHR_0196
+260244	257179	CDS
+			product	ABC transporter permease subunit
+			transl_table	4
+			protein_id	ref|WP_013302028.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084079.1
+260753	260247	gene
+			locus_tag	MHR_RS01135
+			old_locus_tag	MHR_0197
+260753	260247	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302029.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302029.1
+263209	260753	gene
+			locus_tag	MHR_RS01140
+			old_locus_tag	MHR_0198
+263209	260753	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302030.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335443.1
+263886	264305	gene
+			locus_tag	MHR_RS04395
+			old_locus_tag	MHR_0200
+263886	264305	CDS
+			product	restriction endonuclease subunit S
+			EC_number	3.1.21.-
+			transl_table	4
+			protein_id	ref|WP_013302032.1|
+			inference	COORDINATES: protein motif:HMM:NF013579.7
+264373	265059	gene
+			locus_tag	MHR_RS04400
+			old_locus_tag	MHR_0201
+264373	265059	CDS
+			product	restriction endonuclease subunit S
+			EC_number	3.1.21.-
+			transl_table	4
+			protein_id	ref|WP_337969112.1|
+			inference	COORDINATES: protein motif:HMM:NF013579.7
+266184	265039	gene
+			locus_tag	MHR_RS04405
+			old_locus_tag	MHR_0202
+266184	265039	CDS
+			product	restriction endonuclease subunit S
+			EC_number	3.1.21.-
+			transl_table	4
+			protein_id	ref|WP_013302034.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302034.1
+267654	266251	gene
+			locus_tag	MHR_RS01165
+			old_locus_tag	MHR_0203
+267654	266251	CDS
+			product	Sau3AI family type II restriction endonuclease
+			transl_table	4
+			protein_id	ref|WP_013302035.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084084.1
+268859	267636	gene
+			gene	dcm
+			locus_tag	MHR_RS01170
+			old_locus_tag	MHR_0204
+268859	267636	CDS
+			product	DNA (cytosine-5-)-methyltransferase
+			EC_number	2.1.1.37
+			transl_table	4
+			protein_id	ref|WP_013302036.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335567.1
+270028	268943	gene
+			locus_tag	MHR_RS01175
+			old_locus_tag	MHR_0205
+270028	268943	CDS
+			product	M42 family metallopeptidase
+			EC_number	3.-.-.-
+			transl_table	4
+			protein_id	ref|WP_013302037.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302037.1
+271516	270212	gene
+			locus_tag	MHR_RS01180
+			old_locus_tag	MHR_0206
+271516	270212	CDS
+			product	endonuclease/exonuclease/phosphatase family protein
+			EC_number	3.1.21.-
+			transl_table	4
+			protein_id	ref|WP_013302038.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302038.1
+272236	271562	gene
+			locus_tag	MHR_RS01185
+			old_locus_tag	MHR_0207
+272236	271562	CDS
+			product	uracil-DNA glycosylase
+			EC_number	3.2.2.27
+			transl_table	4
+			protein_id	ref|WP_013302039.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104635.1
+273360	272209	gene
+			locus_tag	MHR_RS01190
+			old_locus_tag	MHR_0208
+273360	272209	CDS
+			product	HAD family acid phosphatase
+			transl_table	4
+			protein_id	ref|WP_013302040.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302040.1
+274744	273452	gene
+			locus_tag	MHR_RS01195
+			old_locus_tag	MHR_0209
+274744	273452	CDS
+			product	phospholipase D-like domain-containing protein
+			EC_number	3.1.4.-
+			transl_table	4
+			protein_id	ref|WP_308507251.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_012751848.1
+276054	275068	gene
+			gene	recA
+			locus_tag	MHR_RS01200
+			old_locus_tag	MHR_0210
+276054	275068	CDS
+			product	recombinase RecA
+			transl_table	4
+			protein_id	ref|WP_015084087.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084087.1
+276204	276929	gene
+			locus_tag	MHR_RS01205
+			old_locus_tag	MHR_0211
+276204	276929	CDS
+			product	phosphotransferase
+			transl_table	4
+			protein_id	ref|WP_013302043.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335561.1
+276931	278187	gene
+			gene	obgE
+			locus_tag	MHR_RS01210
+			old_locus_tag	MHR_0212
+276931	278187	CDS
+			product	GTPase ObgE
+			transl_table	4
+			protein_id	ref|WP_013302044.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335560.1
+278367	278663	gene
+			locus_tag	MHR_RS01215
+278367	278663	CDS
+			product	MG284/MPN403 family protein
+			transl_table	4
+			protein_id	ref|WP_014335559.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335559.1
+278656	279834	gene
+			locus_tag	MHR_RS01220
+			old_locus_tag	MHR_0213
+278656	279834	CDS
+			product	MHO_1580 family protein
+			transl_table	4
+			protein_id	ref|WP_013302045.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104637.1
+279809	280240	gene
+			locus_tag	MHR_RS01225
+			old_locus_tag	MHR_0214
+279809	280240	CDS
+			product	MHO_1590 family protein
+			transl_table	4
+			protein_id	ref|WP_013302046.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302046.1
+280248	280466	gene
+			locus_tag	MHR_RS01230
+			old_locus_tag	MHR_0215
+280248	280466	CDS
+			product	acyl carrier protein
+			transl_table	4
+			protein_id	ref|WP_013302047.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302047.1
+280520	281710	gene
+			locus_tag	MHR_RS01235
+			old_locus_tag	MHR_0216
+280520	281710	CDS
+			product	Y-family DNA polymerase
+			EC_number	2.7.7.7
+			transl_table	4
+			protein_id	ref|WP_013302048.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084088.1
+281755	282213	gene
+			locus_tag	MHR_RS01240
+281755	282213	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_041363552.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084089.1
+282200	282949	gene
+			locus_tag	MHR_RS01245
+			old_locus_tag	MHR_0217
+282200	282949	CDS
+			product	F0F1 ATP synthase subunit A
+			EC_number	7.1.2.2
+			transl_table	4
+			protein_id	ref|WP_013302049.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335556.1
+283050	283379	gene
+			gene	atpE
+			locus_tag	MHR_RS01250
+			old_locus_tag	MHR_0218
+283050	283379	CDS
+			product	ATP synthase F0 subunit C
+			EC_number	7.1.2.2
+			transl_table	4
+			protein_id	ref|WP_013302050.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335555.1
+283411	283980	gene
+			gene	atpF
+			locus_tag	MHR_RS01255
+			old_locus_tag	MHR_0219
+283411	283980	CDS
+			product	F0F1 ATP synthase subunit B
+			EC_number	7.1.2.2
+			transl_table	4
+			protein_id	ref|WP_013302051.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335554.1
+283989	284525	gene
+			locus_tag	MHR_RS01260
+			old_locus_tag	MHR_0220
+283989	284525	CDS
+			product	F0F1 ATP synthase subunit delta
+			EC_number	7.1.2.2
+			transl_table	4
+			protein_id	ref|WP_013302052.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335553.1
+284539	286065	gene
+			gene	atpA
+			locus_tag	MHR_RS01265
+			old_locus_tag	MHR_0221
+284539	286065	CDS
+			product	F0F1 ATP synthase subunit alpha
+			EC_number	7.1.2.2
+			transl_table	4
+			protein_id	ref|WP_013302053.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302053.1
+286067	286915	gene
+			gene	atpG
+			locus_tag	MHR_RS01270
+			old_locus_tag	MHR_0222
+286067	286915	CDS
+			product	ATP synthase F1 subunit gamma
+			EC_number	7.1.2.2
+			transl_table	4
+			protein_id	ref|WP_013302054.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104640.1
+286924	288336	gene
+			gene	atpD
+			locus_tag	MHR_RS01275
+			old_locus_tag	MHR_0223
+286924	288336	CDS
+			product	F0F1 ATP synthase subunit beta
+			EC_number	7.1.2.2
+			transl_table	4
+			protein_id	ref|WP_013302055.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302055.1
+288339	288647	gene
+			locus_tag	MHR_RS01280
+			old_locus_tag	MHR_0224
+288339	288647	CDS
+			product	ATP synthase subunit epsilon domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302056.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302056.1
+288904	291735	gene
+			locus_tag	MHR_RS01285
+			old_locus_tag	MHR_0225
+288904	291735	CDS
+			product	lipoprotein 17-related variable surface protein
+			transl_table	4
+			protein_id	ref|WP_013302057.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104641.1
+292054	292650	gene
+			locus_tag	MHR_RS01290
+			old_locus_tag	MHR_0226
+292054	292650	CDS
+			product	YigZ family protein
+			transl_table	4
+			protein_id	ref|WP_013302058.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302058.1
+292722	292795	gene
+			locus_tag	MHR_RS01295
+			old_locus_tag	MHR_t004
+292722	292795	tRNA
+			product	tRNA-Cys
+			anticodon	(pos:292754..292756,aa:Cys,seq:gca)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+292797	292873	gene
+			locus_tag	MHR_RS01300
+			old_locus_tag	MHR_t005
+292797	292873	tRNA
+			product	tRNA-Arg
+			anticodon	(pos:292831..292833,aa:Arg,seq:acg)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+293316	292942	gene
+			locus_tag	MHR_RS01305
+			old_locus_tag	MHR_0227
+293316	292942	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302059.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302059.1
+293827	294363	gene
+			locus_tag	MHR_RS01310
+			old_locus_tag	MHR_0228
+293827	294363	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302060.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335548.1
+294749	296172	gene
+			locus_tag	MHR_RS04025
+			pseudo
+			old_locus_tag	MHR_0229
+294749	296172	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+298351	296255	gene
+			locus_tag	MHR_RS01325
+			old_locus_tag	MHR_0231
+298351	296255	CDS
+			product	PTS fructose transporter subunit IIABC
+			EC_number	2.7.1.202
+			transl_table	4
+			protein_id	ref|WP_013302063.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302063.1
+298485	300851	gene
+			gene	leuS
+			locus_tag	MHR_RS01330
+			old_locus_tag	MHR_0232
+298485	300851	CDS
+			product	leucine--tRNA ligase
+			EC_number	6.1.1.4
+			transl_table	4
+			protein_id	ref|WP_013302064.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302064.1
+300892	302886	gene
+			locus_tag	MHR_RS01335
+			old_locus_tag	MHR_0233
+300892	302886	CDS
+			product	GGDEF domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302065.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335545.1
+302886	303323	gene
+			gene	rplI
+			locus_tag	MHR_RS01340
+			old_locus_tag	MHR_0234
+302886	303323	CDS
+			product	50S ribosomal protein L9
+			transl_table	4
+			protein_id	ref|WP_013302066.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335544.1
+303316	304689	gene
+			gene	dnaB
+			locus_tag	MHR_RS01345
+			old_locus_tag	MHR_0235
+303316	304689	CDS
+			product	replicative DNA helicase
+			EC_number	5.6.2.3
+			transl_table	4
+			protein_id	ref|WP_013302067.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302067.1
+304679	305920	gene
+			locus_tag	MHR_RS01350
+			old_locus_tag	MHR_0236
+304679	305920	CDS
+			product	CNNM domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_014582557.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582557.1
+305923	306612	gene
+			locus_tag	MHR_RS01355
+			old_locus_tag	MHR_0237
+305923	306612	CDS
+			product	nuclease-related domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302069.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084098.1
+306602	307285	gene
+			locus_tag	MHR_RS01360
+			old_locus_tag	MHR_0238
+306602	307285	CDS
+			product	YgjP-like metallopeptidase domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302070.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302070.1
+307278	308480	gene
+			locus_tag	MHR_RS01365
+			old_locus_tag	MHR_0239
+307278	308480	CDS
+			product	class I tRNA ligase family protein
+			transl_table	4
+			protein_id	ref|WP_013302071.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302071.1
+308515	309192	gene
+			gene	rlmB
+			locus_tag	MHR_RS01370
+			old_locus_tag	MHR_0240
+308515	309192	CDS
+			product	23S rRNA (guanosine(2251)-2'-O)-methyltransferase RlmB
+			transl_table	4
+			protein_id	ref|WP_013302072.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335542.1
+309213	309761	gene
+			locus_tag	MHR_RS01375
+			old_locus_tag	MHR_0241
+309213	309761	CDS
+			product	sigma-70 family RNA polymerase sigma factor
+			transl_table	4
+			protein_id	ref|WP_013302073.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302073.1
+309797	309940	gene
+			gene	rpmG
+			locus_tag	MHR_RS04030
+			old_locus_tag	MHR_0682
+309797	309940	CDS
+			product	50S ribosomal protein L33
+			transl_table	4
+			protein_id	ref|WP_013302495.1|
+			inference	COORDINATES: protein motif:HMM:NF001764.0
+309961	310173	gene
+			locus_tag	MHR_RS01380
+			old_locus_tag	MHR_0242
+309961	310173	CDS
+			product	preprotein translocase subunit SecE
+			transl_table	4
+			protein_id	ref|WP_014335541.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335541.1
+310185	310781	gene
+			gene	nusG
+			locus_tag	MHR_RS01385
+			old_locus_tag	MHR_0243
+310185	310781	CDS
+			product	transcription termination/antitermination protein NusG
+			transl_table	4
+			protein_id	ref|WP_013302075.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104530.1
+310904	311350	gene
+			locus_tag	MHR_RS01390
+			old_locus_tag	MHR_0244
+310904	311350	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302076.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335540.1
+312306	312500	gene
+			locus_tag	MHR_RS01395
+312306	312500	CDS
+			product	N-acetylglucosamine-6-phosphate deacetylase
+			transl_table	4
+			protein_id	ref|WP_015084103.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084103.1
+313053	314180	gene
+			locus_tag	MHR_RS01400
+			old_locus_tag	MHR_0246
+313053	314180	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302077.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084104.1
+314193	315005	gene
+			locus_tag	MHR_RS01405
+			old_locus_tag	MHR_0247
+314193	315005	CDS
+			product	TIGR00282 family metallophosphoesterase
+			transl_table	4
+			protein_id	ref|WP_013302078.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302078.1
+315178	317100	gene
+			locus_tag	MHR_RS01410
+			old_locus_tag	MHR_0248
+315178	317100	CDS
+			product	DNA topoisomerase subunit B
+			EC_number	5.6.2.2
+			transl_table	4
+			protein_id	ref|WP_013302079.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084105.1
+317191	320325	gene
+			locus_tag	MHR_RS01415
+			old_locus_tag	MHR_0249
+317191	320325	CDS
+			product	DUF1410 domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302080.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104531.1
+322437	320713	gene
+			locus_tag	MHR_RS01420
+			old_locus_tag	MHR_0250
+322437	320713	CDS
+			product	Na/Pi cotransporter family protein
+			transl_table	4
+			protein_id	ref|WP_013302081.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335538.1
+323643	322549	gene
+			locus_tag	MHR_RS01425
+			old_locus_tag	MHR_0251
+323643	322549	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302082.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302082.1
+324832	323690	gene
+			gene	metK
+			locus_tag	MHR_RS01430
+			old_locus_tag	MHR_0252
+324832	323690	CDS
+			product	methionine adenosyltransferase
+			EC_number	2.5.1.6
+			transl_table	4
+			protein_id	ref|WP_013302083.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302083.1
+324971	325117	gene
+			locus_tag	MHR_RS04260
+324971	325117	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014335536.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335536.1
+325123	326268	gene
+			locus_tag	MHR_RS01435
+			old_locus_tag	MHR_0253
+325123	326268	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302084.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302084.1
+326286	326768	gene
+			locus_tag	MHR_RS01440
+			old_locus_tag	MHR_0254
+326286	326768	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302085.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+327224	326814	gene
+			locus_tag	MHR_RS01445
+			old_locus_tag	MHR_0255
+327224	326814	CDS
+			product	thermonuclease family protein
+			transl_table	4
+			protein_id	ref|WP_013302086.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335533.1
+327924	327487	gene
+			gene	smpB
+			locus_tag	MHR_RS01450
+			old_locus_tag	MHR_0256
+327924	327487	CDS
+			product	SsrA-binding protein SmpB
+			transl_table	4
+			protein_id	ref|WP_013302087.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302087.1
+328078	330777	gene
+			locus_tag	MHR_RS01455
+			old_locus_tag	MHR_0257
+328078	330777	CDS
+			product	cation-translocating P-type ATPase
+			transl_table	4
+			protein_id	ref|WP_013302088.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302088.1
+330851	332191	gene
+			locus_tag	MHR_RS01460
+			old_locus_tag	MHR_0258
+330851	332191	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302089.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302089.1
+332194	333351	gene
+			gene	glpO
+			locus_tag	MHR_RS01465
+			old_locus_tag	MHR_0259
+332194	333351	CDS
+			product	type 2 glycerol-3-phosphate oxidase
+			transl_table	4
+			protein_id	ref|WP_013302090.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302090.1
+333411	335243	gene
+			locus_tag	MHR_RS01470
+			old_locus_tag	MHR_0260
+333411	335243	CDS
+			product	DUF2779 domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302091.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335529.1
+335342	336756	gene
+			locus_tag	MHR_RS01475
+			pseudo
+			old_locus_tag	MHR_0261
+335342	336756	CDS
+			product	MFS transporter
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335528.1
+336749	337474	gene
+			locus_tag	MHR_RS01480
+			old_locus_tag	MHR_0262
+336749	337474	CDS
+			product	glycerophosphodiester phosphodiesterase family protein
+			transl_table	4
+			protein_id	ref|WP_013302092.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302092.1
+338482	337529	gene
+			gene	ruvB
+			locus_tag	MHR_RS01485
+			old_locus_tag	MHR_0263
+338482	337529	CDS
+			product	Holliday junction branch migration DNA helicase RuvB
+			EC_number	3.6.4.12
+			transl_table	4
+			protein_id	ref|WP_013302093.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302093.1
+339101	338460	gene
+			gene	ruvA
+			locus_tag	MHR_RS01490
+			old_locus_tag	MHR_0264
+339101	338460	CDS
+			product	Holliday junction branch migration protein RuvA
+			EC_number	3.6.4.12
+			transl_table	4
+			protein_id	ref|WP_013302094.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335526.1
+340148	339279	gene
+			locus_tag	MHR_RS01495
+			old_locus_tag	MHR_0265
+340148	339279	CDS
+			product	DegV family protein
+			transl_table	4
+			protein_id	ref|WP_013302095.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084111.1
+341667	340546	gene
+			locus_tag	MHR_RS01500
+341667	340546	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969113.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+344027	341772	gene
+			locus_tag	MHR_RS01505
+			old_locus_tag	MHR_0267
+344027	341772	CDS
+			product	UvrD-helicase domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_041363555.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335522.1
+344718	344014	gene
+			locus_tag	MHR_RS01510
+			old_locus_tag	MHR_0268
+344718	344014	CDS
+			product	RDD family protein
+			transl_table	4
+			protein_id	ref|WP_013302098.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302098.1
+345713	344718	gene
+			locus_tag	MHR_RS01515
+			old_locus_tag	MHR_0269
+345713	344718	CDS
+			product	glycosyltransferase
+			EC_number	2.4.-.-
+			transl_table	4
+			protein_id	ref|WP_013302099.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302099.1
+347057	345717	gene
+			gene	asnS
+			locus_tag	MHR_RS01520
+			old_locus_tag	MHR_0270
+347057	345717	CDS
+			product	asparagine--tRNA ligase
+			EC_number	6.1.1.22
+			transl_table	4
+			protein_id	ref|WP_013302100.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335520.1
+347283	347735	gene
+			gene	rplK
+			locus_tag	MHR_RS01525
+			old_locus_tag	MHR_0271
+347283	347735	CDS
+			product	50S ribosomal protein L11
+			transl_table	4
+			protein_id	ref|WP_013302101.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302101.1
+347732	348427	gene
+			gene	rplA
+			locus_tag	MHR_RS01530
+			old_locus_tag	MHR_0272
+347732	348427	CDS
+			product	50S ribosomal protein L1
+			transl_table	4
+			protein_id	ref|WP_276211257.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011283759.1
+348537	350174	gene
+			locus_tag	MHR_RS01535
+			old_locus_tag	MHR_0273
+348537	350174	CDS
+			product	CTP synthase
+			EC_number	6.3.4.2
+			transl_table	4
+			protein_id	ref|WP_013302103.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582545.1
+351116	351490	gene
+			locus_tag	MHR_RS01545
+			old_locus_tag	MHR_0274
+351116	351490	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302104.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302104.1
+351727	353192	gene
+			locus_tag	MHR_RS04040
+			pseudo
+			old_locus_tag	MHR_0275
+351727	353192	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+355525	353618	gene
+			locus_tag	MHR_RS01560
+			old_locus_tag	MHR_0276
+355525	353618	CDS
+			product	P68 family surface lipoprotein
+			transl_table	4
+			protein_id	ref|WP_013302106.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302106.1
+357541	355535	gene
+			locus_tag	MHR_RS01565
+			old_locus_tag	MHR_0277
+357541	355535	CDS
+			product	P68 family surface lipoprotein
+			transl_table	4
+			protein_id	ref|WP_013302107.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302107.1
+357691	359202	gene
+			locus_tag	MHR_RS01570
+			old_locus_tag	MHR_0278
+357691	359202	CDS
+			product	amidohydrolase
+			EC_number	3.5.-.-
+			transl_table	4
+			protein_id	ref|WP_013302108.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335515.1
+360402	359206	gene
+			locus_tag	MHR_RS01575
+			old_locus_tag	MHR_0279
+360402	359206	CDS
+			product	oxidoreductase
+			transl_table	4
+			protein_id	ref|WP_013302109.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084120.1
+361444	360404	gene
+			locus_tag	MHR_RS01580
+			old_locus_tag	MHR_0280
+361444	360404	CDS
+			product	lipoate--protein ligase
+			EC_number	6.3.1.20
+			transl_table	4
+			protein_id	ref|WP_013302110.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582541.1
+362335	361448	gene
+			locus_tag	MHR_RS01585
+			old_locus_tag	MHR_0281
+362335	361448	CDS
+			product	SIR2 family NAD-dependent protein deacylase
+			transl_table	4
+			protein_id	ref|WP_013302111.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302111.1
+362654	362322	gene
+			locus_tag	MHR_RS01590
+			old_locus_tag	MHR_0282
+362654	362322	CDS
+			product	glycine cleavage system H family protein
+			transl_table	4
+			protein_id	ref|WP_013302112.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302112.1
+363645	362638	gene
+			locus_tag	MHR_RS01595
+			old_locus_tag	MHR_0283
+363645	362638	CDS
+			product	MsnO8 family LLM class oxidoreductase
+			EC_number	1.-.-.-
+			transl_table	4
+			protein_id	ref|WP_013302113.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335512.1
+364501	363683	gene
+			locus_tag	MHR_RS01600
+			old_locus_tag	MHR_0284
+364501	363683	CDS
+			product	alpha/beta fold hydrolase
+			transl_table	4
+			protein_id	ref|WP_013302114.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104499.1
+367295	364470	gene
+			locus_tag	MHR_RS01605
+			old_locus_tag	MHR_0285
+367295	364470	CDS
+			product	DUF31 family putative serine protease
+			transl_table	4
+			protein_id	ref|WP_337969114.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104498.1
+367377	367460	gene
+			locus_tag	MHR_RS01610
+			old_locus_tag	MHR_t006
+367377	367460	tRNA
+			product	tRNA-Leu
+			anticodon	(pos:367410..367412,aa:Leu,seq:caa)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+368032	367565	gene
+			gene	pgsA
+			locus_tag	MHR_RS01615
+368032	367565	CDS
+			product	CDP-diacylglycerol--glycerol-3-phosphate 3-phosphatidyltransferase
+			EC_number	2.7.8.5
+			transl_table	4
+			protein_id	ref|WP_337969115.1|
+			inference	COORDINATES: protein motif:HMM:NF013250.7
+368924	368193	gene
+			locus_tag	MHR_RS01620
+			old_locus_tag	MHR_0286
+368924	368193	CDS
+			product	MHJ_0274 family protein
+			transl_table	4
+			protein_id	ref|WP_013302116.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335509.1
+370802	368964	gene
+			gene	topA
+			locus_tag	MHR_RS01625
+			old_locus_tag	MHR_0287
+370802	368964	CDS
+			product	type I DNA topoisomerase
+			EC_number	5.6.2.1
+			transl_table	4
+			protein_id	ref|WP_187286174.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335508.1
+371183	370821	gene
+			gene	rplS
+			locus_tag	MHR_RS01630
+			old_locus_tag	MHR_0288
+371183	370821	CDS
+			product	50S ribosomal protein L19
+			transl_table	4
+			protein_id	ref|WP_013302118.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302118.1
+371853	371173	gene
+			gene	trmD
+			locus_tag	MHR_RS01635
+			old_locus_tag	MHR_0289
+371853	371173	CDS
+			product	tRNA (guanosine(37)-N1)-methyltransferase TrmD
+			EC_number	2.1.1.228
+			transl_table	4
+			protein_id	ref|WP_013302119.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302119.1
+372131	371859	gene
+			gene	rpsP
+			locus_tag	MHR_RS01640
+			old_locus_tag	MHR_0290
+372131	371859	CDS
+			product	30S ribosomal protein S16
+			transl_table	4
+			protein_id	ref|WP_013302120.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302120.1
+372918	372241	gene
+			locus_tag	MHR_RS01645
+			old_locus_tag	MHR_0291
+372918	372241	CDS
+			product	16S rRNA (uracil(1498)-N(3))-methyltransferase
+			EC_number	2.1.1.193
+			transl_table	4
+			protein_id	ref|WP_013302121.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302121.1
+373422	378938	gene
+			locus_tag	MHR_RS01655
+			old_locus_tag	MHR_0293
+373422	378938	CDS
+			product	SGNH/GDSL hydrolase family protein
+			EC_number	3.1.-.-
+			transl_table	4
+			protein_id	ref|WP_013302123.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084123.1
+378986	380461	gene
+			locus_tag	MHR_RS01660
+			old_locus_tag	MHR_0294
+378986	380461	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302124.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302124.1
+381181	380501	gene
+			locus_tag	MHR_RS01665
+			old_locus_tag	MHR_0295
+381181	380501	CDS
+			product	phosphorylase family protein
+			transl_table	4
+			protein_id	ref|WP_015084124.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084124.1
+382232	381138	gene
+			locus_tag	MHR_RS01670
+			old_locus_tag	MHR_0296
+382232	381138	CDS
+			product	nicotinate-nucleotide adenylyltransferase
+			EC_number	2.7.7.18
+			transl_table	4
+			protein_id	ref|WP_014335501.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335501.1
+383160	382234	gene
+			locus_tag	MHR_RS01675
+			old_locus_tag	MHR_0297
+383160	382234	CDS
+			product	Cof-type HAD-IIB family hydrolase
+			transl_table	4
+			protein_id	ref|WP_013302127.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302127.1
+385385	383169	gene
+			locus_tag	MHR_RS01680
+			old_locus_tag	MHR_0298
+385385	383169	CDS
+			product	ligand-binding sensor domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302128.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302128.1
+387785	385410	gene
+			locus_tag	MHR_RS01685
+			old_locus_tag	MHR_0299
+387785	385410	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302129.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104493.1
+387943	387867	gene
+			locus_tag	MHR_RS01690
+			old_locus_tag	MHR_t007
+387943	387867	tRNA
+			product	tRNA-Arg
+			anticodon	(pos:complement(387907..387909),aa:Arg,seq:tct)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+388078	389034	gene
+			locus_tag	MHR_RS01695
+			old_locus_tag	MHR_0300
+388078	389034	CDS
+			product	phosphate acetyltransferase
+			EC_number	2.3.1.8
+			transl_table	4
+			protein_id	ref|WP_013302130.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335499.1
+389034	390242	gene
+			locus_tag	MHR_RS01700
+			old_locus_tag	MHR_0301
+389034	390242	CDS
+			product	acetate/propionate family kinase
+			EC_number	2.7.2.1
+			transl_table	4
+			protein_id	ref|WP_013302131.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084127.1
+390343	390897	gene
+			gene	yihA
+			locus_tag	MHR_RS01705
+			old_locus_tag	MHR_0302
+390343	390897	CDS
+			product	ribosome biogenesis GTP-binding protein YihA/YsxC
+			transl_table	4
+			protein_id	ref|WP_013302132.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302132.1
+391607	390894	gene
+			locus_tag	MHR_RS01710
+			old_locus_tag	MHR_0303
+391607	390894	CDS
+			product	pseudouridine synthase
+			EC_number	5.4.99.-
+			transl_table	4
+			protein_id	ref|WP_013302133.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302133.1
+392032	391610	gene
+			locus_tag	MHR_RS01715
+			old_locus_tag	MHR_0304
+392032	391610	CDS
+			product	iron-sulfur cluster assembly scaffold protein
+			transl_table	4
+			protein_id	ref|WP_013302134.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302134.1
+393176	392025	gene
+			locus_tag	MHR_RS01720
+			old_locus_tag	MHR_0305
+393176	392025	CDS
+			product	cysteine desulfurase
+			EC_number	2.8.1.7
+			transl_table	4
+			protein_id	ref|WP_013302135.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302135.1
+393892	393176	gene
+			locus_tag	MHR_RS01725
+			old_locus_tag	MHR_0306
+393892	393176	CDS
+			product	TlyA family RNA methyltransferase
+			transl_table	4
+			protein_id	ref|WP_013302136.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104490.1
+394330	393899	gene
+			locus_tag	MHR_RS01730
+			old_locus_tag	MHR_0307
+394330	393899	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302137.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302137.1
+394685	394281	gene
+			locus_tag	MHR_RS01735
+			old_locus_tag	MHR_0308
+394685	394281	CDS
+			product	transcription antitermination protein NusB
+			transl_table	4
+			protein_id	ref|WP_015084129.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302138.1
+395939	394749	gene
+			locus_tag	MHR_RS01740
+			old_locus_tag	MHR_0309
+395939	394749	CDS
+			product	phosphopentomutase
+			EC_number	5.4.2.7
+			transl_table	4
+			protein_id	ref|WP_013302139.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302139.1
+396019	398049	gene
+			locus_tag	MHR_RS01745
+			old_locus_tag	MHR_0310
+396019	398049	CDS
+			product	Mbov_0121 family peptidase domain-containing ABC transporter
+			transl_table	4
+			protein_id	ref|WP_013302140.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_160574125.1
+398033	398422	gene
+			locus_tag	MHR_RS01750
+398033	398422	CDS
+			product	MAG1140 family protein
+			transl_table	4
+			protein_id	ref|WP_041363562.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335491.1
+398451	398903	gene
+			gene	ybeY
+			locus_tag	MHR_RS01755
+			old_locus_tag	MHR_0311
+398451	398903	CDS
+			product	rRNA maturation RNase YbeY
+			transl_table	4
+			protein_id	ref|WP_013302141.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302141.1
+398907	399293	gene
+			gene	cdd
+			locus_tag	MHR_RS01760
+			old_locus_tag	MHR_0312
+398907	399293	CDS
+			product	cytidine deaminase
+			EC_number	3.5.4.5
+			transl_table	4
+			protein_id	ref|WP_013302142.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302142.1
+399293	400171	gene
+			gene	era
+			locus_tag	MHR_RS01765
+			old_locus_tag	MHR_0313
+399293	400171	CDS
+			product	GTPase Era
+			transl_table	4
+			protein_id	ref|WP_013302143.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302143.1
+400209	400580	gene
+			gene	ssrA
+			locus_tag	MHR_RS04045
+400209	400580	tmRNA
+			product	transfer-messenger RNA
+			inference	COORDINATES: nucleotide motif:Rfam:15.0:RF00023
+			inference	COORDINATES: profile:INFERNAL:1.1.5
+			db_xref	RFAM:RF00023
+400678	401592	gene
+			locus_tag	MHR_RS01770
+			old_locus_tag	MHR_0314
+400678	401592	CDS
+			product	Rho termination factor N-terminal domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302144.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302144.1
+401868	401647	gene
+			gene	rpmE
+			locus_tag	MHR_RS01775
+			old_locus_tag	MHR_0315
+401868	401647	CDS
+			product	50S ribosomal protein L31
+			transl_table	4
+			protein_id	ref|WP_013302145.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302145.1
+402927	402322	gene
+			locus_tag	MHR_RS01780
+			old_locus_tag	MHR_0316
+402927	402322	CDS
+			product	FMN-dependent NADH-azoreductase
+			EC_number	1.7.1.17
+			transl_table	4
+			protein_id	ref|WP_013302146.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335489.1
+403529	402945	gene
+			locus_tag	MHR_RS01785
+			old_locus_tag	MHR_0317
+403529	402945	CDS
+			product	FMN-dependent NADH-azoreductase
+			EC_number	1.7.1.17
+			transl_table	4
+			protein_id	ref|WP_013302147.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335488.1
+403748	411871	gene
+			locus_tag	MHR_RS01790
+			old_locus_tag	MHR_0318
+403748	411871	CDS
+			product	FtsX-like permease family protein
+			transl_table	4
+			protein_id	ref|WP_013302148.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302148.1
+411985	412920	gene
+			locus_tag	MHR_RS01795
+			old_locus_tag	MHR_0319
+411985	412920	CDS
+			product	ABC transporter ATP-binding protein
+			EC_number	7.5.2.-
+			transl_table	4
+			protein_id	ref|WP_013302149.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302149.1
+412997	414082	gene
+			gene	prfA
+			locus_tag	MHR_RS01800
+			old_locus_tag	MHR_0320
+412997	414082	CDS
+			product	peptide chain release factor 1
+			transl_table	4
+			protein_id	ref|WP_013302150.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302150.1
+414066	414797	gene
+			gene	prmC
+			locus_tag	MHR_RS01805
+			old_locus_tag	MHR_0321
+414066	414797	CDS
+			product	peptide chain release factor N(5)-glutamine methyltransferase
+			EC_number	2.1.1.297
+			transl_table	4
+			protein_id	ref|WP_013302151.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104482.1
+414799	416244	gene
+			gene	gltX
+			locus_tag	MHR_RS01810
+			old_locus_tag	MHR_0322
+414799	416244	CDS
+			product	glutamate--tRNA ligase
+			EC_number	6.1.1.17
+			transl_table	4
+			protein_id	ref|WP_041363565.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335485.1
+416235	416630	gene
+			locus_tag	MHR_RS01815
+			old_locus_tag	MHR_0323
+416235	416630	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302153.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335484.1
+416632	417159	gene
+			locus_tag	MHR_RS01820
+			old_locus_tag	MHR_0324
+416632	417159	CDS
+			product	tRNA (cytidine(34)-2'-O)-methyltransferase
+			EC_number	2.1.1.207
+			transl_table	4
+			protein_id	ref|WP_013302154.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335483.1
+417146	417916	gene
+			locus_tag	MHR_RS01825
+			old_locus_tag	MHR_0325
+417146	417916	CDS
+			product	TrmH family RNA methyltransferase
+			EC_number	2.1.1.-
+			transl_table	4
+			protein_id	ref|WP_013302155.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302155.1
+417996	417922	gene
+			locus_tag	MHR_RS01830
+			old_locus_tag	MHR_t008
+417996	417922	tRNA
+			product	tRNA-Trp
+			anticodon	(pos:complement(417962..417964),aa:Trp,seq:tca)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+418078	418671	gene
+			locus_tag	MHR_RS01835
+			old_locus_tag	MHR_0326
+418078	418671	CDS
+			product	chromate transporter
+			transl_table	4
+			protein_id	ref|WP_013302156.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302156.1
+418649	419314	gene
+			locus_tag	MHR_RS01840
+			old_locus_tag	MHR_0327
+418649	419314	CDS
+			product	chromate transporter
+			transl_table	4
+			protein_id	ref|WP_013302157.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302157.1
+419394	420221	gene
+			locus_tag	MHR_RS01845
+			old_locus_tag	MHR_0328
+419394	420221	CDS
+			product	MAGa7180 family putative nuclease
+			transl_table	4
+			protein_id	ref|WP_013302158.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335479.1
+423810	420247	gene
+			locus_tag	MHR_RS01850
+			old_locus_tag	MHR_0329
+423810	420247	CDS
+			product	type I restriction enzyme subunit R domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302159.1|
+			inference	COORDINATES: protein motif:HMM:NF037510.7
+426619	423824	gene
+			locus_tag	MHR_RS01855
+			old_locus_tag	MHR_0330
+426619	423824	CDS
+			product	type I restriction-modification system subunit M
+			EC_number	2.1.1.72
+			transl_table	4
+			protein_id	ref|WP_013302160.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084138.1
+427510	426743	gene
+			locus_tag	MHR_RS01860
+427510	426743	CDS
+			product	ATP-binding domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_337969079.1|
+			inference	COORDINATES: protein motif:HMM:NF013601.7
+428415	427525	gene
+			locus_tag	MHR_RS01865
+428415	427525	CDS
+			product	AAA family ATPase
+			transl_table	4
+			protein_id	ref|WP_337969080.1|
+			inference	COORDINATES: protein motif:HMM:NF024642.7
+429509	428520	gene
+			locus_tag	MHR_RS01870
+429509	428520	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_049763465.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+431130	429598	gene
+			gene	metG
+			locus_tag	MHR_RS01875
+			old_locus_tag	MHR_0334
+431130	429598	CDS
+			product	methionine--tRNA ligase
+			EC_number	6.1.1.10
+			transl_table	4
+			protein_id	ref|WP_013302161.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335477.1
+431905	431132	gene
+			locus_tag	MHR_RS01880
+			old_locus_tag	MHR_0335
+431905	431132	CDS
+			product	tRNA1(Val) (adenine(37)-N6)-methyltransferase
+			EC_number	2.1.1.223
+			transl_table	4
+			protein_id	ref|WP_013302162.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582517.1
+432899	431892	gene
+			locus_tag	MHR_RS01885
+			old_locus_tag	MHR_0336
+432899	431892	CDS
+			product	nicotinate phosphoribosyltransferase
+			EC_number	6.3.4.21
+			transl_table	4
+			protein_id	ref|WP_013302163.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302163.1
+433615	434094	gene
+			locus_tag	MHR_RS01890
+			old_locus_tag	MHR_0337
+433615	434094	CDS
+			product	variable surface lipoprotein
+			transl_table	4
+			protein_id	ref|WP_041363638.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084142.1
+434404	435015	gene
+			locus_tag	MHR_RS01895
+			old_locus_tag	MHR_0338
+434404	435015	CDS
+			product	variable surface lipoprotein
+			transl_table	4
+			protein_id	ref|WP_013302165.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302165.1
+435361	435573	gene
+			locus_tag	MHR_RS01900
+			old_locus_tag	MHR_0339
+435361	435573	CDS
+			product	variable surface lipoprotein
+			transl_table	4
+			protein_id	ref|WP_420704349.1|
+			inference	COORDINATES: protein motif:HMM:NF033817.2
+437216	435784	gene
+			locus_tag	MHR_RS04050
+			pseudo
+437216	435784	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+437529	438272	gene
+			locus_tag	MHR_RS01925
+			old_locus_tag	MHR_0343
+437529	438272	CDS
+			product	variable surface lipoprotein
+			transl_table	4
+			protein_id	ref|WP_041363572.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335475.1
+438653	439672	gene
+			gene	vlpA
+			locus_tag	MHR_RS01935
+			old_locus_tag	MHR_0344
+438653	439672	CDS
+			product	variable lipoprotein VlpA
+			transl_table	4
+			protein_id	ref|WP_041363576.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084146.1
+439783	441204	gene
+			locus_tag	MHR_RS04210
+			pseudo
+439783	441204	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+441555	442259	gene
+			locus_tag	MHR_RS01955
+			old_locus_tag	MHR_0348
+441555	442259	CDS
+			product	variable surface lipoprotein
+			transl_table	4
+			protein_id	ref|WP_041363580.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084150.1
+442623	>442685	gene
+			locus_tag	MHR_RS04520
+			pseudo
+442623	>442685	CDS
+			product	variant surface lipoprotein VlpC
+			transl_table	4
+			pseudo
+			note	incomplete; partial in the middle of a contig; missing C-terminus
+			inference	COORDINATES: protein motif:HMM:NF033817.2
+442810	443445	gene
+			locus_tag	MHR_RS04525
+			old_locus_tag	MHR_0349
+442810	443445	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_080518770.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582512.1
+443526	444527	gene
+			locus_tag	MHR_RS01965
+			old_locus_tag	MHR_0350
+443526	444527	CDS
+			product	NAD(P)H-dependent glycerol-3-phosphate dehydrogenase
+			EC_number	1.1.1.-
+			transl_table	4
+			protein_id	ref|WP_013302177.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302177.1
+444677	445120	gene
+			gene	mraZ
+			locus_tag	MHR_RS01970
+			old_locus_tag	MHR_0351
+444677	445120	CDS
+			product	division/cell wall cluster transcriptional repressor MraZ
+			transl_table	4
+			protein_id	ref|WP_013302178.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302178.1
+445120	446016	gene
+			gene	rsmH
+			locus_tag	MHR_RS01975
+			old_locus_tag	MHR_0352
+445120	446016	CDS
+			product	16S rRNA (cytosine(1402)-N(4))-methyltransferase RsmH
+			EC_number	2.1.1.199
+			transl_table	4
+			protein_id	ref|WP_013302179.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302179.1
+446073	447197	gene
+			locus_tag	MHR_RS01980
+			old_locus_tag	MHR_0353
+446073	447197	CDS
+			product	FtsZ/tubulin family protein
+			transl_table	4
+			protein_id	ref|WP_013302180.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335468.1
+447421	448644	gene
+			locus_tag	MHR_RS01985
+			old_locus_tag	MHR_0354
+447421	448644	CDS
+			product	YbhB/YbcL family Raf kinase inhibitor-like protein
+			transl_table	4
+			protein_id	ref|WP_013302181.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302181.1
+448766	449689	gene
+			locus_tag	MHR_RS01990
+			old_locus_tag	MHR_0355
+448766	449689	CDS
+			product	site-specific integrase
+			transl_table	4
+			protein_id	ref|WP_013302182.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104590.1
+451579	449750	gene
+			gene	pepF
+			locus_tag	MHR_RS01995
+			old_locus_tag	MHR_0356
+451579	449750	CDS
+			product	oligoendopeptidase F
+			transl_table	4
+			protein_id	ref|WP_013302183.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335466.1
+454385	451680	gene
+			locus_tag	MHR_RS02000
+			old_locus_tag	MHR_0357
+454385	451680	CDS
+			product	ABC transporter substrate-binding protein
+			transl_table	4
+			protein_id	ref|WP_013302184.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582509.1
+462664	454400	gene
+			locus_tag	MHR_RS02005
+			old_locus_tag	MHR_0358
+462664	454400	CDS
+			product	PDxFFG protein
+			transl_table	4
+			protein_id	ref|WP_013302185.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302185.1
+463986	462652	gene
+			locus_tag	MHR_RS02010
+			old_locus_tag	MHR_0359
+463986	462652	CDS
+			product	ABC transporter ATP-binding protein
+			transl_table	4
+			protein_id	ref|WP_013302186.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582507.1
+465421	463976	gene
+			locus_tag	MHR_RS02015
+			old_locus_tag	MHR_0360
+465421	463976	CDS
+			product	ABC transporter ATP-binding protein
+			transl_table	4
+			protein_id	ref|WP_013302187.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302187.1
+466392	465421	gene
+			locus_tag	MHR_RS02020
+			old_locus_tag	MHR_0361
+466392	465421	CDS
+			product	ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_013302188.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084158.1
+467507	466392	gene
+			locus_tag	MHR_RS02025
+			old_locus_tag	MHR_0362
+467507	466392	CDS
+			product	ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_014335461.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335461.1
+469443	467617	gene
+			gene	pepF
+			locus_tag	MHR_RS02030
+			old_locus_tag	MHR_0363
+469443	467617	CDS
+			product	oligoendopeptidase F
+			transl_table	4
+			protein_id	ref|WP_013302190.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104592.1
+469637	470197	gene
+			gene	efp
+			locus_tag	MHR_RS02035
+			old_locus_tag	MHR_0364
+469637	470197	CDS
+			product	elongation factor P
+			transl_table	4
+			protein_id	ref|WP_013302191.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302191.1
+470200	470511	gene
+			locus_tag	MHR_RS02040
+470200	470511	CDS
+			product	MMB_0454 family protein
+			transl_table	4
+			protein_id	ref|WP_014335458.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335458.1
+470504	472351	gene
+			locus_tag	MHR_RS02045
+			old_locus_tag	MHR_0365
+470504	472351	CDS
+			product	transketolase
+			EC_number	2.2.1.1
+			transl_table	4
+			protein_id	ref|WP_013302192.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084159.1
+472849	472526	gene
+			locus_tag	MHR_RS02050
+472849	472526	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969081.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+473378	472899	gene
+			locus_tag	MHR_RS04415
+			old_locus_tag	MHR_0366
+473378	472899	CDS
+			product	BUD32 family EKC/KEOPS complex subunit
+			transl_table	4
+			protein_id	ref|WP_337969082.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+473809	473459	gene
+			locus_tag	MHR_RS04530
+473809	473459	CDS
+			product	class III lanthionine synthetase LanKC N-terminal domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_476410965.1|
+			inference	COORDINATES: protein motif:HMM:NF052102.2
+474242	474072	gene
+			locus_tag	MHR_RS04270
+474242	474072	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_020104596.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335453.1
+475240	474404	gene
+			locus_tag	MHR_RS02065
+			old_locus_tag	MHR_0367
+475240	474404	CDS
+			product	ECF transporter S component
+			transl_table	4
+			protein_id	ref|WP_013302194.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582504.1
+475407	475979	gene
+			locus_tag	MHR_RS02070
+			old_locus_tag	MHR_0368
+475407	475979	CDS
+			product	DUF402 domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302195.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302195.1
+476481	477365	gene
+			locus_tag	MHR_RS02080
+			old_locus_tag	MHR_0369
+476481	477365	CDS
+			product	RluA family pseudouridine synthase
+			transl_table	4
+			protein_id	ref|WP_041363586.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335450.1
+478439	477408	gene
+			locus_tag	MHR_RS04420
+478439	477408	CDS
+			product	ATP-binding cassette domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_337969083.1|
+			inference	COORDINATES: protein motif:HMM:NF012235.7
+479037	478483	gene
+			locus_tag	MHR_RS04425
+479037	478483	CDS
+			product	6TM ABC transporter family protein
+			transl_table	4
+			protein_id	ref|WP_337969084.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+479586	479050	gene
+			locus_tag	MHR_RS04430
+479586	479050	CDS
+			product	ATP-binding cassette domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_337969085.1|
+			inference	COORDINATES: protein motif:HMM:NF012235.7
+480636	479698	gene
+			locus_tag	MHR_RS04435
+480636	479698	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969086.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+480820	480647	gene
+			locus_tag	MHR_RS04275
+480820	480647	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014335447.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335447.1
+480952	482019	gene
+			locus_tag	MHR_RS02095
+			old_locus_tag	MHR_0374
+480952	482019	CDS
+			product	restriction endonuclease subunit S
+			EC_number	3.1.21.-
+			transl_table	4
+			protein_id	ref|WP_013302197.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302197.1
+483252	481999	gene
+			locus_tag	MHR_RS02100
+			old_locus_tag	MHR_0375
+483252	481999	CDS
+			product	restriction endonuclease subunit S
+			EC_number	3.1.21.-
+			transl_table	4
+			protein_id	ref|WP_013302198.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302198.1
+483951	484172	gene
+			locus_tag	MHR_RS02105
+483951	484172	CDS
+			product	YobI family P-loop NTPase
+			transl_table	4
+			protein_id	ref|WP_337659140.1|
+			inference	COORDINATES: protein motif:HMM:NF044896.4
+485938	485576	gene
+			gene	rplQ
+			locus_tag	MHR_RS02115
+			old_locus_tag	MHR_0376
+485938	485576	CDS
+			product	50S ribosomal protein L17
+			transl_table	4
+			protein_id	ref|WP_013302199.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011206051.1
+486942	485941	gene
+			locus_tag	MHR_RS02120
+			old_locus_tag	MHR_0377
+486942	485941	CDS
+			product	DNA-directed RNA polymerase subunit alpha
+			EC_number	2.7.7.6
+			transl_table	4
+			protein_id	ref|WP_013302200.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302200.1
+487333	486959	gene
+			gene	rpsK
+			locus_tag	MHR_RS02125
+			old_locus_tag	MHR_0378
+487333	486959	CDS
+			product	30S ribosomal protein S11
+			transl_table	4
+			protein_id	ref|WP_041363646.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013354841.1
+487749	487381	gene
+			gene	rpsM
+			locus_tag	MHR_RS02130
+			old_locus_tag	MHR_0379
+487749	487381	CDS
+			product	30S ribosomal protein S13
+			transl_table	4
+			protein_id	ref|WP_013302201.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335572.1
+487887	487771	gene
+			gene	rpmJ
+			locus_tag	MHR_RS04080
+			old_locus_tag	MHR_0683
+487887	487771	CDS
+			product	50S ribosomal protein L36
+			transl_table	4
+			protein_id	ref|WP_013302496.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_010874545.1
+488129	487911	gene
+			gene	infA
+			locus_tag	MHR_RS02135
+			old_locus_tag	MHR_0380
+488129	487911	CDS
+			product	translation initiation factor IF-1
+			transl_table	4
+			protein_id	ref|WP_013302202.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302202.1
+488885	488130	gene
+			gene	map
+			locus_tag	MHR_RS02140
+			old_locus_tag	MHR_0381
+488885	488130	CDS
+			product	type I methionyl aminopeptidase
+			EC_number	3.4.11.18
+			transl_table	4
+			protein_id	ref|WP_013302203.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302203.1
+489541	488873	gene
+			locus_tag	MHR_RS02145
+			old_locus_tag	MHR_0382
+489541	488873	CDS
+			product	adenylate kinase family protein
+			EC_number	2.7.4.-
+			transl_table	4
+			protein_id	ref|WP_013302204.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302204.1
+490974	489535	gene
+			gene	secY
+			locus_tag	MHR_RS02150
+			old_locus_tag	MHR_0383
+490974	489535	CDS
+			product	preprotein translocase subunit SecY
+			transl_table	4
+			protein_id	ref|WP_013302205.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335574.1
+491420	490974	gene
+			gene	rplO
+			locus_tag	MHR_RS02155
+			old_locus_tag	MHR_0384
+491420	490974	CDS
+			product	50S ribosomal protein L15
+			transl_table	4
+			protein_id	ref|WP_013302206.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335575.1
+492115	491444	gene
+			gene	rpsE
+			locus_tag	MHR_RS02160
+			old_locus_tag	MHR_0385
+492115	491444	CDS
+			product	30S ribosomal protein S5
+			transl_table	4
+			protein_id	ref|WP_013302207.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335576.1
+492489	492118	gene
+			gene	rplR
+			locus_tag	MHR_RS02165
+			old_locus_tag	MHR_0386
+492489	492118	CDS
+			product	50S ribosomal protein L18
+			transl_table	4
+			protein_id	ref|WP_013302208.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302208.1
+493041	492502	gene
+			gene	rplF
+			locus_tag	MHR_RS02170
+			old_locus_tag	MHR_0387
+493041	492502	CDS
+			product	50S ribosomal protein L6
+			transl_table	4
+			protein_id	ref|WP_013302209.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335578.1
+493439	493047	gene
+			gene	rpsH
+			locus_tag	MHR_RS02175
+			old_locus_tag	MHR_0388
+493439	493047	CDS
+			product	30S ribosomal protein S8
+			transl_table	4
+			protein_id	ref|WP_013302210.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302210.1
+493626	493441	gene
+			locus_tag	MHR_RS02180
+			old_locus_tag	MHR_0389
+493626	493441	CDS
+			product	type Z 30S ribosomal protein S14
+			transl_table	4
+			protein_id	ref|WP_013302211.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011283766.1
+494192	493647	gene
+			gene	rplE
+			locus_tag	MHR_RS02185
+			old_locus_tag	MHR_0390
+494192	493647	CDS
+			product	50S ribosomal protein L5
+			transl_table	4
+			protein_id	ref|WP_013302212.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302212.1
+494514	494194	gene
+			gene	rplX
+			locus_tag	MHR_RS02190
+			old_locus_tag	MHR_0391
+494514	494194	CDS
+			product	50S ribosomal protein L24
+			transl_table	4
+			protein_id	ref|WP_014335579.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335579.1
+494958	494587	gene
+			gene	rplN
+			locus_tag	MHR_RS02195
+			old_locus_tag	MHR_0392
+494958	494587	CDS
+			product	50S ribosomal protein L14
+			transl_table	4
+			protein_id	ref|WP_013302214.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_004023950.1
+495260	494958	gene
+			gene	rpsQ
+			locus_tag	MHR_RS02200
+			old_locus_tag	MHR_0393
+495260	494958	CDS
+			product	30S ribosomal protein S17
+			transl_table	4
+			protein_id	ref|WP_013302215.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302215.1
+495469	495260	gene
+			gene	rpmC
+			locus_tag	MHR_RS02205
+			old_locus_tag	MHR_0394
+495469	495260	CDS
+			product	50S ribosomal protein L29
+			transl_table	4
+			protein_id	ref|WP_013302216.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302216.1
+495882	495469	gene
+			gene	rplP
+			locus_tag	MHR_RS02210
+			old_locus_tag	MHR_0395
+495882	495469	CDS
+			product	50S ribosomal protein L16
+			transl_table	4
+			protein_id	ref|WP_013302217.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302217.1
+496616	495885	gene
+			gene	rpsC
+			locus_tag	MHR_RS02215
+			old_locus_tag	MHR_0396
+496616	495885	CDS
+			product	30S ribosomal protein S3
+			transl_table	4
+			protein_id	ref|WP_013302218.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302218.1
+496984	496619	gene
+			gene	rplV
+			locus_tag	MHR_RS02220
+			old_locus_tag	MHR_0397
+496984	496619	CDS
+			product	50S ribosomal protein L22
+			transl_table	4
+			protein_id	ref|WP_013302219.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302219.1
+497273	496998	gene
+			gene	rpsS
+			locus_tag	MHR_RS02225
+			old_locus_tag	MHR_0398
+497273	496998	CDS
+			product	30S ribosomal protein S19
+			transl_table	4
+			protein_id	ref|WP_013302220.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_004023956.1
+498118	497273	gene
+			gene	rplB
+			locus_tag	MHR_RS02230
+			old_locus_tag	MHR_0399
+498118	497273	CDS
+			product	50S ribosomal protein L2
+			transl_table	4
+			protein_id	ref|WP_013302221.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020003153.1
+498615	498121	gene
+			gene	rplW
+			locus_tag	MHR_RS02235
+			old_locus_tag	MHR_0400
+498615	498121	CDS
+			product	50S ribosomal protein L23
+			transl_table	4
+			protein_id	ref|WP_013302222.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302222.1
+499502	498615	gene
+			gene	rplD
+			locus_tag	MHR_RS02240
+			old_locus_tag	MHR_0401
+499502	498615	CDS
+			product	50S ribosomal protein L4
+			transl_table	4
+			protein_id	ref|WP_013302223.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302223.1
+500190	499495	gene
+			gene	rplC
+			locus_tag	MHR_RS02245
+			old_locus_tag	MHR_0402
+500190	499495	CDS
+			product	50S ribosomal protein L3
+			transl_table	4
+			protein_id	ref|WP_013302224.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011206024.1
+500512	500198	gene
+			gene	rpsJ
+			locus_tag	MHR_RS02250
+			old_locus_tag	MHR_0403
+500512	500198	CDS
+			product	30S ribosomal protein S10
+			transl_table	4
+			protein_id	ref|WP_013302225.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302225.1
+502233	500772	gene
+			locus_tag	MHR_RS04220
+			pseudo
+502233	500772	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted; internal stop
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+503314	502487	gene
+			locus_tag	MHR_RS02270
+			old_locus_tag	MHR_0406
+503314	502487	CDS
+			product	deoxyribonuclease IV
+			EC_number	3.1.21.2
+			transl_table	4
+			protein_id	ref|WP_013302228.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335583.1
+504101	503331	gene
+			locus_tag	MHR_RS02275
+			old_locus_tag	MHR_0407
+504101	503331	CDS
+			product	Nif3-like dinuclear metal center hexameric protein
+			transl_table	4
+			protein_id	ref|WP_013302229.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302229.1
+505677	504103	gene
+			locus_tag	MHR_RS02280
+			old_locus_tag	MHR_0408
+505677	504103	CDS
+			product	RNA polymerase sigma factor
+			transl_table	4
+			protein_id	ref|WP_013302230.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104618.1
+507490	505703	gene
+			gene	dnaG
+			locus_tag	MHR_RS02285
+			old_locus_tag	MHR_0409
+507490	505703	CDS
+			product	DNA primase
+			transl_table	4
+			protein_id	ref|WP_013302231.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335586.1
+508872	507496	gene
+			locus_tag	MHR_RS02290
+			old_locus_tag	MHR_0410
+508872	507496	CDS
+			product	glycine--tRNA ligase
+			EC_number	6.1.1.14
+			transl_table	4
+			protein_id	ref|WP_013302232.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104617.1
+510221	508884	gene
+			gene	ffh
+			locus_tag	MHR_RS02295
+			old_locus_tag	MHR_0411
+510221	508884	CDS
+			product	signal recognition particle protein
+			transl_table	4
+			protein_id	ref|WP_013302233.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302233.1
+511160	510270	gene
+			gene	tsf
+			locus_tag	MHR_RS02300
+			old_locus_tag	MHR_0412
+511160	510270	CDS
+			product	translation elongation factor Ts
+			transl_table	4
+			protein_id	ref|WP_013302234.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302234.1
+512166	511162	gene
+			gene	rpsB
+			locus_tag	MHR_RS02305
+			old_locus_tag	MHR_0413
+512166	511162	CDS
+			product	30S ribosomal protein S2
+			transl_table	4
+			protein_id	ref|WP_013302235.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084181.1
+512841	512353	gene
+			gene	recU
+			locus_tag	MHR_RS02310
+			old_locus_tag	MHR_0414
+512841	512353	CDS
+			product	Holliday junction resolvase RecU
+			EC_number	3.1.21.10
+			transl_table	4
+			protein_id	ref|WP_013302236.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335591.1
+512922	513242	gene
+			locus_tag	MHR_RS02315
+			old_locus_tag	MHR_0415
+512922	513242	CDS
+			product	4'-phosphopantetheinyl transferase superfamily protein
+			transl_table	4
+			protein_id	ref|WP_013302237.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302237.1
+513244	514017	gene
+			locus_tag	MHR_RS02320
+			old_locus_tag	MHR_0416
+513244	514017	CDS
+			product	lysophospholipid acyltransferase family protein
+			EC_number	2.3.1.-
+			transl_table	4
+			protein_id	ref|WP_013302238.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302238.1
+514019	514768	gene
+			locus_tag	MHR_RS02325
+			old_locus_tag	MHR_0417
+514019	514768	CDS
+			product	segregation/condensation protein A
+			transl_table	4
+			protein_id	ref|WP_013302239.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302239.1
+514758	515369	gene
+			gene	scpB
+			locus_tag	MHR_RS02330
+			old_locus_tag	MHR_0418
+514758	515369	CDS
+			product	SMC-Scp complex subunit ScpB
+			transl_table	4
+			protein_id	ref|WP_013302240.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084182.1
+515362	517086	gene
+			locus_tag	MHR_RS04440
+515362	517086	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969087.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+517200	518276	gene
+			locus_tag	MHR_RS04445
+517200	518276	CDS
+			product	lysylphosphatidylglycerol synthase domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_337969088.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+518384	518294	gene
+			locus_tag	MHR_RS02340
+			old_locus_tag	MHR_t009
+518384	518294	tRNA
+			product	tRNA-Ser
+			anticodon	(pos:complement(518348..518350),aa:Ser,seq:gct)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+518441	519421	gene
+			gene	tsaD
+			locus_tag	MHR_RS02345
+			old_locus_tag	MHR_0421
+518441	519421	CDS
+			product	tRNA (adenosine(37)-N6)-threonylcarbamoyltransferase complex transferase subunit TsaD
+			EC_number	2.3.1.234
+			transl_table	4
+			protein_id	ref|WP_013302241.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335593.1
+519749	519477	gene
+			gene	rpsT
+			locus_tag	MHR_RS02350
+			old_locus_tag	MHR_0422
+519749	519477	CDS
+			product	30S ribosomal protein S20
+			transl_table	4
+			protein_id	ref|WP_013302242.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302242.1
+520497	519841	gene
+			locus_tag	MHR_RS02355
+			old_locus_tag	MHR_0423
+520497	519841	CDS
+			product	ribulose-phosphate 3-epimerase
+			EC_number	5.1.3.1
+			transl_table	4
+			protein_id	ref|WP_013302243.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302243.1
+521332	520478	gene
+			gene	rsgA
+			locus_tag	MHR_RS02360
+			old_locus_tag	MHR_0424
+521332	520478	CDS
+			product	ribosome small subunit-dependent GTPase A
+			transl_table	4
+			protein_id	ref|WP_013302244.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011206067.1
+522079	521333	gene
+			locus_tag	MHR_RS02365
+			old_locus_tag	MHR_0425
+522079	521333	CDS
+			product	PP2C family protein-serine/threonine phosphatase
+			EC_number	3.1.3.16
+			transl_table	4
+			protein_id	ref|WP_013302245.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104614.1
+522657	522079	gene
+			gene	gmk
+			locus_tag	MHR_RS02370
+			old_locus_tag	MHR_0426
+522657	522079	CDS
+			product	guanylate kinase
+			EC_number	2.7.4.8
+			transl_table	4
+			protein_id	ref|WP_013302246.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335597.1
+523209	522658	gene
+			gene	rsmD
+			locus_tag	MHR_RS02375
+			old_locus_tag	MHR_0427
+523209	522658	CDS
+			product	16S rRNA (guanine(966)-N(2))-methyltransferase RsmD
+			EC_number	2.1.1.171
+			transl_table	4
+			protein_id	ref|WP_013302247.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084186.1
+523914	523222	gene
+			locus_tag	MHR_RS02380
+			old_locus_tag	MHR_0428
+523914	523222	CDS
+			product	recombination protein O N-terminal domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302248.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302248.1
+524110	524035	gene
+			locus_tag	MHR_RS02385
+			old_locus_tag	MHR_t010
+524110	524035	tRNA
+			product	tRNA-Phe
+			anticodon	(pos:complement(524075..524077),aa:Phe,seq:gaa)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+524190	524115	gene
+			locus_tag	MHR_RS02390
+			old_locus_tag	MHR_t011
+524190	524115	tRNA
+			product	tRNA-Asp
+			anticodon	(pos:complement(524155..524157),aa:Asp,seq:gtc)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+524270	524195	gene
+			locus_tag	MHR_RS02395
+			old_locus_tag	MHR_t012
+524270	524195	tRNA
+			product	tRNA-Met
+			anticodon	(pos:complement(524235..524237),aa:Met,seq:cat)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+524455	524365	gene
+			locus_tag	MHR_RS02400
+			old_locus_tag	MHR_t013
+524455	524365	tRNA
+			product	tRNA-Ser
+			anticodon	(pos:complement(524419..524421),aa:Ser,seq:tga)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+524533	524457	gene
+			locus_tag	MHR_RS02405
+			old_locus_tag	MHR_t014
+524533	524457	tRNA
+			product	tRNA-Ile
+			anticodon	(pos:complement(524497..524499),aa:Ile,seq:cat)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+524632	524556	gene
+			locus_tag	MHR_RS02410
+			old_locus_tag	MHR_t015
+524632	524556	tRNA
+			product	tRNA-Met
+			anticodon	(pos:complement(524596..524598),aa:Met,seq:cat)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+524710	524634	gene
+			locus_tag	MHR_RS02415
+			old_locus_tag	MHR_t016
+524710	524634	tRNA
+			product	tRNA-Ala
+			anticodon	(pos:complement(524674..524676),aa:Ala,seq:tgc)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+524788	524712	gene
+			locus_tag	MHR_RS02420
+			old_locus_tag	MHR_t017
+524788	524712	tRNA
+			product	tRNA-Pro
+			anticodon	(pos:complement(524752..524754),aa:Pro,seq:tgg)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+524928	525593	gene
+			gene	plsY
+			locus_tag	MHR_RS02425
+			old_locus_tag	MHR_0429
+524928	525593	CDS
+			product	glycerol-3-phosphate 1-O-acyltransferase PlsY
+			EC_number	2.3.1.15
+			transl_table	4
+			protein_id	ref|WP_013302249.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302249.1
+526340	525594	gene
+			locus_tag	MHR_RS02430
+			old_locus_tag	MHR_0430
+526340	525594	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302250.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335600.1
+527366	526425	gene
+			locus_tag	MHR_RS02435
+			old_locus_tag	MHR_0431
+527366	526425	CDS
+			product	L-lactate dehydrogenase
+			EC_number	1.1.1.27
+			transl_table	4
+			protein_id	ref|WP_013302251.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084189.1
+528855	527407	gene
+			locus_tag	MHR_RS02440
+			old_locus_tag	MHR_0432
+528855	527407	CDS
+			product	hexose phosphate transporter
+			transl_table	4
+			protein_id	ref|WP_013302252.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084190.1
+530437	528959	gene
+			gene	mgtE
+			locus_tag	MHR_RS02445
+			old_locus_tag	MHR_0433
+530437	528959	CDS
+			product	magnesium transporter
+			transl_table	4
+			protein_id	ref|WP_013302253.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335602.1
+531047	530454	gene
+			locus_tag	MHR_RS02450
+			old_locus_tag	MHR_0434
+531047	530454	CDS
+			product	diadenylate cyclase
+			transl_table	4
+			protein_id	ref|WP_041363590.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335603.1
+533526	531343	gene
+			locus_tag	MHR_RS02455
+			old_locus_tag	MHR_0435
+533526	531343	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302255.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302255.1
+533810	535018	gene
+			locus_tag	MHR_RS02460
+			old_locus_tag	MHR_0436
+533810	535018	CDS
+			product	phosphoglycerate kinase
+			EC_number	2.7.2.3
+			transl_table	4
+			protein_id	ref|WP_013302256.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335605.1
+535091	536524	gene
+			locus_tag	MHR_RS04095
+			pseudo
+535091	536524	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+539603	536586	gene
+			locus_tag	MHR_RS02475
+			old_locus_tag	MHR_0439
+539603	536586	CDS
+			product	P110/LppT family adhesin N-terminal domain
+			transl_table	4
+			protein_id	ref|WP_013302259.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302259.1
+542822	539652	gene
+			locus_tag	MHR_RS02480
+			old_locus_tag	MHR_0440
+542822	539652	CDS
+			product	P97 family adhesin
+			transl_table	4
+			protein_id	ref|WP_013302260.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335607.1
+543907	542990	gene
+			locus_tag	MHR_RS02485
+			old_locus_tag	MHR_0441
+543907	542990	CDS
+			product	NAD(P)/FAD-dependent oxidoreductase
+			EC_number	1.-.-.-
+			transl_table	4
+			protein_id	ref|WP_013302261.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335608.1
+545022	544000	gene
+			locus_tag	MHR_RS02490
+			old_locus_tag	MHR_0442
+545022	544000	CDS
+			product	prolipoprotein diacylglyceryl transferase
+			EC_number	2.4.99.-
+			transl_table	4
+			protein_id	ref|WP_013302262.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335609.1
+547916	545049	gene
+			gene	uvrA
+			locus_tag	MHR_RS02495
+			old_locus_tag	MHR_0443
+547916	545049	CDS
+			product	excinuclease ABC subunit UvrA
+			EC_number	3.1.25.-
+			transl_table	4
+			protein_id	ref|WP_013302263.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084198.1
+549700	547925	gene
+			locus_tag	MHR_RS02500
+			old_locus_tag	MHR_0444
+549700	547925	CDS
+			product	ribonuclease J
+			EC_number	3.1.-.-
+			transl_table	4
+			protein_id	ref|WP_013302264.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084199.1
+549901	550647	gene
+			locus_tag	MHR_RS02505
+			old_locus_tag	MHR_0445
+549901	550647	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302265.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302265.1
+550616	551338	gene
+			locus_tag	MHR_RS02510
+			old_locus_tag	MHR_0446
+550616	551338	CDS
+			product	ribonuclease HIII
+			EC_number	3.1.26.4
+			transl_table	4
+			protein_id	ref|WP_013302266.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302266.1
+551812	551654	gene
+			locus_tag	MHR_RS04280
+551812	551654	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014582774.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582774.1
+553280	551858	gene
+			locus_tag	MHR_RS04100
+			pseudo
+553280	551858	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+553543	554169	gene
+			locus_tag	MHR_RS02525
+553543	554169	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_041363591.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335613.1
+555871	555410	gene
+			locus_tag	MHR_RS02530
+			old_locus_tag	MHR_0449
+555871	555410	CDS
+			product	YhcH/YjgK/YiaL family protein
+			transl_table	4
+			protein_id	ref|WP_041363592.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335614.1
+556765	555878	gene
+			locus_tag	MHR_RS02535
+			old_locus_tag	MHR_0450
+556765	555878	CDS
+			product	sodium:solute symporter family transporter
+			transl_table	4
+			protein_id	ref|WP_013302270.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335615.1
+556992	556747	gene
+			locus_tag	MHR_RS02540
+556992	556747	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014335616.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335616.1
+557575	557048	gene
+			locus_tag	MHR_RS02545
+			old_locus_tag	MHR_0451
+557575	557048	CDS
+			product	sodium:solute symporter family transporter
+			transl_table	4
+			protein_id	ref|WP_013302271.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302271.1
+557839	557624	gene
+			locus_tag	MHR_RS02550
+557839	557624	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014335618.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335618.1
+558334	558056	gene
+			locus_tag	MHR_RS02555
+558334	558056	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969089.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+559218	558739	gene
+			locus_tag	MHR_RS02560
+			old_locus_tag	MHR_0452
+559218	558739	CDS
+			product	MPN499 family protein
+			transl_table	4
+			protein_id	ref|WP_014335620.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104649.1
+560103	559225	gene
+			locus_tag	MHR_RS02565
+			old_locus_tag	MHR_0453
+560103	559225	CDS
+			product	Cof-type HAD-IIB family hydrolase
+			transl_table	4
+			protein_id	ref|WP_013302273.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302273.1
+560794	560060	gene
+			locus_tag	MHR_RS02570
+			old_locus_tag	MHR_0454
+560794	560060	CDS
+			product	L-ribulose-5-phosphate 4-epimerase
+			EC_number	5.1.3.4
+			transl_table	4
+			protein_id	ref|WP_013302274.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302274.1
+561677	560784	gene
+			locus_tag	MHR_RS02575
+			old_locus_tag	MHR_0455
+561677	560784	CDS
+			product	L-ribulose-5-phosphate 3-epimerase
+			transl_table	4
+			protein_id	ref|WP_013302275.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302275.1
+562326	561652	gene
+			locus_tag	MHR_RS02580
+			old_locus_tag	MHR_0456
+562326	561652	CDS
+			product	3-keto-L-gulonate-6-phosphate decarboxylase UlaD
+			EC_number	4.1.1.85
+			transl_table	4
+			protein_id	ref|WP_013302276.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302276.1
+562862	562392	gene
+			locus_tag	MHR_RS02585
+			old_locus_tag	MHR_0457
+562862	562392	CDS
+			product	PTS sugar transporter subunit IIA
+			transl_table	4
+			protein_id	ref|WP_013302277.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302277.1
+563160	562873	gene
+			locus_tag	MHR_RS02590
+			old_locus_tag	MHR_0458
+563160	562873	CDS
+			product	PTS sugar transporter subunit IIB
+			EC_number	2.7.1.-
+			transl_table	4
+			protein_id	ref|WP_013302278.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302278.1
+565010	563229	gene
+			locus_tag	MHR_RS02595
+			old_locus_tag	MHR_0459
+565010	563229	CDS
+			product	PTS ascorbate transporter subunit IIC
+			transl_table	4
+			protein_id	ref|WP_013302279.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302279.1
+566098	565046	gene
+			locus_tag	MHR_RS02600
+			old_locus_tag	MHR_0460
+566098	565046	CDS
+			product	phospho-furanose lactonase
+			EC_number	3.1.1.25
+			transl_table	4
+			protein_id	ref|WP_013302280.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302280.1
+567008	566208	gene
+			locus_tag	MHR_RS02605
+			old_locus_tag	MHR_0461
+567008	566208	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302281.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104645.1
+567711	566998	gene
+			locus_tag	MHR_RS02610
+567711	566998	CDS
+			product	ATP-binding cassette domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_015084208.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335629.1
+568538	567693	gene
+			locus_tag	MHR_RS02615
+			old_locus_tag	MHR_0462
+568538	567693	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_227861711.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302282.1
+570676	568592	gene
+			gene	rnr
+			locus_tag	MHR_RS02620
+			old_locus_tag	MHR_0463
+570676	568592	CDS
+			product	ribonuclease R
+			EC_number	3.1.13.1
+			transl_table	4
+			protein_id	ref|WP_013302283.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582760.1
+570936	570703	gene
+			gene	secG
+			locus_tag	MHR_RS02625
+			old_locus_tag	MHR_0464
+570936	570703	CDS
+			product	preprotein translocase subunit SecG
+			transl_table	4
+			protein_id	ref|WP_013302284.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302284.1
+572703	570979	gene
+			locus_tag	MHR_RS02630
+			old_locus_tag	MHR_0465
+572703	570979	CDS
+			product	type 2 periplasmic-binding domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302285.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335632.1
+573520	572693	gene
+			locus_tag	MHR_RS02635
+			old_locus_tag	MHR_0466
+573520	572693	CDS
+			product	ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_013302286.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582759.1
+574397	573513	gene
+			locus_tag	MHR_RS02640
+			old_locus_tag	MHR_0467
+574397	573513	CDS
+			product	ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_013302287.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302287.1
+575718	574378	gene
+			locus_tag	MHR_RS02645
+			old_locus_tag	MHR_0468
+575718	574378	CDS
+			product	ABC transporter ATP-binding protein
+			EC_number	7.-.-.-
+			transl_table	4
+			protein_id	ref|WP_013302288.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335634.1
+576131	576206	gene
+			locus_tag	MHR_RS02650
+			old_locus_tag	MHR_t018
+576131	576206	tRNA
+			product	tRNA-His
+			anticodon	(pos:576164..576166,aa:His,seq:gtg)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+576450	577802	gene
+			gene	eno
+			locus_tag	MHR_RS02655
+			old_locus_tag	MHR_0469
+576450	577802	CDS
+			product	phosphopyruvate hydratase
+			EC_number	4.2.1.11
+			transl_table	4
+			protein_id	ref|WP_013302289.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011290109.1
+577884	579307	gene
+			locus_tag	MHR_RS04225
+			pseudo
+577884	579307	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted; internal stop
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+579689	579384	gene
+			locus_tag	MHR_RS02675
+			old_locus_tag	MHR_0472
+579689	579384	CDS
+			product	thioredoxin family protein
+			EC_number	1.8.-.-
+			transl_table	4
+			protein_id	ref|WP_013302292.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302292.1
+581185	579743	gene
+			gene	proS
+			locus_tag	MHR_RS02680
+			old_locus_tag	MHR_0473
+581185	579743	CDS
+			product	proline--tRNA ligase
+			EC_number	6.1.1.15
+			transl_table	4
+			protein_id	ref|WP_013302293.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335636.1
+582426	582352	gene
+			locus_tag	MHR_RS02685
+			old_locus_tag	MHR_t019
+582426	582352	tRNA
+			product	tRNA-Gln
+			anticodon	(pos:complement(582392..582394),aa:Gln,seq:ttg)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+582513	582430	gene
+			locus_tag	MHR_RS02690
+			old_locus_tag	MHR_t020
+582513	582430	tRNA
+			product	tRNA-Tyr
+			anticodon	(pos:complement(582477..582479),aa:Tyr,seq:gta)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+582903	584338	gene
+			locus_tag	MHR_RS04115
+			pseudo
+582903	584338	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted; internal stop
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+586116	584401	gene
+			gene	ptsP
+			locus_tag	MHR_RS02710
+			old_locus_tag	MHR_0477
+586116	584401	CDS
+			product	phosphoenolpyruvate--protein phosphotransferase
+			EC_number	2.7.3.9
+			transl_table	4
+			protein_id	ref|WP_013302297.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084216.1
+586968	587267	gene
+			gene	rplU
+			locus_tag	MHR_RS02715
+			old_locus_tag	MHR_0478
+586968	587267	CDS
+			product	50S ribosomal protein L21
+			transl_table	4
+			protein_id	ref|WP_013302298.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302298.1
+587277	587534	gene
+			gene	rpmA
+			locus_tag	MHR_RS02720
+			old_locus_tag	MHR_0479
+587277	587534	CDS
+			product	50S ribosomal protein L27
+			transl_table	4
+			protein_id	ref|WP_013302299.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302299.1
+588654	587626	gene
+			locus_tag	MHR_RS02725
+588654	587626	CDS
+			product	YhjD/YihY/BrkB family envelope integrity protein
+			transl_table	4
+			protein_id	ref|WP_015084218.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582754.1
+588759	589523	gene
+			locus_tag	MHR_RS02730
+			old_locus_tag	MHR_0480
+588759	589523	CDS
+			product	DNA-processing protein DprA
+			transl_table	4
+			protein_id	ref|WP_013302300.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302300.1
+589516	589830	gene
+			locus_tag	MHR_RS02735
+589516	589830	CDS
+			product	Mbov_0395 family pilin-like conjugal transfer protein
+			transl_table	4
+			protein_id	ref|WP_014335637.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335637.1
+589830	591068	gene
+			locus_tag	MHR_RS02740
+			old_locus_tag	MHR_0481
+589830	591068	CDS
+			product	Mbov_0396 family ICE element transmembrane protein
+			transl_table	4
+			protein_id	ref|WP_013302301.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335638.1
+591055	593718	gene
+			locus_tag	MHR_RS02745
+			old_locus_tag	MHR_0482
+591055	593718	CDS
+			product	Mbov_0397 family ICE element conjugal transfer ATPase
+			transl_table	4
+			protein_id	ref|WP_013302302.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335639.1
+593855	597925	gene
+			locus_tag	MHR_RS02750
+			old_locus_tag	MHR_0483
+593855	597925	CDS
+			product	Mbov_0399 family ICE element protein
+			transl_table	4
+			protein_id	ref|WP_013302303.1|
+			inference	COORDINATES: protein motif:HMM:NF045892.1
+597941	598747	gene
+			locus_tag	MHR_RS02755
+			old_locus_tag	MHR_0484
+597941	598747	CDS
+			product	HAD-IIB family hydrolase
+			transl_table	4
+			protein_id	ref|WP_013302304.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335642.1
+599679	598789	gene
+			locus_tag	MHR_RS02760
+			old_locus_tag	MHR_0485
+599679	598789	CDS
+			product	5'-3' exonuclease
+			transl_table	4
+			protein_id	ref|WP_013302305.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302305.1
+602611	599672	gene
+			locus_tag	MHR_RS02765
+			old_locus_tag	MHR_0486
+602611	599672	CDS
+			product	DNA polymerase III subunit alpha
+			EC_number	2.7.7.7
+			transl_table	4
+			protein_id	ref|WP_013302306.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302306.1
+604055	602685	gene
+			locus_tag	MHR_RS02770
+			old_locus_tag	MHR_0487
+604055	602685	CDS
+			product	type 1 periplasmic-binding domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302307.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084222.1
+604380	604033	gene
+			gene	rbfA
+			locus_tag	MHR_RS02775
+			old_locus_tag	MHR_0488
+604380	604033	CDS
+			product	30S ribosome-binding factor RbfA
+			transl_table	4
+			protein_id	ref|WP_013302308.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582752.1
+606198	604384	gene
+			gene	infB
+			locus_tag	MHR_RS02780
+			old_locus_tag	MHR_0489
+606198	604384	CDS
+			product	translation initiation factor IF-2
+			transl_table	4
+			protein_id	ref|WP_013302309.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084223.1
+606461	606165	gene
+			locus_tag	MHR_RS02785
+			old_locus_tag	MHR_0490
+606461	606165	CDS
+			product	YlxR family protein
+			transl_table	4
+			protein_id	ref|WP_015084224.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335646.1
+608137	606464	gene
+			gene	nusA
+			locus_tag	MHR_RS02790
+			old_locus_tag	MHR_0491
+608137	606464	CDS
+			product	transcription termination/antitermination protein NusA
+			transl_table	4
+			protein_id	ref|WP_013302311.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335647.1
+608574	608146	gene
+			locus_tag	MHR_RS02795
+			old_locus_tag	MHR_0492
+608574	608146	CDS
+			product	ribosome assembly cofactor RimP
+			transl_table	4
+			protein_id	ref|WP_014335648.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335648.1
+608779	609387	gene
+			locus_tag	MHR_RS02800
+			old_locus_tag	MHR_0493
+608779	609387	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302313.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335649.1
+609418	609720	gene
+			locus_tag	MHR_RS02805
+			old_locus_tag	MHR_0494
+609418	609720	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302314.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302314.1
+609720	611354	gene
+			locus_tag	MHR_RS02810
+			old_locus_tag	MHR_0495
+609720	611354	CDS
+			product	fatty acid kinase ATP-binding subunit FakA
+			EC_number	2.7.2.18
+			transl_table	4
+			protein_id	ref|WP_013302315.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084227.1
+611354	612349	gene
+			gene	plsX
+			locus_tag	MHR_RS02815
+			old_locus_tag	MHR_0496
+611354	612349	CDS
+			product	phosphate acyltransferase PlsX
+			EC_number	2.3.1.274
+			transl_table	4
+			protein_id	ref|WP_013302316.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104610.1
+612354	613031	gene
+			gene	rnc
+			locus_tag	MHR_RS02820
+			old_locus_tag	MHR_0497
+612354	613031	CDS
+			product	ribonuclease III
+			EC_number	3.1.26.3
+			transl_table	4
+			protein_id	ref|WP_013302317.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302317.1
+613104	616043	gene
+			locus_tag	MHR_RS02825
+			old_locus_tag	MHR_0498
+613104	616043	CDS
+			product	chromosome segregation protein SMC
+			transl_table	4
+			protein_id	ref|WP_013302318.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302318.1
+617530	616120	gene
+			locus_tag	MHR_RS04120
+			pseudo
+617530	616120	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+617805	618224	gene
+			gene	rpsL
+			locus_tag	MHR_RS02840
+			old_locus_tag	MHR_0500
+617805	618224	CDS
+			product	30S ribosomal protein S12
+			transl_table	4
+			protein_id	ref|WP_013302320.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011205923.1
+618245	618715	gene
+			gene	rpsG
+			locus_tag	MHR_RS02845
+			old_locus_tag	MHR_0501
+618245	618715	CDS
+			product	30S ribosomal protein S7
+			transl_table	4
+			protein_id	ref|WP_013302321.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013054539.1
+618718	620805	gene
+			gene	fusA
+			locus_tag	MHR_RS02850
+			old_locus_tag	MHR_0502
+618718	620805	CDS
+			product	elongation factor G
+			transl_table	4
+			protein_id	ref|WP_014335653.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335653.1
+620833	621741	gene
+			locus_tag	MHR_RS02855
+			old_locus_tag	MHR_0503
+620833	621741	CDS
+			product	MAGa3780 family membrane protein
+			transl_table	4
+			protein_id	ref|WP_013302323.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084234.1
+621821	623243	gene
+			locus_tag	MHR_RS04125
+			pseudo
+			old_locus_tag	MHR_0504
+621821	623243	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+624950	623523	gene
+			gene	pyk
+			locus_tag	MHR_RS02870
+			old_locus_tag	MHR_0506
+624950	623523	CDS
+			product	pyruvate kinase
+			EC_number	2.7.1.40
+			transl_table	4
+			protein_id	ref|WP_013302326.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302326.1
+625821	625024	gene
+			locus_tag	MHR_RS02875
+			old_locus_tag	MHR_0507
+625821	625024	CDS
+			product	leucine-rich repeat domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302327.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302327.1
+625892	626146	gene
+			locus_tag	MHR_RS02880
+625892	626146	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_041363595.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582746.1
+626907	626179	gene
+			locus_tag	MHR_RS02885
+			old_locus_tag	MHR_0508
+626907	626179	CDS
+			product	YebC/PmpR family DNA-binding transcriptional regulator
+			transl_table	4
+			protein_id	ref|WP_013302328.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084240.1
+627640	626909	gene
+			gene	nadE
+			locus_tag	MHR_RS02890
+			old_locus_tag	MHR_0509
+627640	626909	CDS
+			product	NAD(+) synthase
+			EC_number	6.3.1.5
+			transl_table	4
+			protein_id	ref|WP_013302329.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084241.1
+628581	627664	gene
+			locus_tag	MHR_RS02895
+			old_locus_tag	MHR_0510
+628581	627664	CDS
+			product	type I phosphomannose isomerase catalytic subunit
+			transl_table	4
+			protein_id	ref|WP_013302330.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302330.1
+628649	629593	gene
+			locus_tag	MHR_RS02900
+			old_locus_tag	MHR_0511
+628649	629593	CDS
+			product	PfkB family carbohydrate kinase
+			transl_table	4
+			protein_id	ref|WP_013302331.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582744.1
+629562	630362	gene
+			locus_tag	MHR_RS02905
+			old_locus_tag	MHR_0512
+629562	630362	CDS
+			product	class I SAM-dependent RNA methyltransferase
+			EC_number	2.1.1.-
+			transl_table	4
+			protein_id	ref|WP_013302332.1|
+			inference	COORDINATES: protein motif:HMM:NF017743.7
+630458	630652	gene
+			locus_tag	MHR_RS04450
+			old_locus_tag	MHR_0513
+630458	630652	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302333.1|
+			inference	COORDINATES: protein motif:HMM:NF017743.7
+630747	631103	gene
+			locus_tag	MHR_RS02910
+630747	631103	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014335660.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335660.1
+633063	631174	gene
+			gene	lpdA
+			locus_tag	MHR_RS02915
+			old_locus_tag	MHR_0514
+633063	631174	CDS
+			product	dihydrolipoyl dehydrogenase
+			EC_number	1.8.1.4
+			transl_table	4
+			protein_id	ref|WP_013302334.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302334.1
+634105	633167	gene
+			locus_tag	MHR_RS02920
+			old_locus_tag	MHR_0515
+634105	633167	CDS
+			product	2-oxo acid dehydrogenase subunit E2
+			transl_table	4
+			protein_id	ref|WP_013302335.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302335.1
+635115	634129	gene
+			locus_tag	MHR_RS02925
+			old_locus_tag	MHR_0516
+635115	634129	CDS
+			product	alpha-ketoacid dehydrogenase subunit beta
+			EC_number	1.2.4.-
+			transl_table	4
+			protein_id	ref|WP_013302336.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302336.1
+636219	635119	gene
+			gene	pdhA
+			locus_tag	MHR_RS02930
+			old_locus_tag	MHR_0517
+636219	635119	CDS
+			product	pyruvate dehydrogenase (acetyl-transferring) E1 component subunit alpha
+			transl_table	4
+			protein_id	ref|WP_013302337.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302337.1
+636555	636364	gene
+			gene	rpmB
+			locus_tag	MHR_RS02935
+			old_locus_tag	MHR_0518
+636555	636364	CDS
+			product	50S ribosomal protein L28
+			transl_table	4
+			protein_id	ref|WP_013302338.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011206096.1
+636919	636560	gene
+			gene	rplT
+			locus_tag	MHR_RS02940
+			old_locus_tag	MHR_0519
+636919	636560	CDS
+			product	50S ribosomal protein L20
+			transl_table	4
+			protein_id	ref|WP_013302339.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302339.1
+637151	636963	gene
+			gene	rpmI
+			locus_tag	MHR_RS02945
+			old_locus_tag	MHR_0520
+637151	636963	CDS
+			product	50S ribosomal protein L35
+			transl_table	4
+			protein_id	ref|WP_013302340.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_012498071.1
+637836	637144	gene
+			gene	infC
+			locus_tag	MHR_RS02950
+			old_locus_tag	MHR_0521
+637836	637144	CDS
+			product	translation initiation factor IF-3
+			transl_table	4
+			protein_id	ref|WP_013302341.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011206093.1
+638611	638093	gene
+			locus_tag	MHR_RS02955
+			old_locus_tag	MHR_0522
+638611	638093	CDS
+			product	redoxin domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302342.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302342.1
+641045	638613	gene
+			locus_tag	MHR_RS02960
+			old_locus_tag	MHR_0523
+641045	638613	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302343.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084244.1
+641133	641060	gene
+			locus_tag	MHR_RS02965
+			old_locus_tag	MHR_t021
+641133	641060	tRNA
+			product	tRNA-Trp
+			anticodon	(pos:complement(641099..641101),aa:Trp,seq:cca)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+642256	641153	gene
+			gene	ychF
+			locus_tag	MHR_RS02970
+			old_locus_tag	MHR_0524
+642256	641153	CDS
+			product	redox-regulated ATPase YchF
+			transl_table	4
+			protein_id	ref|WP_013302344.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104525.1
+642556	642314	gene
+			gene	rpsR
+			locus_tag	MHR_RS02975
+			old_locus_tag	MHR_0525
+642556	642314	CDS
+			product	30S ribosomal protein S18
+			transl_table	4
+			protein_id	ref|WP_013302345.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335665.1
+643108	642569	gene
+			locus_tag	MHR_RS02980
+			old_locus_tag	MHR_0526
+643108	642569	CDS
+			product	single-stranded DNA-binding protein
+			transl_table	4
+			protein_id	ref|WP_013302346.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302346.1
+643662	643114	gene
+			gene	rpsF
+			locus_tag	MHR_RS02985
+			old_locus_tag	MHR_0527
+643662	643114	CDS
+			product	30S ribosomal protein S6
+			transl_table	4
+			protein_id	ref|WP_013302347.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302347.1
+644297	643776	gene
+			locus_tag	MHR_RS02990
+			old_locus_tag	MHR_0528
+644297	643776	CDS
+			product	adenine phosphoribosyltransferase
+			EC_number	2.4.2.7
+			transl_table	4
+			protein_id	ref|WP_014335668.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335668.1
+645941	644358	gene
+			locus_tag	MHR_RS02995
+			old_locus_tag	MHR_0529
+645941	644358	CDS
+			product	APC family permease
+			transl_table	4
+			protein_id	ref|WP_013302349.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302349.1
+646002	646077	gene
+			locus_tag	MHR_RS03000
+			old_locus_tag	MHR_t022
+646002	646077	tRNA
+			product	tRNA-Thr
+			anticodon	(pos:646035..646037,aa:Thr,seq:ggt)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+646964	646155	gene
+			locus_tag	MHR_RS03005
+			old_locus_tag	MHR_0530
+646964	646155	CDS
+			product	Cof-type HAD-IIB family hydrolase
+			transl_table	4
+			protein_id	ref|WP_013302350.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104523.1
+648442	646964	gene
+			gene	lysS
+			locus_tag	MHR_RS03010
+			old_locus_tag	MHR_0531
+648442	646964	CDS
+			product	lysine--tRNA ligase
+			EC_number	6.1.1.6
+			transl_table	4
+			protein_id	ref|WP_013302351.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104522.1
+650714	648534	gene
+			gene	ftsH
+			locus_tag	MHR_RS03015
+			old_locus_tag	MHR_0532
+650714	648534	CDS
+			product	ATP-dependent zinc metalloprotease FtsH
+			transl_table	4
+			protein_id	ref|WP_013302352.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302352.1
+651653	650775	gene
+			gene	tilS
+			locus_tag	MHR_RS03020
+			old_locus_tag	MHR_0533
+651653	650775	CDS
+			product	tRNA lysidine(34) synthetase TilS
+			EC_number	6.3.4.19
+			transl_table	4
+			protein_id	ref|WP_013302353.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302353.1
+652185	651610	gene
+			gene	pth
+			locus_tag	MHR_RS03025
+			old_locus_tag	MHR_0534
+652185	651610	CDS
+			product	aminoacyl-tRNA hydrolase
+			EC_number	3.1.1.29
+			transl_table	4
+			protein_id	ref|WP_013302354.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302354.1
+652622	652209	gene
+			gene	ruvX
+			locus_tag	MHR_RS03030
+			old_locus_tag	MHR_0535
+652622	652209	CDS
+			product	Holliday junction resolvase RuvX
+			EC_number	3.1.21.10
+			transl_table	4
+			protein_id	ref|WP_013302355.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084246.1
+653743	652601	gene
+			locus_tag	MHR_RS03035
+			old_locus_tag	MHR_0536
+653743	652601	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302356.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302356.1
+656484	653821	gene
+			gene	alaS
+			locus_tag	MHR_RS03040
+			old_locus_tag	MHR_0537
+656484	653821	CDS
+			product	alanine--tRNA ligase
+			EC_number	6.1.1.7
+			transl_table	4
+			protein_id	ref|WP_013302357.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104521.1
+658243	656561	gene
+			locus_tag	MHR_RS03045
+			old_locus_tag	MHR_0538
+658243	656561	CDS
+			product	LppA-related lipoprotein
+			transl_table	4
+			protein_id	ref|WP_013302358.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302358.1
+659144	658272	gene
+			locus_tag	MHR_RS03050
+			old_locus_tag	MHR_0539
+659144	658272	CDS
+			product	FAD synthase
+			transl_table	4
+			protein_id	ref|WP_013302359.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302359.1
+659965	659153	gene
+			locus_tag	MHR_RS03055
+			old_locus_tag	MHR_0540
+659965	659153	CDS
+			product	YcsE-related riboflavin metabolism phosphatase
+			transl_table	4
+			protein_id	ref|WP_013302360.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302360.1
+660821	659955	gene
+			gene	truB
+			locus_tag	MHR_RS03060
+			old_locus_tag	MHR_0541
+660821	659955	CDS
+			product	tRNA pseudouridine(55) synthase TruB
+			EC_number	5.4.99.25
+			transl_table	4
+			protein_id	ref|WP_014335677.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104518.1
+660995	660911	gene
+			locus_tag	MHR_RS03065
+			old_locus_tag	MHR_t023
+660995	660911	tRNA
+			product	tRNA-Leu
+			anticodon	(pos:complement(660959..660961),aa:Leu,seq:tag)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+661126	661051	gene
+			locus_tag	MHR_RS03070
+			old_locus_tag	MHR_t024
+661126	661051	tRNA
+			product	tRNA-Thr
+			anticodon	(pos:complement(661091..661093),aa:Thr,seq:tgt)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+661205	661130	gene
+			locus_tag	MHR_RS03075
+			old_locus_tag	MHR_t025
+661205	661130	tRNA
+			product	tRNA-Val
+			anticodon	(pos:complement(661170..661172),aa:Val,seq:tac)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+661286	661211	gene
+			locus_tag	MHR_RS03080
+			old_locus_tag	MHR_t026
+661286	661211	tRNA
+			product	tRNA-Glu
+			anticodon	(pos:complement(661251..661253),aa:Glu,seq:ttc)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+661365	661291	gene
+			locus_tag	MHR_RS03085
+			old_locus_tag	MHR_t027
+661365	661291	tRNA
+			product	tRNA-Asn
+			anticodon	(pos:complement(661331..661333),aa:Asn,seq:gtt)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+661591	661406	gene
+			gene	rpmF
+			locus_tag	MHR_RS03090
+661591	661406	CDS
+			product	50S ribosomal protein L32
+			transl_table	4
+			protein_id	ref|WP_014335678.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335678.1
+663898	661712	gene
+			locus_tag	MHR_RS03095
+			old_locus_tag	MHR_0543
+663898	661712	CDS
+			product	phenylalanine--tRNA ligase subunit beta
+			EC_number	6.1.1.20
+			transl_table	4
+			protein_id	ref|WP_013302362.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302362.1
+664866	663910	gene
+			gene	pheS
+			locus_tag	MHR_RS03100
+			old_locus_tag	MHR_0544
+664866	663910	CDS
+			product	phenylalanine--tRNA ligase subunit alpha
+			EC_number	6.1.1.20
+			transl_table	4
+			protein_id	ref|WP_013302363.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302363.1
+666073	664856	gene
+			locus_tag	MHR_RS03105
+			old_locus_tag	MHR_0545
+666073	664856	CDS
+			product	replication-associated recombination protein A
+			transl_table	4
+			protein_id	ref|WP_013302364.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302364.1
+667511	666060	gene
+			locus_tag	MHR_RS03110
+			old_locus_tag	MHR_0546
+667511	666060	CDS
+			product	DUF2130 domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302365.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302365.1
+668670	667699	gene
+			gene	pfkA
+			locus_tag	MHR_RS03115
+			old_locus_tag	MHR_0547
+668670	667699	CDS
+			product	6-phosphofructokinase
+			EC_number	2.7.1.11
+			transl_table	4
+			protein_id	ref|WP_013302366.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582732.1
+668837	668762	gene
+			locus_tag	MHR_RS03120
+			old_locus_tag	MHR_t028
+668837	668762	tRNA
+			product	tRNA-Lys
+			anticodon	(pos:complement(668802..668804),aa:Lys,seq:ttt)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+668928	668842	gene
+			locus_tag	MHR_RS03125
+			old_locus_tag	MHR_t029
+668928	668842	tRNA
+			product	tRNA-Leu
+			anticodon	(pos:complement(668892..668894),aa:Leu,seq:taa)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+669886	669032	gene
+			gene	ylqF
+			locus_tag	MHR_RS03130
+			old_locus_tag	MHR_0548
+669886	669032	CDS
+			product	ribosome biogenesis GTPase YlqF
+			transl_table	4
+			protein_id	ref|WP_013302367.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302367.1
+671241	669904	gene
+			locus_tag	MHR_RS03135
+			old_locus_tag	MHR_0549
+671241	669904	CDS
+			product	endonuclease/exonuclease/phosphatase family protein
+			EC_number	3.1.21.-
+			transl_table	4
+			protein_id	ref|WP_013302368.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104513.1
+671376	673487	gene
+			locus_tag	MHR_RS03140
+			old_locus_tag	MHR_0550
+671376	673487	CDS
+			product	AAA family ATPase
+			transl_table	4
+			protein_id	ref|WP_049763469.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335685.1
+673853	675979	gene
+			locus_tag	MHR_RS04455
+			old_locus_tag	MHR_0551
+673853	675979	CDS
+			product	coiled-coil domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302370.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+675999	678389	gene
+			locus_tag	MHR_RS03155
+			old_locus_tag	MHR_0552
+675999	678389	CDS
+			product	alpha-amylase family glycosyl hydrolase
+			transl_table	4
+			protein_id	ref|WP_013302371.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084259.1
+681075	678508	gene
+			locus_tag	MHR_RS03160
+			old_locus_tag	MHR_0553
+681075	678508	CDS
+			product	ZmpA/ZmpB/ZmpC family metallo-endopeptidase
+			transl_table	4
+			protein_id	ref|WP_041363596.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104507.1
+682005	681460	gene
+			locus_tag	MHR_RS03165
+			old_locus_tag	MHR_0554
+682005	681460	CDS
+			product	DJ-1/PfpI family protein
+			transl_table	4
+			protein_id	ref|WP_013302373.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302373.1
+682574	682071	gene
+			locus_tag	MHR_RS03170
+			old_locus_tag	MHR_0555
+682574	682071	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302374.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302374.1
+682936	682796	gene
+			locus_tag	MHR_RS04285
+682936	682796	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014335691.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335691.1
+683380	683715	gene
+			locus_tag	MHR_RS03175
+683380	683715	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_162467377.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104504.1
+684158	683829	gene
+			locus_tag	MHR_RS03180
+			old_locus_tag	MHR_0556
+684158	683829	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302375.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302375.1
+684524	684171	gene
+			locus_tag	MHR_RS03185
+684524	684171	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_041363597.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582724.1
+685271	684618	gene
+			locus_tag	MHR_RS03190
+			old_locus_tag	MHR_0557
+685271	684618	CDS
+			product	sialidase family protein
+			EC_number	3.2.1.-
+			transl_table	4
+			protein_id	ref|WP_013302376.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335693.1
+685635	685297	gene
+			locus_tag	MHR_RS03195
+685635	685297	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014582723.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582723.1
+686125	685595	gene
+			locus_tag	MHR_RS03200
+			old_locus_tag	MHR_0558
+686125	685595	CDS
+			product	sialidase family protein
+			EC_number	3.2.1.-
+			transl_table	4
+			protein_id	ref|WP_013302377.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084263.1
+686509	686270	gene
+			locus_tag	MHR_RS03205
+686509	686270	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014335695.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335695.1
+686864	688287	gene
+			locus_tag	MHR_RS04135
+			pseudo
+			old_locus_tag	MHR_0559
+686864	688287	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+689651	688443	gene
+			gene	tuf
+			locus_tag	MHR_RS03220
+			old_locus_tag	MHR_0560
+689651	688443	CDS
+			product	elongation factor Tu
+			transl_table	4
+			protein_id	ref|WP_013302379.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_002557626.1
+692437	689843	gene
+			gene	lon
+			locus_tag	MHR_RS03225
+			old_locus_tag	MHR_0561
+692437	689843	CDS
+			product	endopeptidase La
+			EC_number	3.4.21.53
+			transl_table	4
+			protein_id	ref|WP_041363598.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582720.1
+693264	692521	gene
+			locus_tag	MHR_RS03230
+			old_locus_tag	MHR_0562
+693264	692521	CDS
+			product	MPN527 family putative ECF transporter permease subunit
+			transl_table	4
+			protein_id	ref|WP_013302381.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302381.1
+693896	693273	gene
+			gene	upp
+			locus_tag	MHR_RS03235
+			old_locus_tag	MHR_0563
+693896	693273	CDS
+			product	uracil phosphoribosyltransferase
+			EC_number	2.4.2.9
+			transl_table	4
+			protein_id	ref|WP_013302382.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302382.1
+694639	693968	gene
+			gene	deoC
+			locus_tag	MHR_RS03240
+			old_locus_tag	MHR_0564
+694639	693968	CDS
+			product	deoxyribose-phosphate aldolase
+			EC_number	4.1.2.4
+			transl_table	4
+			protein_id	ref|WP_013302383.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084267.1
+695934	694639	gene
+			locus_tag	MHR_RS03245
+			old_locus_tag	MHR_0565
+695934	694639	CDS
+			product	thymidine phosphorylase
+			EC_number	2.4.2.4
+			transl_table	4
+			protein_id	ref|WP_013302384.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335698.1
+696637	695939	gene
+			gene	deoD
+			locus_tag	MHR_RS03250
+			old_locus_tag	MHR_0566
+696637	695939	CDS
+			product	purine-nucleoside phosphorylase
+			EC_number	2.4.2.1
+			transl_table	4
+			protein_id	ref|WP_013302385.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302385.1
+700123	697241	gene
+			gene	secA
+			locus_tag	MHR_RS03260
+			old_locus_tag	MHR_0567
+700123	697241	CDS
+			product	preprotein translocase subunit SecA
+			transl_table	4
+			protein_id	ref|WP_041363599.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104677.1
+700955	701431	gene
+			locus_tag	MHR_RS03265
+			old_locus_tag	MHR_0568
+700955	701431	CDS
+			product	deoxycytidylate deaminase
+			EC_number	3.5.4.12
+			transl_table	4
+			protein_id	ref|WP_015084270.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084270.1
+701493	702959	gene
+			locus_tag	MHR_RS04140
+			old_locus_tag	MHR_0569
+701493	702959	CDS
+			product	IS3 family transposase
+			transl_table	4
+			protein_id	ref|WP_013302388.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+703391	704260	gene
+			locus_tag	MHR_RS03280
+			old_locus_tag	MHR_0570
+703391	704260	CDS
+			product	pseudouridine synthase
+			transl_table	4
+			protein_id	ref|WP_013302389.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302389.1
+704267	704575	gene
+			locus_tag	MHR_RS03285
+			old_locus_tag	MHR_0571
+704267	704575	CDS
+			product	glutamyl-tRNA amidotransferase subunit C
+			transl_table	4
+			protein_id	ref|WP_013302390.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302390.1
+704568	705944	gene
+			locus_tag	MHR_RS03290
+			old_locus_tag	MHR_0572
+704568	705944	CDS
+			product	amidase family protein
+			transl_table	4
+			protein_id	ref|WP_013302391.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335703.1
+705934	707358	gene
+			gene	gatB
+			locus_tag	MHR_RS03295
+			old_locus_tag	MHR_0573
+705934	707358	CDS
+			product	Asp-tRNA(Asn)/Glu-tRNA(Gln) amidotransferase subunit GatB
+			transl_table	4
+			protein_id	ref|WP_013302392.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104564.1
+707447	708268	gene
+			locus_tag	MHR_RS03300
+			old_locus_tag	MHR_0574
+707447	708268	CDS
+			product	MurR/RpiR family transcriptional regulator
+			transl_table	4
+			protein_id	ref|WP_080518774.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335705.1
+708268	708960	gene
+			locus_tag	MHR_RS03305
+			old_locus_tag	MHR_0575
+708268	708960	CDS
+			product	glucosamine-6-phosphate deaminase
+			transl_table	4
+			protein_id	ref|WP_013302394.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302394.1
+709797	708955	gene
+			locus_tag	MHR_RS04460
+			pseudo
+709797	708955	CDS
+			product	ROK family protein
+			transl_table	4
+			pseudo
+			note	internal stop
+			inference	COORDINATES: protein motif:HMM:NF012692.7
+710026	710845	gene
+			locus_tag	MHR_RS04230
+			pseudo
+710026	710845	CDS
+			product	N-acetylneuraminate lyase
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: protein motif:HMM:NF012904.7
+710847	711359	gene
+			locus_tag	MHR_RS03330
+710847	711359	CDS
+			product	sodium:solute symporter family transporter
+			transl_table	4
+			protein_id	ref|WP_023518736.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084276.1
+711395	712423	gene
+			locus_tag	MHR_RS03335
+			old_locus_tag	MHR_0579
+711395	712423	CDS
+			product	sodium:solute symporter family transporter
+			transl_table	4
+			protein_id	ref|WP_337969090.1|
+			inference	COORDINATES: protein motif:HMM:NF012686.7
+712661	712953	gene
+			locus_tag	MHR_RS04465
+			pseudo
+712661	712953	CDS
+			product	beta/alpha barrel domain-containing protein
+			transl_table	4
+			pseudo
+			note	frameshifted
+			inference	COORDINATES: protein motif:HMM:NF016054.7
+712965	713270	gene
+			locus_tag	MHR_RS04470
+712965	713270	CDS
+			product	beta/alpha barrel domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_308507288.1|
+			inference	COORDINATES: protein motif:HMM:NF016054.7
+713400	714164	gene
+			locus_tag	MHR_RS03345
+			old_locus_tag	MHR_0582
+713400	714164	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302397.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084281.1
+714145	714891	gene
+			locus_tag	MHR_RS03350
+			old_locus_tag	MHR_0583
+714145	714891	CDS
+			product	DUF3800 domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302398.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302398.1
+717207	715873	gene
+			gene	mnmE
+			locus_tag	MHR_RS03355
+			old_locus_tag	MHR_0584
+717207	715873	CDS
+			product	tRNA uridine-5-carboxymethylaminomethyl(34) synthesis GTPase MnmE
+			transl_table	4
+			protein_id	ref|WP_013302399.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011206009.1
+718823	717207	gene
+			locus_tag	MHR_RS03360
+			old_locus_tag	MHR_0585
+718823	717207	CDS
+			product	ABC-F family ATP-binding cassette domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302400.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302400.1
+720551	718962	gene
+			locus_tag	MHR_RS03365
+			old_locus_tag	MHR_0586
+720551	718962	CDS
+			product	APC family permease
+			transl_table	4
+			protein_id	ref|WP_013302401.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302401.1
+721078	720644	gene
+			locus_tag	MHR_RS03370
+			old_locus_tag	MHR_0587
+721078	720644	CDS
+			product	Dps family protein
+			transl_table	4
+			protein_id	ref|WP_013302402.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335708.1
+721170	721625	gene
+			locus_tag	MHR_RS03375
+721170	721625	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014335709.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104567.1
+721639	723660	gene
+			locus_tag	MHR_RS03380
+			old_locus_tag	MHR_0588
+721639	723660	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302403.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084286.1
+723682	724374	gene
+			locus_tag	MHR_RS03385
+			old_locus_tag	MHR_0589
+723682	724374	CDS
+			product	LemA family protein
+			transl_table	4
+			protein_id	ref|WP_013302404.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335710.1
+724452	724952	gene
+			locus_tag	MHR_RS03390
+			old_locus_tag	MHR_0590
+724452	724952	CDS
+			product	dUTP diphosphatase
+			EC_number	3.6.1.23
+			transl_table	4
+			protein_id	ref|WP_041363660.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335711.1
+726387	724975	gene
+			locus_tag	MHR_RS03395
+			old_locus_tag	MHR_0591
+726387	724975	CDS
+			product	glucose-6-phosphate isomerase
+			EC_number	5.3.1.9
+			transl_table	4
+			protein_id	ref|WP_013302406.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335712.1
+727950	726457	gene
+			locus_tag	MHR_RS03400
+			old_locus_tag	MHR_0592
+727950	726457	CDS
+			product	glucose-6-phosphate isomerase
+			EC_number	5.3.1.9
+			transl_table	4
+			protein_id	ref|WP_013302407.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302407.1
+728339	727917	gene
+			locus_tag	MHR_RS03405
+728339	727917	CDS
+			product	S1 RNA-binding domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_041363600.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084288.1
+732751	728378	gene
+			locus_tag	MHR_RS03410
+			old_locus_tag	MHR_0593
+732751	728378	CDS
+			product	PolC-type DNA polymerase III
+			EC_number	2.7.7.7
+			transl_table	4
+			protein_id	ref|WP_013302408.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335715.1
+733704	732781	gene
+			locus_tag	MHR_RS03415
+			old_locus_tag	MHR_0594
+733704	732781	CDS
+			product	phosphatidate cytidylyltransferase
+			EC_number	2.7.7.41
+			transl_table	4
+			protein_id	ref|WP_013302409.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335716.1
+734269	733709	gene
+			locus_tag	MHR_RS03420
+			old_locus_tag	MHR_0595
+734269	733709	CDS
+			product	ribosome-recycling factor
+			transl_table	4
+			protein_id	ref|WP_013302410.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302410.1
+734990	734274	gene
+			gene	pyrH
+			locus_tag	MHR_RS03425
+			old_locus_tag	MHR_0596
+734990	734274	CDS
+			product	UMP kinase
+			EC_number	2.7.4.22
+			transl_table	4
+			protein_id	ref|WP_013302411.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302411.1
+735101	736471	gene
+			locus_tag	MHR_RS03430
+			old_locus_tag	MHR_0597
+735101	736471	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302412.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302412.1
+737353	736472	gene
+			locus_tag	MHR_RS03435
+			old_locus_tag	MHR_0598
+737353	736472	CDS
+			product	ZIP family metal transporter
+			transl_table	4
+			protein_id	ref|WP_013302413.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084292.1
+739002	737488	gene
+			gene	gpmI
+			locus_tag	MHR_RS03440
+			old_locus_tag	MHR_0599
+739002	737488	CDS
+			product	2,3-bisphosphoglycerate-independent phosphoglycerate mutase
+			EC_number	5.4.2.12
+			transl_table	4
+			protein_id	ref|WP_014335720.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335720.1
+739309	739019	gene
+			locus_tag	MHR_RS03445
+			old_locus_tag	MHR_0600
+739309	739019	CDS
+			product	YneF family protein
+			transl_table	4
+			protein_id	ref|WP_013302415.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302415.1
+742499	739353	gene
+			locus_tag	MHR_RS03450
+			old_locus_tag	MHR_0601
+742499	739353	CDS
+			product	DEAD/DEAH box helicase
+			EC_number	3.6.4.-
+			transl_table	4
+			protein_id	ref|WP_013302416.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302416.1
+742857	742492	gene
+			locus_tag	MHR_RS03455
+			old_locus_tag	MHR_0602
+742857	742492	CDS
+			product	PTS sugar transporter subunit IIB
+			EC_number	2.7.1.-
+			transl_table	4
+			protein_id	ref|WP_013302417.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335722.1
+742908	743891	gene
+			gene	trpS
+			locus_tag	MHR_RS03460
+			old_locus_tag	MHR_0603
+742908	743891	CDS
+			product	tryptophan--tRNA ligase
+			EC_number	6.1.1.2
+			transl_table	4
+			protein_id	ref|WP_013302418.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084295.1
+743893	745638	gene
+			gene	thrS
+			locus_tag	MHR_RS03465
+			old_locus_tag	MHR_0604
+743893	745638	CDS
+			product	threonine--tRNA ligase
+			EC_number	6.1.1.3
+			transl_table	4
+			protein_id	ref|WP_013302419.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302419.1
+745631	746101	gene
+			locus_tag	MHR_RS03470
+745631	746101	CDS
+			product	MAG3450 family membrane protein
+			transl_table	4
+			protein_id	ref|WP_014335725.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335725.1
+746580	746149	gene
+			gene	msrB
+			locus_tag	MHR_RS03475
+			old_locus_tag	MHR_0605
+746580	746149	CDS
+			product	peptide-methionine (R)-S-oxide reductase MsrB
+			EC_number	1.8.4.12
+			transl_table	4
+			protein_id	ref|WP_013302420.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104573.1
+746857	746585	gene
+			locus_tag	MHR_RS03480
+746857	746585	CDS
+			product	HPr family phosphocarrier protein
+			transl_table	4
+			protein_id	ref|WP_014335727.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084296.1
+747253	747576	gene
+			locus_tag	MHR_RS03485
+747253	747576	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_041363601.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582700.1
+749473	748049	gene
+			locus_tag	MHR_RS04160
+			pseudo
+749473	748049	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted; internal stop
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+750988	749525	gene
+			gene	tig
+			locus_tag	MHR_RS03510
+			old_locus_tag	MHR_0609
+750988	749525	CDS
+			product	trigger factor
+			EC_number	5.2.1.8
+			transl_table	4
+			protein_id	ref|WP_013302424.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302424.1
+752311	751061	gene
+			locus_tag	MHR_RS03515
+			old_locus_tag	MHR_0610
+752311	751061	CDS
+			product	Hsp33 family molecular chaperone HslO
+			transl_table	4
+			protein_id	ref|WP_013302425.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335738.1
+753393	752392	gene
+			gene	gap
+			locus_tag	MHR_RS03520
+			old_locus_tag	MHR_0611
+753393	752392	CDS
+			product	type I glyceraldehyde-3-phosphate dehydrogenase
+			transl_table	4
+			protein_id	ref|WP_013302426.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302426.1
+755321	753528	gene
+			gene	dnaK
+			locus_tag	MHR_RS03525
+			old_locus_tag	MHR_0612
+755321	753528	CDS
+			product	molecular chaperone DnaK
+			transl_table	4
+			protein_id	ref|WP_013302427.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_011283883.1
+756246	755476	gene
+			locus_tag	MHR_RS03530
+			old_locus_tag	MHR_0613
+756246	755476	CDS
+			product	MurR/RpiR family transcriptional regulator
+			transl_table	4
+			protein_id	ref|WP_013302428.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302428.1
+756986	756339	gene
+			locus_tag	MHR_RS03535
+			old_locus_tag	MHR_0614
+756986	756339	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302429.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302429.1
+757324	757587	gene
+			locus_tag	MHR_RS03540
+757324	757587	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_041363603.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582695.1
+758547	757573	gene
+			locus_tag	MHR_RS03545
+			old_locus_tag	MHR_0616
+758547	757573	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969091.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302430.1
+759096	758683	gene
+			locus_tag	MHR_RS04475
+			old_locus_tag	MHR_0617
+759096	758683	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302431.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+759940	759599	gene
+			locus_tag	MHR_RS03560
+			old_locus_tag	MHR_0618
+759940	759599	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_015084301.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084301.1
+760975	760493	gene
+			locus_tag	MHR_RS03565
+			old_locus_tag	MHR_0619
+760975	760493	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302433.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084299.1
+761970	762548	gene
+			locus_tag	MHR_RS03575
+			old_locus_tag	MHR_0620
+761970	762548	CDS
+			product	thymidine kinase
+			EC_number	2.7.1.21
+			transl_table	4
+			protein_id	ref|WP_013302434.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302434.1
+762585	762658	gene
+			locus_tag	MHR_RS03580
+			old_locus_tag	MHR_t030
+762585	762658	tRNA
+			product	tRNA-Gly
+			anticodon	(pos:762617..762619,aa:Gly,seq:tcc)
+			inference	COORDINATES: profile:tRNAscan-SE:2.0.12
+762984	764449	gene
+			locus_tag	MHR_RS04165
+			pseudo
+762984	764449	CDS
+			product	IS3 family transposase
+			transl_table	4
+			pseudo
+			note	frameshifted; internal stop
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_086558034.1
+766257	764518	gene
+			locus_tag	MHR_RS03595
+			old_locus_tag	MHR_0623
+766257	764518	CDS
+			product	ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_013302437.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302437.1
+767008	766250	gene
+			locus_tag	MHR_RS03600
+			old_locus_tag	MHR_0624
+767008	766250	CDS
+			product	ATP-binding cassette domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302438.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335741.1
+768200	766989	gene
+			gene	cypl
+			locus_tag	MHR_RS03605
+			old_locus_tag	MHR_0625
+768200	766989	CDS
+			product	ABC transporter thiamine pyrophosphate-binding lipoprotein p37/Cypl
+			transl_table	4
+			protein_id	ref|WP_041363604.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084309.1
+768340	768251	regulatory
+			note	TPP riboswitch
+			bound_moiety	thiamine pyrophosphate
+			inference	COORDINATES: nucleotide motif:Rfam:15.0:RF00059
+			inference	COORDINATES: profile:INFERNAL:1.1.5
+			regulatory_class	riboswitch
+			db_xref	RFAM:RF00059
+768727	768392	gene
+			gene	hinT
+			locus_tag	MHR_RS03610
+			old_locus_tag	MHR_0626
+768727	768392	CDS
+			product	histidine triad protein HinT
+			transl_table	4
+			protein_id	ref|WP_013302440.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302440.1
+770404	768761	gene
+			locus_tag	MHR_RS03615
+			old_locus_tag	MHR_0627
+770404	768761	CDS
+			product	HinT-interacting membrane complex lipoprotein P60
+			transl_table	4
+			protein_id	ref|WP_337969092.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302441.1
+772578	770410	gene
+			locus_tag	MHR_RS03620
+			old_locus_tag	MHR_0628
+772578	770410	CDS
+			product	HinT-interacting membrane complex protein P80
+			transl_table	4
+			protein_id	ref|WP_013302442.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302442.1
+773631	772705	gene
+			locus_tag	MHR_RS03625
+773631	772705	CDS
+			product	SPFH domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_014335745.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335745.1
+774155	773634	gene
+			locus_tag	MHR_RS03630
+			old_locus_tag	MHR_0630
+774155	773634	CDS
+			product	NfeD family protein
+			transl_table	4
+			protein_id	ref|WP_013302444.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582685.1
+774209	775006	gene
+			locus_tag	MHR_RS03635
+774209	775006	CDS
+			product	HAD-IIB family hydrolase
+			transl_table	4
+			protein_id	ref|WP_041363605.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335747.1
+775007	775594	gene
+			locus_tag	MHR_RS03640
+775007	775594	CDS
+			product	nucleoside/nucleotide kinase family protein
+			transl_table	4
+			protein_id	ref|WP_041363606.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104445.1
+775626	776534	gene
+			locus_tag	MHR_RS03645
+			old_locus_tag	MHR_0632
+775626	776534	CDS
+			product	DnaD domain protein
+			transl_table	4
+			protein_id	ref|WP_013302445.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335749.1
+776536	777405	gene
+			locus_tag	MHR_RS03650
+			old_locus_tag	MHR_0633
+776536	777405	CDS
+			product	DnaA ATPase domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302446.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084316.1
+777901	777470	gene
+			locus_tag	MHR_RS03655
+			old_locus_tag	MHR_0634
+777901	777470	CDS
+			product	DUF3899 domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302447.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302447.1
+780223	777920	gene
+			locus_tag	MHR_RS03660
+			old_locus_tag	MHR_0635
+780223	777920	CDS
+			product	ATP-binding cassette domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302448.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084317.1
+781287	780223	gene
+			locus_tag	MHR_RS03665
+			old_locus_tag	MHR_0636
+781287	780223	CDS
+			product	ABC transporter ATP-binding protein
+			transl_table	4
+			protein_id	ref|WP_013302449.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302449.1
+782441	781287	gene
+			locus_tag	MHR_RS03670
+			old_locus_tag	MHR_0637
+782441	781287	CDS
+			product	ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_013302450.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084318.1
+783489	782434	gene
+			locus_tag	MHR_RS03675
+			old_locus_tag	MHR_0638
+783489	782434	CDS
+			product	ABC transporter permease
+			transl_table	4
+			protein_id	ref|WP_013302451.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302451.1
+786329	783489	gene
+			locus_tag	MHR_RS03680
+			old_locus_tag	MHR_0639
+786329	783489	CDS
+			product	OppA family ABC transporter substrate-binding lipoprotein
+			transl_table	4
+			protein_id	ref|WP_013302452.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104446.1
+786909	786568	gene
+			locus_tag	MHR_RS03685
+786909	786568	CDS
+			product	Smr/MutS family protein
+			transl_table	4
+			protein_id	ref|WP_041363607.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582680.1
+787720	786884	gene
+			gene	mutM
+			locus_tag	MHR_RS03690
+			old_locus_tag	MHR_0640
+787720	786884	CDS
+			product	DNA-formamidopyrimidine glycosylase
+			EC_number	3.2.2.23
+			transl_table	4
+			protein_id	ref|WP_013302453.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014582679.1
+788181	787720	gene
+			gene	rpiB
+			locus_tag	MHR_RS03695
+			old_locus_tag	MHR_0641
+788181	787720	CDS
+			product	ribose 5-phosphate isomerase B
+			EC_number	5.3.1.6
+			transl_table	4
+			protein_id	ref|WP_013302454.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335756.1
+788915	788184	gene
+			locus_tag	MHR_RS03700
+			old_locus_tag	MHR_0642
+788915	788184	CDS
+			product	Sua5/YciO/YrdC/YwlC family protein
+			transl_table	4
+			protein_id	ref|WP_013302455.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335757.1
+789994	788921	gene
+			locus_tag	MHR_RS03705
+			old_locus_tag	MHR_0643
+789994	788921	CDS
+			product	YitT family protein
+			transl_table	4
+			protein_id	ref|WP_337969093.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302456.1
+790166	790070	gene
+			gene	ffs
+			locus_tag	MHR_RS04170
+790166	790070	ncRNA
+			ncRNA_class	SRP_RNA
+			product	signal recognition particle sRNA small type
+			inference	COORDINATES: nucleotide motif:Rfam:15.0:RF00169
+			inference	COORDINATES: profile:INFERNAL:1.1.5
+			db_xref	RFAM:RF00169
+790263	792257	gene
+			locus_tag	MHR_RS03710
+			old_locus_tag	MHR_0644
+790263	792257	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302457.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335758.1
+794284	792323	gene
+			gene	uvrB
+			locus_tag	MHR_RS03715
+			old_locus_tag	MHR_0645
+794284	792323	CDS
+			product	excinuclease ABC subunit UvrB
+			EC_number	3.1.25.-
+			transl_table	4
+			protein_id	ref|WP_041363608.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104449.1
+794933	794379	gene
+			locus_tag	MHR_RS03720
+			old_locus_tag	MHR_0646
+794933	794379	CDS
+			product	inorganic diphosphatase
+			transl_table	4
+			protein_id	ref|WP_013302459.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335760.1
+795794	794946	gene
+			locus_tag	MHR_RS03725
+			old_locus_tag	MHR_0647
+795794	794946	CDS
+			product	MAG0110 family membrane protein
+			transl_table	4
+			protein_id	ref|WP_013302460.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084324.1
+796659	795814	gene
+			gene	whiA
+			locus_tag	MHR_RS03730
+			old_locus_tag	MHR_0648
+796659	795814	CDS
+			product	DNA-binding protein WhiA
+			transl_table	4
+			protein_id	ref|WP_013302461.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302461.1
+796808	796703	gene
+			gene	rrf
+			locus_tag	MHR_RS03735
+796808	796703	rRNA
+			product	5S ribosomal RNA
+			inference	COORDINATES: nucleotide motif:Rfam:15.0:RF00001
+			inference	COORDINATES: profile:INFERNAL:1.1.5
+			db_xref	RFAM:RF00001
+797557	796880	gene
+			locus_tag	MHR_RS03740
+			old_locus_tag	MHR_0649
+797557	796880	CDS
+			product	potassium channel family protein
+			transl_table	4
+			protein_id	ref|WP_013302462.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302462.1
+797665	799260	gene
+			locus_tag	MHR_RS03745
+			old_locus_tag	MHR_0650
+797665	799260	CDS
+			product	potassium transporter TrkG
+			transl_table	4
+			protein_id	ref|WP_013302463.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084325.1
+800055	799354	gene
+			locus_tag	MHR_RS03750
+			old_locus_tag	MHR_0651
+800055	799354	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302464.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302464.1
+800243	801475	gene
+			locus_tag	MHR_RS03755
+			old_locus_tag	MHR_0652
+800243	801475	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302465.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335762.1
+803106	801712	gene
+			locus_tag	MHR_RS03760
+			old_locus_tag	MHR_0653
+803106	801712	CDS
+			product	MSC_0618 family F1-like ATPase beta subunit
+			transl_table	4
+			protein_id	ref|WP_013302466.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302466.1
+804629	803106	gene
+			locus_tag	MHR_RS03765
+			old_locus_tag	MHR_0654
+804629	803106	CDS
+			product	MSC_0619 family F1-like ATPase alpha subunit
+			transl_table	4
+			protein_id	ref|WP_013302467.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302467.1
+807006	804631	gene
+			locus_tag	MHR_RS03770
+			old_locus_tag	MHR_0655
+807006	804631	CDS
+			product	MSC_0620 family F1-like ATPase-associated subunit
+			transl_table	4
+			protein_id	ref|WP_013302468.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335764.1
+807463	806999	gene
+			locus_tag	MHR_RS03775
+807463	806999	CDS
+			product	MSC_0621 family F1-like ATPase epsilon subunit
+			transl_table	4
+			protein_id	ref|WP_014335765.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335765.1
+808373	807453	gene
+			locus_tag	MHR_RS03780
+			old_locus_tag	MHR_0656
+808373	807453	CDS
+			product	MSC_0622 family F1-like ATPase gamma subunit
+			transl_table	4
+			protein_id	ref|WP_013302469.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302469.1
+808972	808382	gene
+			locus_tag	MHR_RS03785
+			old_locus_tag	MHR_0657
+808972	808382	CDS
+			product	DUF2714 domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_013302470.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335766.1
+810518	808962	gene
+			locus_tag	MHR_RS03790
+			old_locus_tag	MHR_0658
+810518	808962	CDS
+			product	MSC_0624 family F1-like ATPase-associated membrane protein
+			transl_table	4
+			protein_id	ref|WP_013302471.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302471.1
+813086	810558	gene
+			gene	mip
+			locus_tag	MHR_RS03795
+			old_locus_tag	MHR_0659
+813086	810558	CDS
+			product	Ig-specific serine endopeptidase MIP
+			EC_number	3.4.21.-
+			transl_table	4
+			protein_id	ref|WP_013302472.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302472.1
+815651	813096	gene
+			locus_tag	MHR_RS03800
+			old_locus_tag	MHR_0660
+815651	813096	CDS
+			product	putative immunoglobulin-blocking virulence protein
+			transl_table	4
+			protein_id	ref|WP_013302473.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302473.1
+816286	815807	gene
+			locus_tag	MHR_RS03805
+			old_locus_tag	MHR_0684
+816286	815807	CDS
+			product	dihydrofolate reductase
+			EC_number	1.5.1.3
+			transl_table	4
+			protein_id	ref|WP_013302497.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335770.1
+817146	816286	gene
+			gene	thyA
+			locus_tag	MHR_RS03810
+			old_locus_tag	MHR_0661
+817146	816286	CDS
+			product	thymidylate synthase
+			EC_number	2.1.1.45
+			transl_table	4
+			protein_id	ref|WP_013302474.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_010869385.1
+817377	818411	gene
+			gene	nrdF
+			locus_tag	MHR_RS03815
+			old_locus_tag	MHR_0662
+817377	818411	CDS
+			product	class 1b ribonucleoside-diphosphate reductase subunit beta
+			EC_number	1.17.4.1
+			transl_table	4
+			protein_id	ref|WP_013302475.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_009885766.1
+818415	818876	gene
+			gene	nrdI
+			locus_tag	MHR_RS03820
+			old_locus_tag	MHR_0663
+818415	818876	CDS
+			product	class Ib ribonucleoside-diphosphate reductase assembly flavoprotein NrdI
+			transl_table	4
+			protein_id	ref|WP_013302476.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_010869386.1
+818951	821116	gene
+			gene	nrdE
+			locus_tag	MHR_RS03825
+			old_locus_tag	MHR_0664
+818951	821116	CDS
+			product	class 1b ribonucleoside-diphosphate reductase subunit alpha
+			EC_number	1.17.4.1
+			transl_table	4
+			protein_id	ref|WP_013302477.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_009885768.1
+821118	821582	gene
+			locus_tag	MHR_RS03830
+			old_locus_tag	MHR_0665
+821118	821582	CDS
+			product	NanQ anomerase/TabA/YiaL family protein
+			transl_table	4
+			protein_id	ref|WP_014335771.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335771.1
+821901	822551	gene
+			locus_tag	MHR_RS03835
+			old_locus_tag	MHR_0666
+821901	822551	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_337969094.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302479.1
+822512	824932	gene
+			locus_tag	MHR_RS04480
+			old_locus_tag	MHR_0667
+822512	824932	CDS
+			product	AAA domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_337969095.1|
+			inference	COORDINATES: protein motif:HMM:NF024486.7
+825085	825714	gene
+			locus_tag	MHR_RS04485
+			old_locus_tag	MHR_0668
+825085	825714	CDS
+			product	AAA domain-containing protein
+			transl_table	4
+			protein_id	ref|WP_420704353.1|
+			inference	COORDINATES: protein motif:HMM:NF024487.7
+825758	825919	gene
+			locus_tag	MHR_RS04510
+825758	825919	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_420704354.1|
+			inference	COORDINATES: protein motif:HMM:NF024487.7
+825906	826445	gene
+			locus_tag	MHR_RS04290
+			old_locus_tag	MHR_0669
+825906	826445	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302482.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+826602	828077	gene
+			locus_tag	MHR_RS04490
+			old_locus_tag	MHR_0670
+826602	828077	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302483.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302483.1
+828121	828750	gene
+			locus_tag	MHR_RS03860
+			old_locus_tag	MHR_0671
+828121	828750	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302484.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104459.1
+828922	829083	gene
+			locus_tag	MHR_RS04295
+828922	829083	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_014335778.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335778.1
+829087	830085	gene
+			locus_tag	MHR_RS03865
+			old_locus_tag	MHR_0672
+829087	830085	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302485.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104460.1
+830185	831036	gene
+			locus_tag	MHR_RS03870
+			old_locus_tag	MHR_0673
+830185	831036	CDS
+			product	AAA family ATPase
+			transl_table	4
+			protein_id	ref|WP_013302486.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_020104461.1
+831617	831099	gene
+			locus_tag	MHR_RS03875
+			old_locus_tag	MHR_0674
+831617	831099	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302487.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302487.1
+831732	831592	gene
+			locus_tag	MHR_RS04495
+831732	831592	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_235684611.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+832060	831761	gene
+			locus_tag	MHR_RS04500
+			old_locus_tag	MHR_0675
+832060	831761	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302488.1|
+			inference	COORDINATES: ab initio prediction:GeneMarkS-2+
+833235	832309	gene
+			locus_tag	MHR_RS03885
+			old_locus_tag	MHR_0676
+833235	832309	CDS
+			product	hypothetical protein
+			transl_table	4
+			protein_id	ref|WP_013302489.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_015084342.1
+835520	833259	gene
+			locus_tag	MHR_RS03890
+			old_locus_tag	MHR_0677
+835520	833259	CDS
+			product	MSC_0775 family lipoprotein
+			transl_table	4
+			protein_id	ref|WP_013302490.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_215773153.1
+836386	835535	gene
+			locus_tag	MHR_RS03895
+			old_locus_tag	MHR_0678
+836386	835535	CDS
+			product	MAG4940 family membrane protein
+			transl_table	4
+			protein_id	ref|WP_013302491.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_013302491.1
+838783	836945	gene
+			gene	yidC
+			locus_tag	MHR_RS03900
+			old_locus_tag	MHR_0679
+838783	836945	CDS
+			product	membrane protein insertase YidC
+			transl_table	4
+			protein_id	ref|WP_013302492.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_014335785.1
+839115	838765	gene
+			gene	rnpA
+			locus_tag	MHR_RS03905
+			old_locus_tag	MHR_0680
+839115	838765	CDS
+			product	ribonuclease P protein component
+			EC_number	3.1.26.5
+			transl_table	4
+			protein_id	ref|WP_013302493.1|
+			inference	COORDINATES: protein motif:HMM:TIGR00188.1
+839258	839115	gene
+			gene	rpmH
+			locus_tag	MHR_RS03910
+			old_locus_tag	MHR_0685
+839258	839115	CDS
+			product	50S ribosomal protein L34
+			transl_table	4
+			protein_id	ref|WP_013302498.1|
+			inference	COORDINATES: similar to AA sequence:RefSeq:WP_010321002.1
+

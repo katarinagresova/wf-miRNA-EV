@@ -21,7 +21,7 @@ def parse_args():
     p.add_argument("--hits", required=True, help="rrna.hits.tsv.gz: rank, ref, offset, length, mismatches")
     p.add_argument("--contaminant", required=True, help="contaminant.hits.tsv.gz: as --hits, plus strand")
     p.add_argument("--features", required=True, help="rRNA regions: ref, start, end, name")
-    p.add_argument("--db", default="mirbase")
+    p.add_argument("--db", required=True, help="miRNA database whose read classes are used")
     p.add_argument("--contaminant-min-len", type=int, required=True)
     p.add_argument("--output", required=True)
     return p.parse_args()

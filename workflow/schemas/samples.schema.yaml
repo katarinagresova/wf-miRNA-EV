@@ -1,0 +1,17 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+description: wf-miRNA-EV sample sheet (TSV, one row per library). Other columns are copied into the summary tables.
+type: object
+
+properties:
+  sample:
+    type: string
+    pattern: "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    description: library name; it is part of the output paths
+  fastq:
+    type: string
+    description: path to the single-end FASTQ (gzip)
+  batch:
+    type: string
+    description: sequencing run; the insert length plot has one panel per batch
+
+required: [sample, fastq]

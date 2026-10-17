@@ -1,0 +1,3 @@
+sample	fastq	batch
+ev_1	data/ev_1.fastq.gz	run1
+cells_1	data/cells_1.fastq.gz	run2

@@ -80,13 +80,14 @@ def arms_table(precursors, matures, path):
 
 
 def mirbase(args):
-    """miRBase: human hairpins as the reference, human mature sequences located on them."""
-    hairpins = {h.split()[0]: dna(s) for h, s in read_fasta(args.hairpin) if h.startswith("hsa-")}
-    matures = {h.split()[0]: dna(s) for h, s in read_fasta(args.mature) if h.startswith("hsa-")}
+    """miRBase: the hairpins of one species as the reference, its mature sequences located on them."""
+    prefix = f"{args.species}-"
+    hairpins = {h.split()[0]: dna(s) for h, s in read_fasta(args.hairpin) if h.startswith(prefix)}
+    matures = {h.split()[0]: dna(s) for h, s in read_fasta(args.mature) if h.startswith(prefix)}
     write_fasta(((f"{n}|miRNA|{n}", s) for n, s in hairpins.items()), args.fasta)
     rows = arms_table(hairpins, matures, args.arms)
     located = {r[1] for r in rows}
-    print(f"miRBase: {len(hairpins)} hsa hairpins, {len(matures)} hsa mature, {len(located)} located on a hairpin")
+    print(f"miRBase: {len(hairpins)} {args.species} hairpins, {len(matures)} {args.species} mature, {len(located)} located on a hairpin")
     missing = sorted(set(matures) - located)
     if missing:
         raise SystemExit(f"{len(missing)} mature sequences not found on any hairpin: {missing[:10]}")
@@ -165,7 +166,8 @@ def trna(args):
     """Mature tRNAs: GtRNAdb nuclear (high confidence) plus Ensembl mt-tRNAs, all with the 3' CCA added."""
     records = []
     for h, s in read_fasta(args.gtrnadb):
-        name = h.split()[0].removeprefix("Homo_sapiens_")
+        # Genus_species_tRNA-Gly-GCC-2-1 -> tRNA-Gly-GCC-2-1
+        name = re.sub(r"^[A-Z][a-z]+_[a-z]+_", "", h.split()[0])
         records.append((f"{name}|tRNA|{name}", dna(s) + "CCA"))
     n_nuc = len(records)
     for h, s in read_fasta(args.ncrna):
@@ -292,6 +294,7 @@ def main():
     sub = p.add_subparsers(dest="cmd", required=True)
 
     s = sub.add_parser("mirbase")
+    s.add_argument("--species", required=True, help="miRBase name prefix, for example hsa")
     s.add_argument("--mature", required=True)
     s.add_argument("--hairpin", required=True)
     s.add_argument("--fasta", required=True)

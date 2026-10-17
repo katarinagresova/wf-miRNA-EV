@@ -1,0 +1,69 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+defaults:
+  run:
+    shell: bash -el {0}
+
+jobs:
+  lint:
+    name: Lint and dry run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          channel-priority: strict
+          environment-file: environment.yaml
+          activate-environment: wf-miRNA-EV
+      - name: Lint
+        run: snakemake --directory .test --lint
+      - name: Dry run
+        run: snakemake --directory .test --use-conda --cores 1 --dry-run
+
+  unit-tests:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          channel-priority: strict
+          environment-file: workflow/envs/py.yaml
+          activate-environment: py
+      - name: Install pytest
+        run: conda install --yes pytest
+      - name: Unit tests
+        run: pytest tests
+
+  test-data:
+    name: Test data set
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          channel-priority: strict
+          environment-file: environment.yaml
+          activate-environment: wf-miRNA-EV
+      - name: Cache the rule environments
+        uses: actions/cache@v4
+        with:
+          path: .test/.snakemake/conda
+          key: conda-${{ runner.os }}-${{ hashFiles('workflow/envs/*.yaml') }}
+      - name: Run the workflow
+        run: snakemake --directory .test --use-conda --cores all --show-failed-logs
+      - name: Check the results
+        run: python .test/check.py .test
+      - name: Upload the logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-data-logs
+          path: .test/logs/

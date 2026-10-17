@@ -55,12 +55,12 @@ rule collapse_fasta:
 
 rule collapse_summary:
     input:
-        script="workflow/scripts/collapse_summary.py",
+        script=workflow.source_path("../scripts/collapse_summary.py"),
         counts=expand("results/collapse/{sample}/counts.tsv.gz", sample=SAMPLES.index),
         samples=config["samples"],
     output:
-        summary="results/qc/collapse_summary.tsv",
-        top="results/qc/top_sequences.tsv",
+        summary="results/collapse/summary.tsv",
+        top="results/collapse/top_sequences.tsv",
     params:
         top_n=config["collapse"]["top_n"],
     log:

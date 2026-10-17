@@ -9,7 +9,7 @@ import pandas as pd
 def parse_args():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--counts", nargs="+", required=True, help="counts.tsv.gz from rule collapse")
-    p.add_argument("--samples", required=True, help="config/samples.tsv")
+    p.add_argument("--samples", required=True, help="sample sheet")
     p.add_argument("--top-n", type=int, required=True)
     p.add_argument("--summary", required=True)
     p.add_argument("--top", required=True)
@@ -42,7 +42,7 @@ def weighted_median(values, weights):
 
 def main():
     args = parse_args()
-    samples = pd.read_csv(args.samples, sep="\t", dtype=str).set_index("sample")
+    samples = pd.read_csv(args.samples, sep="\t", dtype=str).set_index("sample").drop(columns="fastq")
     paths = {Path(p).parent.name: p for p in args.counts}
 
     rows, top_seqs, totals = {}, {}, {}
@@ -52,7 +52,7 @@ def main():
         totals[name] = rows[name]["reads"]
         top_seqs[name] = counts.iloc[: args.top_n]
 
-    summary = samples[["sid", "run", "exclude"]].join(pd.DataFrame.from_dict(rows, orient="index"), how="right")
+    summary = samples.join(pd.DataFrame.from_dict(rows, orient="index"), how="right")
     summary.round(3).to_csv(args.summary, sep="\t")
 
     # Union of per-sample top sequences, quantified (CPM of kept reads) in every sample.
@@ -64,14 +64,13 @@ def main():
         for chunk in pd.read_csv(path, sep="\t", dtype={"sequence": str, "count": "int64"}, chunksize=5_000_000):
             hit = chunk[chunk["sequence"].isin(union)]
             found[hit["sequence"]] = hit["count"].to_numpy()
-        cpm[samples.loc[name, "sid"]] = found / totals[name] * 1e6
+        cpm[name] = found / totals[name] * 1e6
     top = pd.DataFrame(cpm)
     top.insert(0, "length", top.index.str.len())
-    included = [samples.loc[n, "sid"] for n in paths if samples.loc[n, "exclude"] != "yes"]
     top_sets = [set(t["sequence"]) for t in top_seqs.values()]
     top.insert(1, "n_samples_in_top", [sum(s in t for t in top_sets) for s in top.index])
-    top.insert(2, "mean_cpm_included", top[included].mean(axis=1))
-    top = top.sort_values("mean_cpm_included", ascending=False)
+    top.insert(2, "mean_cpm", top[list(cpm)].mean(axis=1))
+    top = top.sort_values("mean_cpm", ascending=False)
     top.index.name = "sequence"
     top.round(1).to_csv(args.top, sep="\t")
 

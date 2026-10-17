@@ -1,0 +1,188 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+description: wf-miRNA-EV config file
+type: object
+
+$defs:
+  # A URL, or a local path
+  source:
+    type: string
+  # A URL with its md5 sum, or a local path
+  source_md5:
+    oneOf:
+      - type: string
+      - type: object
+        properties:
+          url: {type: string}
+          md5: {type: string, pattern: "^[0-9a-f]{32}$"}
+        required: [url, md5]
+        additionalProperties: false
+  counter:
+    type: string
+    enum: [mirge3, bowtie]
+
+properties:
+  samples:
+    type: string
+    description: path to the sample sheet
+  kit:
+    type: string
+    enum: [realseq_biofluids, custom]
+    description: library kit preset; with custom, give trim.adapter and trim.cut_5p
+  trim:
+    type: object
+    default: {}
+    properties:
+      adapter: {type: string, pattern: "^[ACGTN]+$"}
+      cut_5p: {type: integer, minimum: 0}
+      nextseq_trim: {type: integer, minimum: 0, default: 0, description: "cutadapt --nextseq-trim; 0 for none"}
+      min_len: {type: integer, minimum: 1, default: 16}
+    additionalProperties: false
+  collapse:
+    type: object
+    default: {}
+    properties:
+      top_n: {type: integer, minimum: 1, default: 50}
+    additionalProperties: false
+  species:
+    type: object
+    properties:
+      mirbase: {type: string, description: "miRBase name prefix, for example hsa"}
+      mirgenedb: {type: string, description: "MirGeneDB name prefix, for example Hsa"}
+      mirge3: {type: string, description: "miRge3.0 organism name, for example human"}
+    required: [mirbase, mirgenedb, mirge3]
+    additionalProperties: false
+  refs:
+    type: object
+    properties:
+      mirbase:
+        type: object
+        properties:
+          version: {type: string}
+          mature: {$ref: "#/$defs/source_md5"}
+          hairpin: {$ref: "#/$defs/source_md5"}
+        required: [mature, hairpin]
+        additionalProperties: false
+      mirgenedb:
+        type: object
+        properties:
+          version: {type: string}
+          mature: {$ref: "#/$defs/source"}
+          star: {$ref: "#/$defs/source"}
+          pri: {$ref: "#/$defs/source"}
+        required: [mature, star, pri]
+        additionalProperties: false
+      gtrnadb:
+        type: object
+        properties:
+          mature: {$ref: "#/$defs/source"}
+          tar: {$ref: "#/$defs/source"}
+        required: [mature, tar]
+        additionalProperties: false
+      ensembl:
+        type: object
+        properties:
+          release: {type: integer}
+          genome: {$ref: "#/$defs/source"}
+          gtf: {$ref: "#/$defs/source"}
+          ncrna: {$ref: "#/$defs/source"}
+        required: [genome, gtf, ncrna]
+        additionalProperties: false
+      rrna:
+        type: object
+        properties:
+          rdna: {type: string, description: NCBI accession of the rDNA repeat}
+          rna5s: {type: string, description: Ensembl transcript of 5S}
+          rna5s_flank: {type: integer, minimum: 0}
+          rna5s_length: {type: integer, minimum: 1}
+          mt_rrna: {type: array, items: {type: string}, minItems: 1}
+          features:
+            type: object
+            description: rRNA regions for each reference, [name, 0-based start, end]
+            additionalProperties:
+              type: array
+              items:
+                type: array
+                prefixItems: [{type: string}, {type: integer}, {type: integer}]
+                minItems: 3
+                maxItems: 3
+        required: [rdna, rna5s, rna5s_flank, rna5s_length, mt_rrna, features]
+        additionalProperties: false
+      rdna_loci:
+        type: array
+        description: rDNA loci in the genome, [chromosome, 0-based start, end]
+        items:
+          type: array
+          prefixItems: [{type: string}, {type: integer, minimum: 0}, {type: integer, minimum: 0}]
+          minItems: 3
+          maxItems: 3
+      contaminants:
+        type: array
+        description: contaminant genomes, [NCBI accession, read class, species]
+        items:
+          type: array
+          items: {type: string}
+          minItems: 3
+          maxItems: 3
+      ncbi_dir:
+        type: [string, "null"]
+        default: null
+        description: directory with local copies of the NCBI records (<accession>.fa, <accession>.ft)
+      miRge3:
+        $ref: "#/$defs/source_md5"
+        description: miRge3.0 library; needed only for the counter mirge3
+    required: [mirbase, mirgenedb, gtrnadb, ensembl, rrna, rdna_loci, contaminants]
+    additionalProperties: false
+  genome_index:
+    type: [string, "null"]
+    default: null
+    description: prefix of a bowtie 1 index of the genome that already exists
+  classify:
+    type: object
+    default: {}
+    properties:
+      mismatches: {type: integer, minimum: 0, maximum: 3, default: 1}
+      max_hits: {type: integer, minimum: 1, default: 20}
+      arm_start_tol: {type: integer, minimum: 0, default: 3}
+      arm_end_tol: {type: integer, minimum: 0, default: 5}
+      contaminant_min_len: {type: integer, minimum: 1, default: 18}
+      end_len: {type: integer, minimum: 1, default: 25}
+      end_len_exact: {type: integer, minimum: 1, default: 18}
+    additionalProperties: false
+  mirna:
+    type: object
+    default: {}
+    properties:
+      counter:
+        $ref: "#/$defs/counter"
+        default: mirge3
+      cross_check:
+        type: array
+        items: {$ref: "#/$defs/counter"}
+        uniqueItems: true
+        default: [bowtie]
+      databases:
+        type: array
+        items: {type: string, enum: [mirbase, mirgenedb]}
+        minItems: 1
+        uniqueItems: true
+        default: [mirbase, mirgenedb]
+      min_len: {type: integer, minimum: 1, default: 16}
+      max_len: {type: integer, minimum: 1, default: 28}
+      detected_min_reads:
+        type: array
+        items: {type: integer, minimum: 1}
+        default: [1, 5, 10]
+      off_target_mismatches: {type: integer, minimum: 0, maximum: 3, default: 3}
+    additionalProperties: false
+
+required: [samples, kit, species, refs]
+additionalProperties: false
+
+# With kit: custom, the trim settings of the preset must be given
+if:
+  properties:
+    kit: {const: custom}
+then:
+  properties:
+    trim:
+      required: [adapter, cut_5p]

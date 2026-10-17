@@ -1,0 +1,6 @@
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  # The download rules; md5sum, sum and tar come from the system
+  - curl=8.23

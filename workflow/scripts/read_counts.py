@@ -9,14 +9,14 @@ import pandas as pd
 def parse_args():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--stats", nargs="+", required=True, help="seqkit stats -T -a output, one per sample")
-    p.add_argument("--samples", required=True, help="config/samples.tsv")
+    p.add_argument("--samples", required=True, help="sample sheet")
     p.add_argument("--output", required=True)
     return p.parse_args()
 
 
 def main():
     args = parse_args()
-    samples = pd.read_csv(args.samples, sep="\t", dtype=str).set_index("sample")
+    samples = pd.read_csv(args.samples, sep="\t", dtype=str).set_index("sample").drop(columns="fastq")
 
     ours = []
     for path in args.stats:
@@ -30,7 +30,7 @@ def main():
                 "Q30_pct": float(st.loc[0, "Q30(%)"]),
             }
         )
-    df = samples[["sid", "run", "exclude"]].join(pd.DataFrame(ours).set_index("sample"), how="right")
+    df = samples.join(pd.DataFrame(ours).set_index("sample"), how="right")
 
     df.to_csv(args.output, sep="\t")
 

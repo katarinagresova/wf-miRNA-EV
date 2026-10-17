@@ -2,39 +2,78 @@ from pathlib import Path
 
 import pandas as pd
 from snakemake.exceptions import WorkflowError
+from snakemake.utils import validate
 
+WF_VERSION = "0.1.0.dev0"
 
 configfile: "config/config.yaml"
 
+validate(config, "schemas/config.schema.yaml")
 
 SAMPLES = pd.read_csv(config["samples"], sep="\t", dtype=str).set_index("sample", drop=False)
+validate(SAMPLES, "schemas/samples.schema.yaml")
+if not SAMPLES.index.is_unique:
+    raise WorkflowError(f"Duplicate sample names: {', '.join(SAMPLES.index[SAMPLES.index.duplicated()])}")
+# Columns copied into the summary tables
+METADATA = [c for c in SAMPLES.columns if c not in ("sample", "fastq")]
 
 _missing = [s for s, fq in SAMPLES["fastq"].items() if not Path(fq).exists()]
 if _missing:
     raise WorkflowError(f"FASTQ missing for {len(_missing)} sample(s): {', '.join(_missing)}")
 
-
 wildcard_constraints:
     sample="|".join(SAMPLES.index),
 
 
-# Steps 1-7: qc, trim, collapse, refs, quantify (read classification, contaminants, miRNA quantification, rRNA
-# fragment tables)
+# Steps 1-7: qc, trim, collapse, refs, classify (read classification, contaminants), mirna (miRNA counters, summary,
+# off-target check), rrna (rRNA fragment tables)
+include: "rules/common.smk"
 include: "rules/qc.smk"
 include: "rules/trim.smk"
 include: "rules/collapse.smk"
 include: "rules/refs.smk"
-include: "rules/quantify.smk"
+include: "rules/classify.smk"
+include: "rules/mirna.smk"
+include: "rules/rrna.smk"
+
+localrules:
+    wf_version,
 
 
 rule all:
     input:
+        "results/library_summary.tsv",
+        "results/wf_version.txt",
         "results/qc/multiqc_raw/multiqc_report.html",
         "results/qc/multiqc_trimmed/multiqc_report.html",
-        "results/qc/read_counts.tsv",
-        "results/qc/trimming_summary.tsv",
-        "results/qc/collapse_summary.tsv",
-        "results/qc/top_sequences.tsv",
+        "results/qc/raw_reads.tsv",
+        "results/trim/summary.tsv",
+        "results/collapse/summary.tsv",
+        "results/collapse/top_sequences.tsv",
         expand("results/collapse/{sample}/collapsed.fa.gz", sample=SAMPLES.index),
+        CLASSIFY_SUMMARY.values(),
         MIRNA_SUMMARY.values(),
         expand("results/rrna/{sample}/fragments.tsv.gz", sample=SAMPLES.index),
+
+
+rule wf_version:
+    input:
+        counter=f"results/mirna/{MIRNA['counter']}_version.txt",
+    output:
+        "results/wf_version.txt",
+    params:
+        version=WF_VERSION,
+        commit=git_commit(),
+        counter=MIRNA["counter"],
+    log:
+        "logs/wf_version.log",
+    # Only printf and cat; any environment
+    conda:
+        "envs/align.yaml"
+    shell:
+        """
+        (
+        printf 'workflow\\twf-miRNA-EV\\nversion\\t{params.version}\\ncommit\\t{params.commit}\\n'
+        printf 'mirna_counter\\t{params.counter}\\nmirna_counter_version\\t%s\\n' "$(cat {input.counter})"
+        ) > {output} 2> {log}
+        """

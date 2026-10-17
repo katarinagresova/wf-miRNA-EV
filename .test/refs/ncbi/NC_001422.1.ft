@@ -1,0 +1,120 @@
+>Feature ref|NC_001422.1|
+3981	5386	gene
+1	136
+			locus_tag	phiX174p01
+			db_xref	GeneID:2546398
+3981	5386	CDS
+1	136
+			product	DNA replication initiation
+			function	viral strand synthesis
+			transl_table	11
+			protein_id	ref|NP_040703.1|
+			note	rf replication
+4497	5386	gene
+1	136
+			locus_tag	phiX174p02
+			db_xref	GeneID:2546406
+4497	5386	CDS
+1	136
+			product	DNA replication initiation
+			function	shut off host DNA synthesis
+			transl_table	11
+			protein_id	ref|NP_040704.1|
+5075	5386	gene
+1	51
+			locus_tag	phiX174p03
+			db_xref	GeneID:2546405
+5075	5386	CDS
+1	51
+			product	head morphogenesis
+			function	capsid morphogenesis
+			transl_table	11
+			protein_id	ref|NP_040705.1|
+23	23	variation
+			note	in am18 and am35 [14]
+			replace	t
+25	25	variation
+			note	ts116 [14]
+			replace	c
+51	221	gene
+			locus_tag	phiX174p04
+			db_xref	GeneID:2546403
+51	221	CDS
+			product	K
+			transl_table	11
+			protein_id	ref|NP_040706.1|
+57	57	variation
+			note	am6 [14]
+			replace	c
+117	117	variation
+			note	am6 [14]
+			replace	a
+133	393	gene
+			locus_tag	phiX174p05
+			db_xref	GeneID:2546402
+133	393	CDS
+			product	terminase
+			transl_table	11
+			protein_id	ref|NP_040707.1|
+			note	DNA maturation
+358	3975	gene
+			locus_tag	phiX174p06
+			db_xref	GeneID:2546408
+358	3975	mRNA
+			product	major transcript
+358	991	gene
+			locus_tag	phiX174p07
+			db_xref	GeneID:2546399
+358	991	mRNA
+			product	minor transcript
+390	848	CDS
+			product	head morphogenesis
+			function	capsid morphogenesis
+			transl_table	11
+			protein_id	ref|NP_040708.1|
+568	843	gene
+			locus_tag	phiX174p08
+			db_xref	GeneID:2546400
+568	843	CDS
+			product	endolysin
+			function	cell lysis
+			transl_table	11
+			protein_id	ref|NP_040709.1|
+848	964	gene
+			locus_tag	phiX174p09
+			db_xref	GeneID:2546404
+848	964	CDS
+			product	DNA condensation
+			prot_desc	core protein
+			transl_table	11
+			protein_id	ref|NP_040710.1|
+			note	DNA condensation
+1001	2284	CDS
+			product	major head protein
+			prot_desc	major coat protein
+			transl_table	11
+			protein_id	ref|NP_040711.1|
+2395	2922	gene
+			locus_tag	phiX174p10
+			db_xref	GeneID:2546401
+2395	2922	CDS
+			product	major spike protein
+			prot_desc	major spike protein
+			transl_table	11
+			protein_id	ref|NP_040712.1|
+2931	3917	gene
+			locus_tag	phiX174p11
+			db_xref	GeneID:2546407
+2931	3917	CDS
+			product	pilot protein for DNA ejection
+			prot_desc	minor spike protein
+			function	adsorption
+			transl_table	11
+			protein_id	ref|NP_040713.1|
+3962	3962	misc_feature
+			note	transcription start site
+4306	4306	rep_origin
+			note	origin of viral strand synthesis
+4899	4899	misc_feature
+			note	transcription start site
+

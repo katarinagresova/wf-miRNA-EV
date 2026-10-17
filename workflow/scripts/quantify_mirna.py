@@ -100,7 +100,9 @@ def parse_args():
     p.add_argument("--top-n", type=int, required=True, help="most abundant sequences whose best hits go to --out-top")
     p.add_argument("--out-reads", required=True)
     p.add_argument("--out-composition", required=True)
-    p.add_argument("--out-counts", nargs="+", required=True, help="<db>_counts.tsv, one per --arms")
+    p.add_argument("--out-counts", nargs="+", required=True, help="mature miRNA counts, one per --arms")
+    p.add_argument("--out-mirna-reads", nargs="+", required=True,
+                   help="reads of the mature miRNA counts (rank, mature, reads, canonical, tied classes), one per --arms")
     p.add_argument("--out-contaminants", required=True, help="reads per contaminant genome and length bin")
     p.add_argument("--out-contaminant-rules", required=True,
                    help="contaminant reads by the class they would have without contaminants, the rule and the read length")
@@ -146,8 +148,9 @@ def read_hits(path, strand=False):
 
 
 def concat_hits(frames):
-    """Concatenate hit tables, keeping the categorical columns categorical."""
-    frames = [f.copy() for f in frames]
+    """Concatenate hit tables, keeping the categorical columns categorical. Empty tables are left out: their
+    categories have another dtype."""
+    frames = [f.copy() for f in frames if len(f)] or [frames[0].copy()]
     for c in ["ref", "target", "strand"]:
         cats = union_categoricals([f[c] for f in frames if c in f]).categories
         for f in frames:
@@ -194,8 +197,8 @@ def end_evidence(path, end_len, exact_len):
     The end_len-nt ends decide when any of them has a hit; otherwise the exact hits of the exact_len-nt ends."""
     e = pd.read_csv(path, sep="\t", header=None, names=["end", "index", "ref", "mm"],
                     dtype={"end": str, "index": "category", "ref": "category", "mm": "int8"})
-    parts = e["end"].str.split("_", expand=True)
-    e = e.assign(rank=parts[0].astype("int64"), end_len=parts[2].astype("int16")).drop(columns="end")
+    parts = e["end"].str.split("_")
+    e = e.assign(rank=parts.str[0].astype("int64"), end_len=parts.str[2].astype("int16")).drop(columns="end")
     e = e[(e["end_len"] == end_len) | (e["mm"] == 0)]
     e = e[e["end_len"].to_numpy() == e.groupby("rank")["end_len"].transform("max").to_numpy()]
 
@@ -251,7 +254,7 @@ def main():
     assert ends.index.isin(tested).all()
 
     composition, read_classes, contaminants, rules, top_hits = [], {}, [], [], []
-    for (db, db_arms), out_counts in zip(arms.items(), args.out_counts):
+    for (db, db_arms), out_counts, out_mirna_reads in zip(arms.items(), args.out_counts, args.out_mirna_reads):
         mir = hits[db]
         assigned = arm_assignments(mir, db_arms, args)
         # Hairpin hits that match an arm are miRNA; other hairpin hits (loop, long or offset reads) are not
@@ -312,7 +315,7 @@ def main():
         t = concat_hits([cand[cand["rank"].isin(top_ranks)], cont_cand[cont_cand["rank"].isin(top_ranks)]])
         t = t[t["cls"].to_numpy() == cls[t["rank"]].to_numpy()].drop(columns="prio")
         t = t[t["mm"] == t.groupby("rank")["mm"].transform("min")]
-        t = t.merge(assigned[["rank", "target", "offset", "mature"]].drop_duplicates(), how="left", on=["rank", "target", "offset"]) if len(t) else t
+        t = t.merge(assigned[["rank", "target", "offset", "mature"]].drop_duplicates(), how="left", on=["rank", "target", "offset"])
         top = pd.DataFrame({"rank": top_ranks})
         top = top.assign(
             sequence=top["rank"].map(top_seqs), count=reads.loc[top_ranks, "count"].to_numpy(),
@@ -342,6 +345,9 @@ def main():
             tied_classes=("tied", lambda t: ",".join(sorted(set(",".join(t.dropna()).split(",")) - {""}))),
         ).sort_values("reads", ascending=False)
         counts.round(3).to_csv(out_counts, sep="\t")
+        a[["rank", "mature", "reads", "canonical", "tied"]].rename(columns={"tied": "tied_classes"}).to_csv(
+            out_mirna_reads, sep="\t", index=False, compression="gzip"
+        )
         print(f"{db}: {counts['reads'].sum():,.0f} miRNA reads, {len(counts)} mature miRNAs with >= 1 read")
 
         comp = reads.assign(cls=cls, len_bin=length_bin(reads["length"], args.min_len, args.max_len))

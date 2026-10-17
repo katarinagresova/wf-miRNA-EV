@@ -1,0 +1,58 @@
+# Test config (.test/config/config.yaml): the synthetic libraries of make_reads.py and the test references of make_refs.py. Paths are relative
+# to .test/. Run from the repository root:
+#   snakemake --directory .test --use-conda --cores 4
+#   python .test/check.py .test
+# The settings that are not here have the defaults of workflow/schemas/config.schema.yaml.
+samples: config/samples.tsv
+
+kit: realseq_biofluids
+trim:
+  nextseq_trim: 20
+
+species:
+  mirbase: hsa
+  mirgenedb: Hsa
+  mirge3: human
+
+refs:
+  mirbase:
+    version: "22.1"
+    mature: refs/mirbase/mature.fa
+    hairpin: refs/mirbase/hairpin.fa
+  mirgenedb:
+    version: "3.0"
+    mature: refs/mirgenedb/mature.fa
+    star: refs/mirgenedb/star.fa
+    pri: refs/mirgenedb/pri.fa
+  gtrnadb:
+    mature: refs/gtrnadb/mature-tRNAs.fa
+    tar: refs/gtrnadb/tRNAs.tar.gz
+  ensembl:
+    release: 113
+    # Regions of chromosomes 1, 21 and MT at their real positions; all other bases are N
+    genome: refs/ensembl/genome.fa.gz
+    gtf: refs/ensembl/gtf.gz
+    ncrna: refs/ensembl/ncrna.fa.gz
+  rrna:
+    rdna: KY962518.1
+    rna5s: ENST00000362482
+    rna5s_flank: 30
+    rna5s_length: 121
+    mt_rrna: [MT-RNR1, MT-RNR2]
+    features:
+      KY962518.1:
+        - [5'ETS, 0, 3657]
+        - [18S, 3657, 5526]
+        - [ITS1, 5526, 6596]
+        - [5.8S, 6596, 6753]
+        - [ITS2, 6753, 7920]
+        - [28S, 7920, 12971]
+        - [3'ETS/IGS, 12971, 50000]
+  rdna_loci:
+    - ["21", 8200000, 8450000]
+  contaminants:
+    - [NC_014448.1, mycoplasma, Mesomycoplasma hyorhinis HUB-1]
+    - [NC_001422.1, phiX, phiX174]
+  ncbi_dir: refs/ncbi
+  # Mini library: the miRNA indices of the full library, the other indices cut to the test regions
+  miRge3: refs/mirge3/human

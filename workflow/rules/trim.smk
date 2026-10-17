@@ -1,5 +1,13 @@
 # Step 2: adapter trimming, length filter and trimming statistics.
 
+# Library kit presets; the values of config["trim"] override them
+KITS = {
+    # RealSeq-Biofluids: one extra nt at the 5' end, no UMIs
+    "realseq_biofluids": {"adapter": "TGGAATTCTCGGGTGCCAAGG", "cut_5p": 1},
+    "custom": {},
+}
+TRIM = {**KITS[config["kit"]], **config["trim"]}
+
 
 rule cutadapt:
     input:
@@ -11,9 +19,9 @@ rule cutadapt:
         json="results/trim/{sample}/cutadapt.json",
         report="results/trim/{sample}/{sample}.cutadapt.log",
     params:
-        adapter=config["trim"]["adapter"],
-        cut_5p=config["trim"]["cut_5p"],
-        nextseq_trim=config["trim"]["nextseq_trim"],
+        adapter=TRIM["adapter"],
+        cut_5p=TRIM["cut_5p"],
+        nextseq_trim=f"--nextseq-trim {TRIM['nextseq_trim']}" if TRIM["nextseq_trim"] else "",
     log:
         "logs/cutadapt/{sample}.log",
     threads: 8
@@ -27,7 +35,7 @@ rule cutadapt:
         """
         cutadapt --cores {threads} \
             --cut {params.cut_5p} \
-            --nextseq-trim {params.nextseq_trim} \
+            {params.nextseq_trim} \
             --adapter {params.adapter} \
             --rename '{{id}} cut={{cut_prefix}}' \
             --untrimmed-output {output.no_adapter} \
@@ -43,7 +51,7 @@ rule length_filter:
     output:
         "results/trim/{sample}/trimmed.fastq.gz",
     params:
-        min_len=config["trim"]["min_len"],
+        min_len=TRIM["min_len"],
     log:
         "logs/length_filter/{sample}.log",
     threads: 4
@@ -89,16 +97,16 @@ rule trim_hist:
 
 rule trim_summary:
     input:
-        script="workflow/scripts/trim_summary.py",
+        script=workflow.source_path("../scripts/trim_summary.py"),
         json=expand("results/trim/{sample}/cutadapt.json", sample=SAMPLES.index),
         hist=expand("results/trim/{sample}/hist.tsv", sample=SAMPLES.index),
         samples=config["samples"],
     output:
-        summary="results/qc/trimming_summary.tsv",
-        lengths="results/qc/insert_lengths.tsv",
-        plot="results/qc/insert_lengths.pdf",
+        summary="results/trim/summary.tsv",
+        lengths="results/trim/insert_lengths.tsv",
+        plot="results/trim/insert_lengths.pdf",
     params:
-        min_len=config["trim"]["min_len"],
+        min_len=TRIM["min_len"],
     log:
         "logs/trim_summary.log",
     conda:

@@ -1,9 +1,10 @@
-"""miRge3.0 input of one library: its length-filtered reads without the contaminant reads (PLAN item 5).
+"""Input of the miRNA counters for one library and miRNA database: its length-filtered reads without the contaminant
+reads.
 
 miRge3.0 accepts loose isomiRs (16-nt reads, 5' additions, mismatches). Given all reads, it counted Mesomycoplasma
 hyorhinis fragments as human miRNAs in the SH-SY5Y libraries (e.g. GATTCCTGTCGGAGCC as a miR-181b-5p isomiR: 407 of
 S18's 459 reported reads). Reads whose final class (read_classes.tsv.gz, items 4, 4b and 4c) is a contaminant are
-therefore removed, so miRge3.0 sees the human reads only, the denominator of the rRNA shares too.
+therefore removed, so the counters see the human reads only, the denominator of the rRNA shares too.
 
 Reads a FASTQ on stdin and writes the kept records to stdout unchanged.
 """

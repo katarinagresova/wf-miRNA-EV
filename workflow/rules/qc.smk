@@ -67,11 +67,11 @@ rule seqkit_stats_raw:
 
 rule read_counts:
     input:
-        script="workflow/scripts/read_counts.py",
+        script=workflow.source_path("../scripts/read_counts.py"),
         stats=expand("results/qc/seqkit_raw/{sample}.tsv", sample=SAMPLES.index),
         samples=config["samples"],
     output:
-        "results/qc/read_counts.tsv",
+        "results/qc/raw_reads.tsv",
     log:
         "logs/read_counts.log",
     conda:
