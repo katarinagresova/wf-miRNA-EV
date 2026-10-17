@@ -67,3 +67,19 @@ jobs:
         with:
           name: test-data-logs
           path: .test/logs/
+
+  docs:
+    name: Documentation site
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      - name: Install Zensical
+        run: pip install zensical==0.0.71
+      - name: Build
+        run: zensical build --strict

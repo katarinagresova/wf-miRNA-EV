@@ -1,0 +1,67 @@
+# Documentation site: zensical serve (preview), zensical build --strict (CI)
+[project]
+site_name = "wf-miRNA-EV"
+site_description = "Snakemake workflow for small RNA-seq of extracellular vesicles"
+site_url = "https://katarinagresova.github.io/wf-miRNA-EV/"
+repo_url = "https://github.com/katarinagresova/wf-miRNA-EV"
+repo_name = "katarinagresova/wf-miRNA-EV"
+extra_css = ["stylesheets/extra.css"]
+nav = [
+  { "Home" = "index.md" },
+  { "Configuration" = "configuration.md" },
+  { "Outputs" = "outputs.md" },
+  { "Read classification" = "classification.md" },
+  { "miRNA counts" = "mirna_counters.md" },
+]
+
+[project.theme]
+features = [
+  "content.code.copy",
+  "navigation.footer",
+  "navigation.instant",
+  "navigation.top",
+  "navigation.tracking",
+  "search.highlight",
+  "toc.follow",
+]
+font.text = "IBM Plex Sans"
+font.code = "IBM Plex Mono"
+# An extracellular vesicle (lipid bilayer) with small RNAs
+logo = "assets/logo.svg"
+favicon = "assets/logo.svg"
+icon.repo = "fontawesome/brands/github"
+
+# Neutral header; light, dark, or the system setting (toggle in the header). The link colour is in extra.css.
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+primary = "white"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "white"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "black"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to system preference"
+
+[project.markdown_extensions]
+admonition = {}
+attr_list = {}
+tables = {}
+toc.permalink = true
+pymdownx.highlight = {}
+pymdownx.inlinehilite = {}
+# README.md and config/README.md are the text of the pages Home and Configuration
+pymdownx.snippets.base_path = ["."]
+pymdownx.snippets.check_paths = true
+pymdownx.superfences.custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]

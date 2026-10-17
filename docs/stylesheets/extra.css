@@ -1,0 +1,49 @@
+/* One muted teal for links and highlights */
+body[data-md-color-scheme="default"] {
+  --md-typeset-a-color: #0f766e;
+  --md-accent-fg-color: #0d9488;
+  --md-accent-fg-color--transparent: #0d94881a;
+}
+body[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: #5eead4;
+  --md-accent-fg-color: #2dd4bf;
+  --md-accent-fg-color--transparent: #2dd4bf1a;
+}
+
+/* Dark mode: a soft slate grey, not black (the theme default is 5% lightness) */
+body[data-md-color-scheme="slate"] {
+  --md-default-bg-color: hsla(var(--md-hue), 15%, 16%, 1);
+  --md-default-bg-color--light: hsla(var(--md-hue), 15%, 16%, 0.54);
+  --md-default-bg-color--lighter: hsla(var(--md-hue), 15%, 16%, 0.26);
+  --md-default-bg-color--lightest: hsla(var(--md-hue), 15%, 16%, 0.07);
+  --md-code-bg-color: hsla(var(--md-hue), 15%, 20%, 1);
+  --md-code-bg-color--light: hsla(var(--md-hue), 15%, 20%, 0.9);
+  --md-code-bg-color--lighter: hsla(var(--md-hue), 15%, 20%, 0.54);
+  --md-footer-bg-color: hsla(var(--md-hue), 15%, 13%, 0.87);
+  --md-footer-bg-color--dark: hsla(var(--md-hue), 15%, 11%, 1);
+  --md-typeset-kbd-border-color: hsla(var(--md-hue), 15%, 24%, 1);
+}
+
+/* Headings */
+.md-typeset h1 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.md-typeset h2 {
+  font-weight: 600;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* Tables: most pages are tables of files, columns and config keys */
+.md-typeset table:not([class]) {
+  font-size: 0.72rem;
+  border-radius: 0.3rem;
+}
+.md-typeset table:not([class]) th {
+  background-color: var(--md-default-fg-color--lightest);
+  font-weight: 600;
+}
+.md-typeset table:not([class]) td {
+  vertical-align: top;
+}

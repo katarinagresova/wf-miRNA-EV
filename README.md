@@ -1,5 +1,6 @@
-# wf-miRNA-EV
+# <img src="docs/assets/logo.svg" alt="" height="40" align="absmiddle">&nbsp; wf-miRNA-EV
 
+<!-- --8<-- [start:docs] -->
 A Snakemake workflow for small RNA sequencing data from extracellular vesicles (EVs). It also accepts whole-cell
 libraries, so you can compare EVs with their source cells.
 
@@ -97,6 +98,8 @@ python .test/check.py .test                         # compares the class of each
 ```
 
 GitHub Actions runs these tests, the lint and a dry run at each push.
+
+<!-- --8<-- [end:docs] -->
 
 ## Documentation
 
