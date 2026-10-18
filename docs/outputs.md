@@ -100,7 +100,7 @@ Columns of `summary.tsv`: `reads`, `unique_seqs`, `unique_pct` (unique sequences
 | `results/classify/{sample}/read_classes.tsv.gz` | The class of each collapsed sequence: `rank` (the rank in `collapsed.fa.gz`), `count`, `length`, and `class_{db}` for each database. |
 | `results/classify/composition.tsv` | Reads for each library, database, class and length bin (see below). |
 | `results/classify/contaminants.tsv` | Reads for each library and contaminant genome (primary database): `class`, `accession`, `species`, `reads`, `unique_seqs`, `pct_of_kept`. |
-| `results/classify/top_sequences_classes.tsv` | The sequences of `top_sequences.tsv` with their `class`, the `mismatches` and the number (`n_hits`) of their best hits, and a short `label` (for example, the miRNA name, the rRNA region and position, or the tRNA fragment type). |
+| `results/classify/top_sequences_classes.tsv` | The sequences of `top_sequences.tsv` with their `length`, their `class` (primary database), the `mismatches` and the number (`n_hits`) of their best hits, and a short `label` (for example, the miRNA name, the rRNA region and position, or the tRNA fragment type). |
 | `results/classify/{sample}/composition.tsv` | Reads of one library for each database, class and length bin: `db`, `class`, `len_bin`, `reads`, `unique_seqs`. |
 | `results/classify/{sample}/contaminants.tsv` | Reads of one library for each database, contaminant genome and length bin: `db`, `class`, `accession`, `species`, `len_bin`, `reads`, `unique_seqs`. |
 
@@ -146,9 +146,9 @@ Columns of `off_target.tsv`:
 | `db`, `mirna` | Database and mature name. |
 | `counter_mirna` | The entry that contains this mature name. |
 | `reads`, `n_samples` | Reads of the miRNA-only mapping, and the libraries with such reads. |
-| `reads_<result>` | Reads with each result. |
 | `tied_frac` | `tied` reads, divided by the `miRNA` and `tied` reads. |
 | `off_target_frac` | Reads with another class in step 5, divided by `reads`. |
+| `reads_<result>` | Reads with each result. |
 
 ## Step 7: rRNA fragments
 

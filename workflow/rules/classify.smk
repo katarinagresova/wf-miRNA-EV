@@ -48,7 +48,8 @@ rule bowtie_small:
 
 rule bowtie_nta:
     # Reads with non-templated 3' nucleotides (quantify_mirna.py): the reads without n nt at the 3' end (n = 1 to
-    # nta_max), exact hits on the miRNA hairpins. Only the reads that are min_len nt or longer after the removal
+    # nta_max), exact hits on the miRNA hairpins. Only the reads that are max_len nt or shorter, and min_len nt or
+    # longer after the removal
     input:
         reads="results/collapse/{sample}/collapsed.fa.gz",
         index="resources/bowtie/{db}/.done",
@@ -140,7 +141,8 @@ rule bowtie_genome:
         index=GENOME_INDEX_FILE,
         annotation="resources/refs/genome_annotation_merged.bed",
     output:
-        # read rank, mismatches, comma-separated classes of the same-strand annotation it overlaps ('.' = none)
+        # read rank, mismatches, class of a same-strand annotation that a hit overlaps ('.' = none); one line for
+        # each different class
         "results/classify/{sample}/hits/genome.classes.tsv.gz",
     params:
         prefix=GENOME_INDEX,

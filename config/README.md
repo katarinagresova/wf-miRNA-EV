@@ -48,7 +48,7 @@ URL must have `url` and `md5`.
 | `refs.mirgenedb` | MirGeneDB mature, star and precursor FASTA (default 3.0). MirGeneDB has no fixed download for each release, so the workflow writes the md5 of the download to the log. For a fixed version, give local copies. |
 | `refs.gtrnadb` | GtRNAdb mature tRNAs and the tRNA gene loci. |
 | `refs.ensembl` | Ensembl genome, gene annotation (GTF) and ncRNA FASTA (default release 113, GRCh38). |
-| `refs.rrna` | The single-copy rRNA reference: the rDNA repeat (NCBI accession), 5S with genomic flanks, the mitochondrial rRNAs, and the rRNA regions (`features`). |
+| `refs.rrna` | The single-copy rRNA reference: the rDNA repeat (NCBI accession), 5S with genomic flanks, the mitochondrial rRNAs, and the rRNA regions (`features`). For 5S: the Ensembl transcript (`rna5s`), the flank length on each side (`rna5s_flank`), and the length of mature 5S from the 5′ end of the transcript (`rna5s_length`), which can be longer than the transcript. |
 | `refs.rdna_loci` | rDNA copies in the genome that the annotation does not mark as rRNA. Genome hits in these loci get the class `rRNA_genomic`. |
 | `refs.contaminants` | Contaminant genomes: NCBI accession, read class and species. The read class is `mycoplasma`, `bacteria` or `phiX`. The default list has 6 *Mycoplasma* species, *E. coli* and phiX. |
 | `refs.ncbi_dir` | Optional directory with local copies of the NCBI records: `<accession>.fa`, and `<accession>.ft` (feature table) for the contaminants. |
@@ -62,10 +62,10 @@ species names.
 | Key | Default | Content |
 |---|---|---|
 | `classify.mismatches` | 1 | Mismatches for the alignment to each reference (bowtie 1 `-v`). |
-| `classify.max_hits` | 20 | Hits for each read on the multi-copy references (ncRNA, genome). |
+| `classify.max_hits` | 20 | Hits for each read on the multi-copy references (ncRNA, genome) and on the contaminant genomes. |
 | `classify.arm_start_tol` | 3 | A hairpin read counts for a mature miRNA if its 5′ end is this many nucleotides or less from the 5′ end of the mature sequence. |
 | `classify.arm_end_tol` | 5 | The same for the 3′ end. |
-| `classify.contaminant_min_len` | 18 | A read of this length or longer is a contaminant read if its contaminant hit has fewer mismatches than its human hits. Shorter reads need an exact contaminant match. |
+| `classify.contaminant_min_len` | 18 | A read of this length or longer is a contaminant read if its contaminant hit has fewer mismatches than its human hits, or the same number if its human evidence is weak. A shorter read needs weak human evidence and an exact contaminant match. |
 | `classify.end_len` | 25 | Length of the read ends that align to the references, for reads without a full-length hit. |
 | `classify.end_len_exact` | 18 | The same, for ends that must match exactly. |
 
