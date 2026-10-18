@@ -145,7 +145,7 @@ Columns of `off_target.tsv`:
 | Column | Content |
 |---|---|
 | `db`, `mirna` | Database and mature name. |
-| `counter_mirna` | The entry that contains this mature name. |
+| `counter_mirna` | The entry that contains this mature name. Empty if no library has counted reads for this entry. |
 | `reads`, `n_samples` | Reads of the miRNA-only mapping, and the libraries with such reads. |
 | `tied_frac` | `tied` reads, divided by the `miRNA` and `tied` reads. |
 | `off_target_frac` | Reads with another class in step 5, divided by `reads`. |
