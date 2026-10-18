@@ -9,6 +9,10 @@ WF_VERSION = "0.1.0.dev0"
 configfile: "config/config.yaml"
 
 validate(config, "schemas/config.schema.yaml")
+# The read length bins of step 5 (mirna.min_len to mirna.max_len, to 50, 51+) must hold every kept read
+_lens = (config["mirna"]["min_len"], config["trim"]["min_len"], config["mirna"]["max_len"])
+if not _lens[0] <= _lens[1] <= _lens[2] < 50:
+    raise WorkflowError(f"The config needs mirna.min_len <= trim.min_len <= mirna.max_len < 50, the values are {_lens}")
 
 SAMPLES = pd.read_csv(config["samples"], sep="\t", dtype=str).set_index("sample", drop=False)
 validate(SAMPLES, "schemas/samples.schema.yaml")

@@ -31,7 +31,7 @@ The workflow processes every row. To leave out a library, remove its row.
 | `trim.adapter` | from the kit | 3′ adapter sequence. |
 | `trim.cut_5p` | from the kit | Nucleotides to remove at the 5′ end. |
 | `trim.nextseq_trim` | 0 | Quality cutoff for `cutadapt --nextseq-trim` (two-colour chemistry, removes poly-G). 0 turns it off. |
-| `trim.min_len` | 16 | Minimum insert length. Shorter reads are removed. |
+| `trim.min_len` | 16 | Minimum insert length. Shorter reads are removed. It must be in the range `mirna.min_len` to `mirna.max_len`. |
 
 Kits with UMIs (for example, QIAseq miRNA) are not supported yet.
 
@@ -76,7 +76,7 @@ species names.
 | Key | Default | Content |
 |---|---|---|
 | `mirna.databases` | `[mirbase, mirgenedb]` | miRNA databases. The first one is the primary database: the read classes and `library_summary.tsv` use it. |
-| `mirna.min_len`, `mirna.max_len` | 16, 28 | Read lengths that can count for a miRNA. |
+| `mirna.min_len`, `mirna.max_len` | 16, 28 | Read lengths that can count for a miRNA. `mirna.max_len` must be less than 50. |
 | `mirna.exact_max_len` | 18 | Reads of this length or shorter count for a miRNA only with 0 mismatches. |
 | `mirna.nta_max` | 3 | Maximum of non-templated 3′ nucleotides (for example, adenylation). |
 | `mirna.detected_min_reads` | `[1, 5, 10]` | Read thresholds for the detected miRNAs. |
