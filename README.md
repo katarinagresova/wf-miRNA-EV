@@ -94,7 +94,7 @@ rule all:
 ```bash
 pytest tests                                        # unit tests (environment workflow/envs/py.yaml, and pytest)
 snakemake --directory .test --use-conda --cores 4   # synthetic test data set
-python .test/check.py .test                         # compares the class of each test read with its known class
+python .test/check.py .test                         # compares the class and the miRNA of each test read with the known ones
 ```
 
 GitHub Actions runs these tests, the lint and a dry run at each push.
