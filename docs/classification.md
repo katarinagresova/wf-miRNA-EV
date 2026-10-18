@@ -103,8 +103,8 @@ gets the class of its best rRNA, tRNA or ncRNA end hit:
   (rule 2) keeps the class `miRNA`.
 
 The class comes from a part of the read only. Thus a read of two joined fragments gets the class of one of them.
-These reads have no position on the rRNA reference, so the [rRNA fragments](outputs.md#step-7-rrna-fragments) do not
-include them. A miRNA read with a gap does not count, but these reads are few.
+In the [rRNA fragments](outputs.md#step-7-rrna-fragments), an rRNA read of this type has the position of its rRNA
+end. A miRNA read with a gap does not count, but these reads are few.
 
 ## miRNA off-target check
 

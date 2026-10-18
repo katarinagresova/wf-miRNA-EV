@@ -177,8 +177,8 @@ rule unmapped_ends:
         index=expand("resources/bowtie/{ref}/.done", ref=SMALL_REFS + ["contaminant"]),
         genome_index=GENOME_INDEX_FILE,
     output:
-        # end (<rank>_<5|3>_<end length>), index, reference, mismatches: best hits (best stratum, up to max_hits for
-        # the contaminants, one for the human references)
+        # end (<rank>_<5|3>_<end length>), index, reference, mismatches, 0-based offset: best hits (best stratum, up
+        # to max_hits for the contaminants, one for the human references)
         "results/classify/{sample}/hits/unmapped_ends.hits.tsv.gz",
     params:
         small=SMALL_REFS,
@@ -220,7 +220,7 @@ rule unmapped_ends:
                 *) opts="-k 1 --best --norc"; prefix=resources/bowtie/$ref/$ref ;;
             esac
             bowtie -f -v {params.mm} $opts -p {threads} -x $prefix $ends \
-                | awk -F '\\t' -v OFS='\\t' -v ref=$ref '{{mm = ($8 == "") ? 0 : gsub(/,/, ",", $8) + 1; print $1, ref, $3, mm}}'
+                | awk -F '\\t' -v OFS='\\t' -v ref=$ref '{{mm = ($8 == "") ? 0 : gsub(/,/, ",", $8) + 1; print $1, ref, $3, mm, $4}}'
         done | pigz -p 2 > {output}
         ) &> {log}
         """

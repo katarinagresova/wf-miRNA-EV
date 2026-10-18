@@ -164,17 +164,23 @@ Columns of `off_target.tsv`:
 ## Step 7: rRNA fragments
 
 `results/rrna/{sample}/fragments.tsv.gz` lists the reads with the class rRNA (primary database) and their positions on
-the single-copy rRNA reference. The reads with the class rRNA from an end
-([rule 5](classification.md#reads-without-a-full-length-hit)) have no position, and the table does not include them.
+the single-copy rRNA reference. The sum of `count / n_pos` over the table is equal to the rRNA reads of the class.
+
+A read with the class rRNA from an end ([rule 5](classification.md#reads-without-a-full-length-hit)) has no position
+of the full read. Its rows give the positions of the rRNA end hits that gave the class: the 25-nt ends, else the exact
+18-nt ends, then the fewest mismatches. If both the 5′ end and the 3′ end are such hits, the read has two rows, and
+each row has the weight 1/2. Thus a read of two joined fragments can have two regions. Each end has one position on
+the rRNA reference, also if other positions are equally good.
 
 | Column | Content |
 |---|---|
 | `rank`, `sequence`, `count`, `length` | The read. |
-| `ref`, `start`, `end` | Position on the rRNA reference (0-based start, end not included). |
-| `region` | rRNA region at the middle of the read. |
-| `mm` | Mismatches. |
+| `ref`, `start`, `end` | Position on the rRNA reference (0-based start, end not included). For a row from an end, the position of the end. |
+| `region` | rRNA region at the middle of the position. |
+| `mm` | Mismatches. For a row from an end, the mismatches of the end. |
 | `n_pos` | Positions with the same number of mismatches. A read has one row for each position. Use `count / n_pos` as the weight of a row. |
-| `contaminant_tie` | 1 if the read is `classify.contaminant_min_len` nt or longer, and matches a contaminant genome with the same number of mismatches or fewer. The read can be a contaminant rRNA (for example, *Mycoplasma*). |
+| `contaminant_tie` | 1 if the read is `classify.contaminant_min_len` nt or longer, and matches a contaminant genome with the same number of mismatches or fewer. The read can be a contaminant rRNA (for example, *Mycoplasma*). A row from an end has 0. |
+| `from_end` | 0 for a position of the full read. 5 or 3 for the position of the 5′ end or the 3′ end. |
 
 ## Version
 

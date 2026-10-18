@@ -104,7 +104,8 @@ def parse_args():
     p.add_argument("--contaminant", required=True, help="contaminant.hits.tsv.gz: as --hits, plus strand")
     p.add_argument("--genome", required=True, help="genome.classes.tsv.gz: rank, mismatches, classes")
     p.add_argument("--ends", required=True,
-                   help="unmapped_ends.hits.tsv.gz: end (<rank>_<5|3>_<end length>), index, reference, mismatches")
+                   help="unmapped_ends.hits.tsv.gz: end (<rank>_<5|3>_<end length>), index, reference, mismatches, "
+                        "offset")
     p.add_argument("--arms", nargs="+", required=True, help="<db>_arms.tsv: precursor, mature, start, end, entry")
     p.add_argument("--nta-hits", nargs="+", required=True,
                    help="exact hairpin hits of the reads without 1 or more 3' nucleotides, as --hits (the length is "
@@ -215,23 +216,31 @@ def genome_classes(path):
     return best
 
 
+def read_end_hits(path):
+    """unmapped_ends.hits.tsv.gz, with the rank, the end (side: 5 or 3) and the end length of each hit."""
+    e = pd.read_csv(path, sep="\t", header=None, names=["end", "index", "ref", "mm", "offset"],
+                    dtype={"end": str, "index": "category", "ref": "category", "mm": "int8", "offset": "int32"})
+    parts = e["end"].str.split("_")
+    return e.assign(rank=parts.str[0].astype("int64"), side=parts.str[1].astype("int8"),
+                    end_len=parts.str[2].astype("int16")).drop(columns="end")
+
+
+def deciding_ends(e, end_len):
+    """The end hits of the deciding end length of each read: the end_len-nt ends when any of them has a hit, else the
+    exact hits of the shorter ends."""
+    e = e[(e["end_len"].to_numpy() == end_len) | (e["mm"].to_numpy() == 0)]
+    return e[e["end_len"].to_numpy() == e.groupby("rank")["end_len"].transform("max").to_numpy()]
+
+
 def end_evidence(path, end_len, exact_len):
     """Per read with an end hit: the deciding end length, the outcome, the best contaminant class and human reference,
     and the class of the best END_CLASS_REFS end; and the contaminant candidates (best stratum over the deciding ends).
 
     The end_len-nt ends decide when any of them has a hit; otherwise the exact hits of the exact_len-nt ends. For the
     END_CLASS_REFS class, the same rule applies to the END_CLASS_REFS hits only."""
-
-    def longest(e):
-        return e[e["end_len"].to_numpy() == e.groupby("rank")["end_len"].transform("max").to_numpy()]
-
-    e = pd.read_csv(path, sep="\t", header=None, names=["end", "index", "ref", "mm"],
-                    dtype={"end": str, "index": "category", "ref": "category", "mm": "int8"})
-    parts = e["end"].str.split("_")
-    e = e.assign(rank=parts.str[0].astype("int64"), end_len=parts.str[2].astype("int16")).drop(columns="end")
-    e = e[(e["end_len"] == end_len) | (e["mm"] == 0)]
-    small = longest(e[e["index"].isin(END_CLASS_REFS).to_numpy()])
-    e = longest(e)
+    e = read_end_hits(path)
+    small = deciding_ends(e[e["index"].isin(END_CLASS_REFS).to_numpy()], end_len)
+    e = deciding_ends(e, end_len)
 
     is_cont = (e["index"] == "contaminant").to_numpy()
     human = e[~is_cont]

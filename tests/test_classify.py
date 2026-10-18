@@ -98,14 +98,14 @@ def test_unmapped_reads_by_their_ends(tmp_path):
         reads={1: 40, 2: 40, 3: 40, 4: 40},
         ends=[
             # a contaminant end and no human end
-            ("1_5_25", "contaminant", MYCO, 1),
+            ("1_5_25", "contaminant", MYCO, 1, 5000),
             # a contaminant end and a human end
-            ("2_5_25", "contaminant", MYCO, 0),
-            ("2_3_25", "genome", "21", 0),
+            ("2_5_25", "contaminant", MYCO, 0, 5000),
+            ("2_3_25", "genome", "21", 0, 1000),
             # no 25-nt end hit: an exact 18-nt contaminant end
-            ("3_5_18", "contaminant", MYCO, 0),
+            ("3_5_18", "contaminant", MYCO, 0, 5000),
             # no 25-nt end hit: an 18-nt contaminant end with a mismatch does not count
-            ("4_5_18", "contaminant", MYCO, 1),
+            ("4_5_18", "contaminant", MYCO, 1, 5000),
         ],
     )
     assert out.classes[1] == "mycoplasma"
@@ -121,28 +121,28 @@ def test_unmapped_reads_by_their_human_ends(tmp_path):
         reads={1: 30, 2: 30, 3: 30, 4: 30, 5: 30, 6: 30, 7: 30, 8: 30, 9: 30, 10: 23},
         ends=[
             # a small RNA end with a mismatch
-            ("1_3_25", "ncrna", yrna, 1),
+            ("1_3_25", "ncrna", yrna, 1, 0),
             # a 1-nt deletion: the 25-nt ends contain it and one has a genome hit; the exact 18-nt end gives the class
-            ("2_5_25", "genome", "21", 1),
-            ("2_3_18", "trna", TRNA, 0),
+            ("2_5_25", "genome", "21", 1, 1000),
+            ("2_3_18", "trna", TRNA, 0, 0),
             # the fewest mismatches, then the class priority
-            ("3_5_25", "rrna", RRNA, 1),
-            ("3_3_25", "trna", TRNA, 0),
-            ("4_5_25", "rrna", RRNA, 0),
-            ("4_3_25", "trna", TRNA, 0),
+            ("3_5_25", "rrna", RRNA, 1, 100),
+            ("3_3_25", "trna", TRNA, 0, 0),
+            ("4_5_25", "rrna", RRNA, 0, 100),
+            ("4_3_25", "trna", TRNA, 0, 0),
             # a 25-nt small RNA end wins over an exact 18-nt end
-            ("5_5_25", "trna", TRNA, 1),
-            ("5_3_18", "rrna", RRNA, 0),
+            ("5_5_25", "trna", TRNA, 1, 0),
+            ("5_3_18", "rrna", RRNA, 0, 100),
             # genome and miRNA ends do not give a class
-            ("6_5_25", "genome", "21", 0),
-            ("7_5_25", "mirbase", hairpin("mir-a"), 0),
+            ("6_5_25", "genome", "21", 0, 1000),
+            ("7_5_25", "mirbase", hairpin("mir-a"), 0, 5),
             # a human end and a contaminant end
-            ("8_5_25", "trna", TRNA, 0),
-            ("8_3_25", "contaminant", MYCO, 0),
+            ("8_5_25", "trna", TRNA, 0, 0),
+            ("8_3_25", "contaminant", MYCO, 0, 5000),
             # an 18-nt end with a mismatch does not count
-            ("9_5_18", "trna", TRNA, 1),
+            ("9_5_18", "trna", TRNA, 1, 0),
             # a miRNA read by its non-templated 3' nucleotides keeps its class
-            ("10_3_18", "trna", TRNA, 0),
+            ("10_3_18", "trna", TRNA, 0, 0),
         ],
         nta=[(10, hairpin("mir-a"), 5, 22, 0)],
     )

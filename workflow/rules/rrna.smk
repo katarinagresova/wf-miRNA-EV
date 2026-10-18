@@ -16,6 +16,7 @@ rule rrna_fragments:
         # The read classes of the primary miRNA database
         db=MIRNA_DBS[0],
         min_len=CLASSIFY["contaminant_min_len"],
+        end_len=CLASSIFY["end_len"],
     log:
         "logs/rrna_fragments/{sample}.log",
     resources:
@@ -27,5 +28,5 @@ rule rrna_fragments:
         """
         python {input.script} --reads {input.reads} --classes {input.classes} --hits {input.hits} \
             --contaminant {input.contaminant} --ends {input.ends} --features {input.features} --db {params.db} \
-            --contaminant-min-len {params.min_len} --output {output} &> {log}
+            --contaminant-min-len {params.min_len} --end-len {params.end_len} --output {output} &> {log}
         """

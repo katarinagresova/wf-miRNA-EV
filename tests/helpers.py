@@ -68,9 +68,9 @@ def classify(tmp_path, reads, hits=None, contaminant=(), genome=(), ends=(), nta
 
     reads: rank -> read length (COUNT reads each). hits: reference -> rows (rank, reference, offset, length,
     mismatches); contaminant: the same rows plus the strand; genome: rows (rank, mismatches, classes); ends: rows
-    (end, index, reference, mismatches); nta: rows as hits, for the reads without 1 or more 3' nucleotides (the length
-    is the length after the removal). Reference names are <id>|<class>|<name>. A table without rows is an empty
-    file, as bowtie writes it.
+    (end, index, reference, mismatches, offset); nta: rows as hits, for the reads without 1 or more 3' nucleotides
+    (the length is the length after the removal). Reference names are <id>|<class>|<name>. A table without rows is an
+    empty file, as bowtie writes it.
     """
     d = tmp_path / "step5"
     d.mkdir()
