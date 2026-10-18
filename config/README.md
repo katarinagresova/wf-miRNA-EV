@@ -55,8 +55,12 @@ URL must have `url` and `md5`.
 | `refs.ncbi_dir` | Optional directory with local copies of the NCBI records: `<accession>.fa`, and `<accession>.ft` (feature table) for the contaminants. |
 | `genome_index` | Optional prefix of a bowtie 1 index of the genome that already exists. The index build needs 32 GB of memory and several hours. |
 
-The default references are for human. For another species, change `species` and the references. The code has no
-species names.
+The default references are for human. For another species, change `species` and the references. Two parts of the
+code are for human:
+
+- The gene symbol of the 5S transcript (`refs.rrna.rna5s`) must be `RNA5S1`. If not, the reference step stops.
+- The mitochondrial genome is the chromosome `MT`, 16569 nt long. Genome hits on another chromosome name or after
+  16569 nt do not get the class `mt_other`.
 
 ## Read classification
 
