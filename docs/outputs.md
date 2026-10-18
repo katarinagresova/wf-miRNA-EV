@@ -165,4 +165,5 @@ the single-copy rRNA reference.
 
 ## Version
 
-`results/wf_version.txt` gives the workflow version, its git commit, and the miRNA counter with its version.
+`results/wf_version.txt` gives the workflow version, its git commit, and the miRNA counter with its version. The
+workflow writes this file again in each run that changes an output, so the commit is that of the last such run.

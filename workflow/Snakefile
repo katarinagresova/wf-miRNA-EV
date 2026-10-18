@@ -41,25 +41,33 @@ include: "rules/mirna.smk"
 include: "rules/rrna.smk"
 include: "rules/report.smk"
 
+# The outputs of the workflow, except results/wf_version.txt
+OUTPUTS = [
+    "results/library_summary.tsv",
+    "results/report/multiqc_report.html",
+    "results/qc/raw_reads.tsv",
+    "results/trim/summary.tsv",
+    "results/collapse/summary.tsv",
+    "results/collapse/top_sequences.tsv",
+    expand("results/collapse/{sample}/collapsed.fa.gz", sample=SAMPLES.index),
+    CLASSIFY_SUMMARY.values(),
+    MIRNA_SUMMARY.values(),
+    expand("results/rrna/{sample}/fragments.tsv.gz", sample=SAMPLES.index),
+]
+
+
 rule all:
     input:
-        "results/library_summary.tsv",
+        OUTPUTS,
         "results/wf_version.txt",
-        "results/report/multiqc_report.html",
-        "results/qc/raw_reads.tsv",
-        "results/trim/summary.tsv",
-        "results/collapse/summary.tsv",
-        "results/collapse/top_sequences.tsv",
-        expand("results/collapse/{sample}/collapsed.fa.gz", sample=SAMPLES.index),
-        CLASSIFY_SUMMARY.values(),
-        MIRNA_SUMMARY.values(),
-        expand("results/rrna/{sample}/fragments.tsv.gz", sample=SAMPLES.index),
 
 
 rule wf_version:
     localrule: True
     input:
         counter="results/mirna/bowtie_version.txt",
+        # A run that changes an output also writes this file again, with the commit of that run
+        outputs=OUTPUTS,
     output:
         "results/wf_version.txt",
     params:
