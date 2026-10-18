@@ -107,6 +107,7 @@ rule trim_summary:
         plot="results/trim/insert_lengths.pdf",
     params:
         min_len=TRIM["min_len"],
+        max_len=config["mirna"]["max_len"],
     log:
         "logs/trim_summary.log",
     conda:
@@ -118,6 +119,7 @@ rule trim_summary:
             --hist {input.hist} \
             --samples {input.samples} \
             --min-len {params.min_len} \
+            --max-len {params.max_len} \
             --summary {output.summary} \
             --lengths {output.lengths} \
             --plot {output.plot} &> {log}

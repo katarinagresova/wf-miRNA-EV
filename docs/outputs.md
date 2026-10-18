@@ -16,7 +16,7 @@ version. Other files in `results/` and `resources/` (for example, the alignment 
 | Column | Content |
 |---|---|
 | `kept_reads` | Reads with an insert of `trim.min_len` nt or longer. All percentages below use this number. |
-| `reads_16_28` | Kept reads in the miRNA length range (`mirna.min_len`–`mirna.max_len`). |
+| `reads_16_28` | Kept reads in the miRNA length range. The name changes with `mirna.min_len` and `mirna.max_len` (`reads_<min_len>_<max_len>`). |
 | `pct_<class>` | Percent of the kept reads in each [read class](classification.md#read-classes) (primary database). |
 | `{db}_mirna_reads` | Reads of all miRNA entries. |
 | `{db}_pct_of_kept` | `{db}_mirna_reads` as a percent of the kept reads. |
@@ -60,7 +60,7 @@ version. Other files in `results/` and `resources/` (for example, the alignment 
 | `results/trim/{sample}/no_adapter.fastq.gz` | Reads without an adapter. |
 
 Columns of `summary.tsv`. Each count has a second column with the suffix `_pct`, the percent of the raw reads. The
-names with 15 and 16 change with `trim.min_len`.
+names with 15 and 16 change with `trim.min_len`. The names with 28 and 29 change with `mirna.max_len`.
 
 | Column | Content |
 |---|---|

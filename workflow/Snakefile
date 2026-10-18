@@ -23,7 +23,8 @@ METADATA = [c for c in SAMPLES.columns if c not in ("sample", "fastq")]
 _table_columns = {
     "reads", "min_len", "max_len", "Q30_pct", "raw_reads", "kept_reads", "kept_pct", "with_adapter_pct",
     "adapter_dimer", "adapter_dimer_pct", "quality_trimmed_bp_pct", "unique_seqs", "unique_pct",
-    "singletons_pct_of_unique", "singletons_pct_of_reads", "median_len_reads", "median_len_unique", "reads_16_28",
+    "singletons_pct_of_unique", "singletons_pct_of_reads", "median_len_reads", "median_len_unique",
+    f"reads_{config['mirna']['min_len']}_{config['mirna']['max_len']}",
     "db", "class", "len_bin", "accession", "species", *(f"top{n}_pct_of_reads" for n in (1, 10, 100, 1000)),
 }
 _table_prefixes = ("pct_", "insert_", "no_adapter_", "cut_nt_", *(f"{db}_" for db in config["mirna"]["databases"]))

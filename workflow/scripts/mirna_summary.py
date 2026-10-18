@@ -68,9 +68,9 @@ def main():
     comp = comp[comp["db"] == args.dbs[0]]
     summary = samples.copy()
     summary["kept_reads"] = comp.groupby("sample")["reads"].sum()
-    # The miRNA length bin is the shortest one (e.g. 16-28)
+    # The miRNA length bin is the shortest one (mirna.min_len-mirna.max_len, e.g. 16-28 -> reads_16_28)
     mir_bin = min(comp["len_bin"].unique(), key=lambda b: int(re.split(r"[-+]", b)[0]))
-    summary["reads_16_28"] = comp[comp["len_bin"] == mir_bin].groupby("sample")["reads"].sum()
+    summary[f"reads_{mir_bin.replace('-', '_')}"] = comp[comp["len_bin"] == mir_bin].groupby("sample")["reads"].sum()
     cls_reads = comp.pivot_table(index="sample", columns="class", values="reads", aggfunc="sum")
     for c in cls_reads.columns:
         summary[f"pct_{c}"] = (100 * cls_reads[c] / summary["kept_reads"]).fillna(0)
