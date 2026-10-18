@@ -40,7 +40,12 @@ classes change only for reads with a miRNA hit.
    `classify.mismatches` mismatches). The hit with the fewest mismatches over all references gives the class. If
    classes have equally good hits, this order decides: `miRNA`, `rRNA`, `tRNA`, `mt_tRNA`, `Y_RNA`, `snoRNA`,
    `snRNA`, `7SK`, `7SL_SRP`, `vault_RNA`, `other_ncRNA`, `miRNA_hairpin_other`. The
-   [off-target check](#mirna-off-target-check) reports the miRNA reads with such a tie as `tied`.
+   [off-target check](#mirna-off-target-check) reports the miRNA reads with such a tie as `tied`. miRNA is first,
+   because the alignment cannot separate a miRNA from another RNA with the same sequence, and the workflow does not
+   remove a possible miRNA. But some miRBase entries are probably fragments of other RNAs. For example, the mature
+   sequence of hsa-miR-4516 occurs in the 45S rDNA. MirGeneDB 3.0 does not have these entries. The columns
+   `{db}_pct_tied` and `{db}_pct_tied_rRNA` of the [library summary](outputs.md#library-summary) give the tied reads
+   of each library.
 2. **miRNA.** A hairpin hit is `miRNA` only if it follows the [counting rules](mirna_counters.md#counting-rules):
    16–28 nt, the read ends near the ends of the mature miRNA, and 0 mismatches for reads of 18 nt or shorter. Other
    hairpin hits are `miRNA_hairpin_other`. A read without such a hit can have a hit with
