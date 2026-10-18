@@ -1,5 +1,6 @@
 """Classification rules of step 5 (quantify_mirna.py), with hit tables written by hand."""
 
+import pandas as pd
 import pytest
 
 from helpers import COUNT, classify
@@ -7,6 +8,7 @@ from helpers import COUNT, classify
 RRNA = "KY962518.1|rRNA|45S_rDNA"
 TRNA = "tRNA-Gly-GCC-1-1|tRNA|tRNA-Gly-GCC-1-1"
 MYCO = "NC_014448.1|mycoplasma|M_hyorhinis"
+ECOLI = "NC_000913.3|bacteria|E_coli"
 
 
 def hairpin(name):
@@ -55,6 +57,17 @@ def test_contaminant_tie_with_genome_class(tmp_path, genome_class, expected):
         contaminant=[(1, MYCO, 5000, 20, 0, "+")],
     )
     assert out.classes[1] == expected
+
+
+def test_contaminant_reads_go_to_the_genomes_of_their_class(tmp_path):
+    out = classify(
+        tmp_path,
+        reads={1: 20},
+        contaminant=[(1, MYCO, 5000, 20, 0, "+"), (1, ECOLI, 9000, 20, 0, "+")],
+    )
+    assert out.classes[1] == "mycoplasma"  # equal hits: the class priority decides
+    cont = pd.read_csv(out.dir / "contaminants.tsv", sep="\t")
+    assert cont[["class", "accession", "reads"]].values.tolist() == [["mycoplasma", "NC_014448.1", COUNT]]
 
 
 def test_contaminant_tie_with_small_rna_stays_human(tmp_path):

@@ -109,7 +109,7 @@ rule bowtie_contaminant:
 rule genome_unassigned:
     input:
         reads="results/collapse/{sample}/collapsed.fa.gz",
-        hits=expand("results/classify/{{sample}}/hits/{ref}.hits.tsv.gz", ref=SMALL_REFS),
+        hits=expand("results/classify/{{sample}}/hits/{ref}.hits.tsv.gz", ref=["rrna", "trna", "ncrna"]),
     output:
         temp("results/classify/{sample}/hits/unassigned_small.fa.gz"),
     log:
@@ -121,7 +121,8 @@ rule genome_unassigned:
     conda:
         "../envs/align.yaml"
     shell:
-        # Reads without a hit on any small RNA reference go on to the genome
+        # Reads without a hit on rRNA, tRNA or ncRNA go on to the genome. Reads with a hit on only one miRNA database
+        # need the genome class in the classification of the other database
         """
         (
         pigz -dc {input.hits} | cut -f 1 \

@@ -315,10 +315,11 @@ def main():
         print(r.groupby("rule")["count"].sum().to_string())
         best = best[cls[best.index].to_numpy() == best["cls"].to_numpy()]
 
-        # Reads per contaminant genome, split evenly between equally good genomes
+        # Reads per contaminant genome, split evenly between equally good genomes of the read's class
         cc = pd.concat([cont_cand.loc[cont_cand["rank"].isin(wins), ["rank", "ref", "cls"]],
                         end_cand.loc[end_cand["rank"].isin(end_wins), ["rank", "ref", "cls"]].astype({"ref": str})])
         cc = cc.astype({"ref": str}).drop_duplicates(["rank", "ref"])
+        cc = cc[cc["cls"].to_numpy() == cls[cc["rank"]].to_numpy()]
         cc = cc.assign(
             reads=reads.loc[cc["rank"], "count"].to_numpy() / cc.groupby("rank")["ref"].transform("size").to_numpy(),
             len_bin=length_bin(reads.loc[cc["rank"], "length"].to_numpy(), args.min_len, args.max_len),

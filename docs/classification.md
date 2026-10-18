@@ -44,9 +44,10 @@ classes change only for reads with a miRNA hit.
 2. **miRNA.** A hairpin hit is `miRNA` only if it follows the [counting rules](mirna_counters.md#counting-rules):
    16–28 nt, the read ends near the ends of the mature miRNA, and 0 mismatches for reads of 18 nt or shorter. Other
    hairpin hits are `miRNA_hairpin_other`.
-3. **Genome.** Reads without a small RNA hit align to the genome (both strands). The annotation on the same strand
-   gives the class. The rDNA copies of `refs.rdna_loci` and the rRNA genes give `rRNA_genomic`. Other hits in the
-   mitochondrial genome give `mt_other`. An exon hit wins over an intron hit.
+3. **Genome.** Reads without an rRNA, tRNA or ncRNA hit align to the genome (both strands). A read without a small
+   RNA hit gets its class from the annotation on the same strand. The rDNA copies of `refs.rdna_loci` and the rRNA
+   genes give `rRNA_genomic`. Other hits in the mitochondrial genome give `mt_other`. An exon hit wins over an intron
+   hit.
 4. **Contaminants.** See [Contaminants](#contaminants).
 5. **Non-templated 3′ nucleotides.** Reads that are still `unmapped` can become `miRNA` if they match a mature miRNA
    after the removal of 1–3 nt at the 3′ end (see [miRNA counts](mirna_counters.md#non-templated-3-nucleotides)).
