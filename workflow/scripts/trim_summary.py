@@ -104,6 +104,7 @@ def main():
         rows[name], lengths[name] = summarize(report, *hists[name], args.min_len)
 
     summary = samples.join(pd.DataFrame.from_dict(rows, orient="index"), how="right")
+    summary.index.name = "sample"
     summary.round(3).to_csv(args.summary, sep="\t")
 
     lengths = pd.DataFrame(lengths).reindex(range(0, 100)).fillna(0)

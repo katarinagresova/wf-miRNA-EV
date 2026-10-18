@@ -53,6 +53,7 @@ def main():
         top_seqs[name] = counts.iloc[: args.top_n]
 
     summary = samples.join(pd.DataFrame.from_dict(rows, orient="index"), how="right")
+    summary.index.name = "sample"
     summary.round(3).to_csv(args.summary, sep="\t")
 
     # Union of per-sample top sequences, quantified (CPM of kept reads) in every sample.
