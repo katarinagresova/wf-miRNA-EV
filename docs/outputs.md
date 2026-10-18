@@ -99,9 +99,10 @@ Columns of `summary.tsv`: `reads`, `unique_seqs`, `unique_pct` (unique sequences
 |---|---|
 | `results/classify/{sample}/read_classes.tsv.gz` | The class of each collapsed sequence: `rank` (the rank in `collapsed.fa.gz`), `count`, `length`, and `class_{db}` for each database. |
 | `results/classify/composition.tsv` | Reads for each library, database, class and length bin (see below). |
-| `results/classify/contaminants.tsv` | Reads for each library and contaminant genome: `class`, `accession`, `species`, `reads`, `unique_seqs`, `pct_of_kept`. |
+| `results/classify/contaminants.tsv` | Reads for each library and contaminant genome (primary database): `class`, `accession`, `species`, `reads`, `unique_seqs`, `pct_of_kept`. |
 | `results/classify/top_sequences_classes.tsv` | The sequences of `top_sequences.tsv` with their `class`, the `mismatches` and the number (`n_hits`) of their best hits, and a short `label` (for example, the miRNA name, the rRNA region and position, or the tRNA fragment type). |
-| `results/classify/{sample}/composition.tsv`, `contaminants.tsv` | The same as the tables above, for one library. |
+| `results/classify/{sample}/composition.tsv` | Reads of one library for each database, class and length bin: `db`, `class`, `len_bin`, `reads`, `unique_seqs`. |
+| `results/classify/{sample}/contaminants.tsv` | Reads of one library for each database, contaminant genome and length bin: `db`, `class`, `accession`, `species`, `len_bin`, `reads`, `unique_seqs`. |
 
 Columns of `composition.tsv`: `db`, `class`, `len_bin` (16–28, 29–50 or 51+ nt), `reads`, `unique_seqs`,
 `pct_of_kept`, and `pct_of_human`. `pct_of_human` divides by the human reads: the kept reads without the contaminant
