@@ -49,7 +49,7 @@ URL must have `url` and `md5`.
 | `refs.mirgenedb` | MirGeneDB mature, star and precursor FASTA (default 3.0). MirGeneDB has no fixed download for each release, so the workflow writes the md5 of the download to the log. For a fixed version, give local copies. |
 | `refs.gtrnadb` | GtRNAdb mature tRNAs and the tRNA gene loci. |
 | `refs.ensembl` | Ensembl genome, gene annotation (GTF) and ncRNA FASTA (default release 113, GRCh38). |
-| `refs.rrna` | The single-copy rRNA reference: the rDNA repeat (NCBI accession), 5S with genomic flanks, the mitochondrial rRNAs, and the rRNA regions (`features`). For 5S: the Ensembl transcript (`rna5s`), the flank length on each side (`rna5s_flank`), and the length of mature 5S from the 5′ end of the transcript (`rna5s_length`), which can be longer than the transcript. |
+| `refs.rrna` | The single-copy rRNA reference: the rDNA repeat (NCBI accession), 5S with genomic flanks, the mitochondrial rRNAs, and the rRNA regions of the rDNA repeat (`features`, under the accession of `rdna`). For 5S: the Ensembl transcript (`rna5s`), the flank length on each side (`rna5s_flank`), and the length of mature 5S from the 5′ end of the transcript (`rna5s_length`), which can be longer than the transcript. |
 | `refs.rdna_loci` | rDNA copies in the genome that the annotation does not mark as rRNA. Genome hits in these loci get the class `rRNA_genomic`. |
 | `refs.contaminants` | Contaminant genomes: NCBI accession, read class and species. The read class is `mycoplasma`, `bacteria` or `phiX`. The default list has 6 *Mycoplasma* species, *E. coli* and phiX. |
 | `refs.ncbi_dir` | Optional directory with local copies of the NCBI records: `<accession>.fa`, and `<accession>.ft` (feature table) for the contaminants. |

@@ -22,7 +22,6 @@ species:
 # GtRNAdb and NCBI contaminant files is only logged (MirGeneDB is only served as the live release).
 refs:
   mirbase:
-    version: "22.1"
     # Wayback Machine copies of the official mirbase.org download files (22.1 = CURRENT since 2018): 48,885 mature
     # (2,656 hsa), 38,589 hairpins (1,917 hsa)
     mature:
@@ -32,7 +31,7 @@ refs:
       url: http://web.archive.org/web/20240901130359id_/https://www.mirbase.org/download/hairpin.fa
       md5: afade358ab4bd799414a0ae1948defbd
   mirgenedb:
-    version: "3.0"
+    # Release 3.0 (the live release in 2026)
     mature: https://mirgenedb.org/fasta/hsa?mat=1
     star: https://mirgenedb.org/fasta/hsa?star=1
     # precursor with 30 nt flanks on both sides
@@ -42,7 +41,7 @@ refs:
     mature: https://gtrnadb.ucsc.edu/genomes/eukaryota/Hsapi38/hg38-mature-tRNAs.fa
     tar: https://gtrnadb.ucsc.edu/genomes/eukaryota/Hsapi38/hg38-tRNAs.tar.gz
   ensembl:
-    release: 113
+    # Release 113, GRCh38
     genome: https://ftp.ensembl.org/pub/release-113/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
     gtf: https://ftp.ensembl.org/pub/release-113/gtf/homo_sapiens/Homo_sapiens.GRCh38.113.gtf.gz
     ncrna: https://ftp.ensembl.org/pub/release-113/fasta/homo_sapiens/ncrna/Homo_sapiens.GRCh38.ncrna.fa.gz
@@ -56,7 +55,7 @@ refs:
     # short at the 3' end
     rna5s_length: 121
     mt_rrna: [MT-RNR1, MT-RNR2]
-    # rRNA features of the reference; the report annotates the top sequences with them.
+    # rRNA regions of the rDNA repeat, under its accession (rdna); the report annotates the top sequences with them.
     # KY962518.1 features (0-based start, end) from its GenBank record (18S 3658..5526, 5.8S 6597..6753,
     # 28S 7921..12971, 1-based); everything else is 5'ETS/ITS/3'ETS
     features:
@@ -68,9 +67,6 @@ refs:
         - [ITS2, 6753, 7920]
         - [28S, 7920, 12971]
         - [3'ETS/IGS, 12971, 50000]
-      NC_012920.1:
-        - [MT-RNR1, 647, 1601]
-        - [MT-RNR2, 1670, 3229]
   # rDNA copies in GRCh38 that Ensembl annotates only with 5.8S; genome hits here are rRNA that did not match the
   # single-copy reference with <= 1 mismatch (0-based, end past contig end is fine)
   rdna_loci:

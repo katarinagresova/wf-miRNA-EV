@@ -15,11 +15,9 @@ species:
 
 refs:
   mirbase:
-    version: "22.1"
     mature: refs/mirbase/mature.fa
     hairpin: refs/mirbase/hairpin.fa
   mirgenedb:
-    version: "3.0"
     mature: refs/mirgenedb/mature.fa
     star: refs/mirgenedb/star.fa
     pri: refs/mirgenedb/pri.fa
@@ -27,7 +25,6 @@ refs:
     mature: refs/gtrnadb/mature-tRNAs.fa
     tar: refs/gtrnadb/tRNAs.tar.gz
   ensembl:
-    release: 113
     # Regions of chromosomes 1, 21 and MT at their real positions; all other bases are N
     genome: refs/ensembl/genome.fa.gz
     gtf: refs/ensembl/gtf.gz

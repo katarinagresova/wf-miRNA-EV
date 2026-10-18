@@ -55,7 +55,6 @@ properties:
       mirbase:
         type: object
         properties:
-          version: {type: string}
           mature: {$ref: "#/$defs/source_md5"}
           hairpin: {$ref: "#/$defs/source_md5"}
         required: [mature, hairpin]
@@ -63,7 +62,6 @@ properties:
       mirgenedb:
         type: object
         properties:
-          version: {type: string}
           mature: {$ref: "#/$defs/source"}
           star: {$ref: "#/$defs/source"}
           pri: {$ref: "#/$defs/source"}
@@ -79,7 +77,6 @@ properties:
       ensembl:
         type: object
         properties:
-          release: {type: integer}
           genome: {$ref: "#/$defs/source"}
           gtf: {$ref: "#/$defs/source"}
           ncrna: {$ref: "#/$defs/source"}
@@ -95,7 +92,9 @@ properties:
           mt_rrna: {type: array, items: {type: string}, minItems: 1}
           features:
             type: object
-            description: rRNA regions for each reference, [name, 0-based start, end]
+            description: rRNA regions of the rDNA repeat under its accession (rdna), [name, 0-based start, end]
+            minProperties: 1
+            maxProperties: 1
             additionalProperties:
               type: array
               items:
