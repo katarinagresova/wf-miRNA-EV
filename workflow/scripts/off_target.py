@@ -13,7 +13,8 @@ result from its class in step 5:
   (miRNA_hairpin_other; step 5 needs 0 mismatches for these reads).
 
 A read on several mature miRNAs is split evenly between them, as in the bowtie counts. The check does not change a
-count. The column counter_mirna gives the entry of the miRNA counter that counts the read (its per-read table).
+count. The column tied_classes gives the other classes of a tied read. The column counter_mirna gives the entry of the
+miRNA counter that counts the read (its per-read table).
 """
 
 import argparse
@@ -62,8 +63,8 @@ def main():
     args = parse_args()
     classes = pd.read_csv(args.classes, sep="\t", usecols=["rank", "count", "length", f"class_{args.db}"], index_col="rank")
     cls = classes[f"class_{args.db}"]
-    mirna_reads = pd.read_csv(args.mirna_reads, sep="\t", usecols=["rank", "tied_classes"])
-    tied = set(mirna_reads.loc[mirna_reads["tied_classes"].notna(), "rank"])
+    mirna_reads = pd.read_csv(args.mirna_reads, sep="\t", usecols=["rank", "tied_classes"]).dropna()
+    tied_classes = mirna_reads.drop_duplicates("rank").set_index("rank")["tied_classes"]
     counter = pd.read_csv(args.counter_reads, sep="\t")
 
     # Reads with a miRNA-only hit on a mature arm; best stratum only, so one mismatch count per read
@@ -79,12 +80,13 @@ def main():
         reads=count / a.groupby("rank")["mature"].transform("size").to_numpy(),
         **{"class": cls.loc[a["rank"]].to_numpy()},
     )
-    is_tied = a["rank"].isin(tied).to_numpy()
+    is_tied = a["rank"].isin(tied_classes.index).to_numpy()
     assert not (is_tied & (a["class"] != "miRNA").to_numpy()).any(), "tied reads must have the class miRNA"
     a["result"] = result(a["class"].to_numpy(), is_tied)
+    a["tied_classes"] = a["rank"].map(tied_classes)
     a["counter_mirna"] = a["sequence"].map(counter.groupby("sequence")["mirna"].agg(lambda m: ";".join(sorted(set(m)))))
     out = a.rename(columns={"mature": "mirna"}).sort_values(["count", "sequence", "mirna"], ascending=[False, True, True])
-    cols = ["sequence", "length", "count", "mm", "mirna", "reads", "class", "result", "counter_mirna"]
+    cols = ["sequence", "length", "count", "mm", "mirna", "reads", "class", "result", "tied_classes", "counter_mirna"]
     out[cols].to_csv(args.out_reads, sep="\t", index=False, compression="gzip")
 
     reads = a.groupby("result")["reads"].sum()

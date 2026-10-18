@@ -12,8 +12,14 @@ TABLE = [
     ("hsa-miR-199a-3p/hsa-miR-199b-3p", 30, "hsa-miR-199a-3p;hsa-miR-199b-3p"),
     ("hsa-miR-21-5p", 5, "hsa-miR-21-5p"),
 ]
-# Off-target check: database entry, reads, result
-OFF_TARGET = [("hsa-miR-199b-3p", 10, "miRNA"), ("hsa-miR-199b-3p", 2, "rRNA"), ("hsa-let-7a-5p", 48, "miRNA")]
+# Off-target check: database entry, reads, result, tied classes
+OFF_TARGET = [
+    ("hsa-miR-199b-3p", 10, "miRNA", ""),
+    ("hsa-miR-199b-3p", 2, "rRNA", ""),
+    ("hsa-let-7a-5p", 45, "miRNA", ""),
+    ("hsa-let-7a-5p", 2, "tied", "rRNA,tRNA"),
+    ("hsa-let-7a-5p", 1, "tied", "tRNA"),
+]
 
 
 @pytest.fixture
@@ -29,7 +35,8 @@ def out(tmp_path):
         d = tmp_path / "mirna" / s
         d.mkdir(parents=True)
         counts.append(write_tsv(d / "bowtie_mirbase.tsv", TABLE, header=["mirna", "reads", "members"]))
-        off.append(write_tsv(d / "off_target_mirbase.tsv.gz", OFF_TARGET, header=["mirna", "reads", "result"]))
+        off.append(write_tsv(d / "off_target_mirbase.tsv.gz", OFF_TARGET,
+                             header=["mirna", "reads", "result", "tied_classes"]))
     out = tmp_path / "out"
     run_script(
         "mirna_summary.py",
@@ -67,3 +74,13 @@ def test_off_target_links_merged_entry(out):
     assert off.loc["hsa-miR-199b-3p", "off_target_frac"] == pytest.approx(2 / 12, abs=1e-4)
     summary = read(out / "library_summary.tsv", index_col="sample")
     assert summary.loc["S1", "mirbase_off_target_pct_rRNA"] == pytest.approx(100 * 2 / 60, abs=1e-4)
+
+
+def test_tied_reads(out):
+    summary = read(out / "library_summary.tsv", index_col="sample")
+    cols = list(summary.columns)
+    i = cols.index("mirbase_pct_of_kept")
+    assert cols[i + 1 : i + 3] == ["mirbase_pct_tied", "mirbase_pct_tied_rRNA"]
+    # Percent of the miRNA reads (85); a read is tied with rRNA if rRNA is one of its tied classes
+    assert summary.loc["S1", "mirbase_pct_tied"] == pytest.approx(100 * 3 / 85, abs=1e-4)
+    assert summary.loc["S1", "mirbase_pct_tied_rRNA"] == pytest.approx(100 * 2 / 85, abs=1e-4)

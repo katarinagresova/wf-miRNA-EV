@@ -151,6 +151,12 @@ def mirna_counts(summary, dbs):
                 h = {"title": f"miRNA reads ({db})", "format": "{:,.0f}"}
             elif what == "pct_of_kept":
                 h = {"title": f"% of kept ({db})", "suffix": "%", "min": 0, "max": 100, "format": "{:,.1f}"}
+            elif what == "pct_tied":
+                h = {"title": f"% tied ({db})", "description": "miRNA reads with an equal hit on another class",
+                     "suffix": "%", "min": 0, "max": 100, "format": "{:,.1f}"}
+            elif what == "pct_tied_rRNA":
+                h = {"title": f"% tied rRNA ({db})", "description": "miRNA reads with an equal hit on rRNA",
+                     "suffix": "%", "min": 0, "max": 100, "format": "{:,.1f}"}
             else:
                 n = what.removeprefix("detected_ge")
                 h = {"title": f"miRNAs ≥{n} ({db})", "description": f"miRNA entries with {n} or more reads",
@@ -160,7 +166,7 @@ def mirna_counts(summary, dbs):
     return {
         "id": "wf_mirna",
         "section_name": "miRNA counts",
-        "description": "miRNA reads and detected miRNA entries of each library (step 6).",
+        "description": "miRNA reads, tied miRNA reads and detected miRNA entries of each library (step 6).",
         "plot_type": "table",
         "headers": headers,
         "pconfig": {"id": "wf_mirna_table", "title": "wf-miRNA-EV: miRNA counts"},

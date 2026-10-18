@@ -18,9 +18,10 @@ OFF_TARGET = {
 def out(tmp_path):
     write_tsv(
         tmp_path / "library_summary.tsv",
-        [(s, 1000, 50.0, 20.0, 3.0, 1.0, 12, 7, 75.0, 5.0, 10.0, 10.0) for s in SAMPLES],
-        header=["sample", "kept_reads", "pct_miRNA", "pct_rRNA", "pct_mycoplasma", "pct_phiX", "mirbase_detected_ge1",
-                "mirbase_detected_ge10", "mirbase_off_target_pct_miRNA", "mirbase_off_target_pct_tied",
+        [(s, 1000, 50.0, 20.0, 3.0, 1.0, 20.0, 15.0, 12, 7, 75.0, 5.0, 10.0, 10.0) for s in SAMPLES],
+        header=["sample", "kept_reads", "pct_miRNA", "pct_rRNA", "pct_mycoplasma", "pct_phiX", "mirbase_pct_tied",
+                "mirbase_pct_tied_rRNA", "mirbase_detected_ge1", "mirbase_detected_ge10",
+                "mirbase_off_target_pct_miRNA", "mirbase_off_target_pct_tied",
                 "mirbase_off_target_pct_rRNA", "mirbase_off_target_pct_miRNA_hairpin_other"],
     )
     write_tsv(
@@ -63,6 +64,12 @@ def test_general_stats(out):
     assert data["pct_off_target"] == pytest.approx(20.0)
     # The largest detected_min
     assert data["detected"] == 7
+
+
+def test_mirna_counts_headers(out):
+    headers = read(out, "mirna")["headers"]
+    assert headers["mirbase_pct_tied"]["title"] == "% tied (mirbase)"
+    assert headers["mirbase_pct_tied_rRNA"]["title"] == "% tied rRNA (mirbase)"
 
 
 def test_classes_in_priority_order(out):

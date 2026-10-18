@@ -7,7 +7,9 @@ example, hsa-miR-199b-3p to hsa-miR-199a-3p/hsa-miR-199b-3p).
 
 In the library summary, the miRNA columns have no counter name, and the columns of the off-target check start with
 the database and off_target. The off-target fraction is the share of the reads of the miRNA-only mapping that step 5
-gives to another class (results other than miRNA, tied and unmapped).
+gives to another class (results other than miRNA, tied and unmapped). The tied percent is the share of the miRNA reads
+with the result tied: step 5 gives them the class miRNA, but another class has an equal hit. The tied rRNA percent
+counts only the tied reads with rRNA in their tied classes.
 """
 
 import argparse
@@ -87,6 +89,9 @@ def main():
         mat.round(3).to_csv(out_dir / f"counts_{db}.tsv", sep="\t")
         summary[f"{db}_mirna_reads"] = mat.sum()
         summary[f"{db}_pct_of_kept"] = 100 * mat.sum() / summary["kept_reads"]
+        # From the off-target check below; 0 if the library has no miRNA reads
+        summary[f"{db}_pct_tied"] = 0.0
+        summary[f"{db}_pct_tied_rRNA"] = 0.0
         for n in args.detected_min:
             summary[f"{db}_detected_ge{n}"] = (mat >= n).sum()
         entry_of[db] = {m: e for e, ms in members(tables[db]).items() for m in ms}
@@ -95,8 +100,15 @@ def main():
     off = []
     for path in args.off_target:
         sample, _, db = parse_path(path, ".tsv.gz")
-        t = pd.read_csv(path, sep="\t", usecols=["mirna", "reads", "result"]).assign(sample=sample, db=db)
+        t = pd.read_csv(path, sep="\t", usecols=["mirna", "reads", "result", "tied_classes"],
+                        dtype={"tied_classes": str}).assign(sample=sample, db=db)
         off.append(t)
+        tied = t[t["result"] == "tied"]
+        with_rrna = ["rRNA" in c.split(",") for c in tied["tied_classes"]]
+        mirna_reads = summary.loc[sample, f"{db}_mirna_reads"]
+        if mirna_reads > 0:
+            summary.loc[sample, f"{db}_pct_tied"] = 100 * tied["reads"].sum() / mirna_reads
+            summary.loc[sample, f"{db}_pct_tied_rRNA"] = 100 * tied.loc[with_rrna, "reads"].sum() / mirna_reads
         by_result = t.groupby("result")["reads"].sum()
         summary.loc[sample, f"{db}_off_target_reads"] = by_result.sum()
         for r, v in by_result.items():

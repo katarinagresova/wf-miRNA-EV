@@ -55,6 +55,8 @@ def test_off_target_results(tmp_path):
     assert reads.loc[seq[3], "result"] == "unmapped"
     assert reads.loc[seq[4], "result"] == "miRNA"
     assert reads.loc[seq[5], "result"] == "miRNA_hairpin_other"
+    assert reads.loc[seq[2], "tied_classes"] == "rRNA"
+    assert reads["tied_classes"].isna().sum() == 4
     assert (reads["mirna"] == "miR-a-5p").all()
     assert reads.loc[[seq[2], seq[4]], "counter_mirna"].eq("miR-a-5p").all()
     assert reads["counter_mirna"].isna().sum() == 3

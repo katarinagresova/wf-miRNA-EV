@@ -20,6 +20,8 @@ version. Other files in `results/` and `resources/` (for example, the alignment 
 | `pct_<class>` | Percent of the kept reads in each [read class](classification.md#read-classes) (primary database). |
 | `{db}_mirna_reads` | Reads of all miRNA entries. |
 | `{db}_pct_of_kept` | `{db}_mirna_reads` as a percent of the kept reads. |
+| `{db}_pct_tied` | Tied miRNA reads as a percent of `{db}_mirna_reads`. A tied read has the class miRNA, but another class has an equally good hit (`tied` in the [off-target check](classification.md#mirna-off-target-check)). |
+| `{db}_pct_tied_rRNA` | Tied miRNA reads with an equally good rRNA hit, as a percent of `{db}_mirna_reads`. |
 | `{db}_detected_ge<n>` | miRNA entries with `<n>` or more reads, for each `<n>` of `mirna.detected_min_reads`. |
 | `{db}_off_target_reads` | Reads of the miRNA-only mapping of the [off-target check](classification.md#mirna-off-target-check). |
 | `{db}_off_target_pct_<result>` | Percent of these reads with each result of the off-target check. |
@@ -34,7 +36,7 @@ version. Other files in `results/` and `resources/` (for example, the alignment 
 | Insert lengths | Insert length distribution after the adapter trim, as a percent of the raw reads. Length 0 is the adapter dimers. |
 | Read classes | Kept reads of each read class (primary database). |
 | Contaminants | Kept reads of each contaminant genome. |
-| miRNA counts | miRNA reads and detected miRNAs of each database. |
+| miRNA counts | miRNA reads, tied miRNA reads and detected miRNAs of each database. |
 | miRNA off-target check | Reads of the miRNA-only mapping by result, for each library and database. |
 | miRNA off-target check by read length | Percent off-target reads for each read length. Short reads match a miRNA by chance more often. |
 | FastQC (raw reads), cutadapt, FastQC (trimmed reads) | The standard MultiQC sections. |
@@ -132,7 +134,8 @@ Columns of `bowtie_{db}.tsv`:
 
 Columns of `off_target_{db}.tsv.gz`: `sequence`, `length`, `count`, `mm` (mismatches of the miRNA-only hit), `mirna`
 (the mature name of the hit), `reads` (the count, divided between the hits of the read), `class` (the class in step
-5), `result` (the [result](classification.md#mirna-off-target-check) of the off-target check) and `counter_mirna` (the
+5), `result` (the [result](classification.md#mirna-off-target-check) of the off-target check), `tied_classes` (the
+other classes with an equally good hit, joined by `,`, empty if the result is not `tied`) and `counter_mirna` (the
 entry that counts the read, empty if no entry counts it).
 
 Columns of `off_target.tsv`:
