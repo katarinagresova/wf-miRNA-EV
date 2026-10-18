@@ -222,6 +222,7 @@ __marimo__/
 # agents
 CLAUDE.md
 PLAN.md
+REVIEW.md
 
 # Snakemake
 results/
