@@ -10,6 +10,7 @@ $defs:
   source_md5:
     oneOf:
       - type: string
+        not: {pattern: "^(https?|ftp)://"}
       - type: object
         properties:
           url: {type: string}

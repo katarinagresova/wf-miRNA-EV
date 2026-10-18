@@ -38,7 +38,8 @@ Kits with UMIs (for example, QIAseq miRNA) are not supported yet.
 ## References
 
 The workflow downloads the references into `resources/`. Each source in `refs` is a URL or a local path. Use local
-paths on a cluster without internet access. A source with `url` and `md5` is checked against the md5 sum.
+paths on a cluster without internet access. A source with `url` and `md5` is checked against the md5 sum. A miRBase
+URL must have `url` and `md5`.
 
 | Key | Content |
 |---|---|
