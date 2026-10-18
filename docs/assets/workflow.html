@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>wf-miRNA-EV workflow</title>
+<!--
+  Workflow figure of the README. Render workflow.png from this file (from docs/assets):
+  chrome --headless --hide-scrollbars --force-device-scale-factor=2 --virtual-time-budget=2000 \
+      --window-size=1012,1377 --screenshot=workflow.png workflow.html
+-->
+<style>
+  :root {
+    --ink: #0b0b0b;
+    --ink-2: #52514e;
+    --muted: #898781;
+    --grid: #e1e0d9;
+    --axis: #c3c2b7;
+    --panel: #f7f6f3;
+    --wire: #a9a79f;
+    /* Read class colours */
+    --mirna: #e34948;
+    --rrna: #2a78d6;
+    --trna: #eb6834;
+    --yrna: #1baf7a;
+    --snrna: #eda100;
+    --ncrna: #e87ba4;
+    --gene: #008300;
+    --intron: #4a3aa7;
+    --unmapped: #c3c2b7;
+    --myco: #8c5a2b;
+    --contam: #d2b48c;
+    --tied: #6250d6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #fff;
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, "Nimbus Sans", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.38;
+    -webkit-font-smoothing: antialiased;
+  }
+  code, .mono { font-family: "Source Code Pro", "SF Mono", Menlo, Consolas, monospace; font-size: 10.5px; }
+  i { font-style: italic; }
+
+  #fig {
+    position: relative;
+    width: 1012px;
+    padding: 28px;
+    display: grid;
+    grid-template-columns: 820px 120px;
+    column-gap: 16px;
+  }
+  #wires { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+  main { display: flex; flex-direction: column; }
+
+  /* Cards */
+  .card {
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--grid);
+    border-radius: 10px;
+    padding: 12px 14px 13px;
+    box-shadow: 0 1px 2px rgba(11, 11, 11, 0.04), 0 3px 10px rgba(11, 11, 11, 0.04);
+  }
+  .head { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+  .head h3 { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+  .head .tool {
+    margin-left: auto;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--panel);
+    border: 1px solid var(--grid);
+    color: var(--ink-2);
+    font-size: 10.5px;
+    white-space: nowrap;
+  }
+  .badge {
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font-size: 11.5px;
+    font-weight: 700;
+  }
+  .badge.sm { width: 16px; height: 16px; font-size: 9.5px; }
+  p { color: var(--ink-2); }
+  p + p { margin-top: 5px; }
+
+  /* Row 1: input */
+  #r-input { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .files { display: flex; gap: 8px; align-items: center; }
+  .file {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px 5px 8px;
+    border: 1px solid var(--axis);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--ink);
+  }
+  .file svg { flex: none; }
+  .file.more { border-style: dashed; color: var(--muted); padding: 5px 10px; }
+  .file.sheet { margin-left: 14px; }
+  .caption { color: var(--muted); font-size: 11px; }
+
+  /* Row 2: QC and trimming */
+  #r-pre { display: grid; grid-template-columns: 250px 1fr; gap: 16px; margin-top: 46px; align-items: start; }
+  .to-report {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .to-report .badge { background: var(--muted); }
+
+  .read { display: grid; grid-template-columns: 24px 1.35fr 1fr; margin: 4px 0 2px; }
+  .read .seg {
+    height: 22px;
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .read .cut { background: var(--axis); color: #fff; border-radius: 4px 0 0 4px; font-weight: 700; }
+  .read .insert { background: var(--ink-2); color: #fff; }
+  .read .adapter {
+    color: var(--ink-2);
+    border-radius: 0 4px 4px 0;
+    background: repeating-linear-gradient(-45deg, #efeee9 0 5px, #e4e2db 5px 10px);
+  }
+  .read .lab { color: var(--muted); font-size: 10.5px; text-align: center; padding-top: 3px; white-space: nowrap; }
+  .read .lab.cut-lab { text-align: left; }
+  .steps { margin: 8px 0 0 15px; color: var(--ink-2); }
+  .steps li + li { margin-top: 2px; }
+  .removed {
+    margin-top: 9px;
+    padding: 6px 9px;
+    border: 1px dashed var(--axis);
+    border-radius: 6px;
+    background: #fbfaf8;
+    color: var(--ink-2);
+    font-size: 11px;
+  }
+  .removed b { color: var(--ink); }
+
+  /* Row 3: collapse */
+  #r-collapse { display: flex; justify-content: center; margin-top: 46px; padding-left: 92px; }
+  #c-collapse { width: 380px; }
+  .aside-note {
+    position: absolute;
+    left: calc(100% + 18px);
+    bottom: -40px;
+    width: 160px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.35;
+  }
+  .aside-note b { color: var(--ink-2); }
+
+  /* Row 4: references */
+  #r-refs { display: grid; grid-template-columns: 84px repeat(6, 1fr); gap: 8px; margin-top: 74px; }
+  .rowlabel { display: flex; flex-direction: column; gap: 5px; padding-top: 4px; }
+  .rowlabel h3 { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+  .rowlabel p { font-size: 11px; color: var(--muted); }
+  .ref {
+    --c: var(--axis);
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--c) 28%, white);
+    background: color-mix(in srgb, var(--c) 7%, white);
+    padding: 13px 9px 9px;
+    display: flex;
+    flex-direction: column;
+  }
+  .bar { position: absolute; top: 0; left: 0; right: 0; height: 5px; display: flex; }
+  .bar span { flex: 1; }
+  .ref h4 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+  .ref p { font-size: 11px; line-height: 1.32; }
+  .ref .strand { margin-top: auto; padding-top: 7px; color: var(--muted); font-size: 10.5px; }
+  .ref .only { margin-top: 5px; font-size: 10.5px; color: var(--ink-2); font-style: italic; }
+
+  /* Row 5: classification */
+  #r-engine { margin-top: 58px; }
+  #c-engine { background: var(--panel); padding: 14px 16px 15px; }
+  #c-engine .head { margin-bottom: 11px; }
+  #c-engine .head .sub { color: var(--muted); font-size: 11px; margin-left: 2px; }
+  .engine-body { display: grid; grid-template-columns: 1fr 300px; gap: 16px; }
+  .rules { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .rules li {
+    flex: 1;
+    display: grid;
+    align-content: center;
+    grid-template-columns: 18px 1fr;
+    gap: 8px;
+    padding: 7px 10px;
+    background: #fff;
+    border: 1px solid var(--grid);
+    border-radius: 7px;
+    color: var(--ink-2);
+  }
+  .rules .n {
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1px solid var(--axis);
+    color: var(--ink-2);
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .rules b { color: var(--ink); }
+  .classes {
+    background: #fff;
+    border: 1px solid var(--grid);
+    border-radius: 7px;
+    padding: 9px 12px 10px;
+  }
+  .classes h4 { font-size: 12px; font-weight: 700; margin-bottom: 7px; }
+  .cls { display: grid; grid-template-columns: 14px 1fr; column-gap: 9px; align-items: start; }
+  .cls + .cls { margin-top: 7px; }
+  .sw { width: 14px; height: 14px; border-radius: 4px; overflow: hidden; display: flex; margin-top: 1px; }
+  .sw span { flex: 1; }
+  .cls b { font-size: 12px; }
+  .cls code { display: block; color: var(--muted); line-height: 1.3; }
+
+  /* Row 6: outputs */
+  #r-out { display: grid; grid-template-columns: 1.05fr 0.85fr 1.1fr; gap: 14px; margin-top: 52px; }
+  #r-out .card { display: flex; flex-direction: column; }
+  .sub-h { margin-top: 9px; margin-bottom: 3px; font-weight: 700; font-size: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 8px 2px 6px;
+    border-radius: 999px;
+    border: 1px solid var(--grid);
+    background: #fff;
+    font-size: 11px;
+    color: var(--ink);
+  }
+  .chip .sw { width: 9px; height: 9px; border-radius: 50%; margin: 0; }
+  .files-out {
+    margin-top: auto;
+    padding-top: 9px;
+    border-top: 1px dashed var(--grid);
+    color: var(--muted);
+  }
+  .card .files-out { margin-top: 10px; }
+  #r-out .card .grow { flex: 1; }
+
+  .track { margin: 12px 0 2px; }
+  .track .rdna { display: flex; height: 12px; }
+  .track .rdna span { height: 100%; }
+  .track .rdna .sp { background: color-mix(in srgb, var(--rrna) 22%, white); }
+  .track .rdna .rr { background: var(--rrna); }
+  .track .rdna .igs {
+    background: linear-gradient(90deg, color-mix(in srgb, var(--rrna) 22%, white), rgba(255, 255, 255, 0));
+  }
+  .track .labs { position: relative; height: 15px; color: var(--muted); font-size: 10px; }
+  .track .labs span { position: absolute; top: 2px; transform: translateX(-50%); white-space: nowrap; }
+  .track .extra { display: flex; gap: 6px; margin-top: 4px; align-items: center; color: var(--muted); font-size: 10px; }
+  .track .extra i { font-style: normal; display: inline-block; height: 12px; background: var(--rrna); border-radius: 2px; }
+
+  .list { list-style: none; color: var(--ink-2); }
+  .list li { position: relative; padding-left: 12px; }
+  .list li + li { margin-top: 1px; }
+  .list li::before { content: ""; position: absolute; left: 1px; top: 6px; width: 5px; height: 5px; border-radius: 50%; background: var(--axis); }
+
+  /* Phases */
+  aside { position: relative; }
+  .phase { position: absolute; left: 22px; transform: translateY(-50%); }
+  .phase b { display: block; font-size: 14px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
+  .phase span { color: var(--muted); font-size: 11px; }
+
+  .wire-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 1px 7px;
+    background: #fff;
+    color: var(--muted);
+    font-size: 11px;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+<div id="fig">
+  <svg id="wires" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,1 L9,5 L0,9 z" fill="#a9a79f"/>
+      </marker>
+    </defs>
+  </svg>
+
+  <main>
+    <!-- Input -->
+    <section id="r-input">
+      <div class="files" id="files">
+        <span class="file"><svg width="11" height="13" viewBox="0 0 11 13"><path d="M1 .5h6l3.5 3.5v8.5H1z" fill="none" stroke="#898781"/><path d="M7 .5V4h3.5" fill="none" stroke="#898781"/></svg><span class="mono">S1.fastq.gz</span></span>
+        <span class="file"><svg width="11" height="13" viewBox="0 0 11 13"><path d="M1 .5h6l3.5 3.5v8.5H1z" fill="none" stroke="#898781"/><path d="M7 .5V4h3.5" fill="none" stroke="#898781"/></svg><span class="mono">S2.fastq.gz</span></span>
+        <span class="file"><svg width="11" height="13" viewBox="0 0 11 13"><path d="M1 .5h6l3.5 3.5v8.5H1z" fill="none" stroke="#898781"/><path d="M7 .5V4h3.5" fill="none" stroke="#898781"/></svg><span class="mono">S3.fastq.gz</span></span>
+        <span class="file more">…</span>
+        <span class="file sheet"><svg width="13" height="12" viewBox="0 0 13 12"><rect x=".5" y=".5" width="12" height="11" rx="1.5" fill="none" stroke="#898781"/><path d="M.5 4h12M.5 7.5h12M5 .5v11" stroke="#898781"/></svg><span class="mono">samples.tsv</span></span>
+      </div>
+      <div class="caption">Single-end small RNA-seq reads (gzip) of EV or whole-cell libraries, and a sample sheet</div>
+    </section>
+
+    <!-- Steps 1 and 2 -->
+    <section id="r-pre">
+      <div class="card" id="c-qc">
+        <div class="head"><span class="badge">1</span><h3>Raw read QC</h3></div>
+        <p>Read number, read length and Q30 of each library.</p>
+        <p>FastQC of the raw and the trimmed reads.</p>
+        <div class="head" style="margin: 9px 0 0"><span class="tool" style="margin-left: 0">FastQC</span><span class="tool" style="margin-left: 0">SeqKit</span></div>
+        <div class="to-report">to the QC report <span class="badge sm">8</span></div>
+      </div>
+
+      <div class="card" id="c-trim">
+        <div class="head"><span class="badge">2</span><h3>Adapter trimming</h3><span class="tool">cutadapt</span></div>
+        <div class="read">
+          <span class="seg cut">N</span>
+          <span class="seg insert">insert · small RNA</span>
+          <span class="seg adapter mono">TGGAATTCTCGGGTGCCAAGG…</span>
+          <span class="lab cut-lab">5′ nt</span>
+          <span class="lab">kept if 16 nt or longer</span>
+          <span class="lab">3′ adapter</span>
+        </div>
+        <ul class="steps">
+          <li>Removes the 3′ adapter and the 5′ nucleotides of the library kit</li>
+          <li>Quality trim for two-colour chemistry (NextSeq poly-G)</li>
+        </ul>
+        <div class="removed"><b>Removed:</b> reads without an adapter (not classified), adapter dimers, inserts shorter than 16 nt, 5′ adapter artefacts</div>
+      </div>
+    </section>
+
+    <!-- Step 3 -->
+    <section id="r-collapse">
+      <div class="card" id="c-collapse">
+        <div class="head"><span class="badge">3</span><h3>Collapse of identical reads</h3></div>
+        <p>One sequence with its read count for each group of identical reads. The duplicates are counted, not removed.</p>
+        <div class="aside-note"><b>Parallel alignments</b><br>bowtie 1, up to 1 mismatch, each unique sequence to each reference</div>
+      </div>
+    </section>
+
+    <!-- Step 4 -->
+    <section id="r-refs">
+      <div class="rowlabel">
+        <span class="badge">4</span>
+        <h3>References</h3>
+        <p>Downloaded and indexed at the first run</p>
+      </div>
+      <div class="ref" id="ref-mirna" style="--c: var(--mirna)">
+        <div class="bar"><span style="background: var(--mirna)"></span></div>
+        <h4>miRNA</h4>
+        <p>miRBase or MirGeneDB hairpins</p>
+        <span class="strand">sense strand</span>
+      </div>
+      <div class="ref" id="ref-rrna" style="--c: var(--rrna)">
+        <div class="bar"><span style="background: var(--rrna)"></span></div>
+        <h4>rRNA</h4>
+        <p>45S rDNA, 5S and mt rRNA, single copy</p>
+        <span class="strand">sense strand</span>
+      </div>
+      <div class="ref" id="ref-trna" style="--c: var(--trna)">
+        <div class="bar"><span style="background: var(--trna)"></span></div>
+        <h4>tRNA</h4>
+        <p>GtRNAdb mature tRNAs, mt tRNAs</p>
+        <span class="strand">sense strand</span>
+      </div>
+      <div class="ref" id="ref-ncrna" style="--c: var(--yrna)">
+        <div class="bar"><span style="background: var(--yrna)"></span><span style="background: var(--snrna)"></span><span style="background: var(--ncrna)"></span></div>
+        <h4>ncRNA</h4>
+        <p>Ensembl: Y RNA, snoRNA, snRNA, 7SK, 7SL, vault</p>
+        <span class="strand">sense strand</span>
+      </div>
+      <div class="ref" id="ref-genome" style="--c: var(--intron)">
+        <div class="bar"><span style="background: var(--gene)"></span><span style="background: var(--intron)"></span></div>
+        <h4>Genome</h4>
+        <p>GRCh38, Ensembl genes</p>
+        <p class="only">Only reads without an rRNA, tRNA or ncRNA hit</p>
+        <span class="strand">both strands</span>
+      </div>
+      <div class="ref" id="ref-cont" style="--c: var(--myco)">
+        <div class="bar"><span style="background: var(--myco)"></span><span style="background: var(--contam)"></span></div>
+        <h4>Contaminants</h4>
+        <p><i>Mycoplasma</i> (6 species), <i>E. coli</i>, phiX</p>
+        <span class="strand">both strands</span>
+      </div>
+    </section>
+
+    <!-- Step 5 -->
+    <section id="r-engine">
+      <div class="card" id="c-engine">
+        <div class="head"><span class="badge">5</span><h3>Read classification</h3><span class="sub">one class for each read, for each miRNA database</span></div>
+        <div class="engine-body">
+          <ol class="rules">
+            <li><span class="n">1</span><span><b>Best hit.</b> The hit with the fewest mismatches over all small RNA references gives the class. On a tie, a fixed order decides (miRNA, rRNA, tRNA, …).</span></li>
+            <li><span class="n">2</span><span><b>miRNA.</b> 16–28 nt, the read ends near the ends of the mature miRNA, 0 mismatches for 18 nt or shorter. 1–3 non-templated 3′ nt are allowed.</span></li>
+            <li><span class="n">3</span><span><b>Genome.</b> A read without a small RNA hit gets the class of the genome annotation on the same strand.</span></li>
+            <li><span class="n">4</span><span><b>Contaminant.</b> 18 nt or longer, and fewer mismatches than the best human hit. Looser rules for reads with weak human evidence.</span></li>
+            <li><span class="n">5</span><span><b>No full-length hit.</b> The 25-nt ends (up to 1 mismatch), else the 18-nt ends (exact), give the class: rRNA, tRNA, ncRNA or contaminant.</span></li>
+          </ol>
+          <div class="classes">
+            <h4>Read classes</h4>
+            <div class="cls"><span class="sw"><span style="background: var(--mirna)"></span></span><div><b>miRNA</b><code>miRNA, miRNA_hairpin_other</code></div></div>
+            <div class="cls"><span class="sw"><span style="background: var(--rrna)"></span></span><div><b>rRNA</b><code>rRNA</code></div></div>
+            <div class="cls"><span class="sw"><span style="background: var(--trna)"></span></span><div><b>tRNA</b><code>tRNA, mt_tRNA</code></div></div>
+            <div class="cls"><span class="sw"><span style="background: var(--yrna)"></span><span style="background: var(--snrna)"></span><span style="background: var(--ncrna)"></span></span><div><b>Other small RNA</b><code>Y_RNA, snoRNA, snRNA, 7SK, 7SL_SRP, …</code></div></div>
+            <div class="cls"><span class="sw"><span style="background: var(--gene)"></span><span style="background: var(--intron)"></span></span><div><b>Genome</b><code>mRNA, lncRNA, intron, intergenic, …</code></div></div>
+            <div class="cls"><span class="sw"><span style="background: var(--myco)"></span><span style="background: var(--contam)"></span></span><div><b>Contaminant</b><code>mycoplasma, bacteria, phiX</code></div></div>
+            <div class="cls"><span class="sw"><span style="background: var(--unmapped)"></span></span><div><b>Unmapped</b><code>unmapped</code></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps 6 to 8 -->
+    <section id="r-out">
+      <div class="card" id="c-mirna">
+        <div class="head"><span class="badge">6</span><h3>miRNA counts</h3></div>
+        <p>A count matrix for each miRNA database, from the reads with the class miRNA.</p>
+        <div class="sub-h">Off-target check</div>
+        <p>A miRNA-only mapping (up to 3 mismatches) and the class of its reads:</p>
+        <div class="chips grow">
+          <span class="chip"><span class="sw" style="background: var(--mirna)"></span>miRNA</span>
+          <span class="chip"><span class="sw" style="background: var(--tied)"></span>tied</span>
+          <span class="chip"><span class="sw" style="background: conic-gradient(var(--rrna) 0 33%, var(--trna) 0 66%, var(--myco) 0)"></span>other class</span>
+        </div>
+        <div class="files-out mono">counts_{db}.tsv · off_target.tsv</div>
+      </div>
+
+      <div class="card" id="c-rrna">
+        <div class="head"><span class="badge">7</span><h3>rRNA fragments</h3></div>
+        <p>The position and the region of each rRNA read on the single-copy rRNA reference.</p>
+        <div class="track grow">
+          <!-- KY962518.1 regions, to scale up to the start of the IGS -->
+          <div class="rdna">
+            <span class="sp" style="flex: 3657; border-radius: 3px 0 0 3px"></span>
+            <span class="rr" style="flex: 1869"></span>
+            <span class="sp" style="flex: 1070"></span>
+            <span class="rr" style="flex: 157"></span>
+            <span class="sp" style="flex: 1167"></span>
+            <span class="rr" style="flex: 5051"></span>
+            <span class="igs" style="flex: 1500"></span>
+          </div>
+          <div class="labs">
+            <span style="left: 12.6%">5′ETS</span>
+            <span style="left: 31.7%">18S</span>
+            <span style="left: 46.1%">5.8S</span>
+            <span style="left: 72.9%">28S</span>
+          </div>
+          <div class="extra"><i style="width: 9px"></i>5S <i style="width: 16px; margin-left: 6px"></i>mt 12S, 16S</div>
+        </div>
+        <div class="files-out mono">fragments.tsv.gz</div>
+      </div>
+
+      <div class="card" id="c-report">
+        <div class="head"><span class="badge">8</span><h3>QC report</h3><span class="tool">MultiQC</span></div>
+        <ul class="list grow">
+          <li>FastQC, cutadapt, insert lengths</li>
+          <li>Read classes and contaminants</li>
+          <li>miRNA counts and off-target check</li>
+          <li>Summary table, one row for each library</li>
+        </ul>
+        <div class="files-out mono">multiqc_report.html · library_summary.tsv</div>
+      </div>
+    </section>
+  </main>
+
+  <aside id="phases"></aside>
+</div>
+
+<script>
+  // Connectors and phase brackets, from the positions of the boxes
+  const fig = document.getElementById("fig");
+  const svg = document.getElementById("wires");
+  const NS = "http://www.w3.org/2000/svg";
+
+  function box(id) {
+    const r = document.getElementById(id).getBoundingClientRect();
+    const f = fig.getBoundingClientRect();
+    return { l: r.left - f.left, r: r.right - f.left, t: r.top - f.top, b: r.bottom - f.top, cx: (r.left + r.right) / 2 - f.left };
+  }
+
+  function wire(x1, y1, x2, y2, dashed, tip = true) {
+    const m = (y1 + y2) / 2;
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("d", `M${x1},${y1} C${x1},${m} ${x2},${m} ${x2},${tip ? y2 - 2 : y2}`);
+    p.setAttribute("fill", "none");
+    p.setAttribute("stroke", "#a9a79f");
+    p.setAttribute("stroke-width", "1.5");
+    if (dashed) p.setAttribute("stroke-dasharray", "4 3");
+    if (tip) p.setAttribute("marker-end", "url(#tip)");
+    svg.appendChild(p);
+  }
+
+  function label(text, x, y) {
+    const d = document.createElement("div");
+    d.className = "wire-label";
+    d.textContent = text;
+    d.style.left = `${x}px`;
+    d.style.top = `${y}px`;
+    fig.appendChild(d);
+  }
+
+  function bracket(x, t, b) {
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("d", `M${x},${t} h7 V${b} h-7`);
+    p.setAttribute("fill", "none");
+    p.setAttribute("stroke", "#c3c2b7");
+    p.setAttribute("stroke-width", "1.5");
+    svg.appendChild(p);
+  }
+
+  function draw() {
+    const files = box("files"), qc = box("c-qc"), trim = box("c-trim"), col = box("c-collapse");
+    const engine = box("c-engine");
+    const refs = ["ref-mirna", "ref-rrna", "ref-trna", "ref-ncrna", "ref-genome", "ref-cont"].map(box);
+    const outs = ["c-mirna", "c-rrna", "c-report"].map(box);
+
+    const inputY = box("r-input").b;
+    wire(files.cx, inputY, qc.cx, qc.t);
+    wire(files.cx, inputY, trim.cx, trim.t);
+    wire(trim.cx, trim.b, col.cx, col.t);
+    label("kept reads", (trim.cx + col.cx) / 2, (trim.b + col.t) / 2);
+
+    refs.forEach((r, i) => wire(col.cx, col.b, r.cx, r.t, i === 4));
+    // The hits of all references join into one arrow
+    const join = engine.t - 16;
+    refs.forEach((r) => wire(r.cx, r.b, engine.cx, join, false, false));
+    wire(engine.cx, join, engine.cx, engine.t);
+    outs.forEach((o) => wire(engine.cx, engine.b, o.cx, o.t));
+
+    // Phase brackets in the right column
+    const x = box("phases").l + 2;
+    const phases = [
+      ["Input", "", "r-input", "r-input"],
+      ["Preprocessing", "steps 1–3", "r-pre", "r-collapse"],
+      ["Classification", "steps 4–5", "r-refs", "r-engine"],
+      ["Outputs", "steps 6–8", "r-out", "r-out"],
+    ];
+    const aside = document.getElementById("phases");
+    const asideTop = box("phases").t;
+    for (const [name, sub, from, to] of phases) {
+      const t = box(from).t, b = box(to).b;
+      bracket(x, t, b);
+      const d = document.createElement("div");
+      d.className = "phase";
+      d.style.top = `${(t + b) / 2 - asideTop}px`;
+      d.innerHTML = `<b>${name}</b>` + (sub ? `<span>${sub}</span>` : "");
+      aside.appendChild(d);
+    }
+    document.body.dataset.height = fig.getBoundingClientRect().height;
+  }
+
+  draw();
+</script>
+</body>
+</html>

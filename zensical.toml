@@ -62,6 +62,4 @@ pymdownx.inlinehilite = {}
 # README.md and config/README.md are the text of the pages Home and Configuration
 pymdownx.snippets.base_path = ["."]
 pymdownx.snippets.check_paths = true
-pymdownx.superfences.custom_fences = [
-  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
-]
+pymdownx.superfences = {}

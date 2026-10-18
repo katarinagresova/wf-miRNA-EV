@@ -1,6 +1,6 @@
 # <img src="docs/assets/logo.svg" alt="" height="40" align="absmiddle">&nbsp; wf-miRNA-EV
 
-<!-- --8<-- [start:docs] -->
+<!-- --8<-- [start:intro] -->
 A Snakemake workflow for small RNA sequencing data from extracellular vesicles (EVs). It also accepts whole-cell
 libraries, so you can compare EVs with their source cells.
 
@@ -9,7 +9,9 @@ The workflow therefore gives every read one class (miRNA, rRNA, tRNA, other smal
 miRNAs whose reads match another class equally well.
 
 ## What it does
+<!-- --8<-- [end:intro] -->
 
+<!-- Only in the README. The documentation site shows docs/assets/workflow.png here (see docs/index.md). -->
 ```mermaid
 flowchart LR
     fastq["FASTQ files"] --> qc["1 · Raw read QC<br/>FastQC, seqkit"]
@@ -24,6 +26,7 @@ flowchart LR
     mirna --> report
 ```
 
+<!-- --8<-- [start:docs] -->
 The input is a set of single-end FASTQ files (gzip) and a sample sheet. The off-target check shows the reads that a
 miRNA-only mapping would count, but that match another class better.
 
