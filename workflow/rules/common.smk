@@ -21,10 +21,3 @@ def ref_source(source, download):
 def ncbi_source(acc, ext, download):
     """Path of an NCBI record (rDNA or contaminant): the local copy in refs.ncbi_dir, or the download path."""
     return f"{REFS['ncbi_dir']}/{acc}.{ext}" if REFS["ncbi_dir"] else download
-
-
-def bowtie_hits_opts(ref):
-    """bowtie 1 reporting options of step 5 for a reference."""
-    if ref in MULTICOPY_REFS:
-        return f"-k {CLASSIFY['max_hits']} --best --strata"
-    return "-a --best --strata"

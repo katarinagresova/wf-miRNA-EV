@@ -95,13 +95,11 @@ genome_index: null
 # Step 5: read classification
 classify:
   mismatches: 1       # bowtie1 -v, for every reference
-  # Hits reported per read for the multi-copy references (ncRNA pseudogene copies, genome); class-level only
-  max_hits: 20
   # A read on a hairpin is counted for a mature arm if its ends are within these distances of the arm's ends
   # (isomiRs vary more at the 3' end); other hairpin reads are counted as miRNA_hairpin_other
   arm_start_tol: 3
   arm_end_tol: 5
-  # Contaminant genomes are aligned on both strands (bowtie -k max_hits). A read at least this long is a contaminant
+  # Contaminant genomes are aligned on both strands. A read at least this long is a contaminant
   # if it matches a contaminant with fewer mismatches than any human reference (ties stay human): a random 16-mer
   # matches the 10.2 Mb of contaminant genomes with <= 1 mismatch with ~21% probability, an 18-mer ~1.6%. Reads with
   # weak human evidence (no small RNA hit; genome hits only in genes, introns or intergenic regions, or none) also on

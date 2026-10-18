@@ -135,7 +135,6 @@ properties:
     default: {}
     properties:
       mismatches: {type: integer, minimum: 0, maximum: 3, default: 1}
-      max_hits: {type: integer, minimum: 1, default: 20}
       arm_start_tol: {type: integer, minimum: 0, default: 3}
       arm_end_tol: {type: integer, minimum: 0, default: 5}
       contaminant_min_len: {type: integer, minimum: 1, default: 18}

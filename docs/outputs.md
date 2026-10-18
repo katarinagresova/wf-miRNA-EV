@@ -168,9 +168,9 @@ the single-copy rRNA reference. The sum of `count / n_pos` over the table is equ
 
 A read with the class rRNA from an end ([rule 5](classification.md#reads-without-a-full-length-hit)) has no position
 of the full read. Its rows give the positions of the rRNA end hits that gave the class: the 25-nt ends, else the exact
-18-nt ends, then the fewest mismatches. If both the 5′ end and the 3′ end are such hits, the read has two rows, and
-each row has the weight 1/2. Thus a read of two joined fragments can have two regions. Each end has one position on
-the rRNA reference, also if other positions are equally good.
+18-nt ends, then the fewest mismatches. The read has one row for each position of these ends. For example, if the 5′
+end and the 3′ end each have one such position, the read has two rows, and each row has the weight 1/2. Thus a read
+of two joined fragments can have two regions.
 
 | Column | Content |
 |---|---|

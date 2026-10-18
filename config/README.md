@@ -67,7 +67,6 @@ code are for human:
 | Key | Default | Content |
 |---|---|---|
 | `classify.mismatches` | 1 | Mismatches for the alignment to each reference (bowtie 1 `-v`). |
-| `classify.max_hits` | 20 | Hits for each read on the multi-copy references (ncRNA, genome) and on the contaminant genomes. |
 | `classify.arm_start_tol` | 3 | A hairpin read counts for a mature miRNA if its 5′ end is this many nucleotides or less from the 5′ end of the mature sequence. |
 | `classify.arm_end_tol` | 5 | The same for the 3′ end. |
 | `classify.contaminant_min_len` | 18 | A read of this length or longer is a contaminant read if its contaminant hit has fewer mismatches than its human hits, or the same number if its human evidence is weak. A shorter read needs weak human evidence and an exact contaminant match. |

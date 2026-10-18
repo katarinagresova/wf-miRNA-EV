@@ -4,8 +4,8 @@ CLASSIFY = config["classify"]
 MIRNA = config["mirna"]
 MIRNA_DBS = MIRNA["databases"]
 SMALL_REFS = MIRNA_DBS + ["rrna", "trna", "ncrna"]
-# Multi-copy references: class-level assignment only, so the number of hits per read is capped
-MULTICOPY_REFS = {"ncrna", "genome"}
+# bowtie reports all hits of the best stratum (-a). With -k, the reported subset of the hits depends on the read
+# name, which contains the rank: the class of a sequence would then depend on the other reads of the library
 
 wildcard_constraints:
     db="|".join(MIRNA_DBS),
@@ -29,7 +29,6 @@ rule bowtie_small:
     params:
         prefix="resources/bowtie/{ref}/{ref}",
         mm=CLASSIFY["mismatches"],
-        hits=lambda wc: bowtie_hits_opts(wc.ref),
     log:
         "logs/bowtie_small/{sample}_{ref}.log",
     threads: 8
@@ -40,7 +39,7 @@ rule bowtie_small:
         "../envs/align.yaml"
     shell:
         """
-        bowtie -f -v {params.mm} {params.hits} --norc -p {threads} -x {params.prefix} {input.reads} 2> {log} \
+        bowtie -f -v {params.mm} -a --best --strata --norc -p {threads} -x {params.prefix} {input.reads} 2> {log} \
             | awk -F '\\t' -v OFS='\\t' '{{mm = ($8 == "") ? 0 : gsub(/,/, ",", $8) + 1; print substr($1, 2, index($1, "_") - 2), $3, $4, length($5), mm}}' \
             | pigz -p 2 > {output}
         """
@@ -90,7 +89,6 @@ rule bowtie_contaminant:
     params:
         prefix="resources/bowtie/contaminant/contaminant",
         mm=CLASSIFY["mismatches"],
-        hits=f"-k {CLASSIFY['max_hits']} --best --strata",
     log:
         "logs/bowtie_contaminant/{sample}.log",
     threads: 8
@@ -101,7 +99,7 @@ rule bowtie_contaminant:
         "../envs/align.yaml"
     shell:
         """
-        bowtie -f -v {params.mm} {params.hits} -p {threads} -x {params.prefix} {input.reads} 2> {log} \
+        bowtie -f -v {params.mm} -a --best --strata -p {threads} -x {params.prefix} {input.reads} 2> {log} \
             | awk -F '\\t' -v OFS='\\t' '{{mm = ($8 == "") ? 0 : gsub(/,/, ",", $8) + 1; print substr($1, 2, index($1, "_") - 2), $3, $4, length($5), mm, $2}}' \
             | pigz -p 2 > {output}
         """
@@ -147,7 +145,6 @@ rule bowtie_genome:
     params:
         prefix=GENOME_INDEX,
         mm=CLASSIFY["mismatches"],
-        hits=bowtie_hits_opts("genome"),
     log:
         "logs/bowtie_genome/{sample}.log",
     threads: 16
@@ -159,7 +156,7 @@ rule bowtie_genome:
     shell:
         # Both strands; annotation overlaps are same-strand only (antisense hits fall to intron/intergenic)
         """
-        bowtie -f -v {params.mm} {params.hits} -p {threads} -x {params.prefix} {input.reads} 2> {log} \
+        bowtie -f -v {params.mm} -a --best --strata -p {threads} -x {params.prefix} {input.reads} 2> {log} \
             | awk -F '\\t' -v OFS='\\t' '{{mm = ($8 == "") ? 0 : gsub(/,/, ",", $8) + 1; print $3, $4, $4 + length($5), substr($1, 2, index($1, "_") - 2), mm, $2}}' \
             | bedtools intersect -a stdin -b {input.annotation} -s -wao 2>> {log} \
             | awk -F '\\t' -v OFS='\\t' '{{print $4, $5, $10}}' \
@@ -177,14 +174,13 @@ rule unmapped_ends:
         index=expand("resources/bowtie/{ref}/.done", ref=SMALL_REFS + ["contaminant"]),
         genome_index=GENOME_INDEX_FILE,
     output:
-        # end (<rank>_<5|3>_<end length>), index, reference, mismatches, 0-based offset: best hits (best stratum, up
-        # to max_hits for the contaminants, one for the human references)
+        # end (<rank>_<5|3>_<end length>), index, reference, mismatches, 0-based offset: best hits (best stratum; one
+        # hit for the genome, of which only the presence and the mismatches count)
         "results/classify/{sample}/hits/unmapped_ends.hits.tsv.gz",
     params:
         small=SMALL_REFS,
         genome_index=GENOME_INDEX,
         mm=CLASSIFY["mismatches"],
-        max_hits=CLASSIFY["max_hits"],
         end_len=CLASSIFY["end_len"],
         exact_len=CLASSIFY["end_len_exact"],
     log:
@@ -216,8 +212,8 @@ rule unmapped_ends:
         for ref in {params.small} genome contaminant; do
             case $ref in
                 genome) opts="-k 1 --best"; prefix={params.genome_index} ;;
-                contaminant) opts="-k {params.max_hits} --best --strata"; prefix=resources/bowtie/$ref/$ref ;;
-                *) opts="-k 1 --best --norc"; prefix=resources/bowtie/$ref/$ref ;;
+                contaminant) opts="-a --best --strata"; prefix=resources/bowtie/$ref/$ref ;;
+                *) opts="-a --best --strata --norc"; prefix=resources/bowtie/$ref/$ref ;;
             esac
             bowtie -f -v {params.mm} $opts -p {threads} -x $prefix $ends \
                 | awk -F '\\t' -v OFS='\\t' -v ref=$ref '{{mm = ($8 == "") ? 0 : gsub(/,/, ",", $8) + 1; print $1, ref, $3, mm, $4}}'
@@ -262,7 +258,7 @@ rule quantify_mirna:
     log:
         "logs/quantify_mirna/{sample}.log",
     resources:
-        # Peak memory: less than 1 GB per million unique sequences (unique_seqs in results/collapse/summary.tsv)
+        # Peak memory: approximately 1.1 GB per million unique sequences (unique_seqs in results/collapse/summary.tsv)
         mem_mb=16000,
         runtime=240,
     conda:

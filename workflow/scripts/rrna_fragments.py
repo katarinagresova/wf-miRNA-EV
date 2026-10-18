@@ -8,9 +8,9 @@ mismatches as their rRNA position: the classification keeps them human, but they
 mycoplasma) rRNA.
 
 A read with the class rRNA from an end (quantify_mirna.py, reads without a full-length hit) has the positions of its
-rRNA ends that gave the class: the deciding end length, then the fewest mismatches. One row per end (from_end: 5 or 3;
-0 for a full-length position), so a read with both ends on rRNA has n_pos = 2. Each end has one position (bowtie -k 1),
-and the row is the end only (start, end, region, mm). The weight of the table is the rRNA reads of the class.
+rRNA ends that gave the class: the deciding end length, then the fewest mismatches. One row per end and position
+(from_end: 5 or 3; 0 for a full-length position), so a read with one position for each end has n_pos = 2. The row is
+the end only (start, end, region, mm). The weight of the table is the rRNA reads of the class.
 """
 
 import argparse
