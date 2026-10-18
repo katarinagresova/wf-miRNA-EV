@@ -99,6 +99,48 @@ python .test/check.py .test                         # compares the class and the
 
 GitHub Actions runs these tests, the lint and a dry run at each push.
 
+## Tools and references
+
+The workflow uses these tools and references. Each item gives the publication that describes it.
+
+Tools:
+
+- [Snakemake](https://snakemake.github.io): Mölder F, et al. Sustainable data analysis with Snakemake.
+  *F1000Research* 10, 33 (2021). [doi:10.12688/f1000research.29032.3](https://doi.org/10.12688/f1000research.29032.3)
+- [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/): Andrews S. FastQC: a quality control tool for
+  high throughput sequence data (2010).
+- [SeqKit](https://bioinf.shenwei.me/seqkit/): Shen W, Sipos B, Zhao L. SeqKit2: A Swiss army knife for sequence and
+  alignment processing. *iMeta* 3, e191 (2024). [doi:10.1002/imt2.191](https://doi.org/10.1002/imt2.191)
+- [Cutadapt](https://cutadapt.readthedocs.io): Martin M. Cutadapt removes adapter sequences from high-throughput
+  sequencing reads. *EMBnet.journal* 17, 10–12 (2011).
+  [doi:10.14806/ej.17.1.200](https://doi.org/10.14806/ej.17.1.200)
+- [Bowtie 1](https://bowtie-bio.sourceforge.net): Langmead B, Trapnell C, Pop M, Salzberg SL. Ultrafast and
+  memory-efficient alignment of short DNA sequences to the human genome. *Genome Biology* 10, R25 (2009).
+  [doi:10.1186/gb-2009-10-3-r25](https://doi.org/10.1186/gb-2009-10-3-r25)
+- [BEDTools](https://bedtools.readthedocs.io): Quinlan AR, Hall IM. BEDTools: a flexible suite of utilities for
+  comparing genomic features. *Bioinformatics* 26, 841–842 (2010).
+  [doi:10.1093/bioinformatics/btq033](https://doi.org/10.1093/bioinformatics/btq033)
+- [MultiQC](https://multiqc.info): Ewels P, Magnusson M, Lundin S, Käller M. MultiQC: summarize analysis results for
+  multiple tools and samples in a single report. *Bioinformatics* 32, 3047–3048 (2016).
+  [doi:10.1093/bioinformatics/btw354](https://doi.org/10.1093/bioinformatics/btw354)
+
+References:
+
+- [miRBase](https://www.mirbase.org): Kozomara A, Birgaoanu M, Griffiths-Jones S. miRBase: from microRNA sequences to
+  function. *Nucleic Acids Research* 47, D155–D162 (2019).
+  [doi:10.1093/nar/gky1141](https://doi.org/10.1093/nar/gky1141)
+- [MirGeneDB](https://mirgenedb.org): Clarke AW, et al. MirGeneDB 3.0: improved taxonomic sampling, uniform
+  nomenclature of novel conserved microRNA families and updated covariance models. *Nucleic Acids Research* 53,
+  D116–D128 (2025). [doi:10.1093/nar/gkae1094](https://doi.org/10.1093/nar/gkae1094)
+- [GtRNAdb](https://gtrnadb.ucsc.edu): Chan PP, Lowe TM. GtRNAdb 2.0: an expanded database of transfer RNA genes
+  identified in complete and draft genomes. *Nucleic Acids Research* 44, D184–D189 (2016).
+  [doi:10.1093/nar/gkv1309](https://doi.org/10.1093/nar/gkv1309)
+- [Ensembl](https://www.ensembl.org): Dyer SC, et al. Ensembl 2025. *Nucleic Acids Research* 53, D948–D957 (2025).
+  [doi:10.1093/nar/gkae1071](https://doi.org/10.1093/nar/gkae1071)
+- rDNA repeat [KY962518.1](https://www.ncbi.nlm.nih.gov/nuccore/KY962518.1): Kim JH, et al. Variation in human
+  chromosome 21 ribosomal RNA genes characterized by TAR cloning and long-read sequencing. *Nucleic Acids Research*
+  46, 6712–6725 (2018). [doi:10.1093/nar/gky442](https://doi.org/10.1093/nar/gky442)
+
 <!-- --8<-- [end:docs] -->
 
 ## Documentation
