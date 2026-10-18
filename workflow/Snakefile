@@ -18,8 +18,18 @@ SAMPLES = pd.read_csv(config["samples"], sep="\t", dtype=str).set_index("sample"
 validate(SAMPLES, "schemas/samples.schema.yaml")
 if not SAMPLES.index.is_unique:
     raise WorkflowError(f"Duplicate sample names: {', '.join(SAMPLES.index[SAMPLES.index.duplicated()])}")
-# Columns copied into the summary tables
+# Columns copied into the summary tables. Their names must not be column names of these tables.
 METADATA = [c for c in SAMPLES.columns if c not in ("sample", "fastq")]
+_table_columns = {
+    "reads", "min_len", "max_len", "Q30_pct", "raw_reads", "kept_reads", "kept_pct", "with_adapter_pct",
+    "adapter_dimer", "adapter_dimer_pct", "quality_trimmed_bp_pct", "unique_seqs", "unique_pct",
+    "singletons_pct_of_unique", "singletons_pct_of_reads", "median_len_reads", "median_len_unique", "reads_16_28",
+    "db", "class", "len_bin", "accession", "species", *(f"top{n}_pct_of_reads" for n in (1, 10, 100, 1000)),
+}
+_table_prefixes = ("pct_", "insert_", "no_adapter_", "cut_nt_", *(f"{db}_" for db in config["mirna"]["databases"]))
+_clash = [c for c in METADATA if c in _table_columns or c.startswith(_table_prefixes)]
+if _clash:
+    raise WorkflowError(f"Sample sheet columns with the name of a summary table column: {', '.join(_clash)}")
 
 _missing = [s for s, fq in SAMPLES["fastq"].items() if not Path(fq).exists()]
 if _missing:

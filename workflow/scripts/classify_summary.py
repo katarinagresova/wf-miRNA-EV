@@ -184,7 +184,11 @@ def main():
     samples.join(comp.set_index("sample"), how="right").to_csv(args.out_composition, sep="\t")
 
     # --- contaminant reads per genome, % of kept reads
-    cont = pd.concat(pd.read_csv(p, sep="\t").assign(sample=sample_name(p)) for p in args.contaminants)
+    # A library without contaminant reads has an empty table; the dtypes keep the columns numeric
+    cont = pd.concat(
+        pd.read_csv(p, sep="\t", dtype={"reads": float, "unique_seqs": int}).assign(sample=sample_name(p))
+        for p in args.contaminants
+    )
     cont = cont[cont["db"] == args.dbs[0]].drop(columns="db")
     cont = cont.groupby(["sample", "class", "accession", "species"], as_index=False)[["reads", "unique_seqs"]].sum()
     cont["pct_of_kept"] = 100 * cont["reads"] / cont["sample"].map(kept)

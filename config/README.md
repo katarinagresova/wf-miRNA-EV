@@ -13,7 +13,7 @@ A TSV file with one row for each library. Set its path in `samples`. `config/sam
 | `sample` | yes | Library name. It is part of the output paths: letters, digits, `.`, `_` and `-` only. |
 | `fastq` | yes | Path to the single-end FASTQ file (gzip). |
 | `batch` | no | Sequencing run. The insert length plot (`results/trim/insert_lengths.pdf`) has one panel for each batch. |
-| other columns | no | Copied into the summary tables, for example cell line, material or condition. |
+| other columns | no | Copied into the summary tables, for example cell line, material or condition. The names must not be column names of these tables, for example `class` or `reads`. |
 
 The workflow processes every row. To leave out a library, remove its row.
 
