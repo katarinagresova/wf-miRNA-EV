@@ -115,6 +115,10 @@ def main():
             summary.loc[sample, f"{db}_off_target_pct_{r}"] = 100 * v / by_result.sum()
     pct_cols = [c for c in summary.columns if "_off_target_pct_" in c]
     summary[pct_cols] = summary[pct_cols].fillna(0)
+    # The off-target columns are made in the order the results are found: sort them by database, then by result
+    off_cols = [c for db in args.dbs
+                for c in [f"{db}_off_target_reads"] + sorted(c for c in pct_cols if c.startswith(f"{db}_"))]
+    summary = summary[[c for c in summary.columns if c not in off_cols] + off_cols]
 
     off = pd.concat(off, ignore_index=True)
     entry = off.pivot_table(index=["db", "mirna"], columns="result", values="reads", aggfunc="sum", fill_value=0)

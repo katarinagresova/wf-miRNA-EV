@@ -20,6 +20,8 @@ OFF_TARGET = [
     ("hsa-let-7a-5p", 2, "tied", "rRNA,tRNA"),
     ("hsa-let-7a-5p", 1, "tied", "tRNA"),
 ]
+# S2 has a result that S1 does not have
+OFF_TARGET_S2 = OFF_TARGET + [("hsa-miR-21-5p", 1, "Y_RNA", "")]
 
 
 @pytest.fixture
@@ -35,7 +37,7 @@ def out(tmp_path):
         d = tmp_path / "mirna" / s
         d.mkdir(parents=True)
         counts.append(write_tsv(d / "bowtie_mirbase.tsv", TABLE, header=["mirna", "reads", "members"]))
-        off.append(write_tsv(d / "off_target_mirbase.tsv.gz", OFF_TARGET,
+        off.append(write_tsv(d / "off_target_mirbase.tsv.gz", OFF_TARGET if s == "S1" else OFF_TARGET_S2,
                              header=["mirna", "reads", "result", "tied_classes"]))
     out = tmp_path / "out"
     run_script(
@@ -74,6 +76,15 @@ def test_off_target_links_merged_entry(out):
     assert off.loc["hsa-miR-199b-3p", "off_target_frac"] == pytest.approx(2 / 12, abs=1e-4)
     summary = read(out / "library_summary.tsv", index_col="sample")
     assert summary.loc["S1", "mirbase_off_target_pct_rRNA"] == pytest.approx(100 * 2 / 60, abs=1e-4)
+
+
+def test_off_target_columns_sorted(out):
+    # Y_RNA is found only in S2, but it is the first result column
+    summary = read(out / "library_summary.tsv", index_col="sample")
+    cols = [c for c in summary.columns if "_off_target_" in c]
+    assert cols == ["mirbase_off_target_reads"] + sorted(cols[1:])
+    assert cols[1] == "mirbase_off_target_pct_Y_RNA"
+    assert summary.loc["S1", "mirbase_off_target_pct_Y_RNA"] == 0
 
 
 def test_tied_reads(out):

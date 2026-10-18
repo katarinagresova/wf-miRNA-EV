@@ -262,7 +262,8 @@ rule quantify_mirna:
     log:
         "logs/quantify_mirna/{sample}.log",
     resources:
-        mem_mb=64000,
+        # Peak memory: less than 1 GB per million unique sequences (unique_seqs in results/collapse/summary.tsv)
+        mem_mb=16000,
         runtime=240,
     conda:
         "../envs/py.yaml"

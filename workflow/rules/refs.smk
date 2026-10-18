@@ -91,7 +91,7 @@ rule download_ensembl:
         # Ensembl publishes CHECKSUMS (BSD `sum`) next to every file
         """
         curl -sSfL --retry 3 -o {output} "{params.url}" 2> {log}
-        expected=$(curl -sSfL "$(dirname {params.url})/CHECKSUMS" | awk -v f=$(basename {params.url}) '$3 == f {{print $1, $2}}')
+        expected=$(curl -sSfL --retry 3 "$(dirname {params.url})/CHECKSUMS" | awk -v f=$(basename {params.url}) '$3 == f {{print $1, $2}}')
         observed=$(sum {output} | awk '{{print $1, $2}}')
         echo "CHECKSUMS: $expected, observed: $observed" >> {log}
         [ "$expected" = "$observed" ]
@@ -110,7 +110,7 @@ rule download_rdna:
         "../envs/download.yaml"
     shell:
         """
-        curl -sSf "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id={params.id}&rettype=fasta&retmode=text" \
+        curl -sSf --retry 3 "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id={params.id}&rettype=fasta&retmode=text" \
             -o {output} 2> {log}
         grep -q '^>{params.id}' {output}
         """
