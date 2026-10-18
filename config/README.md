@@ -49,7 +49,7 @@ paths on a cluster without internet access. A source with `url` and `md5` is che
 | `refs.ensembl` | Ensembl genome, gene annotation (GTF) and ncRNA FASTA (default release 113, GRCh38). |
 | `refs.rrna` | The single-copy rRNA reference: the rDNA repeat (NCBI accession), 5S with genomic flanks, the mitochondrial rRNAs, and the rRNA regions (`features`). |
 | `refs.rdna_loci` | rDNA copies in the genome that the annotation does not mark as rRNA. Genome hits in these loci get the class `rRNA_genomic`. |
-| `refs.contaminants` | Contaminant genomes: NCBI accession, read class and species. The default list has 6 *Mycoplasma* species, *E. coli* and phiX. |
+| `refs.contaminants` | Contaminant genomes: NCBI accession, read class and species. The read class is `mycoplasma`, `bacteria` or `phiX`. The default list has 6 *Mycoplasma* species, *E. coli* and phiX. |
 | `refs.ncbi_dir` | Optional directory with local copies of the NCBI records: `<accession>.fa`, and `<accession>.ft` (feature table) for the contaminants. |
 | `genome_index` | Optional prefix of a bowtie 1 index of the genome that already exists. The index build needs 32 GB of memory and several hours. |
 

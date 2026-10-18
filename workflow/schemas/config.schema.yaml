@@ -116,7 +116,7 @@ properties:
         description: contaminant genomes, [NCBI accession, read class, species]
         items:
           type: array
-          items: {type: string}
+          prefixItems: [{type: string}, {type: string, enum: [mycoplasma, bacteria, phiX]}, {type: string}]
           minItems: 3
           maxItems: 3
       ncbi_dir:
