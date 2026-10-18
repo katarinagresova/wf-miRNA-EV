@@ -1,4 +1,4 @@
-"""Assign every collapsed read to one RNA class and count mature miRNAs (bowtie1 cross-check), once per miRNA database.
+"""Assign every collapsed read to one RNA class and count mature miRNAs, once per miRNA database.
 
 Each read was aligned independently to every small RNA reference (best stratum per reference). A read is assigned
 to the class of its fewest-mismatch hit over all references; ties are broken by CLASS_PRIORITY. Reads without any

@@ -1,5 +1,5 @@
 # Environment that runs Snakemake. Each rule gets its own conda env from workflow/envs/.
-# Snakemake 9.23.1 is the first release that supports Python 3.14 (miRNA-PD uses 9.11.6 on Python 3.12).
+# Snakemake 9.23.1 is the first release that supports Python 3.14.
 name: wf-miRNA-EV
 channels:
   - conda-forge

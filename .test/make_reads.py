@@ -249,7 +249,7 @@ def contaminants(ins):
     def clean(f):
         return r.exact_classes(f) == {"contaminant"}
 
-    # tRNA fragments, the most common mycoplasma reads in the miRNA-PD libraries
+    # tRNA fragments, a common type of mycoplasma read
     trnas = [f for f in r.myco_features if f["type"] == "tRNA"][:6]
     for f in trnas:
         (s, e), = f["iv"][:1]
@@ -262,7 +262,7 @@ def contaminants(ins):
     # Short exact matches with no human hit (rule exact_short)
     ins.fragments(myco[:200_000], 2, [16, 17], "contaminant", "NC_014448.1:short", "mycoplasma", 5,
                   lambda f: clean(f) and not r.near_small(f) and f not in r.genome_both)
-    # A contaminant 25-nt end joined to 12 random nt: no full-length hit; class from the ends (item 4c)
+    # A contaminant 25-nt end joined to 12 random nt: no full-length hit; class from the ends
     for i in range(2):
         start = ins.rng.randrange(100_000)
         seq = myco[start : start + 25] + "".join(ins.rng.choices("ACGT", k=12))

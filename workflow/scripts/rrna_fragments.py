@@ -1,4 +1,4 @@
-"""Per-library table of the rRNA fragments (step 6; also the input of Part 2).
+"""Per-library table of the rRNA fragments (step 7).
 
 The reads of class rRNA (quantify_mirna.py, primary database) with their positions on the single-copy rRNA reference
 (bowtie, <= 1 mismatch, sense strand, all best hits). One row per read and position: a read with several equally good

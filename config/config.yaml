@@ -18,12 +18,13 @@ species:
   mirgenedb: Hsa
 
 # Step 4: references, downloaded into resources/ (gitignored). Each URL can also be a local path.
-# Fixed releases are checked against md5; MirGeneDB is only served as the live release, so its md5 is logged.
+# miRBase files are checked against md5, Ensembl files against the Ensembl CHECKSUMS. The md5 of the MirGeneDB,
+# GtRNAdb and NCBI contaminant files is only logged (MirGeneDB is only served as the live release).
 refs:
   mirbase:
     version: "22.1"
-    # mirbase.org is unreachable from the cluster (connection timeout), so we use the Wayback Machine
-    # copies of the official download files (22.1 = CURRENT since 2018): 48,885 mature (2,656 hsa), 38,589 hairpins (1,917 hsa)
+    # Wayback Machine copies of the official mirbase.org download files (22.1 = CURRENT since 2018): 48,885 mature
+    # (2,656 hsa), 38,589 hairpins (1,917 hsa)
     mature:
       url: http://web.archive.org/web/20250520104034id_/https://www.mirbase.org/download/mature.fa
       md5: c0fbc0ae2aa8241afeae4b89fea9ed0f
@@ -41,12 +42,11 @@ refs:
     mature: https://gtrnadb.ucsc.edu/genomes/eukaryota/Hsapi38/hg38-mature-tRNAs.fa
     tar: https://gtrnadb.ucsc.edu/genomes/eukaryota/Hsapi38/hg38-tRNAs.tar.gz
   ensembl:
-    # Same release and assembly as the collaborators' BAMs
     release: 113
     genome: https://ftp.ensembl.org/pub/release-113/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
     gtf: https://ftp.ensembl.org/pub/release-113/gtf/homo_sapiens/Homo_sapiens.GRCh38.113.gtf.gz
     ncrna: https://ftp.ensembl.org/pub/release-113/fasta/homo_sapiens/ncrna/Homo_sapiens.GRCh38.ncrna.fa.gz
-  # Single-copy rRNA reference, shared with Part 2: complete rDNA repeat, 5S and mt-rRNA
+  # Single-copy rRNA reference: complete rDNA repeat, 5S and mt-rRNA
   rrna:
     rdna: KY962518.1
     rna5s: ENST00000362482   # RNA5S1, chr1 5S cluster (Ensembl ncRNA)
@@ -57,8 +57,8 @@ refs:
     rna5s_length: 121
     mt_rrna: [MT-RNR1, MT-RNR2]
     # rRNA features of the reference; the report annotates the top sequences with them.
-    # KY962518.1 features (0-based start, end) from its GenBank record, the same as in the collaborators' BED
-    # (18S 3658..5526, 5.8S 6597..6753, 28S 7921..12971, 1-based); everything else is 5'ETS/ITS/3'ETS
+    # KY962518.1 features (0-based start, end) from its GenBank record (18S 3658..5526, 5.8S 6597..6753,
+    # 28S 7921..12971, 1-based); everything else is 5'ETS/ITS/3'ETS
     features:
       KY962518.1:
         - [5'ETS, 0, 3657]
@@ -77,9 +77,9 @@ refs:
     - ["21", 8200000, 8450000]
     - [GL000220.1, 0, 200000]
     - [KI270733.1, 0, 200000]
-  # Common contaminants of cell cultures and reagents (NCBI): accession, read class, species. Found in step 4:
-  # the most abundant unmapped reads of the SH-SY5Y libraries match M. hyorhinis exactly. The six mollicutes cause
-  # > 95% of cell culture mycoplasma infections; E. coli stands for reagent bacteria; phiX is the Illumina spike-in.
+  # Common contaminants of cell cultures and reagents (NCBI): accession, read class, species. The six mollicutes
+  # cause > 95% of cell culture mycoplasma infections; E. coli stands for reagent bacteria; phiX is the Illumina
+  # spike-in.
   contaminants:
     - [NC_014448.1, mycoplasma, Mesomycoplasma hyorhinis HUB-1]
     - [NZ_LR214940.1, mycoplasma, Metamycoplasma orale NCTC10112]
@@ -111,7 +111,7 @@ classify:
   # weak human evidence (no small RNA hit; genome hits only in genes, introns or intergenic regions, or none) also on
   # a tie, and if shorter, on an exact match (random 16-mer ~0.5%, 17-mer ~0.1%); see quantify_mirna.py
   contaminant_min_len: 18
-  # Reads without any full-length hit are assigned by their ends (item 4c): the end_len-nt ends with <= mismatches,
+  # Reads without any full-length hit are assigned by their ends: the end_len-nt ends with <= mismatches,
   # else the end_len_exact-nt ends exactly (random contaminant match: 25-mer ~1e-6, exact 18-mer ~3e-4)
   end_len: 25
   end_len_exact: 18

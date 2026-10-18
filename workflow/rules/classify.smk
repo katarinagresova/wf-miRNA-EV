@@ -194,9 +194,9 @@ rule unmapped_ends:
     conda:
         "../envs/align.yaml"
     shell:
-        # Item 4c: the ends of reads longer than exact_len nt without a hit on any reference, in a temporary FASTA
-        # next to the output (node-local /tmp is too small for the run 24 libraries). The exact_len-nt ends are
-        # aligned with <= mm mismatches too; quantify_mirna.py keeps their exact hits only
+        # The ends of reads longer than exact_len nt without a hit on any reference, in a temporary FASTA next to
+        # the output (node-local /tmp can be too small for large libraries). The exact_len-nt ends are aligned with
+        # <= mm mismatches too; quantify_mirna.py keeps their exact hits only
         """
         ends=$(mktemp -p $(dirname {output}) unmapped_ends.XXXXXX.fa)
         trap 'rm -f $ends' EXIT
@@ -243,9 +243,9 @@ rule quantify_mirna:
         # Reads per contaminant genome, and the best hits of the most abundant sequences (for the report)
         contaminants="results/classify/{sample}/contaminants.tsv",
         top="results/classify/{sample}/top_hits.tsv",
-        # Contaminant reads by the class they would have had and the rule that assigned them (item 4b check)
+        # Contaminant reads by the class they would have had and the rule that assigned them
         contaminant_rules="results/classify/{sample}/contaminant_rules.tsv",
-        # Unmapped reads tested by their ends (item 4c), by outcome and read length
+        # Unmapped reads tested by their ends, by outcome and read length
         ends="results/classify/{sample}/unmapped_ends.tsv",
     params:
         min_len=MIRNA["min_len"],

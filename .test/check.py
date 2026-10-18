@@ -1,4 +1,4 @@
-"""Check the results of the test data set against .test/data/truth.tsv (section 8.2 of PLAN.md).
+"""Check the results of the test data set against .test/data/truth.tsv.
 
 - Each insert of trim.min_len nt or longer gets its expected class in step 5, for each miRNA database.
 - Each shorter insert is not in the collapsed reads.

@@ -1,5 +1,5 @@
-"""Build the small RNA references for step 4 (and the single-copy rRNA reference shared with Part 2), and the
-contaminant genome reference.
+"""Build the small RNA references for step 4, the single-copy rRNA reference and the contaminant genome
+reference.
 
 All output FASTAs are DNA (U -> T), one line per sequence. Reference names are `<id>|<class>|<name>`,
 so the class of every alignment can be read from the reference name alone.

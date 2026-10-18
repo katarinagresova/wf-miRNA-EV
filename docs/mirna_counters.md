@@ -58,14 +58,6 @@ reads, than a minimum length of 18 nt.
 mismatches. A counter that maps only to the miRNA references counts them. The [off-target
 check](classification.md#mirna-off-target-check) shows these reads for each library.
 
-**Why not miRge3.0.** An earlier development version used miRge3.0 (0.1.4). Its last alignment step aligns the reads without an
-annotation to the miRNA index with 2 mismatches, after the removal of 1 nt at the 5′ end and 2 nt at the 3′ end. Thus
-a 16-nt read aligns with 13 nt and 2 mismatches. By our estimate, approximately 40% of random 16-nt sequences get a
-hit. Its count filter applies to each library separately: it sets the count of a miRNA to 0 if the exact reads are
-10% or less of the isomiR reads. With many fragment reads, a miRNA then has all its reads in some libraries and 0 in
-the others. The counting rules above keep the isomiR type that miRge3.0 found and the strict rules rejected
-(non-templated 3′ nucleotides), and merge identical mature sequences as miRge3.0 does.
-
 ## Counter interface
 
 The summary step (`mirna_summary.py`) reads only the tables of the counter. Thus another counter can replace the
