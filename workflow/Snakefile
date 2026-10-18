@@ -41,10 +41,6 @@ include: "rules/mirna.smk"
 include: "rules/rrna.smk"
 include: "rules/report.smk"
 
-localrules:
-    wf_version,
-
-
 rule all:
     input:
         "results/library_summary.tsv",
@@ -61,6 +57,7 @@ rule all:
 
 
 rule wf_version:
+    localrule: True
     input:
         counter="results/mirna/bowtie_version.txt",
     output:

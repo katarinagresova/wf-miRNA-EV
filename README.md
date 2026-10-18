@@ -71,7 +71,7 @@ module wf_mirna_ev:
     snakefile:
         github("katarinagresova/wf-miRNA-EV", path="workflow/Snakefile", tag="v0.1.0")
     config:
-        config
+        config["wf_mirna_ev"]
 
 # The prefix keeps the rule names apart from yours
 use rule * from wf_mirna_ev as wf_mirna_ev_*
@@ -83,8 +83,8 @@ rule all:
     default_target: True
 ```
 
-- The module uses the config that you give it, not `config/config.yaml` of this repository. Copy its settings into
-  your config. Relative paths start from the working directory of your workflow.
+- The module uses the settings under the key `wf_mirna_ev` of your config, not `config/config.yaml` of this
+  repository. Copy its settings to this key. Relative paths start from the working directory of your workflow.
 - Use a release tag. For a local copy, use `snakefile: "path/to/wf-miRNA-EV/workflow/Snakefile"`.
 - The outputs go to `results/` of your workflow, so your rules can use them, for example
   `results/mirna/counts_mirbase.tsv`.

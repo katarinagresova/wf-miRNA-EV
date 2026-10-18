@@ -14,16 +14,8 @@ GENOME_INDEX = config["genome_index"] or "resources/bowtie/genome/genome"
 GENOME_INDEX_FILE = f"{GENOME_INDEX}.1.ebwt" if config["genome_index"] else "resources/bowtie/genome/.done"
 
 
-localrules:
-    download_mirbase,
-    download_mirgenedb,
-    download_gtrnadb,
-    download_ensembl,
-    download_rdna,
-    download_contaminant,
-
-
 rule download_mirbase:
+    localrule: True
     output:
         "resources/download/mirbase/{kind}.fa",
     wildcard_constraints:
@@ -43,6 +35,7 @@ rule download_mirbase:
 
 
 rule download_mirgenedb:
+    localrule: True
     output:
         "resources/download/mirgenedb/{kind}.fa",
     wildcard_constraints:
@@ -63,6 +56,7 @@ rule download_mirgenedb:
 
 
 rule download_gtrnadb:
+    localrule: True
     output:
         mature="resources/download/gtrnadb/mature-tRNAs.fa",
         tar="resources/download/gtrnadb/tRNAs.tar.gz",
@@ -82,6 +76,7 @@ rule download_gtrnadb:
 
 
 rule download_ensembl:
+    localrule: True
     output:
         "resources/download/ensembl/{kind}.gz",
     wildcard_constraints:
@@ -104,6 +99,7 @@ rule download_ensembl:
 
 
 rule download_rdna:
+    localrule: True
     output:
         "resources/download/rdna.fa",
     params:
@@ -121,6 +117,7 @@ rule download_rdna:
 
 
 rule download_contaminant:
+    localrule: True
     output:
         fasta="resources/download/contaminants/{acc}.fa",
         # NCBI feature table (genes, tRNA, rRNA, CDS), to say which genes the contaminant reads come from
