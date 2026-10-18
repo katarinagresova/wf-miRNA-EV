@@ -15,7 +15,7 @@ version. Other files in `results/` and `resources/` (for example, the alignment 
 
 | Column | Content |
 |---|---|
-| `kept_reads` | Reads with an insert of `trim.min_len` nt or longer. All percentages below use this number. |
+| `kept_reads` | Reads with an insert of `trim.min_len` nt or longer, without the 5′ adapter artefacts. All percentages below use this number. |
 | `reads_16_28` | Kept reads in the miRNA length range. The name changes with `mirna.min_len` and `mirna.max_len` (`reads_<min_len>_<max_len>`). |
 | `pct_<class>` | Percent of the kept reads in each [read class](classification.md#read-classes) (primary database). |
 | `{db}_mirna_reads` | Reads of all miRNA entries. |
@@ -56,7 +56,7 @@ version. Other files in `results/` and `resources/` (for example, the alignment 
 | `results/trim/summary.tsv` | Read fates of each library (see below). |
 | `results/trim/insert_lengths.tsv` | Insert length distribution: one row for each length (0–99 nt), one column for each library, as a percent of the raw reads. Only reads with an adapter. |
 | `results/trim/insert_lengths.pdf` | Plot of `insert_lengths.tsv`, one panel for each batch. |
-| `results/trim/{sample}/trimmed.fastq.gz` | Kept reads, after the adapter trim and the length filter. |
+| `results/trim/{sample}/trimmed.fastq.gz` | Kept reads, after the adapter trim, the length filter and the 5′ adapter filter. |
 | `results/trim/{sample}/no_adapter.fastq.gz` | Reads without an adapter. |
 
 Columns of `summary.tsv`. Each count has a second column with the suffix `_pct`, the percent of the raw reads. The
@@ -65,11 +65,12 @@ names with 15 and 16 change with `trim.min_len`. The names with 28 and 29 change
 | Column | Content |
 |---|---|
 | `raw_reads` | Reads in the FASTQ file. |
-| `kept_reads`, `kept_pct` | Reads with an adapter and an insert of `trim.min_len` nt or longer. |
+| `kept_reads`, `kept_pct` | Reads with an adapter and an insert of `trim.min_len` nt or longer, without `adapter_5p_artefact`. |
 | `with_adapter_pct` | Percent of the raw reads with an adapter. |
 | `adapter_dimer` | Reads with an empty insert. |
 | `insert_1_15`, `insert_16_28`, `insert_29_50`, `insert_51plus` | Reads with an adapter, by insert length. |
 | `no_adapter_lt16`, `no_adapter_ge16` | Reads without an adapter, shorter or longer than `trim.min_len` after the quality trim. Short reads without an adapter are often poly-G reads. |
+| `adapter_5p_artefact` | Reads with an insert of `trim.min_len` nt or longer that has 15 nt or more of the 5′ adapter (`trim.adapter_5p`). The workflow removes them. They are also in the `insert_*` columns. |
 | `quality_trimmed_bp_pct` | Percent of the bases that the quality trim removed. |
 | `cut_nt_<A,C,G,T,N>_pct` | The nucleotide that `trim.cut_5p` removed at the 5′ end, as a percent of the raw reads. |
 

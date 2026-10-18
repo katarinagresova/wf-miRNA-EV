@@ -2,8 +2,8 @@
 
 # Library kit presets; the values of config["trim"] override them
 KITS = {
-    # RealSeq-Biofluids: one extra nt at the 5' end, no UMIs
-    "realseq_biofluids": {"adapter": "TGGAATTCTCGGGTGCCAAGG", "cut_5p": 1},
+    # RealSeq-Biofluids: one extra nt at the 5' end, no UMIs. adapter_5p: the Illumina 5' adapter (RA5)
+    "realseq_biofluids": {"adapter": "TGGAATTCTCGGGTGCCAAGG", "cut_5p": 1, "adapter_5p": "GTTCAGAGTTCTACAGTCCGACGATC"},
     "custom": {},
 }
 TRIM = {**KITS[config["kit"]], **config["trim"]}
@@ -49,9 +49,17 @@ rule length_filter:
     input:
         "results/trim/{sample}/adapter.fastq.gz",
     output:
-        "results/trim/{sample}/trimmed.fastq.gz",
+        reads="results/trim/{sample}/trimmed.fastq.gz",
+        json="results/trim/{sample}/adapter_5p.json",
     params:
         min_len=TRIM["min_len"],
+        # Also removes the reads with 15 nt or more of the 5' adapter anywhere (adapter artefacts), also with an
+        # insert. --action none: the adapter is not trimmed, so --minimum-length applies to the full read
+        adapter_5p=(
+            f"--anywhere {TRIM['adapter_5p']} --overlap 15 --action none --discard-trimmed"
+            if TRIM.get("adapter_5p")
+            else ""
+        ),
     log:
         "logs/length_filter/{sample}.log",
     threads: 4
@@ -60,7 +68,15 @@ rule length_filter:
     conda:
         "../envs/trim.yaml"
     shell:
-        "seqkit seq --min-len {params.min_len} --threads {threads} {input} -o {output} 2> {log}"
+        # cutadapt applies --minimum-length first: discard_trimmed in the JSON counts only reads of min_len or longer
+        """
+        cutadapt --cores {threads} \
+            --minimum-length {params.min_len} \
+            {params.adapter_5p} \
+            --output {output.reads} \
+            --json {output.json} \
+            {input} &> {log}
+        """
 
 
 rule trim_hist:
@@ -99,6 +115,7 @@ rule trim_summary:
     input:
         script=workflow.source_path("../scripts/trim_summary.py"),
         json=expand("results/trim/{sample}/cutadapt.json", sample=SAMPLES.index),
+        json_5p=expand("results/trim/{sample}/adapter_5p.json", sample=SAMPLES.index),
         hist=expand("results/trim/{sample}/hist.tsv", sample=SAMPLES.index),
         samples=config["samples"],
     output:
@@ -116,6 +133,7 @@ rule trim_summary:
         """
         python {input.script} \
             --json {input.json} \
+            --json-5p {input.json_5p} \
             --hist {input.hist} \
             --samples {input.samples} \
             --min-len {params.min_len} \

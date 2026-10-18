@@ -32,6 +32,7 @@ properties:
     properties:
       adapter: {type: string, pattern: "^[ACGTN]+$"}
       cut_5p: {type: integer, minimum: 0}
+      adapter_5p: {type: string, pattern: "^[ACGTN]*$", description: "reads with 15 nt or more of it are removed; empty for none"}
       nextseq_trim: {type: integer, minimum: 0, default: 0, description: "cutadapt --nextseq-trim; 0 for none"}
       min_len: {type: integer, minimum: 1, default: 16}
     additionalProperties: false

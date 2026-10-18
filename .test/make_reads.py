@@ -2,7 +2,7 @@
 
 Each read is a sequence of known origin (the insert), with one extra 5' base and the RealSeq adapter, as in a
 RealSeq-Biofluids library. truth.tsv gives the insert, its origin, the read count in each library and the class that
-step 5 must give it (expected_<db>), or "removed" for inserts shorter than trim.min_len.
+step 5 must give it (expected_<db>), or "removed" for inserts shorter than trim.min_len and for 5' adapter artefacts.
 
 The inserts are kept only if their class is certain: an insert of one class must not match a reference of another
 class exactly; genome inserts and short contaminant inserts must not match a small RNA reference with <= 1 mismatch
@@ -30,6 +30,7 @@ from make_refs import REGIONS  # noqa: E402
 from prepare_refs import dna, ensembl_attrs, ncrna_class, read_fasta, read_feature_table, revcomp  # noqa: E402
 
 ADAPTER = "TGGAATTCTCGGGTGCCAAGG"
+ADAPTER_5P = "GTTCAGAGTTCTACAGTCCGACGATC"
 TAIL = "AACTCCAGTCACATCTCGTATGCCGTCTTCTGCTTA"  # after the 3' adapter
 READ_LEN = 75
 # Libraries: sample, batch, and the read count factor of each origin
@@ -321,6 +322,9 @@ def others(ins):
     ins.add("", "adapter_dimer", "empty insert", "removed", 20)
     for length in [8, 12, 15]:
         ins.add("".join(ins.rng.choices("ACGT", k=length)), "too_short", f"{length} nt", "removed", 2)
+    # 5' adapter artefacts: the full 5' adapter, its 5' part and an inner part
+    for start, end in [(0, 26), (0, 19), (6, 22)]:
+        ins.add(ADAPTER_5P[start:end], "adapter_5p", f"{start}:{end}", "removed", 5)
 
 
 def main():

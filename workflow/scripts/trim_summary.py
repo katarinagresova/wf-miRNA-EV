@@ -1,4 +1,5 @@
-"""Summarize adapter trimming per sample: read fates, insert length classes, 5' extra nt, insert length distribution."""
+"""Summarize adapter trimming per sample: read fates, insert length classes, 5' adapter artefacts, 5' extra nt, insert
+length distribution."""
 
 import argparse
 import json
@@ -14,6 +15,7 @@ import pandas as pd
 def parse_args():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--json", nargs="+", required=True, help="cutadapt JSON reports")
+    p.add_argument("--json-5p", nargs="+", required=True, help="cutadapt JSON reports of rule length_filter")
     p.add_argument("--hist", nargs="+", required=True, help="hist.tsv from rule trim_hist")
     p.add_argument("--samples", required=True, help="sample sheet")
     p.add_argument("--min-len", type=int, required=True)
@@ -39,7 +41,7 @@ def read_hist(path):
     return by_set.get("adapter", empty), by_set.get("no_adapter", empty), cut
 
 
-def summarize(report, ad, no, cut, min_len, max_len):
+def summarize(report, report_5p, ad, no, cut, min_len, max_len):
     rc, bp = report["read_counts"], report["basepair_counts"]
     raw = rc["input"]
 
@@ -59,13 +61,18 @@ def summarize(report, ad, no, cut, min_len, max_len):
     }
     assert sum(counts.values()) == raw, "read categories do not add up to the input reads"
     assert counts["adapter_dimer"] + n(ad, 1) == rc["read1_with_adapter"]
+    # Reads of min_len or longer with the 5' adapter; they are also in the insert length classes
+    artefact = report_5p["read_counts"]["filtered"]["discard_trimmed"] or 0
 
-    row = {"raw_reads": raw, "kept_reads": n(ad, min_len)}
+    row = {"raw_reads": raw, "kept_reads": n(ad, min_len) - artefact}
+    assert row["kept_reads"] == report_5p["read_counts"]["output"]
     row["kept_pct"] = 100 * row["kept_reads"] / raw
     row["with_adapter_pct"] = 100 * rc["read1_with_adapter"] / raw
     for k, v in counts.items():
         row[k] = v
         row[f"{k}_pct"] = 100 * v / raw
+    row["adapter_5p_artefact"] = artefact
+    row["adapter_5p_artefact_pct"] = 100 * artefact / raw
     row["quality_trimmed_bp_pct"] = 100 * bp["quality_trimmed"] / bp["input"]
 
     for nt in "ACGTN":
@@ -97,12 +104,16 @@ def main():
     samples = pd.read_csv(args.samples, sep="\t", dtype=str).set_index("sample").drop(columns="fastq")
 
     hists = {sample_name(p): read_hist(p) for p in args.hist}
+    reports_5p = {}
+    for path in args.json_5p:
+        with open(path) as fh:
+            reports_5p[sample_name(path)] = json.load(fh)
     rows, lengths = {}, {}
     for path in args.json:
         name = sample_name(path)
         with open(path) as fh:
             report = json.load(fh)
-        rows[name], lengths[name] = summarize(report, *hists[name], args.min_len, args.max_len)
+        rows[name], lengths[name] = summarize(report, reports_5p[name], *hists[name], args.min_len, args.max_len)
 
     summary = samples.join(pd.DataFrame.from_dict(rows, orient="index"), how="right")
     summary.index.name = "sample"

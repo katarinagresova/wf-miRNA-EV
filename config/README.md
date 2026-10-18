@@ -21,15 +21,16 @@ The workflow processes every row. To leave out a library, remove its row.
 
 `kit` selects a preset of trim settings. The values in `trim` override the preset.
 
-| Kit | Adapter (3′) | `cut_5p` | Note |
-|---|---|---|---|
-| `realseq_biofluids` | `TGGAATTCTCGGGTGCCAAGG` | 1 | One extra nucleotide at the 5′ end. No UMIs. |
-| `custom` | set `trim.adapter` | set `trim.cut_5p` | |
+| Kit | Adapter (3′) | `cut_5p` | Adapter (5′) | Note |
+|---|---|---|---|---|
+| `realseq_biofluids` | `TGGAATTCTCGGGTGCCAAGG` | 1 | `GTTCAGAGTTCTACAGTCCGACGATC` | One extra nucleotide at the 5′ end. No UMIs. |
+| `custom` | set `trim.adapter` | set `trim.cut_5p` | optional: `trim.adapter_5p` | |
 
 | Key | Default | Content |
 |---|---|---|
 | `trim.adapter` | from the kit | 3′ adapter sequence. |
 | `trim.cut_5p` | from the kit | Nucleotides to remove at the 5′ end. |
+| `trim.adapter_5p` | from the kit | 5′ adapter sequence. Reads with 15 nt or more of it are adapter artefacts and are removed. Without this filter, these reads are `unmapped`, or they match the genome by chance. The miRBase miRNA hsa-miR-3168 is 1 mismatch from the RealSeq-Biofluids 5′ adapter, thus the filter also removes its reads. An empty value (`""`) turns the filter off. |
 | `trim.nextseq_trim` | 0 | Quality cutoff for `cutadapt --nextseq-trim` (two-colour chemistry, removes poly-G). 0 turns it off. |
 | `trim.min_len` | 16 | Minimum insert length. Shorter reads are removed. It must be in the range `mirna.min_len` to `mirna.max_len`. |
 

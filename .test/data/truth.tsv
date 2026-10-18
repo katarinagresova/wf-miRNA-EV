@@ -230,3 +230,6 @@ TTAAGTGGGCGCAACTCGGTCCCCTTCCGGGAAAA	random	random	unmapped	unmapped		1	1
 GAAGCTCT	too_short	8 nt	removed	removed		2	2
 AGTATATTTCAG	too_short	12 nt	removed	removed		2	2
 TCTATACTTTTGGAC	too_short	15 nt	removed	removed		2	2
+GTTCAGAGTTCTACAGTCCGACGATC	adapter_5p	0:26	removed	removed		5	5
+GTTCAGAGTTCTACAGTCC	adapter_5p	0:19	removed	removed		5	5
+AGTTCTACAGTCCGAC	adapter_5p	6:22	removed	removed		5	5

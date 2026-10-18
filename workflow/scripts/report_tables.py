@@ -63,7 +63,8 @@ def general_stats(summary, db, detected_max):
     })
     pct = {"suffix": "%", "min": 0, "max": 100, "format": "{:,.1f}"}
     headers = {
-        "kept_reads": {"title": "Kept reads", "description": "Reads after the adapter trim and the length filter",
+        "kept_reads": {"title": "Kept reads",
+                       "description": "Reads after the adapter trim, the length filter and the 5' adapter filter",
                        "format": "{:,.0f}", "scale": "Blues"},
         "pct_miRNA": {"title": "% miRNA", "description": f"Kept reads with the class miRNA ({db})",
                       "scale": "Greens", **pct},

@@ -3,7 +3,7 @@
 - Each insert of trim.min_len nt or longer gets its expected class in step 5, for each miRNA database.
 - Each insert of class miRNA counts for the miRNA in `detail` (MirGeneDB: the miRNAs with its sequence), and possibly
   also for other miRNAs with an equally good hit. The inserts of the other classes do not count for a miRNA.
-- Each shorter insert is not in the collapsed reads.
+- Each shorter insert and each 5' adapter artefact is not in the collapsed reads.
 - The off-target check gives each selected rRNA insert the result rRNA or tied.
 
 Run in the environment of workflow/envs/py.yaml, after the workflow:
