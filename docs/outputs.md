@@ -59,6 +59,12 @@ version. Other files in `results/` and `resources/` (for example, the alignment 
 | `results/trim/{sample}/trimmed.fastq.gz` | Kept reads, after the adapter trim, the length filter and the 5′ adapter filter. |
 | `results/trim/{sample}/no_adapter.fastq.gz` | Reads without an adapter. |
 
+The workflow keeps only the reads with an adapter. A read has no adapter if its insert fills the read (cutadapt
+needs 3 nt or more of the adapter). The workflow does not classify these reads, and they are not in `kept_reads`. Thus
+it loses the RNAs that are longer than the read: with 100-nt reads, 5S rRNA (about 120 nt) and the longer Y RNAs
+(83–112 nt); with shorter reads, also full-length tRNAs (about 75–90 nt). `no_adapter_ge16` gives the number of
+these reads.
+
 Columns of `summary.tsv`. Each count has a second column with the suffix `_pct`, the percent of the raw reads. The
 names with 15 and 16 change with `trim.min_len`. The names with 28 and 29 change with `mirna.max_len`.
 
