@@ -124,8 +124,8 @@ mirna:
   # Reads of this length or shorter count for a miRNA only with 0 mismatches: on a decoy reference (reversed
   # hairpins), most chance hits were 16-18-nt reads with 1 mismatch
   exact_max_len: 18
-  # Reads without any hit count for a miRNA if they match a mature arm exactly without 1 to nta_max nucleotides at
-  # the 3' end (non-templated 3' nucleotides, for example adenylation)
+  # Reads without a mature arm hit get a miRNA hit with 1 mismatch if they match a mature arm exactly without 1 to
+  # nta_max nucleotides at the 3' end (non-templated 3' nucleotides, for example adenylation)
   nta_max: 3
   detected_min_reads: [1, 5, 10]
   # Off-target check: bowtie1 -v of the miRNA-only mapping (3 is the maximum of bowtie 1)

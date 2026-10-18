@@ -179,26 +179,52 @@ def test_short_reads_need_an_exact_match(tmp_path):
 
 
 def test_non_templated_3p_nucleotides(tmp_path):
-    # Exact hairpin hits of the reads without 1-3 nt at the 3' end; they count only for reads without a hit in step 5
+    # Exact hairpin hits of the reads without 1-3 nt at the 3' end
     out = classify(
         tmp_path,
-        reads={1: 24, 2: 24, 3: 24, 4: 24},
-        genome=[(3, 1, "intron")],
+        reads={1: 24, 2: 24, 4: 24},
         nta=[
             (1, hairpin("mir-a"), 5, 22, 0),  # 2 nt removed: miR-a-5p
             (2, hairpin("mir-a"), 9, 21, 0),  # 3 nt removed: 5' end +4, outside the arm tolerances
-            (3, hairpin("mir-a"), 5, 22, 0),  # a genome hit in step 5
             (4, hairpin("mir-a"), 45, 22, 0),  # 2 nt removed: miR-a-3p
             (4, hairpin("mir-b"), 5, 23, 0),  # 1 nt removed: miR-b-5p; the fewest removed nucleotides win
         ],
     )
     assert out.classes[[1, 4]].eq("miRNA").all()
     assert out.classes[2] == "unmapped"
-    assert out.classes[3] == "intron"
     assert out.counts.loc["miR-a-5p", "nta_reads"] == COUNT
     assert out.counts.loc["miR-b-5p", "nta_reads"] == COUNT
     assert "miR-a-3p" not in out.counts.index
     assert out.counts["canonical_reads"].sum() == 0
+
+
+def test_non_templated_3p_nucleotides_against_other_hits(tmp_path):
+    # An arm hit without 1 nt at the 3' end is a miRNA hit with 1 mismatch (miR-a-5p is at 5..27 of mir-a)
+    out = classify(
+        tmp_path,
+        reads={1: 23, 2: 23, 3: 23, 4: 28, 5: 18},
+        hits={
+            "rrna": [(2, RRNA, 100, 23, 0), (3, RRNA, 100, 23, 1)],
+            # 4: 3' end +6, outside the arm tolerances
+            "mirbase": [(4, hairpin("mir-a"), 5, 28, 0), (5, hairpin("mir-a"), 5, 18, 1)],
+        },
+        # 1: the hairpin ends at the arm end; the added nucleotide is the mismatch of the genome hit
+        genome=[(1, 1, "protein_coding")],
+        nta=[(r, hairpin("mir-a"), 5, n - 1, 0) for r, n in [(1, 23), (2, 23), (3, 23), (4, 28), (5, 18)]],
+    )
+    reads = pd.read_csv(out.dir / "mirna_mirbase.reads.tsv.gz", sep="\t", index_col="rank")
+    top = pd.read_csv(out.dir / "top_hits.tsv", sep="\t", index_col="rank")
+    assert out.classes[1] == "miRNA"  # a small RNA class wins over a genome class
+    assert reads.loc[1, "nta"] == 1
+    assert top.loc[1, "mature"] == "miR-a-5p"
+    assert out.classes[2] == "rRNA"  # an exact hit wins
+    assert out.classes[3] == "miRNA"  # 1 mismatch each: the class priority decides
+    assert reads.loc[3, "tied_classes"] == "rRNA"
+    assert out.classes[4] == "miRNA_hairpin_other"  # an exact hairpin hit wins
+    assert pd.isna(top.loc[4, "mature"])
+    assert out.classes[5] == "miRNA"  # 18 nt with 1 mismatch: miRNA_hairpin_other without the NTA hit
+    assert out.counts.loc["miR-a-5p", "nta_reads"] == 3 * COUNT
+    assert out.counts.loc["miR-a-5p", "reads_tied_other_class"] == COUNT
 
 
 def test_mature_names_with_the_same_sequence_are_one_entry(tmp_path):

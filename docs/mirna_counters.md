@@ -23,15 +23,23 @@ A read without the first 4 nt or more of the mature miRNA does not count, becaus
 ### Non-templated 3′ nucleotides
 
 Many miRNAs have 1–3 extra nucleotides at the 3′ end that are not in the genome (for example, adenylation:
-hsa-miR-92a-3p + AA). With these nucleotides, the read has too many mismatches and no hit in step 5.
+hsa-miR-92a-3p + AA). With these nucleotides, the read has too many mismatches and no miRNA hit. With 1 extra
+nucleotide, the read can align to the genome, with the extra nucleotide as the mismatch.
 
-A read that is still `unmapped` after step 5 counts for a mature miRNA if:
+A read without a hit on a mature miRNA has a hit with non-templated 3′ nucleotides if:
 
 - without 1–3 nt at its 3′ end (`mirna.nta_max`), it matches the hairpin with 0 mismatches,
 - the shorter read is 16 nt or longer and agrees with the arm tolerances.
 
-The match with the fewest removed nucleotides wins. The read gets the class `miRNA`. The column `nta_reads` of
-`bowtie_{db}.tsv` gives these reads.
+The match with the fewest removed nucleotides wins. The extra nucleotides are one event. Thus in step 5, this hit is
+a `miRNA` hit with 1 mismatch (rule 1 of the [read classification](classification.md#rules)):
+
+- A hit with 0 mismatches on another reference wins.
+- If another small RNA reference has a hit with 1 mismatch, the read is `miRNA` (the class priority), and the read
+  is tied.
+- A genome hit does not win, because a small RNA class wins over a genome class.
+
+The column `nta_reads` of `bowtie_{db}.tsv` gives these reads.
 
 ### Entries
 

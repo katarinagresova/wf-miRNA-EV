@@ -23,9 +23,11 @@ A hairpin hit counts for a mature arm if the read is min-len..max-len nt, has 0 
 or shorter, and its 5'/3' ends lie within start-tol/end-tol nt of the arm's ends. Mature names with the same sequence
 are one entry (column entry of the arms table). A read on several entries is split evenly between them.
 
-Reads that are still unmapped count for a mature arm if they match the hairpin exactly without 1 or more nucleotides
+A read without an arm hit can count for a mature arm if it matches the hairpin exactly without 1 or more nucleotides
 at the 3' end (non-templated 3' nucleotides, --nta-hits). The shorter read must agree with the arm rules. The match
-with the fewest removed nucleotides wins. These reads get the class miRNA.
+with the fewest removed nucleotides wins. The 3' tail is one event: in the class assignment above, such a match is a
+miRNA hit with 1 mismatch. Thus an exact hit on another reference wins, a small RNA hit with 1 mismatch is a tie
+(miRNA wins), and a genome hit loses.
 """
 
 import argparse
@@ -180,7 +182,7 @@ def arm_assignments(hits, arms, args, exact_max_len=0):
     )
     m = m[ok]
     m = m.assign(canonical=(m["offset"] == m["start"]) & (m["offset"] + m["length"] == m["end"]) & (m["mm"] == 0))
-    return m[["rank", "target", "offset", "length", "mm", "mature", "entry", "canonical"]]
+    return m[["rank", "ref", "target", "offset", "length", "strand", "mm", "mature", "entry", "canonical"]]
 
 
 def best_class(cand, priority):
@@ -274,7 +276,17 @@ def main():
         key = ["rank", "target", "offset"]
         on_arm = pd.MultiIndex.from_frame(mir[key]).isin(pd.MultiIndex.from_frame(assigned[key]))
         mir_cand = mir[cols].assign(cls=np.where(on_arm, "miRNA", "miRNA_hairpin_other"))
-        best, cand = best_class(concat_hits([mir_cand, other]), CLASS_PRIORITY)
+        # Reads without an arm hit, with non-templated 3' nucleotides: an exact arm hit of the read without nta
+        # nucleotides at the 3' end (the hit length is the length after the removal); the fewest removed nucleotides
+        # win. The 3' tail is one event: a miRNA hit with 1 mismatch
+        nta = arm_assignments(read_hits(nta_hits), db_arms, args)
+        nta = nta[~nta["rank"].isin(assigned["rank"])]
+        nta = nta.assign(nta=reads.loc[nta["rank"], "length"].to_numpy() - nta["length"].to_numpy(), mm=np.int8(1),
+                         canonical=False)
+        nta = nta[nta["nta"].to_numpy() == nta.groupby("rank")["nta"].transform("min").to_numpy()]
+        nta_cand = nta.assign(target=nta["target"].astype("category"), cls="miRNA")[cols].drop_duplicates()
+        assigned = pd.concat([assigned.assign(nta=0), nta])
+        best, cand = best_class(concat_hits([mir_cand, nta_cand, other]), CLASS_PRIORITY)
 
         cls = pd.Series("unmapped", index=reads.index, dtype=object)
         cls[genome.index] = genome["cls"]
@@ -296,13 +308,6 @@ def main():
         # Reads without any full-length hit: a contaminant end and no human end
         end_wins = ends.index[ends["outcome"].eq("contaminant_end").to_numpy() & cls[ends.index].eq("unmapped").to_numpy()]
         cls[end_wins] = ends.loc[end_wins, "contaminant"]
-        # Unmapped reads with non-templated 3' nucleotides: an exact arm hit of the read without nta nucleotides at
-        # the 3' end (the hit length is the length after the removal); the fewest removed nucleotides win
-        nta = arm_assignments(read_hits(nta_hits), db_arms, args)
-        nta = nta[cls[nta["rank"]].eq("unmapped").to_numpy()]
-        nta = nta.assign(nta=reads.loc[nta["rank"], "length"].to_numpy() - nta["length"].to_numpy(), canonical=False)
-        nta = nta[nta["nta"].to_numpy() == nta.groupby("rank")["nta"].transform("min").to_numpy()]
-        cls[nta["rank"].unique()] = "miRNA"
         read_classes[db] = cls
         moved = wins.append(end_wins)
         end_rule = ("end_" + ends.loc[end_wins, "end_len"].astype(str)).to_numpy()
@@ -336,7 +341,8 @@ def main():
         t = concat_hits([cand[cand["rank"].isin(top_ranks)], cont_cand[cont_cand["rank"].isin(top_ranks)]])
         t = t[t["cls"].to_numpy() == cls[t["rank"]].to_numpy()].drop(columns="prio")
         t = t[t["mm"] == t.groupby("rank")["mm"].transform("min")]
-        t = t.merge(assigned[["rank", "target", "offset", "mature"]].drop_duplicates(), how="left", on=["rank", "target", "offset"])
+        t = t.merge(assigned[["rank", "target", "offset", "length", "mature"]].drop_duplicates(), how="left",
+                    on=["rank", "target", "offset", "length"])
         top = pd.DataFrame({"rank": top_ranks})
         top = top.assign(
             sequence=top["rank"].map(top_seqs), count=reads.loc[top_ranks, "count"].to_numpy(),
@@ -344,17 +350,16 @@ def main():
         )
         top_hits.append(top.merge(t.drop(columns="cls"), how="left", on="rank"))
 
-        # Entry counts from reads whose best class is miRNA, using only their best-stratum arm hits, and from the
-        # reads with non-templated 3' nucleotides
+        # Entry counts from reads whose best class is miRNA, using only their best-stratum arm hits (the hits with
+        # non-templated 3' nucleotides included)
         best_mm = best["mm"]
         a = assigned[assigned["rank"].map(best["cls"]).eq("miRNA")]
         a = a[a["mm"].to_numpy() == best_mm.loc[a["rank"]].to_numpy()]
-        a = pd.concat([a.assign(nta=0), nta])
         a = a.groupby(["rank", "entry"], as_index=False).agg(canonical=("canonical", "any"), nta=("nta", "first"))
         a["reads"] = reads.loc[a["rank"], "count"].to_numpy() / a.groupby("rank")["entry"].transform("size")
         # Other classes hit equally well by the same read (e.g. miRBase entries derived from rRNA or tRNA)
         c = concat_hits([cand, cont_cand])
-        c = c[c["rank"].isin(a.loc[a["nta"] == 0, "rank"]) & ~c["cls"].isin(["miRNA", "miRNA_hairpin_other"])]
+        c = c[c["rank"].isin(a["rank"]) & ~c["cls"].isin(["miRNA", "miRNA_hairpin_other"])]
         c = c[c["mm"].to_numpy() == best_mm.loc[c["rank"]].to_numpy()]
         tied = c.drop_duplicates(["rank", "cls"]).groupby("rank")["cls"].agg(lambda s: ",".join(sorted(s)))
         a["tied"] = a["rank"].map(tied)
