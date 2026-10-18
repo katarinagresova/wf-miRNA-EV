@@ -60,7 +60,9 @@ probability of approximately 21%. A random 18-nt sequence has a probability of a
 depend on the read length and on the human evidence.
 
 - A read of `classify.contaminant_min_len` (18) nt or longer is a contaminant read if its contaminant hit has fewer
-  mismatches than all its human hits. If the hits are equally good, the read stays human.
+  mismatches than its best human hit. For a read with a small RNA hit, this is the best small RNA hit (rule 1); its
+  genome hits do not count. For other reads, it is the best genome hit. If the hits are equally good, the read stays
+  human.
 - **Weak human evidence**: no small RNA hit, and genome hits only in `mRNA`, `lncRNA`, `other_gene`, `intron` or
   `intergenic`, or no human hit. A short read lands in these classes by chance, because they cover most of the
   genome. For these reads, an equally good contaminant hit is sufficient (18 nt or longer). A shorter read needs an

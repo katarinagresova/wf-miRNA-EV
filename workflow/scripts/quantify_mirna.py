@@ -5,8 +5,9 @@ to the class of its fewest-mismatch hit over all references; ties are broken by 
 small RNA hit were aligned to the genome and are classed by the same-strand annotation they overlap.
 
 All reads were also aligned to contaminant genomes (both strands). A read of at least contaminant-min-len nt is
-assigned to a contaminant class if it matches a contaminant with fewer mismatches than any human reference (small RNA
-or genome); ties stay human. Reads with weak human evidence need less: at least contaminant-min-len nt, a contaminant
+assigned to a contaminant class if it matches a contaminant with fewer mismatches than its best human hit: the best
+small RNA hit if it has one (its genome hits do not count), else the best genome hit; ties stay human. Reads with weak
+human evidence need less: at least contaminant-min-len nt, a contaminant
 hit as good as the best human one (ties go to the contaminant); shorter, an exact contaminant match. Weak evidence is
 no small RNA hit and genome hits only in genes, introns or intergenic regions (WEAK_HUMAN), or no human hit at all.
 Short reads match the genome by chance (a 16-mer has ~70 expected hits with <= 1 mismatch, and the class priority picks
