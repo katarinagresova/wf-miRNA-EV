@@ -19,6 +19,13 @@ a read is a contaminant if an end-len-nt end matches a contaminant (<= the casca
 matches a human reference; or, when no end-len-nt end matches anything, if an end-len-exact-nt end matches a
 contaminant exactly and none matches a human reference exactly. These are contaminant reads with more errors than the
 full-length alignment allows (or an indel), and contaminant fragments joined to another fragment by the ligation.
+Conversely, a read with a human end and no contaminant end (the same rule) gets the class of its best rRNA, tRNA or
+ncRNA end (END_CLASS_REFS): the end-len-nt ends decide when any of them has such a hit, else the exact
+end-len-exact-nt hits; then the fewest mismatches and CLASS_PRIORITY. These are mostly human reads with an indel (the
+reverse transcription errors at modified nucleotides of tRNA and rRNA), or with more mismatches. Genome ends do not
+give a class (a random exact 18-mer matches the genome with a probability of ~9%, the ~1 Mb of END_CLASS_REFS with
+~1e-5), and miRNA ends do not either (the arm rules). A read with a miRNA class from its non-templated 3' nucleotides
+keeps it.
 
 A hairpin hit counts for a mature arm if the read is min-len..max-len nt, has 0 mismatches if it is exact-max-len nt
 or shorter, and its 5'/3' ends lie within start-tol/end-tol nt of the arm's ends. Mature names with the same sequence
@@ -86,6 +93,8 @@ ALL_CLASSES = CLASS_PRIORITY + GENOME_PRIORITY + CONTAMINANT_PRIORITY + ["unmapp
 WEAK_HUMAN = ["mRNA", "lncRNA", "other_gene", "intron", "intergenic", "unmapped"]
 # Human references of the end hits, in priority order (the human reference reported for a read with a human end)
 END_HUMAN_PRIORITY = ["rrna", "trna", "ncrna", "mirbase", "mirgenedb", "genome"]
+# Human references whose end hits give a class to a read with a human end
+END_CLASS_REFS = ["rrna", "trna", "ncrna"]
 
 
 def parse_args():
@@ -118,7 +127,9 @@ def parse_args():
     p.add_argument("--out-contaminants", required=True, help="reads per contaminant genome and length bin")
     p.add_argument("--out-contaminant-rules", required=True,
                    help="contaminant reads by the class they would have without contaminants, the rule and the read length")
-    p.add_argument("--out-ends", required=True, help="reads tested by their ends, by outcome and read length")
+    p.add_argument("--out-ends", required=True,
+                   help="reads tested by their ends, by outcome, best human reference, class of the best rRNA, tRNA or "
+                        "ncRNA end and read length")
     p.add_argument("--out-top", required=True, help="best hits of the --top-n most abundant sequences")
     return p.parse_args()
 
@@ -205,16 +216,22 @@ def genome_classes(path):
 
 
 def end_evidence(path, end_len, exact_len):
-    """Per read with an end hit: the deciding end length, the outcome, the best contaminant class and human reference;
-    and the contaminant candidates (best stratum over the deciding ends).
+    """Per read with an end hit: the deciding end length, the outcome, the best contaminant class and human reference,
+    and the class of the best END_CLASS_REFS end; and the contaminant candidates (best stratum over the deciding ends).
 
-    The end_len-nt ends decide when any of them has a hit; otherwise the exact hits of the exact_len-nt ends."""
+    The end_len-nt ends decide when any of them has a hit; otherwise the exact hits of the exact_len-nt ends. For the
+    END_CLASS_REFS class, the same rule applies to the END_CLASS_REFS hits only."""
+
+    def longest(e):
+        return e[e["end_len"].to_numpy() == e.groupby("rank")["end_len"].transform("max").to_numpy()]
+
     e = pd.read_csv(path, sep="\t", header=None, names=["end", "index", "ref", "mm"],
                     dtype={"end": str, "index": "category", "ref": "category", "mm": "int8"})
     parts = e["end"].str.split("_")
     e = e.assign(rank=parts.str[0].astype("int64"), end_len=parts.str[2].astype("int16")).drop(columns="end")
     e = e[(e["end_len"] == end_len) | (e["mm"] == 0)]
-    e = e[e["end_len"].to_numpy() == e.groupby("rank")["end_len"].transform("max").to_numpy()]
+    small = longest(e[e["index"].isin(END_CLASS_REFS).to_numpy()])
+    e = longest(e)
 
     is_cont = (e["index"] == "contaminant").to_numpy()
     human = e[~is_cont]
@@ -225,10 +242,14 @@ def end_evidence(path, end_len, exact_len):
     cont = cont.assign(cls=refs.str.split("|").str[1].to_numpy()[cont["ref"].cat.codes.to_numpy()])
     cont_best, cont_cand = best_class(cont[["rank", "ref", "mm", "cls"]], CONTAMINANT_PRIORITY)
     cont_cand = cont_cand[cont_cand["mm"].to_numpy() == cont_best.loc[cont_cand["rank"], "mm"].to_numpy()]
+    refs = small["ref"].cat.categories
+    small = small.assign(cls=refs.str.split("|").str[1].to_numpy()[small["ref"].cat.codes.to_numpy()])
+    small_best, _ = best_class(small[["rank", "mm", "cls"]], CLASS_PRIORITY)
 
     ev = e.groupby("rank")["end_len"].first().to_frame()
     ev["contaminant"] = cont_best["cls"]
     ev["human_ref"] = human_best["index"].astype(str)
+    ev["small_rna_class"] = small_best["cls"]
     c, h = ev["contaminant"].notna().to_numpy(), ev["human_ref"].notna().to_numpy()
     ev["outcome"] = np.select([c & ~h, h & ~c], ["contaminant_end", "human_end"], default="both_ends")
     return ev, cont_cand
@@ -309,6 +330,11 @@ def main():
         # Reads without any full-length hit: a contaminant end and no human end
         end_wins = ends.index[ends["outcome"].eq("contaminant_end").to_numpy() & cls[ends.index].eq("unmapped").to_numpy()]
         cls[end_wins] = ends.loc[end_wins, "contaminant"]
+        # A human end and no contaminant end: the class of the best rRNA, tRNA or ncRNA end; the reads with a miRNA
+        # class from their non-templated 3' nucleotides keep it
+        human_end_wins = ends.index[ends["outcome"].eq("human_end").to_numpy() & ends["small_rna_class"].notna().to_numpy()
+                                    & cls[ends.index].eq("unmapped").to_numpy()]
+        cls[human_end_wins] = ends.loc[human_end_wins, "small_rna_class"]
         read_classes[db] = cls
         moved = wins.append(end_wins)
         end_rule = ("end_" + ends.loc[end_wins, "end_len"].astype(str)).to_numpy()
@@ -319,6 +345,9 @@ def main():
                      .agg(reads=("count", "sum"), unique_seqs=("count", "size")).reset_index().assign(db=db))
         print(f"{db}: {reads.loc[moved, 'count'].sum():,} contaminant reads ({len(moved):,} sequences); by rule:")
         print(r.groupby("rule")["count"].sum().to_string())
+        print(f"{db}: {reads.loc[human_end_wins, 'count'].sum():,} reads ({len(human_end_wins):,} sequences) with the "
+              "class of a human end; by class:")
+        print(reads.loc[human_end_wins, "count"].groupby(cls[human_end_wins]).sum().to_string())
         best = best[cls[best.index].to_numpy() == best["cls"].to_numpy()]
 
         # Reads per contaminant genome, split evenly between equally good genomes of the read's class
@@ -405,9 +434,10 @@ def main():
     )
     ev = ends.reindex(tested)
     e = pd.DataFrame({"outcome": ev["outcome"].fillna("no_end_hit").to_numpy(), "end_len": ev["end_len"].astype("Int16").to_numpy(),
-                      "human_ref": ev["human_ref"].to_numpy(), "length": reads.loc[tested, "length"].to_numpy(),
-                      "count": reads.loc[tested, "count"].to_numpy()})
-    e = e.groupby(["outcome", "end_len", "human_ref", "length"], dropna=False).agg(reads=("count", "sum"), unique_seqs=("count", "size"))
+                      "human_ref": ev["human_ref"].to_numpy(), "small_rna_class": ev["small_rna_class"].to_numpy(),
+                      "length": reads.loc[tested, "length"].to_numpy(), "count": reads.loc[tested, "count"].to_numpy()})
+    e = e.groupby(["outcome", "end_len", "human_ref", "small_rna_class", "length"], dropna=False).agg(
+        reads=("count", "sum"), unique_seqs=("count", "size"))
     e.reset_index().to_csv(args.out_ends, sep="\t", index=False)
     print(f"tested by their ends: {e['reads'].sum():,} reads ({e['unique_seqs'].sum():,} sequences); by outcome:")
     print(e.groupby("outcome")["reads"].sum().to_string())

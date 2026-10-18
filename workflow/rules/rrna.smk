@@ -8,6 +8,7 @@ rule rrna_fragments:
         classes="results/classify/{sample}/read_classes.tsv.gz",
         hits="results/classify/{sample}/hits/rrna.hits.tsv.gz",
         contaminant="results/classify/{sample}/hits/contaminant.hits.tsv.gz",
+        ends="results/classify/{sample}/hits/unmapped_ends.hits.tsv.gz",
         features="resources/refs/rrna_features.bed",
     output:
         "results/rrna/{sample}/fragments.tsv.gz",
@@ -25,6 +26,6 @@ rule rrna_fragments:
     shell:
         """
         python {input.script} --reads {input.reads} --classes {input.classes} --hits {input.hits} \
-            --contaminant {input.contaminant} --features {input.features} --db {params.db} \
+            --contaminant {input.contaminant} --ends {input.ends} --features {input.features} --db {params.db} \
             --contaminant-min-len {params.min_len} --output {output} &> {log}
         """

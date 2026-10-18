@@ -29,7 +29,7 @@ Each of these rules is also correct for whole-cell libraries.
 | Other small RNA | `Y_RNA`, `snoRNA`, `snRNA`, `7SK`, `7SL_SRP`, `vault_RNA`, `other_ncRNA` | Ensembl ncRNA. |
 | Genome | `rRNA_genomic`, `mt_other`, `tRNA_genomic`, `mRNA`, `lncRNA`, `other_gene`, `intron`, `intergenic` | The genome, with the Ensembl gene annotation. Only reads without a small RNA hit. |
 | Contaminant | `mycoplasma`, `bacteria`, `phiX` | The contaminant genomes of `refs.contaminants`. |
-| | `unmapped` | No hit. |
+| | `unmapped` | No hit, and no class from the ends of the read ([rule 5](#reads-without-a-full-length-hit)). |
 
 Each database of `mirna.databases` has its own classification, because the miRNA hairpins are different. The other
 classes change only for reads with a miRNA hit.
@@ -51,6 +51,8 @@ classes change only for reads with a miRNA hit.
    genes give `rRNA_genomic`. Other hits in the mitochondrial genome give `mt_other`. An exon hit wins over an intron
    hit.
 4. **Contaminants.** See [Contaminants](#contaminants).
+5. **Reads without a full-length hit.** A human read without a full-length hit gets the class of an rRNA, tRNA or
+   ncRNA end. See [Reads without a full-length hit](#reads-without-a-full-length-hit).
 
 ## Contaminants
 
@@ -75,6 +77,30 @@ depend on the read length and on the human evidence.
 The contaminant reads are not in the miRNA counts. `pct_of_human` in `results/classify/composition.tsv` divides by
 the human reads (the kept reads without the contaminant reads).
 
+## Reads without a full-length hit
+
+bowtie 1 does not align gaps. Thus a read with an insertion or deletion has no full-length hit. Modified nucleotides
+in tRNA and rRNA cause these errors in the reverse transcription. For example, many tRNA-Glu and tRNA-Gly 5′ halves
+have a 1-nt deletion at positions 6–7. Other reads without a full-length hit have more mismatches than
+`classify.mismatches`, or two fragments joined in the ligation.
+
+The workflow aligns the ends of these reads (see [Contaminants](#contaminants)). A read is human if an end matches a
+human reference and no end matches a contaminant (with the same rules for the 25-nt and 18-nt ends). A human read
+gets the class of its best rRNA, tRNA or ncRNA end hit:
+
+- The 25-nt ends decide if one of them has such a hit, else the exact 18-nt ends. Then the fewest mismatches and the
+  order of rule 1 decide.
+- The genome ends and the miRNA ends do not give a class. A random exact 18-nt sequence matches the genome with a
+  probability of approximately 9%, but the rRNA, tRNA and ncRNA references (approximately 1 Mb) with a probability
+  of approximately 0.001%. A miRNA read must follow the [counting rules](mirna_counters.md#counting-rules).
+- A read with a contaminant end and a human end stays `unmapped`.
+- A read that counts for a miRNA by its [non-templated 3′ nucleotides](mirna_counters.md#non-templated-3-nucleotides)
+  (rule 2) keeps the class `miRNA`.
+
+The class comes from a part of the read only. Thus a read of two joined fragments gets the class of one of them.
+These reads have no position on the rRNA reference, so the [rRNA fragments](outputs.md#step-7-rrna-fragments) do not
+include them. A miRNA read with a gap does not count, but these reads are few.
+
 ## miRNA off-target check
 
 A pipeline that maps the reads only to miRNA references counts reads of other RNAs as miRNA. The off-target check
@@ -94,7 +120,7 @@ Each read with a miRNA-only hit on a mature miRNA gets one result:
 | `miRNA` | Step 5 gives the class miRNA. No other class has an equally good hit. |
 | `tied` | Step 5 gives the class miRNA, but another class has an equally good hit. |
 | `miRNA_hairpin_other` | The read is 18 nt or shorter and has a mismatch. Step 5 does not count it. |
-| another class (for example, `rRNA`, `tRNA`, `intron`, `mycoplasma`) | Another reference has a better hit. |
+| another class (for example, `rRNA`, `tRNA`, `intron`, `mycoplasma`) | Another reference has a better hit, or the read gets the class of an end ([rule 5](#reads-without-a-full-length-hit)). |
 | `unmapped` | The read has 2 or 3 mismatches to the miRNA, and step 5 has no hit. |
 
 For example, a read with 1 mismatch to a miRNA and 0 mismatches to the rRNA is probably an rRNA fragment. But it can

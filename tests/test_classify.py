@@ -114,6 +114,49 @@ def test_unmapped_reads_by_their_ends(tmp_path):
     assert out.classes[4] == "unmapped"
 
 
+def test_unmapped_reads_by_their_human_ends(tmp_path):
+    yrna = "ENST00000363120|Y_RNA|RNY1"
+    out = classify(
+        tmp_path,
+        reads={1: 30, 2: 30, 3: 30, 4: 30, 5: 30, 6: 30, 7: 30, 8: 30, 9: 30, 10: 23},
+        ends=[
+            # a small RNA end with a mismatch
+            ("1_3_25", "ncrna", yrna, 1),
+            # a 1-nt deletion: the 25-nt ends contain it and one has a genome hit; the exact 18-nt end gives the class
+            ("2_5_25", "genome", "21", 1),
+            ("2_3_18", "trna", TRNA, 0),
+            # the fewest mismatches, then the class priority
+            ("3_5_25", "rrna", RRNA, 1),
+            ("3_3_25", "trna", TRNA, 0),
+            ("4_5_25", "rrna", RRNA, 0),
+            ("4_3_25", "trna", TRNA, 0),
+            # a 25-nt small RNA end wins over an exact 18-nt end
+            ("5_5_25", "trna", TRNA, 1),
+            ("5_3_18", "rrna", RRNA, 0),
+            # genome and miRNA ends do not give a class
+            ("6_5_25", "genome", "21", 0),
+            ("7_5_25", "mirbase", hairpin("mir-a"), 0),
+            # a human end and a contaminant end
+            ("8_5_25", "trna", TRNA, 0),
+            ("8_3_25", "contaminant", MYCO, 0),
+            # an 18-nt end with a mismatch does not count
+            ("9_5_18", "trna", TRNA, 1),
+            # a miRNA read by its non-templated 3' nucleotides keeps its class
+            ("10_3_18", "trna", TRNA, 0),
+        ],
+        nta=[(10, hairpin("mir-a"), 5, 22, 0)],
+    )
+    assert out.classes[1] == "Y_RNA"
+    assert out.classes[2] == "tRNA"
+    assert out.classes[3] == "tRNA"
+    assert out.classes[4] == "rRNA"
+    assert out.classes[5] == "tRNA"
+    assert out.classes[[6, 7, 8, 9]].eq("unmapped").all()
+    assert out.classes[10] == "miRNA"
+    ends = pd.read_csv(out.dir / "unmapped_ends.tsv", sep="\t")
+    assert ends.groupby("small_rna_class")["reads"].sum().to_dict() == {"Y_RNA": COUNT, "rRNA": COUNT, "tRNA": 5 * COUNT}
+
+
 def test_hairpin_reads_and_arm_tolerances(tmp_path):
     # miR-a-5p is at 5..27 of mir-a; the tolerances are 3 nt at the 5' end and 5 nt at the 3' end
     reads = {

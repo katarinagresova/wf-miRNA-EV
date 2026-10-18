@@ -9,7 +9,8 @@ class exactly; genome inserts and short contaminant inserts must not match a sma
 (step 5 aligns to the genome only the reads without a small RNA hit). The miRNA inserts are isomiRs with known
 changes of miRNAs that have the same sequence in miRBase and MirGeneDB; an 18-nt isomiR with a substitution must not
 count (miRNA_hairpin_other). Some rRNA inserts match a miRBase or MirGeneDB
-mature miRNA with 0-3 mismatches: the off-target check must give them the result rRNA or tied (off_target_<db>).
+mature miRNA with 0-3 mismatches: the off-target check must give them the result rRNA or tied (off_target_<db>). Two
+tRNA inserts have a 1-nt deletion: they have no full-length hit, and step 5 gives them the class of an end.
 
 Run in the environment of workflow/envs/py.yaml:
 
@@ -237,6 +238,13 @@ def small_rnas(ins):
                 ins.add(trna[:length], "tRNA", f"{name}:5'half", "tRNA", 10)
         if clean("tRNA")(trna[-20:]):  # 3' fragment with CCA
             ins.add(trna[-20:], "tRNA", f"{name}:3'CCA", "tRNA", 10)
+    # tRNA-Glu-CTC 5' halves with a 1-nt deletion in the GG at positions 6-7 (a reverse transcription error): no
+    # full-length hit, the class from the 3' end (25 nt; 18 nt if both 25-nt ends have the deletion)
+    trna = next(s for n, s in r.trna.items() if n.endswith("tRNA-Glu-CTC-1-1"))
+    for length in [31, 29]:
+        seq = trna[:6] + trna[7:length]
+        assert not r.exact_classes(seq) and not r.near_small(seq) and r.exact_classes(seq[-18:]) == {"tRNA"}
+        ins.add(seq, "tRNA", f"tRNA-Glu-CTC-1-1:5'half_del7:{len(seq)}", "tRNA", 10)
     ins.fragments(r.ncrna["MT-TF"][1], 2, range(20, 30), "mt_tRNA", "MT-TF", "mt_tRNA", 5, clean("mt_tRNA"))
     for cls, symbol in NCRNA_SOURCES.items():
         assert r.ncrna[symbol][0] == cls, (symbol, r.ncrna[symbol][0])

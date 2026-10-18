@@ -9,8 +9,9 @@ result from its class in step 5:
 - miRNA: the class is miRNA, and no other class has an equal hit,
 - tied: the class is miRNA, but another class has an equal hit (quantify_mirna.py, tied classes),
 - unmapped: step 5 has no hit (the read has 2 or 3 mismatches to the miRNA),
-- else the class of step 5: another reference has a better hit, or the read is short and has a mismatch
-  (miRNA_hairpin_other; step 5 needs 0 mismatches for these reads).
+- else the class of step 5: another reference has a better hit, an end of the read gives the class (reads without a
+  full-length hit), or the read is short and has a mismatch (miRNA_hairpin_other; step 5 needs 0 mismatches for these
+  reads).
 
 A read on several mature miRNAs is split evenly between them, as in the bowtie counts. The check does not change a
 count. The column tied_classes gives the other classes of a tied read. The column counter_mirna gives the entry of the

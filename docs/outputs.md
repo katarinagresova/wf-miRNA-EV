@@ -111,6 +111,10 @@ Columns of `summary.tsv`: `reads`, `unique_seqs`, `unique_pct` (unique sequences
 | `results/classify/{sample}/composition.tsv` | Reads of one library for each database, class and length bin: `db`, `class`, `len_bin`, `reads`, `unique_seqs`. |
 | `results/classify/{sample}/contaminants.tsv` | Reads of one library for each database, contaminant genome and length bin: `db`, `class`, `accession`, `species`, `len_bin`, `reads`, `unique_seqs`. |
 
+A sequence of `top_sequences_classes.tsv` with the class of an end
+([reads without a full-length hit](classification.md#reads-without-a-full-length-hit)) has no `mismatches`, its
+`n_hits` is 0, and its `label` is the class.
+
 Columns of `composition.tsv`: `db`, `class`, `len_bin` (16–28, 29–50 or 51+ nt), `reads`, `unique_seqs`,
 `pct_of_kept`, and `pct_of_human`. `pct_of_human` divides by the human reads: the kept reads without the contaminant
 reads. Use `pct_of_human` to compare libraries, because the contaminant share can be very different between
@@ -160,7 +164,8 @@ Columns of `off_target.tsv`:
 ## Step 7: rRNA fragments
 
 `results/rrna/{sample}/fragments.tsv.gz` lists the reads with the class rRNA (primary database) and their positions on
-the single-copy rRNA reference.
+the single-copy rRNA reference. The reads with the class rRNA from an end
+([rule 5](classification.md#reads-without-a-full-length-hit)) have no position, and the table does not include them.
 
 | Column | Content |
 |---|---|
