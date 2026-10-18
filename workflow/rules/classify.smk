@@ -300,6 +300,7 @@ rule classify_summary:
         rrna_features="resources/refs/rrna_features.bed",
         contaminant_features="resources/refs/contaminant_features.bed",
         ref_fastas=expand("resources/refs/{ref}.fa", ref=["rrna", "trna", "ncrna"]),
+        samples=config["samples"],
     output:
         **CLASSIFY_SUMMARY,
     params:
@@ -322,6 +323,7 @@ rule classify_summary:
             --rrna-features {input.rrna_features} \
             --contaminant-features {input.contaminant_features} \
             --ref-fastas {input.ref_fastas} \
+            --samples {input.samples} \
             --out-composition {output.composition} \
             --out-contaminants {output.contaminants} \
             --out-top {output.top} &> {log}

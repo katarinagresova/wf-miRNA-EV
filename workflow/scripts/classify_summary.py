@@ -23,6 +23,7 @@ def parse_args():
     p.add_argument("--rrna-features", required=True, help="rRNA feature BED (reference, start, end, name)")
     p.add_argument("--contaminant-features", required=True, help="contaminant feature BED (contig, start, end, type:product, 0, strand)")
     p.add_argument("--ref-fastas", nargs="+", required=True, help="small RNA reference FASTAs, for the target lengths")
+    p.add_argument("--samples", required=True, help="sample sheet")
     p.add_argument("--out-composition", required=True)
     p.add_argument("--out-contaminants", required=True)
     p.add_argument("--out-top", required=True)
@@ -169,6 +170,7 @@ class TopAnnotator:
 
 def main():
     args = parse_args()
+    samples = pd.read_csv(args.samples, sep="\t", dtype=str).set_index("sample").drop(columns="fastq")
 
     # --- composition (long), % of kept and of human reads
     comp = pd.concat((pd.read_csv(p, sep="\t").assign(sample=sample_name(p)) for p in args.composition), ignore_index=True)
@@ -178,18 +180,16 @@ def main():
     human = comp[~is_cont].groupby(["sample", "db"])["reads"].sum()
     human_reads = human.reindex(pd.MultiIndex.from_frame(comp[["sample", "db"]])).to_numpy()
     comp["pct_of_human"] = (100 * comp["reads"] / human_reads).where(~is_cont)
-    comp[["sample", "db", "class", "len_bin", "reads", "unique_seqs", "pct_of_kept", "pct_of_human"]].round(4).to_csv(
-        args.out_composition, sep="\t", index=False
-    )
+    comp = comp[["sample", "db", "class", "len_bin", "reads", "unique_seqs", "pct_of_kept", "pct_of_human"]].round(4)
+    samples.join(comp.set_index("sample"), how="right").to_csv(args.out_composition, sep="\t")
 
     # --- contaminant reads per genome, % of kept reads
     cont = pd.concat(pd.read_csv(p, sep="\t").assign(sample=sample_name(p)) for p in args.contaminants)
     cont = cont[cont["db"] == args.dbs[0]].drop(columns="db")
     cont = cont.groupby(["sample", "class", "accession", "species"], as_index=False)[["reads", "unique_seqs"]].sum()
     cont["pct_of_kept"] = 100 * cont["reads"] / cont["sample"].map(kept)
-    cont[["sample", "class", "accession", "species", "reads", "unique_seqs", "pct_of_kept"]].round(4).to_csv(
-        args.out_contaminants, sep="\t", index=False
-    )
+    cont = cont[["sample", "class", "accession", "species", "reads", "unique_seqs", "pct_of_kept"]].round(4)
+    samples.join(cont.set_index("sample"), how="right").to_csv(args.out_contaminants, sep="\t")
 
     # --- annotation of the most abundant sequences (the class does not depend on the sample, so any sample will do)
     hits = pd.concat(pd.read_csv(p, sep="\t").assign(src=p) for p in args.top_hits)
