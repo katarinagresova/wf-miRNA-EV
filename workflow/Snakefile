@@ -4,7 +4,7 @@ import pandas as pd
 from snakemake.exceptions import WorkflowError
 from snakemake.utils import validate
 
-WF_VERSION = "0.1.0.dev0"
+WF_VERSION = "0.1.0"
 
 configfile: "config/config.yaml"
 
